@@ -9,6 +9,12 @@
 		"libs/modules/physics/physics.js"
 	],
 	"game": [
-		"bin-debug/Main.js"
+		"bin-debug/objects/FlyObject.js",
+		"bin-debug/objects/FlyBlockCircle.js",
+		"bin-debug/objects/FlyBlockRect.js",
+		"bin-debug/Main.js",
+		"bin-debug/objects/FlyTrigger.js",
+		"bin-debug/obstacle/Wall.js",
+		"bin-debug/property/Candy.js"
 	]
 }

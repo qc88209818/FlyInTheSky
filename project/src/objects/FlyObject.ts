@@ -5,42 +5,21 @@
 * @param type 物体的形状。
 */
 module fly {
-	export enum ObjectType { 
-		None = 0, 
-		Rect = 1, 
-		Circle = 2 
-	};
-
-	export class FlyConfig {
-		static DebugMode:boolean;
-	}
-
-    class FlyObject {
-		type:ObjectType;
-
-		public constructor() {
-			this.type = ObjectType.None;
-		}
-	}
-
-	export class P2Object extends FlyObject {
+	export class FlyObject {
 		body:p2.Body;
 		shape:p2.Shape;
+		bodyType:number;
+		isDestroy:boolean = false;
 		
-		public constructor() {
-            super();
-        }
-
 		public updatePosition()
 		{
 			if (this.body)
 			{
-				for(let i = 0; i < this.body.displays.length; ++i)
-				{
-					this.body.displays[i].x = this.body.position[0];
-					this.body.displays[i].y = this.body.position[1];
-				}
-				
+				this.body.displays.forEach(value => {
+					value.x = this.body.position[0];
+					value.y = this.body.position[1];
+				})
+
 				if (!fly.FlyConfig.DebugMode)
 					return;
 
@@ -53,6 +32,24 @@ module fly {
 					this.body.displays[0].alpha = 1;
 				}
 			}
+		}
+
+		public setGroupAndMask(group:number, mask:number)
+		{
+			if (this.shape)
+			{
+				this.shape.collisionGroup = group;
+				this.shape.collisionMask = mask;
+			}
+		}
+
+		public addChild(child:any)
+		{
+			if (!this.body.displays)
+			{
+				this.body.displays = []
+			}
+			this.body.displays.push(child);
 		}
 	}
 }

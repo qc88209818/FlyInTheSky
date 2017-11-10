@@ -35,12 +35,15 @@ var fly;
                 _this.height = y1 - y2;
                 _this.y = y2 + _this.height / 2;
             }
-            _super.prototype.initBlock.call(_this, p2.Body.STATIC, _this.x, _this.y, _this.width, _this.height);
-            _super.prototype.initRender.call(_this, _this.width, _this.height);
+            _this.initBody(Wall.wall_id++, p2.Body.STATIC, _this.x, _this.y, _this.width, _this.height);
+            // this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block);
+            _this.initRender(_this.width, _this.height);
+            _this.updatePosition();
             return _this;
         }
+        Wall.wall_id = 1000;
         return Wall;
-    }(fly.FlyBlockRect));
+    }(fly.FlyRect));
     fly.Wall = Wall;
     __reflect(Wall.prototype, "fly.Wall");
 })(fly || (fly = {}));

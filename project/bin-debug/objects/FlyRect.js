@@ -13,36 +13,41 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var fly;
 (function (fly) {
-    var FlyBlockCircle = (function (_super) {
-        __extends(FlyBlockCircle, _super);
-        function FlyBlockCircle() {
+    var FlyRect = (function (_super) {
+        __extends(FlyRect, _super);
+        function FlyRect() {
             return _super.call(this) || this;
         }
-        FlyBlockCircle.prototype.initBlock = function (bodyType, x, y, radius) {
+        FlyRect.prototype.initBody = function (id, bodyType, x, y, width, height) {
+            this.bodyType = bodyType;
             var obj = new p2.Body({
                 type: bodyType,
+                id: id,
                 mass: 1,
                 fixedRotation: true,
                 position: [x, y]
             });
             this.body = obj;
-            var obj2 = new p2.Circle({
-                radius: radius,
+            var obj2 = new p2.Box({
+                width: width,
+                height: height
             });
             this.shape = obj2;
             obj.addShape(obj2);
         };
-        FlyBlockCircle.prototype.initRender = function (radious) {
+        FlyRect.prototype.initRender = function (width, height) {
+            var color = fly.FlyTools.getBodyTypeColor(this.bodyType);
             var shape = new egret.Shape();
-            shape.graphics.beginFill(0x00FF00, fly.FlyConfig.DebugMode ? 1 : 0);
-            shape.graphics.drawCircle(0, 0, radious);
+            shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
+            shape.graphics.drawRect(0, 0, width, height);
             shape.graphics.endFill();
-            this.body.displays = [shape];
-            this.updatePosition();
+            shape.anchorOffsetX = shape.width / 2;
+            shape.anchorOffsetY = shape.height / 2;
+            _super.prototype.addChild.call(this, shape);
         };
-        return FlyBlockCircle;
-    }(fly.P2Object));
-    fly.FlyBlockCircle = FlyBlockCircle;
-    __reflect(FlyBlockCircle.prototype, "fly.FlyBlockCircle");
+        return FlyRect;
+    }(fly.FlyObject));
+    fly.FlyRect = FlyRect;
+    __reflect(FlyRect.prototype, "fly.FlyRect");
 })(fly || (fly = {}));
-//# sourceMappingURL=FlyBlockCircle.js.map
+//# sourceMappingURL=FlyRect.js.map

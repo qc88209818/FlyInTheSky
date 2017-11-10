@@ -15,15 +15,46 @@ var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         var _this = _super.call(this) || this;
-        fly.FlyConfig.DebugMode = true;
+        fly.FlyConfig.DebugMode = false;
         _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
     Main.prototype.onAddToStage = function (event) {
-        this.createGameScene();
+        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        RES.loadConfig("resource/default.res.json", "resource/");
+    };
+    Main.prototype.onConfigComplete = function () {
+        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
+        RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
+        RES.loadGroup("preload");
+    };
+    /**
+     * preload资源组加载完成
+     * preload resource group is loaded
+     */
+    Main.prototype.onResourceLoadComplete = function (event) {
+        if (event.groupName == "preload") {
+            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
+            RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
+            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
+            RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
+            this.initGame();
+        }
+    };
+    Main.prototype.onItemLoadError = function (event) {
+        console.warn("Url:" + event.resItem.url + " has failed to load");
+    };
+    Main.prototype.onResourceLoadError = function (event) {
+        console.warn("Group:" + event.groupName + " has failed to load");
+        this.onResourceLoadComplete(event);
+    };
+    Main.prototype.onResourceProgress = function (event) {
+    };
+    Main.prototype.initGame = function () {
         egret.lifecycle.addLifecycleListener(function (conttext) {
             conttext.onUpdate = function () {
-                console.log('Start Game2!');
             };
         });
         egret.lifecycle.onPause = function () {
@@ -34,32 +65,13 @@ var Main = (function (_super) {
             egret.ticker.resume();
             console.log('Game2 onResume!');
         };
-        //添加帧事件侦听
-        egret.Ticker.getInstance().register(function (dt) {
-            //使世界时间向后运动
-            this.world.step(dt / 1000);
-            this.ball.updatePosition();
-        }, this);
-    };
-    Main.prototype.createGameScene = function () {
-        this.world = new p2.World({
-            gravity: [0, 100]
-        });
-        this.world.sleepMode = p2.World.BODY_SLEEPING;
-        var wall1 = new fly.Wall(0, 0, this.stage.stageWidth, 10);
-        var wall2 = new fly.Wall(0, 0, 10, this.stage.stageHeight);
-        var wall3 = new fly.Wall(this.stage.stageWidth, this.stage.stageHeight, this.stage.stageWidth - 10, 0);
-        var wall4 = new fly.Wall(this.stage.stageWidth, this.stage.stageHeight, 0, this.stage.stageHeight - 10);
-        this.addToWorld(wall1);
-        this.addToWorld(wall2);
-        this.addToWorld(wall3);
-        this.addToWorld(wall4);
-        this.ball = new fly.Candy(300, 300, 100);
-        this.addToWorld(this.ball);
-    };
-    Main.prototype.addToWorld = function (obj) {
-        this.stage.addChild(obj.body.displays[0]);
-        this.world.addBody(obj.body);
+        // 初始化一些有用参数
+        fly.FlyConfig.stageWidth = this.stage.stageWidth;
+        fly.FlyConfig.stageHeight = this.stage.stageHeight;
+        // 战斗场景
+        var scene = new fly.BattleScene();
+        scene.initScene();
+        this.stage.addChild(scene);
     };
     return Main;
 }(egret.DisplayObjectContainer));

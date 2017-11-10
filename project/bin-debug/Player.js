@@ -13,35 +13,32 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var fly;
 (function (fly) {
-    var Candy = (function (_super) {
-        __extends(Candy, _super);
-        function Candy(x, y, radious) {
+    var Player = (function (_super) {
+        __extends(Player, _super);
+        function Player(x, y, radious) {
             var _this = _super.call(this) || this;
             _this.x = x + radious;
             _this.y = y + radious;
             _this.radious = radious;
-            _this.initBody(Candy.candy_id++, p2.Body.DYNAMIC, _this.x, _this.y, _this.radious);
-            if (Candy.candy_id >= 3000) {
-                Candy.candy_id = 2000;
-            }
-            // this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property);
+            _this.initBody(Player.player_id++, p2.Body.DYNAMIC, _this.x, _this.y, _this.radious);
+            // this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player);
             _this.initRender(_this.radious);
             _this.initBitmap();
             _this.updatePosition();
             return _this;
         }
-        Candy.prototype.initBitmap = function () {
-            var png = fly.FlyTools.createBitmapByName("candy_png");
+        Player.prototype.initBitmap = function () {
+            var png = fly.FlyTools.createBitmapByName("player_down_png");
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;
-            png.scaleX = 1.5;
-            png.scaleY = 1.5;
+            png.scaleX = 2;
+            png.scaleY = 2;
             this.addChild(png);
         };
-        Candy.candy_id = 2000;
-        return Candy;
+        Player.player_id = 0;
+        return Player;
     }(fly.FlyCircle));
-    fly.Candy = Candy;
-    __reflect(Candy.prototype, "fly.Candy");
+    fly.Player = Player;
+    __reflect(Player.prototype, "fly.Player");
 })(fly || (fly = {}));
-//# sourceMappingURL=Candy.js.map
+//# sourceMappingURL=Player.js.map

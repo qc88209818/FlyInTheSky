@@ -1,10 +1,11 @@
 module fly {
-	export class Wall extends FlyBlockRect {
+	export class Wall extends FlyRect {
 		width:number;
 		height:number;
 		x:number;
 		y:number;
 		
+		static wall_id:number = 1000;
 		public constructor(x1:number, y1:number, x2:number, y2:number) {
 			super();
 
@@ -32,8 +33,11 @@ module fly {
 				this.y = y2 + this.height/2;
 			}
 
-			super.initBlock(p2.Body.STATIC, this.x, this.y, this.width, this.height);
-			super.initRender(this.width, this.height);
+			this.initBody(Wall.wall_id++, p2.Body.STATIC, this.x, this.y, this.width, this.height);
+			// this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block);
+			
+			this.initRender(this.width, this.height);
+			this.updatePosition();
 		}
 	}
 }

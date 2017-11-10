@@ -1,19 +1,22 @@
 module fly {
-	export class FlyBlockCircle extends P2Object {
+	export class FlyCircle extends FlyObject {
 		public constructor() {
             super();
         }
 
-        public initBlock(bodyType: number, x:number, y:number, radius: number) 
+        public initBody(id:number, bodyType: number, x:number, y:number, radius: number) 
 		{
+			this.bodyType = bodyType;
+
 			let obj = new p2.Body({
 				type:bodyType
+				, id:id
 				, mass:1
 				, fixedRotation: true
 				, position:[x, y]
 			});
 			this.body = obj;
-
+			
             let obj2 = new p2.Circle({
 				radius:radius,
 			});
@@ -22,14 +25,16 @@ module fly {
 			obj.addShape(obj2);
         }
 
-		public initRender(radious: number) {
+		public initRender(radious: number) 
+		{
+			let color = FlyTools.getBodyTypeColor(this.bodyType);
+
 			let shape = new egret.Shape();
-			shape.graphics.beginFill(0x00FF00, fly.FlyConfig.DebugMode?1:0);
+			shape.graphics.beginFill(color, fly.FlyConfig.DebugMode?1:0);
 			shape.graphics.drawCircle(0, 0, radious);
 			shape.graphics.endFill();
 
-			this.body.displays = [shape];
-			this.updatePosition();
+			super.addChild(shape);
 		}
 	}
 }

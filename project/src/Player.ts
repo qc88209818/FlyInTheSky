@@ -1,22 +1,18 @@
 module fly {
-	export class Candy extends FlyCircle {
+	export class Player extends FlyCircle {
 		radious:number;
 		x:number;
 		y:number;
 		
-		static candy_id:number = 2000;
+		static player_id:number = 0;
 		public constructor(x:number, y:number, radious:number) {
 			super();
 			this.x = x + radious;
 			this.y = y + radious;
 			this.radious = radious;
 
-			this.initBody(Candy.candy_id++, p2.Body.DYNAMIC, this.x, this.y, this.radious);
-			if (Candy.candy_id >= 3000)
-			{
-				Candy.candy_id = 2000;
-			}
-			// this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property);
+			this.initBody(Player.player_id++, p2.Body.DYNAMIC, this.x, this.y, this.radious);
+			// this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player);
 
 			this.initRender(this.radious);
 			this.initBitmap();
@@ -26,11 +22,11 @@ module fly {
 
 		private initBitmap()
 		{
-			let png = FlyTools.createBitmapByName("candy_png");
+			let png = FlyTools.createBitmapByName("player_down_png");
 			png.anchorOffsetX = png.width/2;
 			png.anchorOffsetY = png.height/2;
-			png.scaleX = 1.5;
-			png.scaleY = 1.5;
+			png.scaleX = 2;
+			png.scaleY = 2;
 			this.addChild(png);
 		}
 	}

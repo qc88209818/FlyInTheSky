@@ -1,4 +1,35 @@
 {
-	"groups":[],
-	"resources":[]
+	"groups": [
+		{
+			"keys": "virtual_button_png,virtual_background_png,candy_png,mushroom_png,player_down_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/virtual_background.png",
+			"type": "image",
+			"name": "virtual_background_png"
+		},
+		{
+			"url": "assets/virtual_button.png",
+			"type": "image",
+			"name": "virtual_button_png"
+		},
+		{
+			"name": "candy_png",
+			"type": "image",
+			"url": "assets/candy.png"
+		},
+		{
+			"name": "mushroom_png",
+			"type": "image",
+			"url": "assets/mushroom.png"
+		},
+		{
+			"name": "player_down_png",
+			"type": "image",
+			"url": "assets/player_down.png"
+		}
+	]
 }

@@ -5,7 +5,6 @@ module fly {
 		x:number;
 		y:number;
 		
-		static wall_id:number = 1000;
 		public constructor(x1:number, y1:number, x2:number, y2:number) {
 			super();
 
@@ -33,11 +32,28 @@ module fly {
 				this.y = y2 + this.height/2;
 			}
 
-			this.initBody(Wall.wall_id++, p2.Body.STATIC, this.x, this.y, this.width, this.height);
+			this.initBody({
+				id:FlyConfig.getBlockId()
+				, mass:1
+				, type:p2.Body.STATIC
+				, fixedRotation:true
+				, position:[this.x, this.y]
+			});
+			this.initShape(this.width, this.height);
 			this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block);
-			
-			this.initRender(this.width, this.height);
+
+			this.initBitmap();
 			this.updatePosition();
+		}
+
+		private initBitmap()
+		{
+			// let png = FlyTools.createBitmapByName("candy_png");
+			// png.anchorOffsetX = png.width/2;
+			// png.anchorOffsetY = png.height/2;
+			// png.scaleX = 2 * this.radious/png.width;
+			// png.scaleY = 2 * this.radious/png.height;
+			// this.addChild(png);
 		}
 	}
 }

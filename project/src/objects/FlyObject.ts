@@ -8,12 +8,17 @@ module fly {
 	export class FlyObject {
 		body:p2.Body;
 		shape:p2.Shape;
-		bodyType:number;
 
 		isDestroy:boolean = false;
 		indexOf:number = -1;
 
 		objmgr:ObjectManager = ObjectManager.inst();
+
+		public initBody(bodyOp?)
+		{
+			let body = new p2.Body(bodyOp);
+			this.body = body;
+		}
 
 		public updatePosition()
 		{

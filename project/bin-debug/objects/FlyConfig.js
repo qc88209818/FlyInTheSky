@@ -31,6 +31,58 @@ var fly;
     var FlyConfig = (function () {
         function FlyConfig() {
         }
+        FlyConfig.getPlayerId = function () {
+            FlyConfig.PlayerId++;
+            if (FlyConfig.PlayerId >= FlyConfig.PlayerMaxId) {
+                FlyConfig.PlayerId = FlyConfig.PlayerMinId;
+            }
+            return FlyConfig.PlayerId;
+        };
+        FlyConfig.getBlockId = function () {
+            FlyConfig.BlockId++;
+            if (FlyConfig.BlockId >= FlyConfig.BlockMaxId) {
+                FlyConfig.BlockId = FlyConfig.BlockMinId;
+            }
+            return FlyConfig.BlockId;
+        };
+        FlyConfig.getPropertyId = function () {
+            FlyConfig.PropertyId++;
+            if (FlyConfig.PropertyId >= FlyConfig.PropertyMaxId) {
+                FlyConfig.PropertyId = FlyConfig.PropertyMinId;
+            }
+            return FlyConfig.PropertyId;
+        };
+        FlyConfig.getObstacleId = function () {
+            FlyConfig.ObstacleId++;
+            if (FlyConfig.ObstacleId >= FlyConfig.ObstacleMaxId) {
+                FlyConfig.ObstacleId = FlyConfig.ObstacleMinId;
+            }
+            return FlyConfig.ObstacleId;
+        };
+        FlyConfig.isPlayer = function (id) {
+            return FlyConfig.PlayerMinId <= id && id < FlyConfig.PlayerMaxId;
+        };
+        FlyConfig.isBlock = function (id) {
+            return FlyConfig.BlockMinId <= id && id < FlyConfig.BlockMaxId;
+        };
+        FlyConfig.isProperty = function (id) {
+            return FlyConfig.PropertyMinId <= id && id < FlyConfig.PropertyMaxId;
+        };
+        FlyConfig.isObstacle = function (id) {
+            return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId;
+        };
+        FlyConfig.PlayerMinId = 0;
+        FlyConfig.BlockMinId = 1000;
+        FlyConfig.PropertyMinId = 2000;
+        FlyConfig.ObstacleMinId = 3000;
+        FlyConfig.PlayerMaxId = 1000;
+        FlyConfig.BlockMaxId = 2000;
+        FlyConfig.PropertyMaxId = 3000;
+        FlyConfig.ObstacleMaxId = 4000;
+        FlyConfig.PlayerId = FlyConfig.PlayerMinId;
+        FlyConfig.BlockId = FlyConfig.BlockMinId;
+        FlyConfig.PropertyId = FlyConfig.PropertyMinId;
+        FlyConfig.ObstacleId = FlyConfig.ObstacleMinId;
         return FlyConfig;
     }());
     fly.FlyConfig = FlyConfig;

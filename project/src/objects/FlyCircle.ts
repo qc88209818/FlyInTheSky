@@ -4,37 +4,27 @@ module fly {
             super();
         }
 
-        public initBody(id:number, bodyType: number, x:number, y:number, radius: number) 
+		public initShape(radius: number)
 		{
-			this.bodyType = bodyType;
-
-			let obj = new p2.Body({
-				type:bodyType
-				, id:id
-				, mass:1
-				, fixedRotation: true
-				, position:[x, y]
+			let shape = new p2.Circle({
+				radius:radius
 			});
-			this.body = obj;
-			
-            let obj2 = new p2.Circle({
-				radius:radius,
-			});
-			this.shape = obj2;
+			this.shape = shape;
+			this.body.addShape(shape);
 
-			obj.addShape(obj2);
-        }
+			this.initRender(radius);
+		}
 
-		public initRender(radious: number) 
+		private initRender(radius: number) 
 		{
-			let color = FlyTools.getBodyTypeColor(this.bodyType);
+			let color = FlyTools.getBodyTypeColor(this.body.type);
 
 			let shape = new egret.Shape();
 			shape.graphics.beginFill(color, fly.FlyConfig.DebugMode?1:0);
-			shape.graphics.drawCircle(0, 0, radious);
+			shape.graphics.drawCircle(0, 0, radius);
 			shape.graphics.endFill();
 
-			super.addChild(shape);
+			this.addChild(shape);
 		}
 	}
 }

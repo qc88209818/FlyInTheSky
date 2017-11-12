@@ -34,7 +34,6 @@ module fly {
 				this.addToWorld(candy);
 
 				this.lastCreateCandy = 0;
-				console.log("Add One Candy!");
 			}
 		}
 
@@ -82,7 +81,7 @@ module fly {
 
 		private createTouchLayer()
 		{
-			let touchLayer = new BattleTouchLayer(this, 200, 1);
+			let touchLayer = new BattleTouchLayer(this, 150, 1);
 			this.touchLayer = touchLayer;
 		}
 
@@ -96,12 +95,11 @@ module fly {
 
 		private onContact(bodyA:p2.Body, bodyB:p2.Body) 
 		{
-			console.log("Contact: " + bodyA.id + " and " + bodyB.id);
-			if (bodyA.id < 1000 && 2000 <= bodyB.id)
+			if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isProperty(bodyB.id))
 			{
 				this.triggerBody(bodyB.id)
 			}
-			else if (bodyB.id < 1000 && 2000 <= bodyA.id)
+			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isProperty(bodyA.id))
 			{
 				this.triggerBody(bodyA.id)
 			}
@@ -113,7 +111,10 @@ module fly {
 				if (value.body.id == id)
 				{
 					value.onTrigger();
-					this.delFromWorld(value);
+					if (value.isDestroy)
+					{
+						this.delFromWorld(value);
+					}
 					return;
 				}
 			})
@@ -131,7 +132,6 @@ module fly {
 
 		private delFromWorld(obj:FlyObject)
 		{
-			obj.isDestroy = true;
 			obj.body.displays.forEach(value => {
 				this.removeChild(value);
 			})

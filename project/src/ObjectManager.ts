@@ -11,7 +11,8 @@ module fly {
 	
 		public update(dt:number)
 		{
-			for(let i = 0; i < this.sprites.length;)
+			let length = this.sprites.length;
+			for(let i = 0; i < length;)
 			{
 				if (!this.sprites[i].isDestroy)
 				{
@@ -20,8 +21,10 @@ module fly {
 				}
 				else
 				{
+					console.log("Delete: ", this.sprites[i].body.id);
+					--length;
 					this.sprites[i].indexOf = -1;
-					this.sprites[i] = this.sprites[this.sprites.length-1];
+					this.sprites[i] = this.sprites[length];
 					this.sprites[i].indexOf = i;
 					this.sprites.pop();
 				}

@@ -35,13 +35,27 @@ var fly;
                 _this.height = y1 - y2;
                 _this.y = y2 + _this.height / 2;
             }
-            _this.initBody(Wall.wall_id++, p2.Body.STATIC, _this.x, _this.y, _this.width, _this.height);
+            _this.initBody({
+                id: fly.FlyConfig.getBlockId(),
+                mass: 1,
+                type: p2.Body.STATIC,
+                fixedRotation: true,
+                position: [_this.x, _this.y]
+            });
+            _this.initShape(_this.width, _this.height);
             _this.setGroupAndMask(fly.ObjectGroup.Block, fly.ObjectMask.Block);
-            _this.initRender(_this.width, _this.height);
+            _this.initBitmap();
             _this.updatePosition();
             return _this;
         }
-        Wall.wall_id = 1000;
+        Wall.prototype.initBitmap = function () {
+            // let png = FlyTools.createBitmapByName("candy_png");
+            // png.anchorOffsetX = png.width/2;
+            // png.anchorOffsetY = png.height/2;
+            // png.scaleX = 2 * this.radious/png.width;
+            // png.scaleY = 2 * this.radious/png.height;
+            // this.addChild(png);
+        };
         return Wall;
     }(fly.FlyRect));
     fly.Wall = Wall;

@@ -18,32 +18,24 @@ var fly;
         function FlyRect() {
             return _super.call(this) || this;
         }
-        FlyRect.prototype.initBody = function (id, bodyType, x, y, width, height) {
-            this.bodyType = bodyType;
-            var obj = new p2.Body({
-                type: bodyType,
-                id: id,
-                mass: 1,
-                fixedRotation: true,
-                position: [x, y]
-            });
-            this.body = obj;
-            var obj2 = new p2.Box({
+        FlyRect.prototype.initShape = function (width, height) {
+            var shape = new p2.Box({
                 width: width,
                 height: height
             });
-            this.shape = obj2;
-            obj.addShape(obj2);
+            this.shape = shape;
+            this.body.addShape(shape);
+            this.initRender(width, height);
         };
         FlyRect.prototype.initRender = function (width, height) {
-            var color = fly.FlyTools.getBodyTypeColor(this.bodyType);
+            var color = fly.FlyTools.getBodyTypeColor(this.body.type);
             var shape = new egret.Shape();
             shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
             shape.graphics.drawRect(0, 0, width, height);
             shape.graphics.endFill();
             shape.anchorOffsetX = shape.width / 2;
             shape.anchorOffsetY = shape.height / 2;
-            _super.prototype.addChild.call(this, shape);
+            this.addChild(shape);
         };
         return FlyRect;
     }(fly.FlyObject));

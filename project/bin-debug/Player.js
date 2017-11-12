@@ -15,14 +15,20 @@ var fly;
 (function (fly) {
     var Player = (function (_super) {
         __extends(Player, _super);
-        function Player(x, y, radious) {
+        function Player(x, y, radius) {
             var _this = _super.call(this) || this;
-            _this.x = x + radious;
-            _this.y = y + radious;
-            _this.radious = radious;
-            _this.initBody(Player.player_id++, p2.Body.DYNAMIC, _this.x, _this.y, _this.radious);
+            _this.x = x;
+            _this.y = y;
+            _this.radius = radius;
+            _this.initBody({
+                id: fly.FlyConfig.getPlayerId(),
+                mass: 1,
+                type: p2.Body.DYNAMIC,
+                fixedRotation: true,
+                position: [_this.x, _this.y]
+            });
+            _this.initShape(_this.radius);
             _this.setGroupAndMask(fly.ObjectGroup.Player, fly.ObjectMask.Player);
-            _this.initRender(_this.radious);
             _this.initBitmap();
             _this.updatePosition();
             return _this;
@@ -31,11 +37,10 @@ var fly;
             var png = fly.FlyTools.createBitmapByName("player_down_png");
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;
-            png.scaleX = 2 * this.radious / png.width;
-            png.scaleY = 2 * this.radious / png.height;
+            png.scaleX = 2 * this.radius / png.width;
+            png.scaleY = 2 * this.radius / png.height;
             this.addChild(png);
         };
-        Player.player_id = 0;
         return Player;
     }(fly.FlyCircle));
     fly.Player = Player;

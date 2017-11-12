@@ -15,6 +15,10 @@ var fly;
             this.indexOf = -1;
             this.objmgr = fly.ObjectManager.inst();
         }
+        FlyObject.prototype.initBody = function (bodyOp) {
+            var body = new p2.Body(bodyOp);
+            this.body = body;
+        };
         FlyObject.prototype.updatePosition = function () {
             var _this = this;
             if (this.body) {

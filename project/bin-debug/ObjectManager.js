@@ -11,14 +11,17 @@ var fly;
             return this.obj;
         };
         ObjectManager.prototype.update = function (dt) {
-            for (var i = 0; i < this.sprites.length;) {
+            var length = this.sprites.length;
+            for (var i = 0; i < length;) {
                 if (!this.sprites[i].isDestroy) {
                     this.sprites[i].updatePosition();
                     ++i;
                 }
                 else {
+                    console.log("Delete: ", this.sprites[i].body.id);
+                    --length;
                     this.sprites[i].indexOf = -1;
-                    this.sprites[i] = this.sprites[this.sprites.length - 1];
+                    this.sprites[i] = this.sprites[length];
                     this.sprites[i].indexOf = i;
                     this.sprites.pop();
                 }

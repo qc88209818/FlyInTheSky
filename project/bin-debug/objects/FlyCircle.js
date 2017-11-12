@@ -18,29 +18,21 @@ var fly;
         function FlyCircle() {
             return _super.call(this) || this;
         }
-        FlyCircle.prototype.initBody = function (id, bodyType, x, y, radius) {
-            this.bodyType = bodyType;
-            var obj = new p2.Body({
-                type: bodyType,
-                id: id,
-                mass: 1,
-                fixedRotation: true,
-                position: [x, y]
+        FlyCircle.prototype.initShape = function (radius) {
+            var shape = new p2.Circle({
+                radius: radius
             });
-            this.body = obj;
-            var obj2 = new p2.Circle({
-                radius: radius,
-            });
-            this.shape = obj2;
-            obj.addShape(obj2);
+            this.shape = shape;
+            this.body.addShape(shape);
+            this.initRender(radius);
         };
-        FlyCircle.prototype.initRender = function (radious) {
-            var color = fly.FlyTools.getBodyTypeColor(this.bodyType);
+        FlyCircle.prototype.initRender = function (radius) {
+            var color = fly.FlyTools.getBodyTypeColor(this.body.type);
             var shape = new egret.Shape();
             shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
-            shape.graphics.drawCircle(0, 0, radious);
+            shape.graphics.drawCircle(0, 0, radius);
             shape.graphics.endFill();
-            _super.prototype.addChild.call(this, shape);
+            this.addChild(shape);
         };
         return FlyCircle;
     }(fly.FlyObject));

@@ -4,31 +4,21 @@ module fly {
             super();
         }
 
-		public initBody(id:number, bodyType: number, x:number, y:number, width: number, height: number)
+		public initShape(width: number, height: number)
 		{
-			this.bodyType = bodyType;
-
-			let obj = new p2.Body({
-				type:bodyType
-				, id:id
-				, mass:1
-				, fixedRotation: true
-				, position:[x, y]
-			});
-			this.body = obj;
-
-            let obj2 = new p2.Box({
+			let shape = new p2.Box({
 				width:width,
 				height:height
 			});
-			this.shape = obj2;
+			this.shape = shape;
+			this.body.addShape(shape);
 
-			obj.addShape(obj2);
+			this.initRender(width, height);
 		}
 
-		public initRender(width: number, height: number) 
+		private initRender(width: number, height: number) 
 		{
-			let color = FlyTools.getBodyTypeColor(this.bodyType);
+			let color = FlyTools.getBodyTypeColor(this.body.type);
 
 			let shape = new egret.Shape();
 			shape.graphics.beginFill(color, fly.FlyConfig.DebugMode?1:0);
@@ -38,7 +28,7 @@ module fly {
 			shape.anchorOffsetX = shape.width/2;
 			shape.anchorOffsetY = shape.height/2;
 
-			super.addChild(shape);
+			this.addChild(shape);
 		}
 	}
 }

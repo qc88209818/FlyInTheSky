@@ -39,7 +39,6 @@ var fly;
                 var candy = new fly.Candy(width, height, radious);
                 this.addToWorld(candy);
                 this.lastCreateCandy = 0;
-                console.log("Add One Candy!");
             }
         };
         BattleScene.prototype.initScene = function () {
@@ -84,11 +83,10 @@ var fly;
             }
         };
         BattleScene.prototype.onContact = function (bodyA, bodyB) {
-            console.log("Contact: " + bodyA.id + " and " + bodyB.id);
-            if (bodyA.id < 1000 && 2000 <= bodyB.id) {
+            if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isProperty(bodyB.id)) {
                 this.triggerBody(bodyB.id);
             }
-            else if (bodyB.id < 1000 && 2000 <= bodyA.id) {
+            else if (fly.FlyConfig.isPlayer(bodyB.id) && fly.FlyConfig.isProperty(bodyA.id)) {
                 this.triggerBody(bodyA.id);
             }
         };
@@ -97,7 +95,9 @@ var fly;
             this.objmgr.sprites.forEach(function (value) {
                 if (value.body.id == id) {
                     value.onTrigger();
-                    _this.delFromWorld(value);
+                    if (value.isDestroy) {
+                        _this.delFromWorld(value);
+                    }
                     return;
                 }
             });
@@ -112,7 +112,6 @@ var fly;
         };
         BattleScene.prototype.delFromWorld = function (obj) {
             var _this = this;
-            obj.isDestroy = true;
             obj.body.displays.forEach(function (value) {
                 _this.removeChild(value);
             });

@@ -35,6 +35,8 @@ module fly {
 
 			let bg = FlyTools.createBitmapByName("virtual_background_png");
 			bg.alpha = 0;
+			bg.scaleX = 0.5;
+			bg.scaleY = 0.5;
 			bg.anchorOffsetX = bg.width/2;
 			bg.anchorOffsetY = bg.height/2;
 			this.virtualBg = bg;
@@ -42,6 +44,8 @@ module fly {
 
 			let btn = FlyTools.createBitmapByName("virtual_button_png");
 			btn.alpha = 0;
+			btn.scaleX = 0.5;
+			btn.scaleY = 0.5;
 			btn.anchorOffsetX = btn.width/2;
 			btn.anchorOffsetY = btn.height/2;
 			this.virtualBtn = btn;
@@ -62,7 +66,6 @@ module fly {
 			this.virtualBg.alpha = 0;
 			this.virtualBtn.alpha = 0;
 
-			this.direct = [];
 			this.isTouchMove = false;
 		}
 

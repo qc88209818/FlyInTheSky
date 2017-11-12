@@ -36,7 +36,7 @@ var fly;
                 _this.y = y2 + _this.height / 2;
             }
             _this.initBody(Wall.wall_id++, p2.Body.STATIC, _this.x, _this.y, _this.width, _this.height);
-            // this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block);
+            _this.setGroupAndMask(fly.ObjectGroup.Block, fly.ObjectMask.Block);
             _this.initRender(_this.width, _this.height);
             _this.updatePosition();
             return _this;

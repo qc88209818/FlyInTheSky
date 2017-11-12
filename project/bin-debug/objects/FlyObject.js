@@ -12,6 +12,8 @@ var fly;
     var FlyObject = (function () {
         function FlyObject() {
             this.isDestroy = false;
+            this.indexOf = -1;
+            this.objmgr = fly.ObjectManager.inst();
         }
         FlyObject.prototype.updatePosition = function () {
             var _this = this;
@@ -41,6 +43,9 @@ var fly;
                 this.body.displays = [];
             }
             this.body.displays.push(child);
+        };
+        FlyObject.prototype.onTrigger = function () {
+            console.log("FlyObject");
         };
         return FlyObject;
     }());

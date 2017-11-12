@@ -12,7 +12,7 @@ module fly {
 			this.radious = radious;
 
 			this.initBody(Player.player_id++, p2.Body.DYNAMIC, this.x, this.y, this.radious);
-			// this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player);
+			this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player);
 
 			this.initRender(this.radious);
 			this.initBitmap();
@@ -25,8 +25,8 @@ module fly {
 			let png = FlyTools.createBitmapByName("player_down_png");
 			png.anchorOffsetX = png.width/2;
 			png.anchorOffsetY = png.height/2;
-			png.scaleX = 2;
-			png.scaleY = 2;
+			png.scaleX = 2 * this.radious/png.width;
+			png.scaleY = 2 * this.radious/png.height;
 			this.addChild(png);
 		}
 	}

@@ -24,7 +24,7 @@ var fly;
             if (Candy.candy_id >= 3000) {
                 Candy.candy_id = 2000;
             }
-            // this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property);
+            _this.setGroupAndMask(fly.ObjectGroup.Property, fly.ObjectMask.Property);
             _this.initRender(_this.radious);
             _this.initBitmap();
             _this.updatePosition();
@@ -34,9 +34,11 @@ var fly;
             var png = fly.FlyTools.createBitmapByName("candy_png");
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;
-            png.scaleX = 1.5;
-            png.scaleY = 1.5;
+            png.scaleX = 2 * this.radious / png.width;
+            png.scaleY = 2 * this.radious / png.height;
             this.addChild(png);
+        };
+        Candy.prototype.onTrigger = function () {
         };
         Candy.candy_id = 2000;
         return Candy;

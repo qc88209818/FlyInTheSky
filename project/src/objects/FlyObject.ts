@@ -9,8 +9,12 @@ module fly {
 		body:p2.Body;
 		shape:p2.Shape;
 		bodyType:number;
+
 		isDestroy:boolean = false;
-		
+		indexOf:number = -1;
+
+		objmgr:ObjectManager = ObjectManager.inst();
+
 		public updatePosition()
 		{
 			if (this.body)
@@ -50,6 +54,11 @@ module fly {
 				this.body.displays = []
 			}
 			this.body.displays.push(child);
+		}
+
+		public onTrigger()
+		{
+			console.log("FlyObject");
 		}
 	}
 }

@@ -17,7 +17,7 @@ var fly;
         __extends(BattleScene, _super);
         function BattleScene() {
             var _this = _super.call(this) || this;
-            _this.sprites = []; // 当前所有需要计算位置的精灵	
+            _this.objmgr = fly.ObjectManager.inst();
             _this.lastCreateCandy = 0;
             return _this;
         }
@@ -25,21 +25,17 @@ var fly;
             if (this.touchLayer.isTouchMove) {
                 var direct = this.touchLayer.direct;
                 var forceScale = this.touchLayer.forceScale;
-                this.player.body.applyForce([direct[0] * forceScale, direct[1] * forceScale], this.player.body.position);
+                this.objmgr.player.body.applyForce([direct[0] * forceScale, direct[1] * forceScale], this.objmgr.player.body.position);
             }
-            this.sprites.forEach(function (value) {
-                if (!value.isDestroy) {
-                    value.updatePosition();
-                }
-            });
-            this.createCandy(dt);
+            this.updateCreate(dt);
+            this.objmgr.update(dt);
         };
-        BattleScene.prototype.createCandy = function (dt) {
+        BattleScene.prototype.updateCreate = function (dt) {
             this.lastCreateCandy += dt;
             if (this.lastCreateCandy > 3) {
-                var width = fly.FlyConfig.stageWidth * Math.random();
-                var height = fly.FlyConfig.stageHeight * Math.random();
-                var radious = 30 * (Math.random() + 1);
+                var width = fly.FlyConfig.stageWidth * (Math.random() * 0.8 + 0.2);
+                var height = fly.FlyConfig.stageHeight * (Math.random() * 0.8 + 0.2);
+                var radious = 25 * (Math.random() + 1);
                 var candy = new fly.Candy(width, height, radious);
                 this.addToWorld(candy);
                 this.lastCreateCandy = 0;
@@ -63,7 +59,7 @@ var fly;
                 world.step(dt / 1000);
                 this.update(dt / 1000);
             }, this);
-            world.on("beginContact", this.onBeginContact, this);
+            world.on("postBroadphase", this.onPostBroadphase, this);
         };
         BattleScene.prototype.createScene = function () {
             var wall1 = new fly.Wall(0, 0, fly.FlyConfig.stageWidth, 10);
@@ -74,22 +70,37 @@ var fly;
             this.addToWorld(wall2);
             this.addToWorld(wall3);
             this.addToWorld(wall4);
-            var player = new fly.Player(fly.FlyConfig.stageWidth / 2, fly.FlyConfig.stageHeight / 2, 50);
+            var player = new fly.Player(fly.FlyConfig.stageWidth / 2, fly.FlyConfig.stageHeight / 2, 60);
             this.addToWorld(player);
-            this.player = player;
+            this.objmgr.player = player;
         };
         BattleScene.prototype.createTouchLayer = function () {
             var touchLayer = new fly.BattleTouchLayer(this, 200, 1);
             this.touchLayer = touchLayer;
         };
-        BattleScene.prototype.onBeginContact = function (event) {
-            console.log("Contact: " + event.bodyA.id + " and " + event.bodyB.id);
-            if (2000 <= event.bodyA.id && event.bodyA.id < 3000) {
-                this.delFromWorldById(event.bodyA.id);
+        BattleScene.prototype.onPostBroadphase = function (event) {
+            for (var i = 0; i < event.pairs.length; i += 2) {
+                this.onContact(event.pairs[i], event.pairs[i + 1]);
             }
-            if (2000 <= event.bodyB.id && event.bodyB.id < 3000) {
-                this.delFromWorldById(event.bodyB.id);
+        };
+        BattleScene.prototype.onContact = function (bodyA, bodyB) {
+            console.log("Contact: " + bodyA.id + " and " + bodyB.id);
+            if (bodyA.id < 1000 && 2000 <= bodyB.id) {
+                this.triggerBody(bodyB.id);
             }
+            else if (bodyB.id < 1000 && 2000 <= bodyA.id) {
+                this.triggerBody(bodyA.id);
+            }
+        };
+        BattleScene.prototype.triggerBody = function (id) {
+            var _this = this;
+            this.objmgr.sprites.forEach(function (value) {
+                if (value.body.id == id) {
+                    value.onTrigger();
+                    _this.delFromWorld(value);
+                    return;
+                }
+            });
         };
         BattleScene.prototype.addToWorld = function (obj) {
             var _this = this;
@@ -97,20 +108,9 @@ var fly;
             obj.body.displays.forEach(function (value) {
                 _this.addChild(value);
             });
-            if (obj.body.type != p2.Body.STATIC) {
-                this.sprites.push(obj);
-            }
+            this.objmgr.addSprite(obj);
         };
-        BattleScene.prototype.delFromWorldById = function (id) {
-            var _this = this;
-            this.sprites.forEach(function (value) {
-                if (value.body.id == id) {
-                    _this.delFromWorldByObj(value);
-                    return;
-                }
-            });
-        };
-        BattleScene.prototype.delFromWorldByObj = function (obj) {
+        BattleScene.prototype.delFromWorld = function (obj) {
             var _this = this;
             obj.isDestroy = true;
             obj.body.displays.forEach(function (value) {

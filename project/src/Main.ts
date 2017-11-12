@@ -3,7 +3,7 @@ class Main extends egret.DisplayObjectContainer {
     public constructor() {
         super();
 
-        fly.FlyConfig.DebugMode = false;
+        fly.FlyConfig.DebugMode = true;
 
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }

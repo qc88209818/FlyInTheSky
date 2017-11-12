@@ -1,11 +1,8 @@
 module fly {
 	export class BattleScene extends egret.DisplayObjectContainer {
 		world:p2.World;
-
 		touchLayer:BattleTouchLayer;
-
-		player:Player;
-		sprites:FlyObject[] = [];		// 当前所有需要计算位置的精灵	
+		objmgr:ObjectManager = ObjectManager.inst();
 
 		public constructor() {
 			super();
@@ -17,28 +14,22 @@ module fly {
 			{
 				let direct = this.touchLayer.direct;
 				let forceScale = this.touchLayer.forceScale;
-				this.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.player.body.position);
+				this.objmgr.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.objmgr.player.body.position);
 			}
 
-			this.sprites.forEach(value => {
-				if (!value.isDestroy)
-				{
-					value.updatePosition();
-				}
-			})
-
-			this.createCandy(dt);
+			this.updateCreate(dt);
+			this.objmgr.update(dt);
 		}
 		
 		lastCreateCandy:number = 0;
-		private createCandy(dt)
+		private updateCreate(dt:number)
 		{
 			this.lastCreateCandy += dt;
 			if (this.lastCreateCandy > 3)
 			{
-				let width = FlyConfig.stageWidth*Math.random();
-				let height = FlyConfig.stageHeight*Math.random();
-				let radious = 30*(Math.random() + 1)
+				let width = FlyConfig.stageWidth*(Math.random()*0.8 + 0.2);
+				let height = FlyConfig.stageHeight*(Math.random()*0.8 + 0.2);
+				let radious = 25*(Math.random() + 1)
 				let candy = new Candy(width, height, radious);
 				this.addToWorld(candy);
 
@@ -69,7 +60,7 @@ module fly {
 				this.update(dt/1000);
 			}, this);
 
-			world.on("beginContact", this.onBeginContact, this);
+			world.on("postBroadphase", this.onPostBroadphase, this);
 		}
 		
 		private createScene() 
@@ -84,9 +75,9 @@ module fly {
 			this.addToWorld(wall3);
 			this.addToWorld(wall4);
 
-			let player = new Player(FlyConfig.stageWidth/2, FlyConfig.stageHeight/2, 50);
+			let player = new Player(FlyConfig.stageWidth/2, FlyConfig.stageHeight/2, 60);
 			this.addToWorld(player);
-			this.player = player;
+			this.objmgr.player = player;
 		}
 
 		private createTouchLayer()
@@ -95,17 +86,37 @@ module fly {
 			this.touchLayer = touchLayer;
 		}
 
-		private onBeginContact(event:any) 
+		private onPostBroadphase(event:any)
 		{
-			console.log("Contact: " + event.bodyA.id + " and " + event.bodyB.id);
-			if (2000 <= event.bodyA.id && event.bodyA.id < 3000)
+			for (let i = 0; i < event.pairs.length; i += 2)
 			{
-				this.delFromWorldById(event.bodyA.id);
+				this.onContact(event.pairs[i], event.pairs[i+1]);
 			}
-			if (2000 <= event.bodyB.id && event.bodyB.id < 3000)
+		}
+
+		private onContact(bodyA:p2.Body, bodyB:p2.Body) 
+		{
+			console.log("Contact: " + bodyA.id + " and " + bodyB.id);
+			if (bodyA.id < 1000 && 2000 <= bodyB.id)
 			{
-				this.delFromWorldById(event.bodyB.id);
+				this.triggerBody(bodyB.id)
 			}
+			else if (bodyB.id < 1000 && 2000 <= bodyA.id)
+			{
+				this.triggerBody(bodyA.id)
+			}
+		}
+
+		private triggerBody(id:number)
+		{
+			this.objmgr.sprites.forEach(value => {
+				if (value.body.id == id)
+				{
+					value.onTrigger();
+					this.delFromWorld(value);
+					return;
+				}
+			})
 		}
 
 		private addToWorld(obj:FlyObject)
@@ -115,24 +126,10 @@ module fly {
 				this.addChild(value);
 			})
 
-			if (obj.body.type != p2.Body.STATIC)
-			{
-				this.sprites.push(obj);
-			}
+			this.objmgr.addSprite(obj);
 		}
 
-		private delFromWorldById(id:number)
-		{
-			this.sprites.forEach(value => {
-				if (value.body.id == id)
-				{
-					this.delFromWorldByObj(value);
-					return;
-				}
-			})
-		}
-
-		private delFromWorldByObj(obj:FlyObject)
+		private delFromWorld(obj:FlyObject)
 		{
 			obj.isDestroy = true;
 			obj.body.displays.forEach(value => {

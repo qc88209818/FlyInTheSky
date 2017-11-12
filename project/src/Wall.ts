@@ -34,7 +34,7 @@ module fly {
 			}
 
 			this.initBody(Wall.wall_id++, p2.Body.STATIC, this.x, this.y, this.width, this.height);
-			// this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block);
+			this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block);
 			
 			this.initRender(this.width, this.height);
 			this.updatePosition();

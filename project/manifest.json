@@ -10,16 +10,17 @@
 	],
 	"game": [
 		"bin-debug/objects/FlyObject.js",
-		"bin-debug/objects/FlyRect.js",
 		"bin-debug/objects/FlyCircle.js",
+		"bin-debug/objects/FlyRect.js",
 		"bin-debug/ObjectManager.js",
 		"bin-debug/Player.js",
 		"bin-debug/block/Wall.js",
-		"bin-debug/property/Candy.js",
+		"bin-debug/BattleTouchNode.js",
 		"bin-debug/objects/FlyConfig.js",
 		"bin-debug/BattleScene.js",
 		"bin-debug/Main.js",
 		"bin-debug/objects/FlyTools.js",
-		"bin-debug/BattleTouchLayer.js"
+		"bin-debug/property/Candy.js",
+		"bin-debug/ui/UIProgress.js"
 	]
 }

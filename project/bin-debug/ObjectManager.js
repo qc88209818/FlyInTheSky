@@ -18,7 +18,6 @@ var fly;
                     ++i;
                 }
                 else {
-                    console.log("Delete: ", this.sprites[i].body.id);
                     --length;
                     this.sprites[i].indexOf = -1;
                     this.sprites[i] = this.sprites[length];

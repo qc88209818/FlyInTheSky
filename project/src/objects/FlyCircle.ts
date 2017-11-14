@@ -1,5 +1,8 @@
 module fly {
 	export class FlyCircle extends FlyObject {
+		circle:p2.Circle;
+		rander:egret.Shape;
+
 		public constructor() {
             super();
         }
@@ -9,7 +12,8 @@ module fly {
 			let shape = new p2.Circle({
 				radius:radius
 			});
-			this.shape = shape;
+			this.shape = shape
+			this.circle = shape
 			this.body.addShape(shape);
 
 			this.initRender(radius);
@@ -23,8 +27,20 @@ module fly {
 			shape.graphics.beginFill(color, fly.FlyConfig.DebugMode?1:0);
 			shape.graphics.drawCircle(0, 0, radius);
 			shape.graphics.endFill();
+			this.rander = shape
 
 			this.addChild(shape);
+		}
+
+		protected changeRenderSize(radius: number)
+		{
+			let color = FlyTools.getBodyTypeColor(this.body.type);
+			
+			let shape = this.rander;
+			shape.graphics.clear();
+			shape.graphics.beginFill(color, fly.FlyConfig.DebugMode?1:0);
+			shape.graphics.drawCircle(0, 0, radius);
+			shape.graphics.endFill();
 		}
 	}
 }

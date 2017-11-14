@@ -23,6 +23,7 @@ var fly;
                 radius: radius
             });
             this.shape = shape;
+            this.circle = shape;
             this.body.addShape(shape);
             this.initRender(radius);
         };
@@ -32,7 +33,16 @@ var fly;
             shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
             shape.graphics.drawCircle(0, 0, radius);
             shape.graphics.endFill();
+            this.rander = shape;
             this.addChild(shape);
+        };
+        FlyCircle.prototype.changeRenderSize = function (radius) {
+            var color = fly.FlyTools.getBodyTypeColor(this.body.type);
+            var shape = this.rander;
+            shape.graphics.clear();
+            shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
+            shape.graphics.drawCircle(0, 0, radius);
+            shape.graphics.endFill();
         };
         return FlyCircle;
     }(fly.FlyObject));

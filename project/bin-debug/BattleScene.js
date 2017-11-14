@@ -18,13 +18,17 @@ var fly;
         function BattleScene() {
             var _this = _super.call(this) || this;
             _this.objmgr = fly.ObjectManager.inst();
+            _this.baseLayer = new egret.DisplayObjectContainer;
+            _this.playerLayer = new egret.DisplayObjectContainer;
+            _this.uiLayer = new egret.DisplayObjectContainer;
+            _this.touchLayer = new egret.DisplayObjectContainer;
             _this.lastCreateCandy = 0;
             return _this;
         }
         BattleScene.prototype.update = function (dt) {
-            if (this.touchLayer.isTouchMove) {
-                var direct = this.touchLayer.direct;
-                var forceScale = this.touchLayer.forceScale;
+            if (this.touchNode.isTouchMove) {
+                var direct = this.touchNode.direct;
+                var forceScale = this.touchNode.forceScale;
                 this.objmgr.player.body.applyForce([direct[0] * forceScale, direct[1] * forceScale], this.objmgr.player.body.position);
             }
             this.updateCreate(dt);
@@ -42,6 +46,10 @@ var fly;
             }
         };
         BattleScene.prototype.initScene = function () {
+            this.addChild(this.baseLayer);
+            this.addChild(this.playerLayer);
+            this.addChild(this.uiLayer);
+            this.addChild(this.touchLayer);
             this.createWorld();
             this.createScene();
             this.createTouchLayer();
@@ -70,12 +78,13 @@ var fly;
             this.addToWorld(wall3);
             this.addToWorld(wall4);
             var player = new fly.Player(fly.FlyConfig.stageWidth / 2, fly.FlyConfig.stageHeight / 2, 60);
-            this.addToWorld(player);
+            this.addPlayerToWorld(player);
             this.objmgr.player = player;
         };
         BattleScene.prototype.createTouchLayer = function () {
-            var touchLayer = new fly.BattleTouchLayer(this, 200, 1);
-            this.touchLayer = touchLayer;
+            var touchNode = new fly.BattleTouchNode(this, 150, 5);
+            this.touchNode = touchNode;
+            this.touchLayer.addChild(this.touchNode);
         };
         BattleScene.prototype.onPostBroadphase = function (event) {
             for (var i = 0; i < event.pairs.length; i += 2) {
@@ -102,18 +111,26 @@ var fly;
                 }
             });
         };
+        BattleScene.prototype.addPlayerToWorld = function (obj) {
+            var _this = this;
+            this.world.addBody(obj.body);
+            obj.body.displays.forEach(function (value) {
+                _this.playerLayer.addChild(value);
+            });
+            this.objmgr.addSprite(obj);
+        };
         BattleScene.prototype.addToWorld = function (obj) {
             var _this = this;
             this.world.addBody(obj.body);
             obj.body.displays.forEach(function (value) {
-                _this.addChild(value);
+                _this.baseLayer.addChild(value);
             });
             this.objmgr.addSprite(obj);
         };
         BattleScene.prototype.delFromWorld = function (obj) {
             var _this = this;
             obj.body.displays.forEach(function (value) {
-                _this.removeChild(value);
+                _this.baseLayer.removeChild(value);
             });
             this.world.removeBody(obj.body);
         };

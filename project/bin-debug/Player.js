@@ -33,6 +33,13 @@ var fly;
             _this.updatePosition();
             return _this;
         }
+        Player.prototype.changeSize = function (size) {
+            this.circle.radius += 5;
+            this.circle.updateArea();
+            this.body.mass += 0.5;
+            this.body.updateMassProperties();
+            this.changeRenderSize(this.circle.radius);
+        };
         Player.prototype.initBitmap = function () {
             var png = fly.FlyTools.createBitmapByName("player_down_png");
             png.anchorOffsetX = png.width / 2;

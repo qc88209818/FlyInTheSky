@@ -24,6 +24,7 @@ var fly;
                 height: height
             });
             this.shape = shape;
+            this.rect = shape;
             this.body.addShape(shape);
             this.initRender(width, height);
         };
@@ -33,9 +34,18 @@ var fly;
             shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
             shape.graphics.drawRect(0, 0, width, height);
             shape.graphics.endFill();
+            this.rander = shape;
             shape.anchorOffsetX = shape.width / 2;
             shape.anchorOffsetY = shape.height / 2;
             this.addChild(shape);
+        };
+        FlyRect.prototype.changeRenderSize = function (width, height) {
+            var color = fly.FlyTools.getBodyTypeColor(this.body.type);
+            var shape = this.rander;
+            shape.graphics.clear();
+            shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
+            shape.graphics.drawRect(0, 0, width, height);
+            shape.graphics.endFill();
         };
         return FlyRect;
     }(fly.FlyObject));

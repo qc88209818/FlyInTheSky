@@ -24,6 +24,17 @@ module fly {
 			this.updatePosition();
 		}
 
+		public changeSize(size:number)
+		{
+			this.circle.radius += 5;
+			this.circle.updateArea();
+
+			this.body.mass += 0.5;
+			this.body.updateMassProperties()
+
+			this.changeRenderSize(this.circle.radius)
+		}
+
 		private initBitmap()
 		{
 			let png = FlyTools.createBitmapByName("player_down_png");

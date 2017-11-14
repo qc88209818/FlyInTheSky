@@ -13,9 +13,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var fly;
 (function (fly) {
-    var BattleTouchLayer = (function (_super) {
-        __extends(BattleTouchLayer, _super);
-        function BattleTouchLayer(parentNode, maxDist, forceScale) {
+    var BattleTouchNode = (function (_super) {
+        __extends(BattleTouchNode, _super);
+        function BattleTouchNode(parentNode, maxDist, forceScale) {
             var _this = _super.call(this) || this;
             _this.direct = [];
             _this.isTouchMove = false;
@@ -25,9 +25,9 @@ var fly;
             _this.createTouchLayer();
             return _this;
         }
-        BattleTouchLayer.prototype.createTouchLayer = function () {
+        BattleTouchNode.prototype.createTouchLayer = function () {
             var background = new egret.Shape();
-            background.graphics.beginFill(0x000000, 1);
+            background.graphics.beginFill(0x555555, 1);
             background.graphics.drawRect(0, 0, fly.FlyConfig.stageWidth, fly.FlyConfig.stageHeight);
             background.graphics.endFill();
             this.parentNode.addChildAt(background, 0);
@@ -54,7 +54,7 @@ var fly;
             this.virtualBtn = btn;
             this.parentNode.addChildAt(btn, 101);
         };
-        BattleTouchLayer.prototype.onTouchBegin = function (evt) {
+        BattleTouchNode.prototype.onTouchBegin = function (evt) {
             this.virtualBg.x = evt.stageX;
             this.virtualBg.y = evt.stageY;
             this.virtualBg.alpha = 0.5;
@@ -62,12 +62,12 @@ var fly;
             this.virtualBtn.y = evt.stageY;
             this.virtualBtn.alpha = 0.5;
         };
-        BattleTouchLayer.prototype.onTouchEnd = function (evt) {
+        BattleTouchNode.prototype.onTouchEnd = function (evt) {
             this.virtualBg.alpha = 0;
             this.virtualBtn.alpha = 0;
             this.isTouchMove = false;
         };
-        BattleTouchLayer.prototype.onTouchMove = function (evt) {
+        BattleTouchNode.prototype.onTouchMove = function (evt) {
             var from = [this.virtualBg.x, this.virtualBg.y];
             var to = [evt.stageX, evt.stageY];
             var direct = [(to[0] - from[0]), (to[1] - from[1])];
@@ -83,9 +83,9 @@ var fly;
             this.virtualBtn.y = from[1] + this.direct[1];
             this.isTouchMove = true;
         };
-        return BattleTouchLayer;
+        return BattleTouchNode;
     }(egret.DisplayObjectContainer));
-    fly.BattleTouchLayer = BattleTouchLayer;
-    __reflect(BattleTouchLayer.prototype, "fly.BattleTouchLayer");
+    fly.BattleTouchNode = BattleTouchNode;
+    __reflect(BattleTouchNode.prototype, "fly.BattleTouchNode");
 })(fly || (fly = {}));
-//# sourceMappingURL=BattleTouchLayer.js.map
+//# sourceMappingURL=BattleTouchNode.js.map

@@ -1,5 +1,5 @@
 module fly {
-	export class BattleTouchLayer extends egret.DisplayObjectContainer {
+	export class BattleTouchNode extends egret.DisplayObjectContainer {
 		virtualBg:egret.Bitmap;
 		virtualBtn:egret.Bitmap;
 		forceScale:number;		// 加速因子
@@ -21,7 +21,7 @@ module fly {
 		private createTouchLayer()
 		{
 			let background = new egret.Shape();
-			background.graphics.beginFill(0x000000, 1);
+			background.graphics.beginFill(0x555555, 1);
 			background.graphics.drawRect(0, 0, FlyConfig.stageWidth, FlyConfig.stageHeight);
 			background.graphics.endFill();
 			this.parentNode.addChildAt(background, 0)

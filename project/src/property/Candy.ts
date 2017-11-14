@@ -37,6 +37,7 @@ module fly {
 		public onTrigger()
 		{
 			this.isDestroy = true;
+			this.objmgr.player.changeSize(5)
 		}
 	}
 }

@@ -1,8 +1,13 @@
 module fly {
 	export class BattleScene extends egret.DisplayObjectContainer {
 		world:p2.World;
-		touchLayer:BattleTouchLayer;
+		touchNode:BattleTouchNode;
 		objmgr:ObjectManager = ObjectManager.inst();
+
+		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		playerLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
 
 		public constructor() {
 			super();
@@ -10,10 +15,10 @@ module fly {
 
 		public update(dt)
 		{
-			if (this.touchLayer.isTouchMove)
+			if (this.touchNode.isTouchMove)
 			{
-				let direct = this.touchLayer.direct;
-				let forceScale = this.touchLayer.forceScale;
+				let direct = this.touchNode.direct;
+				let forceScale = this.touchNode.forceScale;
 				this.objmgr.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.objmgr.player.body.position);
 			}
 
@@ -39,6 +44,11 @@ module fly {
 
 		public initScene()
 		{
+			this.addChild(this.baseLayer)
+			this.addChild(this.playerLayer)
+			this.addChild(this.uiLayer);
+			this.addChild(this.touchLayer);
+
 			this.createWorld();
 			this.createScene();
 			this.createTouchLayer();
@@ -75,14 +85,17 @@ module fly {
 			this.addToWorld(wall4);
 
 			let player = new Player(FlyConfig.stageWidth/2, FlyConfig.stageHeight/2, 60);
-			this.addToWorld(player);
+			this.addPlayerToWorld(player);
+
 			this.objmgr.player = player;
 		}
 
 		private createTouchLayer()
 		{
-			let touchLayer = new BattleTouchLayer(this, 150, 1);
-			this.touchLayer = touchLayer;
+			let touchNode = new BattleTouchNode(this, 150, 5);
+			this.touchNode = touchNode;
+
+			this.touchLayer.addChild(this.touchNode)
 		}
 
 		private onPostBroadphase(event:any)
@@ -120,11 +133,21 @@ module fly {
 			})
 		}
 
+		private addPlayerToWorld(obj:FlyObject)
+		{
+			this.world.addBody(obj.body);
+			obj.body.displays.forEach(value => { 
+				this.playerLayer.addChild(value);
+			})
+
+			this.objmgr.addSprite(obj);
+		}
+
 		private addToWorld(obj:FlyObject)
 		{
 			this.world.addBody(obj.body);
 			obj.body.displays.forEach(value => { 
-				this.addChild(value);
+				this.baseLayer.addChild(value);
 			})
 
 			this.objmgr.addSprite(obj);
@@ -133,7 +156,7 @@ module fly {
 		private delFromWorld(obj:FlyObject)
 		{
 			obj.body.displays.forEach(value => {
-				this.removeChild(value);
+				this.baseLayer.removeChild(value);
 			})
 			this.world.removeBody(obj.body);
 		}

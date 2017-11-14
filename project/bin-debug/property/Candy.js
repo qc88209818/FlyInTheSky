@@ -43,6 +43,7 @@ var fly;
         };
         Candy.prototype.onTrigger = function () {
             this.isDestroy = true;
+            this.objmgr.player.changeSize(5);
         };
         return Candy;
     }(fly.FlyCircle));

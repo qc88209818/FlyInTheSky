@@ -1,108 +1,172 @@
 module fly {
 	export class BattleScene extends egret.DisplayObjectContainer {
-		world:p2.World;
-		touchNode:BattleTouchNode;
-		objmgr:ObjectManager = ObjectManager.inst();
+		world:p2.World
+		touchNode:BattleTouchNode
+		objmgr:ObjectManager = ObjectManager.inst()
+		progress:UIProgress
 
-		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		playerLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
-		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer;
+		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
+		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
+		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 
 		public constructor() {
-			super();
+			super()
 		}
 
 		public update(dt)
 		{
 			if (this.touchNode.isTouchMove)
 			{
-				let direct = this.touchNode.direct;
-				let forceScale = this.touchNode.forceScale;
-				this.objmgr.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.objmgr.player.body.position);
+				let direct = this.touchNode.direct
+				let forceScale = this.touchNode.forceScale
+				this.objmgr.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.objmgr.player.body.position)
 			}
 
-			this.updateCreate(dt);
-			this.objmgr.update(dt);
+			this.updatePower(dt)
+			this.updateCreate(dt)
+			this.updateScene(dt)
+			this.objmgr.update(dt)
+		}
+
+		private getRandom(): number
+		{
+			let va = Math.random()
+			if (va < 0.5)
+			{
+				va = - va - 0.5;
+			}
+			return va*0.9
 		}
 		
-		lastCreateCandy:number = 0;
+		lastCreateCandy:number = 0
+		lastCreateTrasps:number = 0
 		private updateCreate(dt:number)
 		{
-			this.lastCreateCandy += dt;
+			this.lastCreateCandy += dt
 			if (this.lastCreateCandy > 3)
 			{
-				let width = FlyConfig.stageWidth*(Math.random()*0.8 + 0.2);
-				let height = FlyConfig.stageHeight*(Math.random()*0.8 + 0.2);
+				let x = FlyConfig.width/2*this.getRandom()
+				let y = FlyConfig.height/2*this.getRandom()
 				let radious = 25*(Math.random() + 1)
-				let candy = new Candy(width, height, radious);
-				this.addToWorld(candy);
+				let candy = new Candy(x, y, radious)
+				this.addToWorld(candy)
 
-				this.lastCreateCandy = 0;
+				this.lastCreateCandy -= 3
 			}
+
+			this.lastCreateTrasps += dt
+			if (this.lastCreateTrasps > 10)
+			{
+				let x = FlyConfig.width/2*this.getRandom()
+				let y = FlyConfig.height/2*this.getRandom()
+				let radious = 40*(Math.random() + 1)
+				let traps = new Traps(x, y, radious, radious)
+				this.addToWorld(traps)
+
+				this.lastCreateTrasps -= 10
+			}
+		}
+
+		lastPowerTime:number = 0
+		private updatePower(dt:number)
+		{
+			this.lastPowerTime += dt
+			if (p2.vec2.length(this.objmgr.player.body.velocity) < 2)
+			{
+				this.lastPowerTime = 0
+			}
+
+			if (this.lastPowerTime > 1)
+			{
+				this.objmgr.player.changePower(this.objmgr.player.power + FlyParam.move_power)
+				this.lastPowerTime -= 1
+			}
+
+			if (this.objmgr.player.power != this.progress.now)
+			{
+				this.progress.changeValue(this.objmgr.player.power)
+			}
+		}
+
+		private updateScene(dt:number)
+		{
+			this.baseLayer.x = -this.objmgr.player.body.position[0] + FlyConfig.stageWidth/2
+			this.baseLayer.y = -this.objmgr.player.body.position[1] + FlyConfig.stageHeight/2
 		}
 
 		public initScene()
 		{
 			this.addChild(this.baseLayer)
-			this.addChild(this.playerLayer)
-			this.addChild(this.uiLayer);
-			this.addChild(this.touchLayer);
+			this.addChild(this.uiLayer)
+			this.addChild(this.touchLayer)
 
-			this.createWorld();
-			this.createScene();
-			this.createTouchLayer();
+			this.createWorld()
+			this.createScene()
+			this.createTouchLayer()
+			this.createUILayer()
 		}
 
 		private createWorld()
 		{
 			let world = new p2.World({
 				gravity:[0, 0]
-			});
-			world.sleepMode = p2.World.BODY_SLEEPING;
+			})
+			world.sleepMode = p2.World.BODY_SLEEPING
 			this.world = world
 
 			//添加帧事件侦听
 			egret.Ticker.getInstance().register(function (dt) {
+				if (fly.FlyConfig.WorldPause)
+				{
+					return;
+				}
 				//使世界时间向后运动
-				world.step(dt/1000);
-				this.update(dt/1000);
-			}, this);
+				world.step(dt/1000)
+				this.update(dt/1000)
+			}, this)
 
-			world.on("postBroadphase", this.onPostBroadphase, this);
+			world.on("postBroadphase", this.onPostBroadphase, this)
 		}
 		
 		private createScene() 
 		{
-			let wall1 = new Wall(0, 0, FlyConfig.stageWidth, 10);
-			let wall2 = new Wall(0, 0, 10, FlyConfig.stageHeight);
-			let wall3 = new Wall(FlyConfig.stageWidth, FlyConfig.stageHeight, FlyConfig.stageWidth - 10, 0);
-			let wall4 = new Wall(FlyConfig.stageWidth, FlyConfig.stageHeight, 0, FlyConfig.stageHeight - 10);
+			let wall1 = new Wall(-FlyConfig.width/2, -FlyConfig.height/2, -FlyConfig.width/2 - 50, FlyConfig.height/2)
+			let wall2 = new Wall(-FlyConfig.width/2, -FlyConfig.height/2, FlyConfig.width/2, -FlyConfig.height/2 - 50)
+			let wall3 = new Wall(FlyConfig.width/2, FlyConfig.height/2, -FlyConfig.width/2, FlyConfig.height/2 + 50)
+			let wall4 = new Wall(FlyConfig.width/2, FlyConfig.height/2, FlyConfig.width/2 + 50, -FlyConfig.height/2)
 
-			this.addToWorld(wall1);
-			this.addToWorld(wall2);
-			this.addToWorld(wall3);
-			this.addToWorld(wall4);
+			this.addToWorld(wall1)
+			this.addToWorld(wall2)
+			this.addToWorld(wall3)
+			this.addToWorld(wall4)
 
-			let player = new Player(FlyConfig.stageWidth/2, FlyConfig.stageHeight/2, 60);
-			this.addPlayerToWorld(player);
+			let player = new Player(0, 0, 60)
+			this.addToWorld(player)
 
-			this.objmgr.player = player;
+			this.objmgr.player = player
 		}
 
 		private createTouchLayer()
 		{
-			let touchNode = new BattleTouchNode(this, 150, 5);
-			this.touchNode = touchNode;
+			let touchNode = new BattleTouchNode(this, 150, 5)
+			this.touchNode = touchNode
 
 			this.touchLayer.addChild(this.touchNode)
+		}
+
+		private createUILayer()
+		{
+			let progress = new UIProgress()
+			progress.create(this.uiLayer, FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
+			progress.setPosition(0, 0)
+			this.progress = progress
 		}
 
 		private onPostBroadphase(event:any)
 		{
 			for (let i = 0; i < event.pairs.length; i += 2)
 			{
-				this.onContact(event.pairs[i], event.pairs[i+1]);
+				this.onContact(event.pairs[i], event.pairs[i+1])
 			}
 		}
 
@@ -123,42 +187,32 @@ module fly {
 			this.objmgr.sprites.forEach(value => {
 				if (value.body.id == id)
 				{
-					value.onTrigger();
+					value.onTrigger()
 					if (value.isDestroy)
 					{
-						this.delFromWorld(value);
+						this.delFromWorld(value)
 					}
-					return;
+					return
 				}
 			})
 		}
 
-		private addPlayerToWorld(obj:FlyObject)
-		{
-			this.world.addBody(obj.body);
-			obj.body.displays.forEach(value => { 
-				this.playerLayer.addChild(value);
-			})
-
-			this.objmgr.addSprite(obj);
-		}
-
 		private addToWorld(obj:FlyObject)
 		{
-			this.world.addBody(obj.body);
+			this.world.addBody(obj.body)
 			obj.body.displays.forEach(value => { 
-				this.baseLayer.addChild(value);
+				this.baseLayer.addChild(value)
 			})
 
-			this.objmgr.addSprite(obj);
+			this.objmgr.addSprite(obj)
 		}
 
 		private delFromWorld(obj:FlyObject)
 		{
 			obj.body.displays.forEach(value => {
-				this.baseLayer.removeChild(value);
+				this.baseLayer.removeChild(value)
 			})
-			this.world.removeBody(obj.body);
+			this.world.removeBody(obj.body)
 		}
 	}
 }

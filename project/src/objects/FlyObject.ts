@@ -6,18 +6,18 @@
 */
 module fly {
 	export class FlyObject {
-		body:p2.Body;
-		shape:p2.Shape;
+		body:p2.Body
+		shape:p2.Shape
 
-		isDestroy:boolean = false;
-		indexOf:number = -1;
+		isDestroy:boolean = false
+		indexOf:number = -1
 
-		objmgr:ObjectManager = ObjectManager.inst();
+		objmgr:ObjectManager = ObjectManager.inst()
 
 		public initBody(bodyOp?)
 		{
-			let body = new p2.Body(bodyOp);
-			this.body = body;
+			let body = new p2.Body(bodyOp)
+			this.body = body
 		}
 
 		public updatePosition()
@@ -25,20 +25,20 @@ module fly {
 			if (this.body)
 			{
 				this.body.displays.forEach(value => {
-					value.x = this.body.position[0];
-					value.y = this.body.position[1];
+					value.x = this.body.position[0]
+					value.y = this.body.position[1]
 				})
 
 				if (!fly.FlyConfig.DebugMode)
-					return;
+					return
 
 				if (this.body.sleepState == p2.Body.SLEEPING)
 				{
-					this.body.displays[0].alpha = 0.5;
+					this.body.displays[0].alpha = 0.5
 				}
 				else
 				{
-					this.body.displays[0].alpha = 1;
+					this.body.displays[0].alpha = 1
 				}
 			}
 		}
@@ -47,8 +47,8 @@ module fly {
 		{
 			if (this.shape)
 			{
-				this.shape.collisionGroup = group;
-				this.shape.collisionMask = mask;
+				this.shape.collisionGroup = group
+				this.shape.collisionMask = mask
 			}
 		}
 
@@ -58,12 +58,12 @@ module fly {
 			{
 				this.body.displays = []
 			}
-			this.body.displays.push(child);
+			this.body.displays.push(child)
 		}
 
 		public onTrigger()
 		{
-			console.log("FlyObject");
+			console.log("FlyObject")
 		}
 	}
 }

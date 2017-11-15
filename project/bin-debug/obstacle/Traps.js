@@ -13,13 +13,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var fly;
 (function (fly) {
-    var Candy = (function (_super) {
-        __extends(Candy, _super);
-        function Candy(x, y, radius) {
+    var Traps = (function (_super) {
+        __extends(Traps, _super);
+        function Traps(x, y, width, height) {
             var _this = _super.call(this) || this;
             _this.x = x;
             _this.y = y;
-            _this.radius = radius;
+            _this.width = width;
+            _this.height = height;
             _this.initBody({
                 id: fly.FlyConfig.getPropertyId(),
                 mass: 1,
@@ -27,27 +28,27 @@ var fly;
                 fixedRotation: true,
                 position: [_this.x, _this.y]
             });
-            _this.initShape(_this.radius);
+            _this.initShape(_this.width, _this.height);
             _this.setGroupAndMask(fly.ObjectGroup.Property, fly.ObjectMask.Property);
             _this.initBitmap();
             _this.updatePosition();
             return _this;
         }
-        Candy.prototype.initBitmap = function () {
-            var png = fly.FlyTools.createBitmapByName("candy_png");
+        Traps.prototype.initBitmap = function () {
+            var png = fly.FlyTools.createBitmapByName("mushroom_png");
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;
-            png.scaleX = 2 * this.radius / png.width;
-            png.scaleY = 2 * this.radius / png.height;
+            png.scaleX = this.width / png.width;
+            png.scaleY = this.height / png.height;
             this.addChild(png);
         };
-        Candy.prototype.onTrigger = function () {
+        Traps.prototype.onTrigger = function () {
             this.isDestroy = true;
-            this.objmgr.player.addPower(fly.FlyParam.candy_power);
+            this.objmgr.player.died(3);
         };
-        return Candy;
-    }(fly.FlyCircle));
-    fly.Candy = Candy;
-    __reflect(Candy.prototype, "fly.Candy");
+        return Traps;
+    }(fly.FlyRect));
+    fly.Traps = Traps;
+    __reflect(Traps.prototype, "fly.Traps");
 })(fly || (fly = {}));
-//# sourceMappingURL=Candy.js.map
+//# sourceMappingURL=Traps.js.map

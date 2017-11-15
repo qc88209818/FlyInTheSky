@@ -58,10 +58,12 @@ var Main = (function (_super) {
             };
         });
         egret.lifecycle.onPause = function () {
+            fly.FlyConfig.WorldPause = true;
             egret.ticker.pause();
             console.log('Game2 onPause!');
         };
         egret.lifecycle.onResume = function () {
+            fly.FlyConfig.WorldPause = false;
             egret.ticker.resume();
             console.log('Game2 onResume!');
         };

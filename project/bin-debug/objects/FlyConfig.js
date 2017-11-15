@@ -9,7 +9,6 @@ var fly;
         ObjectType[ObjectType["Rect"] = 1] = "Rect";
         ObjectType[ObjectType["Circle"] = 2] = "Circle";
     })(ObjectType = fly.ObjectType || (fly.ObjectType = {}));
-    ;
     var ObjectGroup;
     (function (ObjectGroup) {
         ObjectGroup[ObjectGroup["None"] = 0] = "None";
@@ -18,7 +17,6 @@ var fly;
         ObjectGroup[ObjectGroup["Obstacle"] = Math.pow(2, 2)] = "Obstacle";
         ObjectGroup[ObjectGroup["Property"] = Math.pow(2, 3)] = "Property";
     })(ObjectGroup = fly.ObjectGroup || (fly.ObjectGroup = {}));
-    ;
     var ObjectMask;
     (function (ObjectMask) {
         ObjectMask[ObjectMask["None"] = 0] = "None";
@@ -27,7 +25,6 @@ var fly;
         ObjectMask[ObjectMask["Obstacle"] = 0] = "Obstacle";
         ObjectMask[ObjectMask["Property"] = 0] = "Property";
     })(ObjectMask = fly.ObjectMask || (fly.ObjectMask = {}));
-    ;
     var FlyConfig = (function () {
         function FlyConfig() {
         }
@@ -71,6 +68,9 @@ var fly;
         FlyConfig.isObstacle = function (id) {
             return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId;
         };
+        FlyConfig.WorldPause = false;
+        FlyConfig.width = 2000; // 画布宽度
+        FlyConfig.height = 2000; // 画布高度
         FlyConfig.PlayerMinId = 0;
         FlyConfig.BlockMinId = 1000;
         FlyConfig.PropertyMinId = 2000;
@@ -87,5 +87,21 @@ var fly;
     }());
     fly.FlyConfig = FlyConfig;
     __reflect(FlyConfig.prototype, "fly.FlyConfig");
+    var FlyParam = (function () {
+        function FlyParam() {
+        }
+        FlyParam.PlayerMaxPower = 200; // 人物最大能量
+        FlyParam.PlayerMinPower = 40; // 人物最小能量
+        FlyParam.PlayerInitPower = 100; // 人物初始能量
+        FlyParam.PlayerInitMass = 2; // 人物初始重量
+        FlyParam.PlayerStep = [81, 121, 161, 201]; // 变身阶段
+        FlyParam.PlayerTijiScale = [0.5, 1, 1.5, 2.5]; // 变身阶段
+        FlyParam.PlayerMassScale = [0.5, 1, 2, 4]; // 变身阶段
+        FlyParam.candy_power = 5; // 糖果能量
+        FlyParam.move_power = -1; // 移动消耗能力
+        return FlyParam;
+    }());
+    fly.FlyParam = FlyParam;
+    __reflect(FlyParam.prototype, "fly.FlyParam");
 })(fly || (fly = {}));
 //# sourceMappingURL=FlyConfig.js.map

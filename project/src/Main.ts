@@ -1,26 +1,26 @@
 
 class Main extends egret.DisplayObjectContainer {
     public constructor() {
-        super();
+        super()
 
-        fly.FlyConfig.DebugMode = true;
+        fly.FlyConfig.DebugMode = true
 
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this)
     }
 
     private onAddToStage(event: egret.Event) 
     {
-        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
-        RES.loadConfig("resource/default.res.json", "resource/");
+        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this)
+        RES.loadConfig("resource/default.res.json", "resource/")
     }
 
     private onConfigComplete() 
     {
-        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-        RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
-        RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
-        RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-        RES.loadGroup("preload");
+        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this)
+        RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this)
+        RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this)
+        RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this)
+        RES.loadGroup("preload")
     }
 
     /**
@@ -30,21 +30,21 @@ class Main extends egret.DisplayObjectContainer {
     private onResourceLoadComplete(event: RES.ResourceEvent)
     {
         if (event.groupName == "preload") {
-            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-            RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
-            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
-            RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-            this.initGame();
+            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this)
+            RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this)
+            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this)
+            RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this)
+            this.initGame()
         }
     }
 
     private onItemLoadError(event: RES.ResourceEvent): void {
-        console.warn("Url:" + event.resItem.url + " has failed to load");
+        console.warn("Url:" + event.resItem.url + " has failed to load")
     }
 
     private onResourceLoadError(event: RES.ResourceEvent): void {
-        console.warn("Group:" + event.groupName + " has failed to load");
-        this.onResourceLoadComplete(event);
+        console.warn("Group:" + event.groupName + " has failed to load")
+        this.onResourceLoadComplete(event)
     }
 
     private onResourceProgress(event: RES.ResourceEvent): void {
@@ -60,22 +60,24 @@ class Main extends egret.DisplayObjectContainer {
         })
 
         egret.lifecycle.onPause = () => {
-            egret.ticker.pause();
-            console.log('Game2 onPause!');
+            fly.FlyConfig.WorldPause = true
+            egret.ticker.pause()
+            console.log('Game2 onPause!')
         }
 
         egret.lifecycle.onResume = () => {
-            egret.ticker.resume();
-            console.log('Game2 onResume!');
+            fly.FlyConfig.WorldPause = false
+            egret.ticker.resume()
+            console.log('Game2 onResume!')
         }
 
         // 初始化一些有用参数
-        fly.FlyConfig.stageWidth = this.stage.stageWidth;
-        fly.FlyConfig.stageHeight = this.stage.stageHeight;
+        fly.FlyConfig.stageWidth = this.stage.stageWidth
+        fly.FlyConfig.stageHeight = this.stage.stageHeight
 
         // 战斗场景
-        let scene = new fly.BattleScene();
-        scene.initScene();
-        this.stage.addChild(scene);
+        let scene = new fly.BattleScene()
+        scene.initScene()
+        this.stage.addChild(scene)
     }
 }

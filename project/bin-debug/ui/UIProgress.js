@@ -5,28 +5,41 @@ var fly;
 (function (fly) {
     var UIProgress = (function () {
         function UIProgress() {
+            this.basescale = 2;
         }
-        UIProgress.prototype.create = function (parentNode, x, y, width, height) {
-            var bg = new egret.Shape();
-            bg.graphics.beginFill(0x000000, fly.FlyConfig.DebugMode ? 1 : 0);
-            bg.graphics.drawRect(0, 0, width, height);
-            bg.graphics.endFill();
-            this.bg = bg;
-            bg.x = x;
-            bg.y = y;
+        UIProgress.prototype.create = function (parentNode, max, min, now) {
+            var bg = fly.FlyTools.createBitmapByName("hp_bg_png");
             bg.anchorOffsetX = 0;
-            bg.anchorOffsetY = 0.5;
+            bg.anchorOffsetY = bg.height / 2;
+            bg.scaleX = this.basescale;
+            bg.scaleY = this.basescale;
             parentNode.addChild(bg);
-            var fr = new egret.Shape();
-            fr.graphics.beginFill(0x000000, fly.FlyConfig.DebugMode ? 1 : 0);
-            fr.graphics.drawRect(0, 0, width, height);
-            fr.graphics.endFill();
-            this.fr = fr;
-            fr.x = x;
-            fr.y = y;
+            this.bg = bg;
+            var fr = fly.FlyTools.createBitmapByName("hp_png");
             fr.anchorOffsetX = 0;
-            fr.anchorOffsetY = 0.5;
+            fr.anchorOffsetY = fr.height / 2;
+            fr.scaleX = this.basescale;
+            fr.scaleY = this.basescale;
             parentNode.addChild(fr);
+            this.fr = fr;
+            this.max = max;
+            this.min = min;
+            this.now = now;
+            this.changeValue(now);
+        };
+        UIProgress.prototype.setPosition = function (x, y) {
+            this.bg.x = x;
+            this.bg.y = y;
+            this.fr.x = x;
+            this.fr.y = y;
+        };
+        UIProgress.prototype.changeValue = function (value) {
+            var v = value;
+            v = Math.min(this.max, v);
+            v = Math.max(this.min, v);
+            this.now = v;
+            var scale = (v - this.min) / (this.max - this.min);
+            this.fr.scaleX = this.basescale * scale;
         };
         return UIProgress;
     }());

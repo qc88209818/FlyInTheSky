@@ -1,48 +1,106 @@
 module fly {
 	export class Player extends FlyCircle {
-		radius:number;
-		x:number;
-		y:number;
-		
+		radius:number
+		power:number
+		mass:number
+		step:number = -1
+		x:number
+		y:number
+
 		public constructor(x:number, y:number, radius:number) {
-			super();
-			this.x = x;
-			this.y = y;
-			this.radius = radius;
+			super()
+			this.x = x
+			this.y = y
+			this.radius = radius
+			this.power = FlyParam.PlayerInitPower
+			this.mass = FlyParam.PlayerInitMass
 
 			this.initBody({
 				id:FlyConfig.getPlayerId()
-				, mass:1
+				, mass:this.mass
 				, type:p2.Body.DYNAMIC
 				, fixedRotation:true
-				, position:[this.x, this.y]
-			});
-			this.initShape(this.radius);
-			this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player);
+				, position:[x, y]
+			})
+			this.initShape(this.radius)
+			this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player)
 
-			this.initBitmap();
-			this.updatePosition();
+			this.initBitmap()
+			this.updatePosition()
+
+			this.changePower(this.power)
 		}
 
-		public changeSize(size:number)
+		public changePower(power:number)
 		{
-			this.circle.radius += 5;
-			this.circle.updateArea();
+			this.power = power
 
-			this.body.mass += 0.5;
-			this.body.updateMassProperties()
+			// 1 饿死
+			if (power < FlyParam.PlayerMinPower)
+			{
+				this.died(1)
+				return
+			}
 
-			this.changeRenderSize(this.circle.radius)
+			for(let i = 0; i < FlyParam.PlayerStep.length; ++i)
+			{
+				if (power <= FlyParam.PlayerStep[i])
+				{
+					if (this.step != i)
+					{
+						this.circle.radius = this.radius * FlyParam.PlayerTijiScale[i]
+						this.circle.updateArea()
+
+						this.body.mass = this.mass * FlyParam.PlayerMassScale[i]
+						this.body.updateMassProperties()
+
+						this.changeRenderSize(this.circle.radius)
+
+						this.step = i
+
+						// console.log("Chang Step: ", i, power)
+					}
+					return
+				}
+			}
+
+			// 2 胖死
+			if (power > FlyParam.PlayerMaxPower)
+			{
+				this.died(2)
+				return
+			}
 		}
 
 		private initBitmap()
 		{
-			let png = FlyTools.createBitmapByName("player_down_png");
-			png.anchorOffsetX = png.width/2;
-			png.anchorOffsetY = png.height/2;
-			png.scaleX = 2 * this.radius/png.width;
-			png.scaleY = 2 * this.radius/png.height;
-			this.addChild(png);
+			let png = FlyTools.createBitmapByName("player_down_png")
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.scaleX = 2 * this.radius/png.width
+			png.scaleY = 2 * this.radius/png.height
+			this.addChild(png)
+		}
+
+		public addPower(value:number)
+		{
+			this.power += value
+		}
+
+		public reset(x:number, y:number)
+		{
+			this.body.position = [x, y]
+			this.body.velocity = [0, 0]
+			this.body.force = [0, 0]
+			this.changePower(FlyParam.PlayerInitPower)
+		}
+
+		public died(reason:number)
+		{
+			// 1 饿死
+			// 2 胖死
+			console.log("你死了！", reason)
+			this.reset(this.x, this.y)
 		}
 	}
 }

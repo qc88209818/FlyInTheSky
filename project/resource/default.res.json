@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "virtual_button_png,virtual_background_png,candy_png,mushroom_png,player_down_png",
+			"keys": "virtual_button_png,virtual_background_png,candy_png,mushroom_png,player_down_png,HP_bg_png,HP_png,hp_bg_png,hp_png,tree_1_png,tree_2_png,tree_3_png,tree_4_png",
 			"name": "preload"
 		}
 	],
@@ -30,6 +30,46 @@
 			"name": "player_down_png",
 			"type": "image",
 			"url": "assets/player_down.png"
+		},
+		{
+			"name": "HP_bg_png",
+			"type": "image",
+			"url": "assets/HP_bg.png"
+		},
+		{
+			"name": "HP_png",
+			"type": "image",
+			"url": "assets/HP.png"
+		},
+		{
+			"name": "hp_bg_png",
+			"type": "image",
+			"url": "assets/hp_bg.png"
+		},
+		{
+			"name": "hp_png",
+			"type": "image",
+			"url": "assets/hp.png"
+		},
+		{
+			"name": "tree_1_png",
+			"type": "image",
+			"url": "assets/tree_1.png"
+		},
+		{
+			"name": "tree_2_png",
+			"type": "image",
+			"url": "assets/tree_2.png"
+		},
+		{
+			"name": "tree_3_png",
+			"type": "image",
+			"url": "assets/tree_3.png"
+		},
+		{
+			"name": "tree_4_png",
+			"type": "image",
+			"url": "assets/tree_4.png"
 		}
 	]
 }

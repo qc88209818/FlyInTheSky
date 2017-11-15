@@ -22,6 +22,14 @@ var fly;
             else
                 return 0xFFFFFF;
         };
+        FlyTools.showToast = function (tt) {
+            var text = new egret.TextField();
+            text.text = tt;
+            text.width = 400;
+            text.anchorOffsetX = 0.5;
+            text.anchorOffsetY = 0.5;
+            return text;
+        };
         return FlyTools;
     }());
     fly.FlyTools = FlyTools;

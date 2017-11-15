@@ -3,7 +3,7 @@ module fly {
 		None = 0, 
 		Rect = 1, 
 		Circle = 2 
-	};
+	}
 
 	export enum ObjectGroup {
 		None     = 0,
@@ -11,7 +11,7 @@ module fly {
 		Player   = Math.pow(2,1),
 		Obstacle = Math.pow(2,2),
 		Property = Math.pow(2,3)
-	};
+	}
 
 	export enum ObjectMask {
 		None     = 0,
@@ -19,87 +19,105 @@ module fly {
 		Player   = ObjectGroup.Player|ObjectGroup.Block,
 		Obstacle = 0,
 		Property = 0
-	};
+	}
 
 	export class FlyConfig {
-		static DebugMode:boolean;		// debug模式
-		static stageWidth:number;		// 画布宽度
-		static stageHeight:number;		// 画布高度
+		static WorldPause:boolean	= false
+		static DebugMode:boolean				// debug模式
+		static width:number 		= 2000		// 画布宽度
+		static height:number 		= 2000		// 画布高度
+		static stageWidth:number		// 画布宽度
+		static stageHeight:number		// 画布高度
 
-		private static PlayerMinId:number 		= 0;
-		private static BlockMinId:number 		= 1000;
-		private static PropertyMinId:number 	= 2000;
-		private static ObstacleMinId:number 	= 3000;
+		private static PlayerMinId:number 		= 0
+		private static BlockMinId:number 		= 1000
+		private static PropertyMinId:number 	= 2000
+		private static ObstacleMinId:number 	= 3000
 
-		private static PlayerMaxId:number 		= 1000;
-		private static BlockMaxId:number 		= 2000;
-		private static PropertyMaxId:number 	= 3000;
-		private static ObstacleMaxId:number 	= 4000;
+		private static PlayerMaxId:number 		= 1000
+		private static BlockMaxId:number 		= 2000
+		private static PropertyMaxId:number 	= 3000
+		private static ObstacleMaxId:number 	= 4000
 
-		private static PlayerId:number 		= FlyConfig.PlayerMinId;
-		private static BlockId:number 		= FlyConfig.BlockMinId;
-		private static PropertyId:number 	= FlyConfig.PropertyMinId;
-		private static ObstacleId:number 	= FlyConfig.ObstacleMinId;
+		private static PlayerId:number 		= FlyConfig.PlayerMinId
+		private static BlockId:number 		= FlyConfig.BlockMinId
+		private static PropertyId:number 	= FlyConfig.PropertyMinId
+		private static ObstacleId:number 	= FlyConfig.ObstacleMinId
 
 
 		public static getPlayerId():number
 		{
-			FlyConfig.PlayerId++;
+			FlyConfig.PlayerId++
 			if (FlyConfig.PlayerId >= FlyConfig.PlayerMaxId)
 			{
-				FlyConfig.PlayerId = FlyConfig.PlayerMinId;
+				FlyConfig.PlayerId = FlyConfig.PlayerMinId
 			}
-			return FlyConfig.PlayerId;
+			return FlyConfig.PlayerId
 		}
 
 		public static getBlockId():number
 		{
-			FlyConfig.BlockId++;
+			FlyConfig.BlockId++
 			if (FlyConfig.BlockId >= FlyConfig.BlockMaxId)
 			{
-				FlyConfig.BlockId = FlyConfig.BlockMinId;
+				FlyConfig.BlockId = FlyConfig.BlockMinId
 			}
-			return FlyConfig.BlockId;
+			return FlyConfig.BlockId
 		}
 
 		public static getPropertyId():number
 		{
-			FlyConfig.PropertyId++;
+			FlyConfig.PropertyId++
 			if (FlyConfig.PropertyId >= FlyConfig.PropertyMaxId)
 			{
-				FlyConfig.PropertyId = FlyConfig.PropertyMinId;
+				FlyConfig.PropertyId = FlyConfig.PropertyMinId
 			}
-			return FlyConfig.PropertyId;
+			return FlyConfig.PropertyId
 		}
 
 		public static getObstacleId():number
 		{
-			FlyConfig.ObstacleId++;
+			FlyConfig.ObstacleId++
 			if (FlyConfig.ObstacleId >= FlyConfig.ObstacleMaxId)
 			{
-				FlyConfig.ObstacleId = FlyConfig.ObstacleMinId;
+				FlyConfig.ObstacleId = FlyConfig.ObstacleMinId
 			}
-			return FlyConfig.ObstacleId;
+			return FlyConfig.ObstacleId
 		}
 
 		public static isPlayer(id:number): boolean
 		{
-			return FlyConfig.PlayerMinId <= id && id < FlyConfig.PlayerMaxId;
+			return FlyConfig.PlayerMinId <= id && id < FlyConfig.PlayerMaxId
 		}
 
 		public static isBlock(id:number): boolean
 		{
-			return FlyConfig.BlockMinId <= id && id < FlyConfig.BlockMaxId;
+			return FlyConfig.BlockMinId <= id && id < FlyConfig.BlockMaxId
 		}
 
 		public static isProperty(id:number): boolean
 		{
-			return FlyConfig.PropertyMinId <= id && id < FlyConfig.PropertyMaxId;
+			return FlyConfig.PropertyMinId <= id && id < FlyConfig.PropertyMaxId
 		}
 
 		public static isObstacle(id:number): boolean
 		{
-			return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId;
+			return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId
 		}
+	}
+
+	export class FlyParam
+	{
+		static PlayerMaxPower:number 	= 200		// 人物最大能量
+		static PlayerMinPower:number 	= 40		// 人物最小能量
+		static PlayerInitPower:number 	= 100		// 人物初始能量
+		static PlayerInitMass:number    = 2			// 人物初始重量
+
+		static PlayerStep:number[]      = [ 81, 121, 161, 201]	// 变身阶段
+		static PlayerTijiScale:number[] = [0.5,   1, 1.5, 2.5]	// 变身阶段
+		static PlayerMassScale:number[] = [0.5,   1,   2,   4]	// 变身阶段
+
+		static candy_power:number 		= 5			// 糖果能量
+		static move_power:number 		= -1		// 移动消耗能力
 	}
 }

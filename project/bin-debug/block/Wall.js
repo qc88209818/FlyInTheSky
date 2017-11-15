@@ -49,12 +49,12 @@ var fly;
             return _this;
         }
         Wall.prototype.initBitmap = function () {
-            // let png = FlyTools.createBitmapByName("candy_png");
-            // png.anchorOffsetX = png.width/2;
-            // png.anchorOffsetY = png.height/2;
-            // png.scaleX = 2 * this.radious/png.width;
-            // png.scaleY = 2 * this.radious/png.height;
-            // this.addChild(png);
+            // let png = FlyTools.createBitmapByName("candy_png")
+            // png.anchorOffsetX = png.width/2
+            // png.anchorOffsetY = png.height/2
+            // png.scaleX = 2 * this.radious/png.width
+            // png.scaleY = 2 * this.radious/png.height
+            // this.addChild(png)
         };
         return Wall;
     }(fly.FlyRect));

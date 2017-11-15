@@ -117,7 +117,7 @@ module fly {
 		static PlayerTijiScale:number[] = [0.5,   1, 1.5, 2.5]	// 变身阶段
 		static PlayerMassScale:number[] = [0.5,   1,   2,   4]	// 变身阶段
 
-		static candy_power:number 		= 5			// 糖果能量
-		static move_power:number 		= -1		// 移动消耗能力
+		static candy_power:number 		= 10		// 糖果能量
+		static move_power:number 		= -2		// 移动消耗能力
 	}
 }

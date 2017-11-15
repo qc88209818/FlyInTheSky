@@ -52,4 +52,3 @@ var fly;
     fly.FlyRect = FlyRect;
     __reflect(FlyRect.prototype, "fly.FlyRect");
 })(fly || (fly = {}));
-//# sourceMappingURL=FlyRect.js.map

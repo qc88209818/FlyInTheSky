@@ -31,9 +31,9 @@ module fly {
 		private getRandom(): number
 		{
 			let va = Math.random()
-			if (va < 0.5)
+			if (va < 0.2)
 			{
-				va = - va - 0.5;
+				va = - va*4 - 0.2;
 			}
 			return va*0.9
 		}
@@ -71,20 +71,17 @@ module fly {
 		private updatePower(dt:number)
 		{
 			this.lastPowerTime += dt
-			if (p2.vec2.length(this.objmgr.player.body.velocity) < 2)
-			{
-				this.lastPowerTime = 0
-			}
-
 			if (this.lastPowerTime > 1)
 			{
-				this.objmgr.player.changePower(this.objmgr.player.power + FlyParam.move_power)
+				if (p2.vec2.length(this.objmgr.player.body.velocity) > 3)
+				{
+					this.objmgr.player.changePower(this.objmgr.player.power + FlyParam.move_power)
+				}
+				else
+				{
+					this.objmgr.player.changePower(this.objmgr.player.power + FlyParam.move_power/2)
+				}
 				this.lastPowerTime -= 1
-			}
-
-			if (this.objmgr.player.power != this.progress.now)
-			{
-				this.progress.changeValue(this.objmgr.player.power)
 			}
 		}
 
@@ -103,7 +100,6 @@ module fly {
 			this.createWorld()
 			this.createScene()
 			this.createTouchLayer()
-			this.createUILayer()
 		}
 
 		private createWorld()
@@ -116,10 +112,6 @@ module fly {
 
 			//添加帧事件侦听
 			egret.Ticker.getInstance().register(function (dt) {
-				if (fly.FlyConfig.WorldPause)
-				{
-					return;
-				}
 				//使世界时间向后运动
 				world.step(dt/1000)
 				this.update(dt/1000)
@@ -152,14 +144,6 @@ module fly {
 			this.touchNode = touchNode
 
 			this.touchLayer.addChild(this.touchNode)
-		}
-
-		private createUILayer()
-		{
-			let progress = new UIProgress()
-			progress.create(this.uiLayer, FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
-			progress.setPosition(0, 0)
-			this.progress = progress
 		}
 
 		private onPostBroadphase(event:any)

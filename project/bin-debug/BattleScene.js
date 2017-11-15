@@ -39,8 +39,8 @@ var fly;
         };
         BattleScene.prototype.getRandom = function () {
             var va = Math.random();
-            if (va < 0.5) {
-                va = -va - 0.5;
+            if (va < 0.2) {
+                va = -va * 4 - 0.2;
             }
             return va * 0.9;
         };
@@ -66,15 +66,14 @@ var fly;
         };
         BattleScene.prototype.updatePower = function (dt) {
             this.lastPowerTime += dt;
-            if (p2.vec2.length(this.objmgr.player.body.velocity) < 2) {
-                this.lastPowerTime = 0;
-            }
             if (this.lastPowerTime > 1) {
-                this.objmgr.player.changePower(this.objmgr.player.power + fly.FlyParam.move_power);
+                if (p2.vec2.length(this.objmgr.player.body.velocity) > 3) {
+                    this.objmgr.player.changePower(this.objmgr.player.power + fly.FlyParam.move_power);
+                }
+                else {
+                    this.objmgr.player.changePower(this.objmgr.player.power + fly.FlyParam.move_power / 2);
+                }
                 this.lastPowerTime -= 1;
-            }
-            if (this.objmgr.player.power != this.progress.now) {
-                this.progress.changeValue(this.objmgr.player.power);
             }
         };
         BattleScene.prototype.updateScene = function (dt) {
@@ -98,9 +97,6 @@ var fly;
             this.world = world;
             //添加帧事件侦听
             egret.Ticker.getInstance().register(function (dt) {
-                if (fly.FlyConfig.WorldPause) {
-                    return;
-                }
                 //使世界时间向后运动
                 world.step(dt / 1000);
                 this.update(dt / 1000);
@@ -126,10 +122,6 @@ var fly;
             this.touchLayer.addChild(this.touchNode);
         };
         BattleScene.prototype.createUILayer = function () {
-            var progress = new fly.UIProgress();
-            progress.create(this.uiLayer, fly.FlyParam.PlayerMaxPower, fly.FlyParam.PlayerMinPower, fly.FlyParam.PlayerInitPower);
-            progress.setPosition(0, 0);
-            this.progress = progress;
         };
         BattleScene.prototype.onPostBroadphase = function (event) {
             for (var i = 0; i < event.pairs.length; i += 2) {
@@ -176,4 +168,3 @@ var fly;
     fly.BattleScene = BattleScene;
     __reflect(BattleScene.prototype, "fly.BattleScene");
 })(fly || (fly = {}));
-//# sourceMappingURL=BattleScene.js.map

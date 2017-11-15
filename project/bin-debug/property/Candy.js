@@ -50,4 +50,3 @@ var fly;
     fly.Candy = Candy;
     __reflect(Candy.prototype, "fly.Candy");
 })(fly || (fly = {}));
-//# sourceMappingURL=Candy.js.map

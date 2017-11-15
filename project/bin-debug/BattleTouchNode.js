@@ -88,4 +88,3 @@ var fly;
     fly.BattleTouchNode = BattleTouchNode;
     __reflect(BattleTouchNode.prototype, "fly.BattleTouchNode");
 })(fly || (fly = {}));
-//# sourceMappingURL=BattleTouchNode.js.map

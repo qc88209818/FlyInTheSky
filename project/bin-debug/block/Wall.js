@@ -61,4 +61,3 @@ var fly;
     fly.Wall = Wall;
     __reflect(Wall.prototype, "fly.Wall");
 })(fly || (fly = {}));
-//# sourceMappingURL=Wall.js.map

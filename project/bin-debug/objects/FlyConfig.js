@@ -97,11 +97,10 @@ var fly;
         FlyParam.PlayerStep = [81, 121, 161, 201]; // 变身阶段
         FlyParam.PlayerTijiScale = [0.5, 1, 1.5, 2.5]; // 变身阶段
         FlyParam.PlayerMassScale = [0.5, 1, 2, 4]; // 变身阶段
-        FlyParam.candy_power = 5; // 糖果能量
-        FlyParam.move_power = -1; // 移动消耗能力
+        FlyParam.candy_power = 10; // 糖果能量
+        FlyParam.move_power = -2; // 移动消耗能力
         return FlyParam;
     }());
     fly.FlyParam = FlyParam;
     __reflect(FlyParam.prototype, "fly.FlyParam");
 })(fly || (fly = {}));
-//# sourceMappingURL=FlyConfig.js.map

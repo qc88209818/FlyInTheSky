@@ -51,4 +51,3 @@ var fly;
     fly.Traps = Traps;
     __reflect(Traps.prototype, "fly.Traps");
 })(fly || (fly = {}));
-//# sourceMappingURL=Traps.js.map

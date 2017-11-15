@@ -7,6 +7,8 @@ module fly {
 		x:number
 		y:number
 
+		progress:UIProgress
+
 		public constructor(x:number, y:number, radius:number) {
 			super()
 			this.x = x
@@ -34,6 +36,7 @@ module fly {
 		public changePower(power:number)
 		{
 			this.power = power
+			this.progress.changeValue(this.power)
 
 			// 1 饿死
 			if (power < FlyParam.PlayerMinPower)
@@ -80,11 +83,26 @@ module fly {
 			png.scaleX = 2 * this.radius/png.width
 			png.scaleY = 2 * this.radius/png.height
 			this.addChild(png)
+
+			let progress = new UIProgress()
+			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
+			progress.anchorOffsetX = 0.5
+			progress.anchorOffsetY = 0.5
+			this.addChild(progress)
+
+			progress.setPosition(0, -100)
+
+			this.progress = progress
+		}
+
+		private initPower()
+		{
 		}
 
 		public addPower(value:number)
 		{
 			this.power += value
+			this.progress.changeValue(this.power)
 		}
 
 		public reset(x:number, y:number)

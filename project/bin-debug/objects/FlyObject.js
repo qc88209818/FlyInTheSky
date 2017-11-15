@@ -56,4 +56,3 @@ var fly;
     fly.FlyObject = FlyObject;
     __reflect(FlyObject.prototype, "fly.FlyObject");
 })(fly || (fly = {}));
-//# sourceMappingURL=FlyObject.js.map

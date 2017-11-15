@@ -39,6 +39,7 @@ var fly;
         }
         Player.prototype.changePower = function (power) {
             this.power = power;
+            this.progress.changeValue(this.power);
             // 1 饿死
             if (power < fly.FlyParam.PlayerMinPower) {
                 this.died(1);
@@ -71,9 +72,19 @@ var fly;
             png.scaleX = 2 * this.radius / png.width;
             png.scaleY = 2 * this.radius / png.height;
             this.addChild(png);
+            var progress = new fly.UIProgress();
+            progress.create(fly.FlyParam.PlayerMaxPower, fly.FlyParam.PlayerMinPower, fly.FlyParam.PlayerInitPower);
+            progress.anchorOffsetX = 0.5;
+            progress.anchorOffsetY = 0.5;
+            this.addChild(progress);
+            progress.setPosition(0, -100);
+            this.progress = progress;
+        };
+        Player.prototype.initPower = function () {
         };
         Player.prototype.addPower = function (value) {
             this.power += value;
+            this.progress.changeValue(this.power);
         };
         Player.prototype.reset = function (x, y) {
             this.body.position = [x, y];
@@ -92,4 +103,3 @@ var fly;
     fly.Player = Player;
     __reflect(Player.prototype, "fly.Player");
 })(fly || (fly = {}));
-//# sourceMappingURL=Player.js.map

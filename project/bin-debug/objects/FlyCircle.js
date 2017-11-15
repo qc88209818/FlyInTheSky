@@ -49,3 +49,4 @@ var fly;
     fly.FlyCircle = FlyCircle;
     __reflect(FlyCircle.prototype, "fly.FlyCircle");
 })(fly || (fly = {}));
+//# sourceMappingURL=FlyCircle.js.map

@@ -15,26 +15,12 @@ var fly;
 (function (fly) {
     var Wall = (function (_super) {
         __extends(Wall, _super);
-        function Wall(x1, y1, x2, y2) {
+        function Wall(x, y, width, height) {
             var _this = _super.call(this) || this;
-            var px = Math.min(x1, x2);
-            if (px == x1) {
-                _this.width = x2 - x1;
-                _this.x = x1 + _this.width / 2;
-            }
-            if (px == x2) {
-                _this.width = x1 - x2;
-                _this.x = x2 + _this.width / 2;
-            }
-            var py = Math.min(y1, y2);
-            if (py == y1) {
-                _this.height = y2 - y1;
-                _this.y = y1 + _this.height / 2;
-            }
-            if (py == y2) {
-                _this.height = y1 - y2;
-                _this.y = y2 + _this.height / 2;
-            }
+            _this.x = x + width / 2;
+            _this.y = y + height / 2;
+            _this.width = width;
+            _this.height = height;
             _this.initBody({
                 id: fly.FlyConfig.getBlockId(),
                 mass: 1,
@@ -61,3 +47,4 @@ var fly;
     fly.Wall = Wall;
     __reflect(Wall.prototype, "fly.Wall");
 })(fly || (fly = {}));
+//# sourceMappingURL=Wall.js.map

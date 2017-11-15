@@ -29,6 +29,10 @@
     {
       "name": "physics",
       "path": "../third_libs/physics"
+    },
+    {
+      "name": "tiled",
+      "path": "../third_libs/tiled"
     }
   ]
 }

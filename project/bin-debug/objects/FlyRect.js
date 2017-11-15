@@ -32,11 +32,9 @@ var fly;
             var color = fly.FlyTools.getBodyTypeColor(this.body.type);
             var shape = new egret.Shape();
             shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
-            shape.graphics.drawRect(0, 0, width, height);
+            shape.graphics.drawRect(-width / 2, -height / 2, width, height);
             shape.graphics.endFill();
             this.rander = shape;
-            shape.anchorOffsetX = shape.width / 2;
-            shape.anchorOffsetY = shape.height / 2;
             this.addChild(shape);
         };
         FlyRect.prototype.changeRenderSize = function (width, height) {
@@ -44,7 +42,7 @@ var fly;
             var shape = this.rander;
             shape.graphics.clear();
             shape.graphics.beginFill(color, fly.FlyConfig.DebugMode ? 1 : 0);
-            shape.graphics.drawRect(0, 0, width, height);
+            shape.graphics.drawRect(-width / 2, -height / 2, width, height);
             shape.graphics.endFill();
         };
         return FlyRect;
@@ -52,3 +50,4 @@ var fly;
     fly.FlyRect = FlyRect;
     __reflect(FlyRect.prototype, "fly.FlyRect");
 })(fly || (fly = {}));
+//# sourceMappingURL=FlyRect.js.map

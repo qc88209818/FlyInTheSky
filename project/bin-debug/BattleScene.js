@@ -21,8 +21,6 @@ var fly;
             _this.baseLayer = new egret.DisplayObjectContainer;
             _this.uiLayer = new egret.DisplayObjectContainer;
             _this.touchLayer = new egret.DisplayObjectContainer;
-            _this.lastCreateCandy = 0;
-            _this.lastCreateTrasps = 0;
             _this.lastPowerTime = 0;
             return _this;
         }
@@ -33,7 +31,6 @@ var fly;
                 this.objmgr.player.body.applyForce([direct[0] * forceScale, direct[1] * forceScale], this.objmgr.player.body.position);
             }
             this.updatePower(dt);
-            this.updateCreate(dt);
             this.updateScene(dt);
             this.objmgr.update(dt);
         };
@@ -43,26 +40,6 @@ var fly;
                 va = -va * 4 - 0.2;
             }
             return va * 0.9;
-        };
-        BattleScene.prototype.updateCreate = function (dt) {
-            this.lastCreateCandy += dt;
-            if (this.lastCreateCandy > 3) {
-                var x = fly.FlyConfig.width / 2 * this.getRandom();
-                var y = fly.FlyConfig.height / 2 * this.getRandom();
-                var radious = 25 * (Math.random() + 1);
-                var candy = new fly.Candy(x, y, radious);
-                this.addToWorld(candy);
-                this.lastCreateCandy -= 3;
-            }
-            this.lastCreateTrasps += dt;
-            if (this.lastCreateTrasps > 10) {
-                var x = fly.FlyConfig.width / 2 * this.getRandom();
-                var y = fly.FlyConfig.height / 2 * this.getRandom();
-                var radious = 40 * (Math.random() + 1);
-                var traps = new fly.Traps(x, y, radious, radious);
-                this.addToWorld(traps);
-                this.lastCreateTrasps -= 10;
-            }
         };
         BattleScene.prototype.updatePower = function (dt) {
             this.lastPowerTime += dt;
@@ -80,14 +57,14 @@ var fly;
             this.baseLayer.x = -this.objmgr.player.body.position[0] + fly.FlyConfig.stageWidth / 2;
             this.baseLayer.y = -this.objmgr.player.body.position[1] + fly.FlyConfig.stageHeight / 2;
         };
-        BattleScene.prototype.initScene = function () {
+        BattleScene.prototype.initScene = function (tiledMapObjs) {
+            this.tiledMapObjs = tiledMapObjs;
             this.addChild(this.baseLayer);
             this.addChild(this.uiLayer);
             this.addChild(this.touchLayer);
             this.createWorld();
             this.createScene();
             this.createTouchLayer();
-            this.createUILayer();
         };
         BattleScene.prototype.createWorld = function () {
             var world = new p2.World({
@@ -104,15 +81,15 @@ var fly;
             world.on("postBroadphase", this.onPostBroadphase, this);
         };
         BattleScene.prototype.createScene = function () {
-            var wall1 = new fly.Wall(-fly.FlyConfig.width / 2, -fly.FlyConfig.height / 2, -fly.FlyConfig.width / 2 - 50, fly.FlyConfig.height / 2);
-            var wall2 = new fly.Wall(-fly.FlyConfig.width / 2, -fly.FlyConfig.height / 2, fly.FlyConfig.width / 2, -fly.FlyConfig.height / 2 - 50);
-            var wall3 = new fly.Wall(fly.FlyConfig.width / 2, fly.FlyConfig.height / 2, -fly.FlyConfig.width / 2, fly.FlyConfig.height / 2 + 50);
-            var wall4 = new fly.Wall(fly.FlyConfig.width / 2, fly.FlyConfig.height / 2, fly.FlyConfig.width / 2 + 50, -fly.FlyConfig.height / 2);
-            this.addToWorld(wall1);
-            this.addToWorld(wall2);
-            this.addToWorld(wall3);
-            this.addToWorld(wall4);
-            var player = new fly.Player(0, 0, 60);
+            var _this = this;
+            this.tiledMapObjs.forEach(function (obj) {
+                if (obj.type == "wall") {
+                    var wall = new fly.Wall(obj.x, obj.y, obj.width, obj.height);
+                    _this.addToWorld(wall);
+                }
+            });
+            var player = new fly.Player(fly.FlyConfig.width / 2, fly.FlyConfig.height / 2, 60);
+            // let player = new Player(200, 200, 60)
             this.addToWorld(player);
             this.objmgr.player = player;
         };
@@ -120,8 +97,6 @@ var fly;
             var touchNode = new fly.BattleTouchNode(this, 150, 5);
             this.touchNode = touchNode;
             this.touchLayer.addChild(this.touchNode);
-        };
-        BattleScene.prototype.createUILayer = function () {
         };
         BattleScene.prototype.onPostBroadphase = function (event) {
             for (var i = 0; i < event.pairs.length; i += 2) {
@@ -168,3 +143,4 @@ var fly;
     fly.BattleScene = BattleScene;
     __reflect(BattleScene.prototype, "fly.BattleScene");
 })(fly || (fly = {}));
+//# sourceMappingURL=BattleScene.js.map

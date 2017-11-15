@@ -6,22 +6,25 @@
 		"libs/modules/res/res.js",
 		"libs/modules/socket/socket.js",
 		"promise/bin/promise.js",
-		"libs/modules/physics/physics.js"
+		"libs/modules/physics/physics.js",
+		"libs/modules/tiled/tiled.js"
 	],
 	"game": [
 		"bin-debug/objects/FlyObject.js",
-		"bin-debug/objects/FlyCircle.js",
 		"bin-debug/objects/FlyRect.js",
+		"bin-debug/objects/FlyCircle.js",
 		"bin-debug/objects/FlyConfig.js",
 		"bin-debug/Player.js",
+		"bin-debug/TiledMapObject.js",
 		"bin-debug/block/Wall.js",
 		"bin-debug/BattleScene.js",
-		"bin-debug/BattleTouchNode.js",
+		"bin-debug/ui/UIProgress.js",
 		"bin-debug/Main.js",
 		"bin-debug/ObjectManager.js",
 		"bin-debug/objects/FlyTools.js",
 		"bin-debug/obstacle/Traps.js",
 		"bin-debug/property/Candy.js",
-		"bin-debug/ui/UIProgress.js"
+		"bin-debug/ui/UILoading.js",
+		"bin-debug/BattleTouchNode.js"
 	]
 }

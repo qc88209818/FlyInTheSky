@@ -35,3 +35,4 @@ var fly;
     fly.FlyTools = FlyTools;
     __reflect(FlyTools.prototype, "fly.FlyTools");
 })(fly || (fly = {}));
+//# sourceMappingURL=FlyTools.js.map

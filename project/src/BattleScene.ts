@@ -2,8 +2,10 @@ module fly {
 	export class BattleScene extends egret.DisplayObjectContainer {
 		world:p2.World
 		touchNode:BattleTouchNode
-		objmgr:ObjectManager = ObjectManager.inst()
 		progress:UIProgress
+		tiledMapObjs:TiledMapObject[]
+
+		objmgr:ObjectManager = ObjectManager.inst()
 
 		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
@@ -23,7 +25,6 @@ module fly {
 			}
 
 			this.updatePower(dt)
-			this.updateCreate(dt)
 			this.updateScene(dt)
 			this.objmgr.update(dt)
 		}
@@ -38,35 +39,6 @@ module fly {
 			return va*0.9
 		}
 		
-		lastCreateCandy:number = 0
-		lastCreateTrasps:number = 0
-		private updateCreate(dt:number)
-		{
-			this.lastCreateCandy += dt
-			if (this.lastCreateCandy > 3)
-			{
-				let x = FlyConfig.width/2*this.getRandom()
-				let y = FlyConfig.height/2*this.getRandom()
-				let radious = 25*(Math.random() + 1)
-				let candy = new Candy(x, y, radious)
-				this.addToWorld(candy)
-
-				this.lastCreateCandy -= 3
-			}
-
-			this.lastCreateTrasps += dt
-			if (this.lastCreateTrasps > 10)
-			{
-				let x = FlyConfig.width/2*this.getRandom()
-				let y = FlyConfig.height/2*this.getRandom()
-				let radious = 40*(Math.random() + 1)
-				let traps = new Traps(x, y, radious, radious)
-				this.addToWorld(traps)
-
-				this.lastCreateTrasps -= 10
-			}
-		}
-
 		lastPowerTime:number = 0
 		private updatePower(dt:number)
 		{
@@ -91,8 +63,10 @@ module fly {
 			this.baseLayer.y = -this.objmgr.player.body.position[1] + FlyConfig.stageHeight/2
 		}
 
-		public initScene()
+		public initScene(tiledMapObjs:TiledMapObject[])
 		{
+			this.tiledMapObjs = tiledMapObjs
+
 			this.addChild(this.baseLayer)
 			this.addChild(this.uiLayer)
 			this.addChild(this.touchLayer)
@@ -122,17 +96,16 @@ module fly {
 		
 		private createScene() 
 		{
-			let wall1 = new Wall(-FlyConfig.width/2, -FlyConfig.height/2, -FlyConfig.width/2 - 50, FlyConfig.height/2)
-			let wall2 = new Wall(-FlyConfig.width/2, -FlyConfig.height/2, FlyConfig.width/2, -FlyConfig.height/2 - 50)
-			let wall3 = new Wall(FlyConfig.width/2, FlyConfig.height/2, -FlyConfig.width/2, FlyConfig.height/2 + 50)
-			let wall4 = new Wall(FlyConfig.width/2, FlyConfig.height/2, FlyConfig.width/2 + 50, -FlyConfig.height/2)
+			this.tiledMapObjs.forEach(obj => {
+				if (obj.type == "wall")
+				{
+					let wall = new Wall(obj.x, obj.y, obj.width, obj.height)
+					this.addToWorld(wall)
+				}
+			})
 
-			this.addToWorld(wall1)
-			this.addToWorld(wall2)
-			this.addToWorld(wall3)
-			this.addToWorld(wall4)
-
-			let player = new Player(0, 0, 60)
+			let player = new Player(FlyConfig.width/2, FlyConfig.height/2, 60)
+			// let player = new Player(200, 200, 60)
 			this.addToWorld(player)
 
 			this.objmgr.player = player

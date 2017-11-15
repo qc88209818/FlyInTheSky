@@ -26,12 +26,9 @@ module fly {
 
 			let shape = new egret.Shape()
 			shape.graphics.beginFill(color, fly.FlyConfig.DebugMode?1:0)
-			shape.graphics.drawRect(0, 0, width, height)
+			shape.graphics.drawRect(-width/2, -height/2, width, height)
 			shape.graphics.endFill()
 			this.rander = shape
-
-			shape.anchorOffsetX = shape.width/2
-			shape.anchorOffsetY = shape.height/2
 
 			this.addChild(shape)
 		}
@@ -43,7 +40,7 @@ module fly {
 			let shape = this.rander
 			shape.graphics.clear()
 			shape.graphics.beginFill(color, fly.FlyConfig.DebugMode?1:0)
-			shape.graphics.drawRect(0, 0, width, height)
+			shape.graphics.drawRect(-width/2, -height/2, width, height)
 			shape.graphics.endFill()
 		}
 	}

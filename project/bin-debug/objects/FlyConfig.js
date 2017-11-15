@@ -68,9 +68,6 @@ var fly;
         FlyConfig.isObstacle = function (id) {
             return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId;
         };
-        FlyConfig.WorldPause = false;
-        FlyConfig.width = 2000; // 画布宽度
-        FlyConfig.height = 2000; // 画布高度
         FlyConfig.PlayerMinId = 0;
         FlyConfig.BlockMinId = 1000;
         FlyConfig.PropertyMinId = 2000;
@@ -104,3 +101,4 @@ var fly;
     fly.FlyParam = FlyParam;
     __reflect(FlyParam.prototype, "fly.FlyParam");
 })(fly || (fly = {}));
+//# sourceMappingURL=FlyConfig.js.map

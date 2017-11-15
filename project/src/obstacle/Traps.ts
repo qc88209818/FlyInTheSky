@@ -29,8 +29,6 @@ module fly {
 		private initBitmap()
 		{
 			let png = FlyTools.createBitmapByName("mushroom_png")
-			png.anchorOffsetX = png.width/2
-			png.anchorOffsetY = png.height/2
 			png.scaleX = this.width/png.width
 			png.scaleY = this.height/png.height
 			this.addChild(png)

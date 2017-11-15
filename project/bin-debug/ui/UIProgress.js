@@ -57,3 +57,4 @@ var fly;
     fly.UIProgress = UIProgress;
     __reflect(UIProgress.prototype, "fly.UIProgress");
 })(fly || (fly = {}));
+//# sourceMappingURL=UIProgress.js.map

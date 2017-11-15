@@ -103,3 +103,4 @@ var fly;
     fly.Player = Player;
     __reflect(Player.prototype, "fly.Player");
 })(fly || (fly = {}));
+//# sourceMappingURL=Player.js.map

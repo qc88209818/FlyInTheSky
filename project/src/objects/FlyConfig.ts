@@ -22,10 +22,9 @@ module fly {
 	}
 
 	export class FlyConfig {
-		static WorldPause:boolean	= false
-		static DebugMode:boolean				// debug模式
-		static width:number 		= 2000		// 画布宽度
-		static height:number 		= 2000		// 画布高度
+		static DebugMode:boolean		// debug模式
+		static width:number				// 画布宽度
+		static height:number 			// 画布高度
 		static stageWidth:number		// 画布宽度
 		static stageHeight:number		// 画布高度
 

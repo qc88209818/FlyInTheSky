@@ -36,8 +36,6 @@ var fly;
         }
         Traps.prototype.initBitmap = function () {
             var png = fly.FlyTools.createBitmapByName("mushroom_png");
-            png.anchorOffsetX = png.width / 2;
-            png.anchorOffsetY = png.height / 2;
             png.scaleX = this.width / png.width;
             png.scaleY = this.height / png.height;
             this.addChild(png);
@@ -51,3 +49,4 @@ var fly;
     fly.Traps = Traps;
     __reflect(Traps.prototype, "fly.Traps");
 })(fly || (fly = {}));
+//# sourceMappingURL=Traps.js.map

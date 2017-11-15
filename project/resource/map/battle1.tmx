@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="10">
+ <objectgroup name="wall">
+  <object id="1" name="wall1" type="wall" x="0" y="0" width="50" height="2000"/>
+  <object id="2" name="wall3" type="wall" x="1950" y="0" width="50" height="2000"/>
+  <object id="8" name="wall2" type="wall" x="0" y="0" width="2000" height="50"/>
+  <object id="9" name="wall4" type="wall" x="0" y="1950" width="2000" height="50"/>
+ </objectgroup>
+</map>

@@ -8,6 +8,7 @@ module fly {
 
 		player:Player
 		sprites:FlyObject[] = []		// 当前所有需要计算位置的精灵
+		scene:BattleScene
 	
 		public update(dt:number)
 		{

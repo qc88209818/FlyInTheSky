@@ -38,8 +38,8 @@ class UILoading extends egret.Sprite {
 
     private createView():void {
         this.textField = new egret.TextField();
-        this.textField.anchorOffsetX = 0.5
-        this.textField.anchorOffsetY = 0.5
+        this.textField.anchorOffsetX = this.textField.width/2
+        this.textField.anchorOffsetY = this.textField.height/2
         this.textField.textAlign = "center";
         this.addChild(this.textField);
     }

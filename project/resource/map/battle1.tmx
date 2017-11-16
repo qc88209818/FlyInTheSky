@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="10">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="400" height="400" tilewidth="10" tileheight="10" nextobjectid="44">
  <objectgroup name="wall">
-  <object id="1" name="wall1" type="wall" x="0" y="0" width="50" height="2000"/>
-  <object id="2" name="wall3" type="wall" x="1950" y="0" width="50" height="2000"/>
-  <object id="8" name="wall2" type="wall" x="0" y="0" width="2000" height="50"/>
-  <object id="9" name="wall4" type="wall" x="0" y="1950" width="2000" height="50"/>
+  <object id="1" name="wall" type="wall" x="0" y="0" width="50" height="4000"/>
+  <object id="2" name="wall" type="wall" x="3950" y="0" width="50" height="4000"/>
+  <object id="8" name="wall" type="wall" x="0" y="0" width="4000" height="50"/>
+  <object id="9" name="wall" type="wall" x="0" y="3950" width="4000" height="50"/>
+  <object id="14" name="wall" type="wall" x="0" y="2000" width="800" height="50"/>
+  <object id="16" name="wall" type="wall" x="1000" y="2000" width="800" height="50"/>
+  <object id="17" name="wall" type="wall" x="2000" y="2000" width="800" height="50"/>
+  <object id="18" name="wall" type="wall" x="3000" y="2000" width="1000" height="50"/>
  </objectgroup>
+ <objectgroup name="candy">
+  <object id="19" name="candy" type="candy" x="300" y="300" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="20" name="candy" type="candy" x="3700" y="300" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="21" name="candy" type="candy" x="300" y="3700" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="22" name="candy" type="candy" x="3700" y="3700" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="23" name="candy" type="candy" x="400" y="1800" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="24" name="candy" type="candy" x="1400" y="2200" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="25" name="candy" type="candy" x="2400" y="1800" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="26" name="candy" type="candy" x="3400" y="2200" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="37" name="candy" type="candy" x="1400" y="1800" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="38" name="candy" type="candy" x="3400" y="1800" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="39" name="candy" type="candy" x="2400" y="2200" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="40" name="candy" type="candy" x="400" y="2200" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="41" name="candy" type="candy" x="1850" y="1000" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="43" name="candy" type="candy" x="1850" y="3000" width="50" height="50">
+   <properties>
+    <property name="delta" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="player">
+  <object id="29" name="self" type="player" x="1850" y="2500" width="60" height="60">
+   <ellipse/>
+  </object>
+  <object id="32" name="player" type="player" x="900" y="1000" width="60" height="60">
+   <ellipse/>
+  </object>
+  <object id="34" name="player" type="player" x="2900" y="1000" width="60" height="60">
+   <ellipse/>
+  </object>
+  <object id="35" name="player" type="player" x="900" y="3000" width="60" height="60">
+   <ellipse/>
+  </object>
+  <object id="36" name="player" type="player" x="2900" y="3000" width="60" height="60">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="traps"/>
 </map>

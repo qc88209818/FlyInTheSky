@@ -86,11 +86,11 @@ module fly {
 
 			let progress = new UIProgress()
 			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
-			progress.anchorOffsetX = 0.5
-			progress.anchorOffsetY = 0.5
+			progress.anchorOffsetX = progress.width/2
+			progress.anchorOffsetY = progress.height/2
 			this.addChild(progress)
 
-			progress.setPosition(0, -100)
+			progress.setPosition(progress.width/2, -100)
 
 			this.progress = progress
 		}

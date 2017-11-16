@@ -97,12 +97,23 @@ class Main extends egret.DisplayObjectContainer {
             groupxml.children.forEach(object => {
                 let objectxml = <egret.XML><any>object
                 let tmObj = new TiledMapObject()
+                tmObj.name = objectxml["$name"]
                 tmObj.type = objectxml["$type"]
-                tmObj.x = objectxml["$x"]*1.0
-                tmObj.y = objectxml["$y"]*1.0
-                tmObj.width = objectxml["$width"]*1.0
-                tmObj.height = objectxml["$height"]*1.0
-                tiledMapObjs.push(tmObj)            
+                tmObj.x = Number(objectxml["$x"])
+                tmObj.y = Number(objectxml["$y"])
+                tmObj.width = Number(objectxml["$width"]*1.0)
+                tmObj.height = Number(objectxml["$height"]*1.0)
+
+                // properties
+                objectxml.children.forEach(properties => {
+                    let propertiesxml = <egret.XML><any>properties
+                    propertiesxml.children.forEach(property => {
+                        tmObj.params.push(property["$name"])
+                        tmObj.params.push(property["$value"])
+                    })
+                })
+
+                tiledMapObjs.push(tmObj)         
             })
         })
 

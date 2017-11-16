@@ -20,6 +20,7 @@ var fly;
             _this.x = x;
             _this.y = y;
             _this.radius = radius;
+            _this.delta = 0;
             _this.initBody({
                 id: fly.FlyConfig.getPropertyId(),
                 mass: 1,
@@ -37,11 +38,22 @@ var fly;
             var png = fly.FlyTools.createBitmapByName("candy_png");
             png.scaleX = 2 * this.radius / png.width;
             png.scaleY = 2 * this.radius / png.height;
+            png.anchorOffsetX = png.width / 2;
+            png.anchorOffsetY = png.height / 2;
             this.addChild(png);
         };
         Candy.prototype.onTrigger = function () {
             this.isDestroy = true;
             this.objmgr.player.addPower(fly.FlyParam.candy_power);
+            // delta后创建新的
+            egret.setTimeout(function () {
+                var candy = new Candy(this.x, this.y, this.radius);
+                candy.setDelta(this.delta);
+                this.objmgr.scene.addToWorld(candy);
+            }, this, this.delta * 1000);
+        };
+        Candy.prototype.setDelta = function (delta) {
+            this.delta = delta;
         };
         return Candy;
     }(fly.FlyCircle));

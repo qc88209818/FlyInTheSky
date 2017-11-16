@@ -24,8 +24,8 @@ module fly {
 			let text = new egret.TextField()
 			text.text = tt
 			text.width = 400
-			text.anchorOffsetX = 0.5
-			text.anchorOffsetY = 0.5
+			text.anchorOffsetX = text.width/2
+			text.anchorOffsetY = text.height/2
 			return text;
 		}
 	}

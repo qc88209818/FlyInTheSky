@@ -96,19 +96,37 @@ module fly {
 		
 		private createScene() 
 		{
+			this.objmgr.scene = this
+
 			this.tiledMapObjs.forEach(obj => {
-				if (obj.type == "wall")
+				if (obj.type == "player")
+				{
+					let player = new Player(obj.x, obj.y, obj.width)
+					this.addToWorld(player)
+					if (obj.name == "self")
+					{
+						this.objmgr.player = player
+					}
+				}
+				else if (obj.type == "wall")
 				{
 					let wall = new Wall(obj.x, obj.y, obj.width, obj.height)
 					this.addToWorld(wall)
 				}
+				else if (obj.type == "candy")
+				{
+					let candy = new Candy(obj.x, obj.y, obj.width)
+					this.addToWorld(candy)
+
+					for(let i = 0; i < obj.params.length; i += 2)
+					{
+						if (obj.params[i] == "delta")
+						{
+							candy.setDelta(Number(obj.params[i+1]))
+						}
+					}
+				}
 			})
-
-			let player = new Player(FlyConfig.width/2, FlyConfig.height/2, 60)
-			// let player = new Player(200, 200, 60)
-			this.addToWorld(player)
-
-			this.objmgr.player = player
 		}
 
 		private createTouchLayer()
@@ -154,7 +172,7 @@ module fly {
 			})
 		}
 
-		private addToWorld(obj:FlyObject)
+		public addToWorld(obj:FlyObject)
 		{
 			this.world.addBody(obj.body)
 			obj.body.displays.forEach(value => { 
@@ -164,7 +182,7 @@ module fly {
 			this.objmgr.addSprite(obj)
 		}
 
-		private delFromWorld(obj:FlyObject)
+		public delFromWorld(obj:FlyObject)
 		{
 			obj.body.displays.forEach(value => {
 				this.baseLayer.removeChild(value)

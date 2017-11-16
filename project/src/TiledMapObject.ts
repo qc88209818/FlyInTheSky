@@ -1,4 +1,5 @@
 class TiledMapObject {
+	name:string
 	type:string
 	x:number
 	y:number

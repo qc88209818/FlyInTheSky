@@ -6,6 +6,7 @@ var fly;
     var ObjectManager = (function () {
         function ObjectManager() {
             this.sprites = []; // 当前所有需要计算位置的精灵
+            this.players = [];
         }
         ObjectManager.inst = function () {
             return this.obj;
@@ -25,6 +26,20 @@ var fly;
                     this.sprites.pop();
                 }
             }
+            var length2 = this.players.length;
+            for (var i = 0; i < length2;) {
+                if (!this.players[i].isDestroy) {
+                    this.players[i].updatePosition();
+                    ++i;
+                }
+                else {
+                    --length2;
+                    this.players[i].indexOf = -1;
+                    this.players[i] = this.players[length2];
+                    this.players[i].indexOf = i;
+                    this.players.pop();
+                }
+            }
         };
         ObjectManager.prototype.addSprite = function (obj) {
             obj.indexOf = this.sprites.length;
@@ -33,13 +48,12 @@ var fly;
         ObjectManager.prototype.delSprite = function (obj) {
             obj.isDestroy = true;
         };
-        ObjectManager.prototype.delSpriteImmediate = function (obj) {
+        ObjectManager.prototype.addPlayer = function (obj) {
+            obj.indexOf = this.players.length;
+            this.players.push(obj);
+        };
+        ObjectManager.prototype.delPlayer = function (obj) {
             obj.isDestroy = true;
-            var index = obj.indexOf;
-            this.sprites[index] = this.sprites[this.sprites.length - 1];
-            this.sprites[index].indexOf = index;
-            this.sprites.pop();
-            obj.indexOf = -1;
         };
         ObjectManager.obj = new ObjectManager();
         return ObjectManager;

@@ -1,5 +1,6 @@
 module fly {
 	export class Player extends FlyCircle {
+		render:egret.Bitmap
 		radius:number
 		power:number
 		mass:number
@@ -33,6 +34,11 @@ module fly {
 			this.changePower(this.power)
 		}
 
+		public setVisible(visible:boolean)
+		{
+			this.progress.visible = visible
+		}
+
 		public changePower(power:number)
 		{
 			this.power = power
@@ -57,11 +63,12 @@ module fly {
 						this.body.mass = this.mass * FlyParam.PlayerMassScale[i]
 						this.body.updateMassProperties()
 
+						this.render.scaleX = 2.2 * this.circle.radius/this.render.width
+						this.render.scaleY = 2.2 * this.circle.radius/this.render.height
+
 						this.changeRenderSize(this.circle.radius)
 
 						this.step = i
-
-						// console.log("Chang Step: ", i, power)
 					}
 					return
 				}
@@ -80,23 +87,21 @@ module fly {
 			let png = FlyTools.createBitmapByName("player_down_png")
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.scaleX = 2 * this.radius/png.width
-			png.scaleY = 2 * this.radius/png.height
+			png.scaleX = 2.2 * this.radius/png.width
+			png.scaleY = 2.2 * this.radius/png.height
 			this.addChild(png)
+			this.render = png
 
 			let progress = new UIProgress()
 			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
 			progress.anchorOffsetX = progress.width/2
 			progress.anchorOffsetY = progress.height/2
+			progress.visible = false
 			this.addChild(progress)
+			this.progress = progress
 
 			progress.setPosition(progress.width/2, -100)
 
-			this.progress = progress
-		}
-
-		private initPower()
-		{
 		}
 
 		public addPower(value:number)

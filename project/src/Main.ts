@@ -108,8 +108,7 @@ class Main extends egret.DisplayObjectContainer {
                 objectxml.children.forEach(properties => {
                     let propertiesxml = <egret.XML><any>properties
                     propertiesxml.children.forEach(property => {
-                        tmObj.params.push(property["$name"])
-                        tmObj.params.push(property["$value"])
+                        tmObj.params[property["$name"]] = property["$value"]
                     })
                 })
 

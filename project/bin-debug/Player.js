@@ -37,6 +37,9 @@ var fly;
             _this.changePower(_this.power);
             return _this;
         }
+        Player.prototype.setVisible = function (visible) {
+            this.progress.visible = visible;
+        };
         Player.prototype.changePower = function (power) {
             this.power = power;
             this.progress.changeValue(this.power);
@@ -52,9 +55,10 @@ var fly;
                         this.circle.updateArea();
                         this.body.mass = this.mass * fly.FlyParam.PlayerMassScale[i];
                         this.body.updateMassProperties();
+                        this.render.scaleX = 2.2 * this.circle.radius / this.render.width;
+                        this.render.scaleY = 2.2 * this.circle.radius / this.render.height;
                         this.changeRenderSize(this.circle.radius);
                         this.step = i;
-                        // console.log("Chang Step: ", i, power)
                     }
                     return;
                 }
@@ -69,18 +73,18 @@ var fly;
             var png = fly.FlyTools.createBitmapByName("player_down_png");
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;
-            png.scaleX = 2 * this.radius / png.width;
-            png.scaleY = 2 * this.radius / png.height;
+            png.scaleX = 2.2 * this.radius / png.width;
+            png.scaleY = 2.2 * this.radius / png.height;
             this.addChild(png);
+            this.render = png;
             var progress = new fly.UIProgress();
             progress.create(fly.FlyParam.PlayerMaxPower, fly.FlyParam.PlayerMinPower, fly.FlyParam.PlayerInitPower);
             progress.anchorOffsetX = progress.width / 2;
             progress.anchorOffsetY = progress.height / 2;
+            progress.visible = false;
             this.addChild(progress);
-            progress.setPosition(progress.width / 2, -100);
             this.progress = progress;
-        };
-        Player.prototype.initPower = function () {
+            progress.setPosition(progress.width / 2, -100);
         };
         Player.prototype.addPower = function (value) {
             this.power += value;

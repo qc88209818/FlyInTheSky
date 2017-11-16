@@ -5,7 +5,7 @@ class TiledMapObject {
 	y:number
 	width:number
 	height:number
-	params:string[] = []
+	params:{[key: string]: string;} = {}
 
 	public constructor() {
 	}

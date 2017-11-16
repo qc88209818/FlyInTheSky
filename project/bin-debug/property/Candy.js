@@ -42,15 +42,21 @@ var fly;
             png.anchorOffsetY = png.height / 2;
             this.addChild(png);
         };
-        Candy.prototype.onTrigger = function () {
+        Candy.prototype.onTrigger = function (pid) {
             this.isDestroy = true;
-            this.objmgr.player.addPower(fly.FlyParam.candy_power);
             // delta后创建新的
             egret.setTimeout(function () {
                 var candy = new Candy(this.x, this.y, this.radius);
                 candy.setDelta(this.delta);
                 this.objmgr.scene.addToWorld(candy);
             }, this, this.delta * 1000);
+            // 减少能量
+            this.objmgr.players.forEach(function (value) {
+                if (value.body.id == pid) {
+                    value.addPower(fly.FlyParam.candy_power);
+                    return;
+                }
+            });
         };
         Candy.prototype.setDelta = function (delta) {
             this.delta = delta;

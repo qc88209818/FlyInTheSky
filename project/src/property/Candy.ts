@@ -36,10 +36,9 @@ module fly {
 			this.addChild(png)
 		}
 
-		public onTrigger()
+		public onTrigger(pid:number)
 		{
 			this.isDestroy = true
-			this.objmgr.player.addPower(FlyParam.candy_power)
 
 			// delta后创建新的
 			egret.setTimeout(function () {              
@@ -47,6 +46,15 @@ module fly {
 				candy.setDelta(this.delta)
 				this.objmgr.scene.addToWorld(candy)
 			}, this, this.delta*1000); 
+
+			// 减少能量
+			this.objmgr.players.forEach(value => {
+				if (value.body.id == pid)
+				{
+					value.addPower(FlyParam.candy_power)
+					return
+				}
+			})
 		}
 
 		public setDelta(delta:number)

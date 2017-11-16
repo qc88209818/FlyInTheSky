@@ -3,7 +3,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 };
 var TiledMapObject = (function () {
     function TiledMapObject() {
-        this.params = [];
+        this.params = {};
     }
     return TiledMapObject;
 }());

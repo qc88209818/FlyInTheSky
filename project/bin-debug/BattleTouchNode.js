@@ -15,13 +15,12 @@ var fly;
 (function (fly) {
     var BattleTouchNode = (function (_super) {
         __extends(BattleTouchNode, _super);
-        function BattleTouchNode(parentNode, maxDist, forceScale) {
+        function BattleTouchNode(parentNode, maxDist) {
             var _this = _super.call(this) || this;
             _this.direct = [];
             _this.isTouchMove = false;
             _this.parentNode = parentNode;
             _this.maxDist = maxDist;
-            _this.forceScale = forceScale;
             _this.createTouchLayer();
             return _this;
         }

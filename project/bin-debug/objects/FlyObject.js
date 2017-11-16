@@ -48,8 +48,8 @@ var fly;
             }
             this.body.displays.push(child);
         };
-        FlyObject.prototype.onTrigger = function () {
-            console.log("FlyObject");
+        FlyObject.prototype.onTrigger = function (pid) {
+            console.log("FlyObject onTrigger: ", pid);
         };
         return FlyObject;
     }());

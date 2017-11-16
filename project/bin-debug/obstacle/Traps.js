@@ -40,9 +40,14 @@ var fly;
             png.scaleY = this.height / png.height;
             this.addChild(png);
         };
-        Traps.prototype.onTrigger = function () {
+        Traps.prototype.onTrigger = function (pid) {
             this.isDestroy = true;
-            this.objmgr.player.died(3);
+            this.objmgr.players.forEach(function (player) {
+                if (player.body.id == pid) {
+                    player.died(3);
+                    return;
+                }
+            });
         };
         return Traps;
     }(fly.FlyRect));

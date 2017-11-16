@@ -6,9 +6,9 @@ module fly {
 			return this.obj
 		}
 
-		player:Player
-		sprites:FlyObject[] = []		// 当前所有需要计算位置的精灵
 		scene:BattleScene
+		sprites:FlyObject[] = []		// 当前所有需要计算位置的精灵
+		players:Player[] = []
 	
 		public update(dt:number)
 		{
@@ -29,6 +29,24 @@ module fly {
 					this.sprites.pop()
 				}
 			}
+
+			let length2 = this.players.length
+			for(let i = 0; i < length2;)
+			{
+				if (!this.players[i].isDestroy)
+				{
+					this.players[i].updatePosition()
+					++i
+				}
+				else
+				{
+					--length2
+					this.players[i].indexOf = -1
+					this.players[i] = this.players[length2]
+					this.players[i].indexOf = i
+					this.players.pop()
+				}
+			}
 		}
 
 		public addSprite(obj:FlyObject)
@@ -42,16 +60,15 @@ module fly {
 			obj.isDestroy = true
 		}
 
-		public delSpriteImmediate(obj:FlyObject)
+		public addPlayer(obj:Player)
+		{
+			obj.indexOf = this.players.length
+			this.players.push(obj)
+		}
+
+		public delPlayer(obj:Player)
 		{
 			obj.isDestroy = true
-			
-			let index = obj.indexOf
-			this.sprites[index] = this.sprites[this.sprites.length-1]
-			this.sprites[index].indexOf = index
-			this.sprites.pop()
-
-			obj.indexOf = -1
 		}
 	}
 }

@@ -99,8 +99,7 @@ var Main = (function (_super) {
                 objectxml.children.forEach(function (properties) {
                     var propertiesxml = properties;
                     propertiesxml.children.forEach(function (property) {
-                        tmObj.params.push(property["$name"]);
-                        tmObj.params.push(property["$value"]);
+                        tmObj.params[property["$name"]] = property["$value"];
                     });
                 });
                 tiledMapObjs.push(tmObj);

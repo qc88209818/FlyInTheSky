@@ -87,15 +87,17 @@ var fly;
     var FlyParam = (function () {
         function FlyParam() {
         }
-        FlyParam.PlayerMaxPower = 240; // 人物最大能量
-        FlyParam.PlayerMinPower = 40; // 人物最小能量
-        FlyParam.PlayerInitPower = 100; // 人物初始能量
-        FlyParam.PlayerInitMass = 2.5; // 人物初始重量
-        FlyParam.PlayerStep = [81, 121, 181, 241]; // 变身阶段
-        FlyParam.PlayerTijiScale = [0.5, 1.0, 1.5, 2.0]; // 变身阶段
-        FlyParam.PlayerMassScale = [0.75, 1.0, 1.5, 2.0]; // 变身阶段
+        FlyParam.LayerScale = 0.5; // 屏幕缩放比例
+        FlyParam.forceScale = 1; // 力量因子
+        FlyParam.PlayerMaxPower = 300; // 人物最大能量
+        FlyParam.PlayerMinPower = 20; // 人物最小能量
+        FlyParam.PlayerInitPower = 150; // 人物初始能量
+        FlyParam.PlayerInitMass = 0.5; // 人物初始重量
+        FlyParam.PlayerStep = [61, 121, 181, 221, 261]; // 变身阶段
+        FlyParam.PlayerTijiScale = [0.5, 0.8, 1.0, 1.5, 2.0]; // 变身阶段
+        FlyParam.PlayerMassScale = [0.5, 0.8, 1.0, 1.5, 2.0]; // 变身阶段
         FlyParam.candy_power = 15; // 糖果能量
-        FlyParam.move_power = -1; // 移动消耗能力
+        FlyParam.move_power = -1; // 移动消耗能量
         return FlyParam;
     }());
     fly.FlyParam = FlyParam;

@@ -61,9 +61,9 @@ module fly {
 			this.body.displays.push(child)
 		}
 
-		public onTrigger()
+		public onTrigger(pid:number)
 		{
-			console.log("FlyObject")
+			console.log("FlyObject onTrigger: ", pid)
 		}
 	}
 }

@@ -6,6 +6,7 @@ module fly {
 		tiledMapObjs:TiledMapObject[]
 
 		objmgr:ObjectManager = ObjectManager.inst()
+		player:Player
 
 		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
@@ -20,8 +21,8 @@ module fly {
 			if (this.touchNode.isTouchMove)
 			{
 				let direct = this.touchNode.direct
-				let forceScale = this.touchNode.forceScale
-				this.objmgr.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.objmgr.player.body.position)
+				let forceScale = FlyParam.forceScale
+				this.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.player.body.position)
 			}
 
 			this.updatePower(dt)
@@ -45,22 +46,24 @@ module fly {
 			this.lastPowerTime += dt
 			if (this.lastPowerTime > 1)
 			{
-				if (p2.vec2.length(this.objmgr.player.body.velocity) > 3)
-				{
-					this.objmgr.player.changePower(this.objmgr.player.power + FlyParam.move_power)
-				}
-				else
-				{
-					this.objmgr.player.changePower(this.objmgr.player.power + FlyParam.move_power/2)
-				}
+				this.objmgr.players.forEach(player => {
+					if (p2.vec2.length(player.body.velocity) > 10)
+					{
+						player.changePower(player.power + FlyParam.move_power)
+					}
+					else
+					{
+						player.changePower(player.power + FlyParam.move_power/2)
+					}
+				})
 				this.lastPowerTime -= 1
 			}
 		}
 
 		private updateScene(dt:number)
 		{
-			this.baseLayer.x = -this.objmgr.player.body.position[0] + FlyConfig.stageWidth/2
-			this.baseLayer.y = -this.objmgr.player.body.position[1] + FlyConfig.stageHeight/2
+			this.baseLayer.x = -this.player.body.position[0]*FlyParam.LayerScale + FlyConfig.stageWidth/2
+			this.baseLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
 		}
 
 		public initScene(tiledMapObjs:TiledMapObject[])
@@ -70,6 +73,9 @@ module fly {
 			this.addChild(this.baseLayer)
 			this.addChild(this.uiLayer)
 			this.addChild(this.touchLayer)
+
+			this.baseLayer.scaleX = FlyParam.LayerScale
+			this.baseLayer.scaleY = FlyParam.LayerScale
 
 			this.createWorld()
 			this.createScene()
@@ -102,10 +108,11 @@ module fly {
 				if (obj.type == "player")
 				{
 					let player = new Player(obj.x, obj.y, obj.width)
-					this.addToWorld(player)
+					this.addPlayerToWorld(player)
 					if (obj.name == "self")
 					{
-						this.objmgr.player = player
+						player.setVisible(true)
+						this.player = player
 					}
 				}
 				else if (obj.type == "wall")
@@ -117,21 +124,14 @@ module fly {
 				{
 					let candy = new Candy(obj.x, obj.y, obj.width)
 					this.addToWorld(candy)
-
-					for(let i = 0; i < obj.params.length; i += 2)
-					{
-						if (obj.params[i] == "delta")
-						{
-							candy.setDelta(Number(obj.params[i+1]))
-						}
-					}
+					candy.setDelta(Number(obj.params["delta"]))
 				}
 			})
 		}
 
 		private createTouchLayer()
 		{
-			let touchNode = new BattleTouchNode(this, 150, 5)
+			let touchNode = new BattleTouchNode(this, 150)
 			this.touchNode = touchNode
 
 			this.touchLayer.addChild(this.touchNode)
@@ -149,20 +149,20 @@ module fly {
 		{
 			if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isProperty(bodyB.id))
 			{
-				this.triggerBody(bodyB.id)
+				this.triggerBody(bodyB.id, bodyA.id)
 			}
 			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isProperty(bodyA.id))
 			{
-				this.triggerBody(bodyA.id)
+				this.triggerBody(bodyA.id, bodyB.id)
 			}
 		}
 
-		private triggerBody(id:number)
+		private triggerBody(id:number, pid:number)
 		{
 			this.objmgr.sprites.forEach(value => {
 				if (value.body.id == id)
 				{
-					value.onTrigger()
+					value.onTrigger(pid)
 					if (value.isDestroy)
 					{
 						this.delFromWorld(value)
@@ -170,6 +170,16 @@ module fly {
 					return
 				}
 			})
+		}
+
+		public addPlayerToWorld(obj:Player)
+		{
+			this.world.addBody(obj.body)
+			obj.body.displays.forEach(value => { 
+				this.baseLayer.addChild(value)
+			})
+
+			this.objmgr.addPlayer(obj)
 		}
 
 		public addToWorld(obj:FlyObject)

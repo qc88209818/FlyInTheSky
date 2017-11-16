@@ -27,8 +27,8 @@ var fly;
         BattleScene.prototype.update = function (dt) {
             if (this.touchNode.isTouchMove) {
                 var direct = this.touchNode.direct;
-                var forceScale = this.touchNode.forceScale;
-                this.objmgr.player.body.applyForce([direct[0] * forceScale, direct[1] * forceScale], this.objmgr.player.body.position);
+                var forceScale = fly.FlyParam.forceScale;
+                this.player.body.applyForce([direct[0] * forceScale, direct[1] * forceScale], this.player.body.position);
             }
             this.updatePower(dt);
             this.updateScene(dt);
@@ -44,24 +44,28 @@ var fly;
         BattleScene.prototype.updatePower = function (dt) {
             this.lastPowerTime += dt;
             if (this.lastPowerTime > 1) {
-                if (p2.vec2.length(this.objmgr.player.body.velocity) > 3) {
-                    this.objmgr.player.changePower(this.objmgr.player.power + fly.FlyParam.move_power);
-                }
-                else {
-                    this.objmgr.player.changePower(this.objmgr.player.power + fly.FlyParam.move_power / 2);
-                }
+                this.objmgr.players.forEach(function (player) {
+                    if (p2.vec2.length(player.body.velocity) > 10) {
+                        player.changePower(player.power + fly.FlyParam.move_power);
+                    }
+                    else {
+                        player.changePower(player.power + fly.FlyParam.move_power / 2);
+                    }
+                });
                 this.lastPowerTime -= 1;
             }
         };
         BattleScene.prototype.updateScene = function (dt) {
-            this.baseLayer.x = -this.objmgr.player.body.position[0] + fly.FlyConfig.stageWidth / 2;
-            this.baseLayer.y = -this.objmgr.player.body.position[1] + fly.FlyConfig.stageHeight / 2;
+            this.baseLayer.x = -this.player.body.position[0] * fly.FlyParam.LayerScale + fly.FlyConfig.stageWidth / 2;
+            this.baseLayer.y = -this.player.body.position[1] * fly.FlyParam.LayerScale + fly.FlyConfig.stageHeight / 2;
         };
         BattleScene.prototype.initScene = function (tiledMapObjs) {
             this.tiledMapObjs = tiledMapObjs;
             this.addChild(this.baseLayer);
             this.addChild(this.uiLayer);
             this.addChild(this.touchLayer);
+            this.baseLayer.scaleX = fly.FlyParam.LayerScale;
+            this.baseLayer.scaleY = fly.FlyParam.LayerScale;
             this.createWorld();
             this.createScene();
             this.createTouchLayer();
@@ -86,9 +90,10 @@ var fly;
             this.tiledMapObjs.forEach(function (obj) {
                 if (obj.type == "player") {
                     var player = new fly.Player(obj.x, obj.y, obj.width);
-                    _this.addToWorld(player);
+                    _this.addPlayerToWorld(player);
                     if (obj.name == "self") {
-                        _this.objmgr.player = player;
+                        player.setVisible(true);
+                        _this.player = player;
                     }
                 }
                 else if (obj.type == "wall") {
@@ -98,16 +103,12 @@ var fly;
                 else if (obj.type == "candy") {
                     var candy = new fly.Candy(obj.x, obj.y, obj.width);
                     _this.addToWorld(candy);
-                    for (var i = 0; i < obj.params.length; i += 2) {
-                        if (obj.params[i] == "delta") {
-                            candy.setDelta(Number(obj.params[i + 1]));
-                        }
-                    }
+                    candy.setDelta(Number(obj.params["delta"]));
                 }
             });
         };
         BattleScene.prototype.createTouchLayer = function () {
-            var touchNode = new fly.BattleTouchNode(this, 150, 5);
+            var touchNode = new fly.BattleTouchNode(this, 150);
             this.touchNode = touchNode;
             this.touchLayer.addChild(this.touchNode);
         };
@@ -118,23 +119,31 @@ var fly;
         };
         BattleScene.prototype.onContact = function (bodyA, bodyB) {
             if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isProperty(bodyB.id)) {
-                this.triggerBody(bodyB.id);
+                this.triggerBody(bodyB.id, bodyA.id);
             }
             else if (fly.FlyConfig.isPlayer(bodyB.id) && fly.FlyConfig.isProperty(bodyA.id)) {
-                this.triggerBody(bodyA.id);
+                this.triggerBody(bodyA.id, bodyB.id);
             }
         };
-        BattleScene.prototype.triggerBody = function (id) {
+        BattleScene.prototype.triggerBody = function (id, pid) {
             var _this = this;
             this.objmgr.sprites.forEach(function (value) {
                 if (value.body.id == id) {
-                    value.onTrigger();
+                    value.onTrigger(pid);
                     if (value.isDestroy) {
                         _this.delFromWorld(value);
                     }
                     return;
                 }
             });
+        };
+        BattleScene.prototype.addPlayerToWorld = function (obj) {
+            var _this = this;
+            this.world.addBody(obj.body);
+            obj.body.displays.forEach(function (value) {
+                _this.baseLayer.addChild(value);
+            });
+            this.objmgr.addPlayer(obj);
         };
         BattleScene.prototype.addToWorld = function (obj) {
             var _this = this;

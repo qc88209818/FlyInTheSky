@@ -34,10 +34,17 @@ module fly {
 			this.addChild(png)
 		}
 
-		public onTrigger()
+		public onTrigger(pid:number)
 		{
 			this.isDestroy = true
-			this.objmgr.player.died(3)
+
+			this.objmgr.players.forEach(player => {
+				if (player.body.id == pid)
+				{
+					player.died(3)
+					return
+				}
+			})
 		}
 	}
 }

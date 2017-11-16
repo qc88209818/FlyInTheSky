@@ -2,18 +2,16 @@ module fly {
 	export class BattleTouchNode extends egret.DisplayObjectContainer {
 		virtualBg:egret.Bitmap
 		virtualBtn:egret.Bitmap
-		forceScale:number		// 加速因子
 		maxDist:number			// 最大移动距离
 		direct:number[] = []
 		isTouchMove:boolean = false
 
 		parentNode:egret.DisplayObjectContainer
 
-		public constructor(parentNode:egret.DisplayObjectContainer, maxDist:number, forceScale:number) {
+		public constructor(parentNode:egret.DisplayObjectContainer, maxDist:number) {
 			super()
 			this.parentNode = parentNode
 			this.maxDist = maxDist
-			this.forceScale = forceScale
 
 			this.createTouchLayer()
 		}

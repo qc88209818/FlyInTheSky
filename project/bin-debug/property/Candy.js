@@ -30,12 +30,11 @@ var fly;
             });
             _this.initShape(_this.radius);
             _this.setGroupAndMask(fly.ObjectGroup.Property, fly.ObjectMask.Property);
-            _this.initBitmap();
             _this.updatePosition();
             return _this;
         }
-        Candy.prototype.initBitmap = function () {
-            var png = fly.FlyTools.createBitmapByName("candy_png");
+        Candy.prototype.initBitmap = function (path) {
+            var png = fly.FlyTools.createBitmapByName(path);
             png.scaleX = 2 * this.radius / png.width;
             png.scaleY = 2 * this.radius / png.height;
             png.anchorOffsetX = png.width / 2;
@@ -45,11 +44,13 @@ var fly;
         Candy.prototype.onTrigger = function (pid) {
             this.isDestroy = true;
             // delta后创建新的
-            egret.setTimeout(function () {
-                var candy = new Candy(this.x, this.y, this.radius);
-                candy.setDelta(this.delta);
-                this.objmgr.scene.addToWorld(candy);
-            }, this, this.delta * 1000);
+            if (this.delta > 0) {
+                egret.setTimeout(function () {
+                    var candy = new Candy(this.x, this.y, this.radius);
+                    candy.setDelta(this.delta);
+                    this.objmgr.scene.addToWorld(candy);
+                }, this, this.delta * 1000);
+            }
             // 减少能量
             this.objmgr.players.forEach(function (value) {
                 if (value.body.id == pid) {

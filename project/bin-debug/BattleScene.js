@@ -67,10 +67,8 @@ var fly;
             this.baseLayer.scaleX = fly.FlyParam.LayerScale;
             this.baseLayer.scaleY = fly.FlyParam.LayerScale;
             var png = fly.FlyTools.createBitmapByName("background_jpg");
-            png.scaleX = fly.FlyConfig.width / 2;
-            png.scaleY = fly.FlyConfig.height / 2;
-            png.scaleX = fly.FlyConfig.width / png.width * 1.2;
-            png.scaleY = fly.FlyConfig.height / png.height * 1.2;
+            png.scaleX = fly.FlyConfig.width / png.width;
+            png.scaleY = fly.FlyConfig.height / png.height;
             this.baseLayer.addChild(png);
             this.createWorld();
             this.createScene();
@@ -122,8 +120,11 @@ var fly;
                 }
                 else if (obj.type == "candy") {
                     var candy = new fly.Candy(obj.x, obj.y, obj.width / 2);
-                    _this.addToWorld(candy);
+                    if (obj.params["path"]) {
+                        candy.initBitmap(obj.params["path"]);
+                    }
                     candy.setDelta(Number(obj.params["delta"]));
+                    _this.addToWorld(candy);
                 }
             });
         };

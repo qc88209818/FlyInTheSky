@@ -21,14 +21,13 @@ module fly {
 			})
 			this.initShape(this.radius)
 			this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property)
-
-			this.initBitmap()
+			
 			this.updatePosition()
 		}
 
-		private initBitmap()
+		public initBitmap(path:string)
 		{
-			let png = FlyTools.createBitmapByName("candy_png")
+			let png = FlyTools.createBitmapByName(path)
 			png.scaleX = 2 * this.radius/png.width
 			png.scaleY = 2 * this.radius/png.height
 			png.anchorOffsetX = png.width/2
@@ -41,12 +40,15 @@ module fly {
 			this.isDestroy = true
 
 			// delta后创建新的
-			egret.setTimeout(function () {              
-                let candy = new Candy(this.x, this.y, this.radius)
-				candy.setDelta(this.delta)
-				this.objmgr.scene.addToWorld(candy)
-			}, this, this.delta*1000); 
-
+			if (this.delta > 0)
+			{
+				egret.setTimeout(function () {              
+					let candy = new Candy(this.x, this.y, this.radius)
+					candy.setDelta(this.delta)
+					this.objmgr.scene.addToWorld(candy)
+				}, this, this.delta*1000); 
+			}
+			
 			// 减少能量
 			this.objmgr.players.forEach(value => {
 				if (value.body.id == pid)

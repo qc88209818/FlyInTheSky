@@ -146,8 +146,12 @@ module fly {
 				else if (obj.type == "candy")
 				{
 					let candy = new Candy(obj.x, obj.y, obj.width/2)
-					this.addToWorld(candy)
+					if (obj.params["path"])
+					{
+						candy.initBitmap(obj.params["path"])
+					}
 					candy.setDelta(Number(obj.params["delta"]))
+					this.addToWorld(candy)
 				}
 			})
 		}

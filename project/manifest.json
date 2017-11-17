@@ -11,15 +11,15 @@
 	],
 	"game": [
 		"bin-debug/objects/FlyObject.js",
-		"bin-debug/objects/FlyRect.js",
 		"bin-debug/objects/FlyCircle.js",
+		"bin-debug/objects/FlyRect.js",
 		"bin-debug/ObjectManager.js",
 		"bin-debug/Player.js",
 		"bin-debug/TiledMapObject.js",
 		"bin-debug/block/BlockCircle.js",
 		"bin-debug/block/BlockRect.js",
 		"bin-debug/block/Wall.js",
-		"bin-debug/ui/UIProgress.js",
+		"bin-debug/BattleTouchNode.js",
 		"bin-debug/objects/FlyConfig.js",
 		"bin-debug/BattleScene.js",
 		"bin-debug/Main.js",
@@ -27,6 +27,6 @@
 		"bin-debug/obstacle/Traps.js",
 		"bin-debug/property/Candy.js",
 		"bin-debug/ui/UILoading.js",
-		"bin-debug/BattleTouchNode.js"
+		"bin-debug/ui/UIProgress.js"
 	]
 }

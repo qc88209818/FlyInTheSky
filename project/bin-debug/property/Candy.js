@@ -17,8 +17,8 @@ var fly;
         __extends(Candy, _super);
         function Candy(x, y, radius) {
             var _this = _super.call(this) || this;
-            _this.x = x;
-            _this.y = y;
+            _this.x = x + radius;
+            _this.y = y + radius;
             _this.radius = radius;
             _this.delta = 0;
             _this.initBody({

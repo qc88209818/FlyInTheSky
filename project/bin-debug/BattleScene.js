@@ -66,6 +66,12 @@ var fly;
             this.addChild(this.touchLayer);
             this.baseLayer.scaleX = fly.FlyParam.LayerScale;
             this.baseLayer.scaleY = fly.FlyParam.LayerScale;
+            var png = fly.FlyTools.createBitmapByName("background_jpg");
+            png.scaleX = fly.FlyConfig.width / 2;
+            png.scaleY = fly.FlyConfig.height / 2;
+            png.scaleX = fly.FlyConfig.width / png.width * 1.2;
+            png.scaleY = fly.FlyConfig.height / png.height * 1.2;
+            this.baseLayer.addChild(png);
             this.createWorld();
             this.createScene();
             this.createTouchLayer();
@@ -89,7 +95,7 @@ var fly;
             this.objmgr.scene = this;
             this.tiledMapObjs.forEach(function (obj) {
                 if (obj.type == "player") {
-                    var player = new fly.Player(obj.x, obj.y, obj.width);
+                    var player = new fly.Player(obj.x, obj.y, obj.width / 2);
                     _this.addPlayerToWorld(player);
                     if (obj.name == "self") {
                         player.setVisible(true);
@@ -100,8 +106,22 @@ var fly;
                     var wall = new fly.Wall(obj.x, obj.y, obj.width, obj.height);
                     _this.addToWorld(wall);
                 }
+                else if (obj.type == "blockrect") {
+                    var block = new fly.BlockRect(obj.x, obj.y, obj.width, obj.height, Number(obj.params["type"]));
+                    if (obj.params["path"]) {
+                        block.initBitmap(obj.params["path"]);
+                    }
+                    _this.addToWorld(block);
+                }
+                else if (obj.type == "blockcircle") {
+                    var block = new fly.BlockCircle(obj.x, obj.y, obj.width / 2, Number(obj.params["type"]));
+                    if (obj.params["path"]) {
+                        block.initBitmap(obj.params["path"]);
+                    }
+                    _this.addToWorld(block);
+                }
                 else if (obj.type == "candy") {
-                    var candy = new fly.Candy(obj.x, obj.y, obj.width);
+                    var candy = new fly.Candy(obj.x, obj.y, obj.width / 2);
                     _this.addToWorld(candy);
                     candy.setDelta(Number(obj.params["delta"]));
                 }

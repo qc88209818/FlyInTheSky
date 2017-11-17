@@ -77,6 +77,11 @@ module fly {
 			this.baseLayer.scaleX = FlyParam.LayerScale
 			this.baseLayer.scaleY = FlyParam.LayerScale
 
+			let png = FlyTools.createBitmapByName("background_jpg")
+			png.scaleX = FlyConfig.width/png.width
+			png.scaleY = FlyConfig.height/png.height
+			this.baseLayer.addChild(png)
+
 			this.createWorld()
 			this.createScene()
 			this.createTouchLayer()
@@ -107,7 +112,7 @@ module fly {
 			this.tiledMapObjs.forEach(obj => {
 				if (obj.type == "player")
 				{
-					let player = new Player(obj.x, obj.y, obj.width)
+					let player = new Player(obj.x, obj.y, obj.width/2)
 					this.addPlayerToWorld(player)
 					if (obj.name == "self")
 					{
@@ -120,9 +125,27 @@ module fly {
 					let wall = new Wall(obj.x, obj.y, obj.width, obj.height)
 					this.addToWorld(wall)
 				}
+				else if (obj.type == "blockrect")
+				{
+					let block = new BlockRect(obj.x, obj.y, obj.width, obj.height, Number(obj.params["type"]))
+					if (obj.params["path"])
+					{
+						block.initBitmap(obj.params["path"])
+					}
+					this.addToWorld(block)
+				}
+				else if (obj.type == "blockcircle")
+				{
+					let block = new BlockCircle(obj.x, obj.y, obj.width/2, Number(obj.params["type"]))
+					if (obj.params["path"])
+					{
+						block.initBitmap(obj.params["path"])
+					}
+					this.addToWorld(block)
+				}
 				else if (obj.type == "candy")
 				{
-					let candy = new Candy(obj.x, obj.y, obj.width)
+					let candy = new Candy(obj.x, obj.y, obj.width/2)
 					this.addToWorld(candy)
 					candy.setDelta(Number(obj.params["delta"]))
 				}

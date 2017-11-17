@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "virtual_button_png,virtual_background_png,candy_png,mushroom_png,player_down_png,HP_bg_png,HP_png,hp_bg_png,hp_png,tree_1_png,tree_2_png,tree_3_png,tree_4_png",
+			"keys": "virtual_button_png,virtual_background_png,candy_png,mushroom_png,player_down_png,HP_bg_png,HP_png,hp_bg_png,hp_png,tree_1_png,tree_2_png,tree_3_png,tree_4_png,background_jpg",
 			"name": "preload"
 		}
 	],
@@ -70,6 +70,11 @@
 			"name": "tree_4_png",
 			"type": "image",
 			"url": "assets/tree_4.png"
+		},
+		{
+			"name": "background_jpg",
+			"type": "image",
+			"url": "assets/background.jpg"
 		}
 	]
 }

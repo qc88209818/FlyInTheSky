@@ -18,8 +18,8 @@ var fly;
         function Player(x, y, radius) {
             var _this = _super.call(this) || this;
             _this.step = -1;
-            _this.x = x;
-            _this.y = y;
+            _this.x = x + radius;
+            _this.y = y + radius;
             _this.radius = radius;
             _this.power = fly.FlyParam.PlayerInitPower;
             _this.mass = fly.FlyParam.PlayerInitMass;

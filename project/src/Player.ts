@@ -12,8 +12,8 @@ module fly {
 
 		public constructor(x:number, y:number, radius:number) {
 			super()
-			this.x = x
-			this.y = y
+			this.x = x + radius
+			this.y = y + radius
 			this.radius = radius
 			this.power = FlyParam.PlayerInitPower
 			this.mass = FlyParam.PlayerInitMass

@@ -20,9 +20,9 @@ module fly {
 		{
 			if (this.touchNode.isTouchMove)
 			{
-				let direct = this.touchNode.direct
+				let normal = this.touchNode.normal
 				let forceScale = FlyParam.forceScale
-				this.player.body.applyForce([direct[0]*forceScale, direct[1]*forceScale], this.player.body.position)
+				this.player.setVelocity(normal[0]*forceScale, normal[1]*forceScale)
 			}
 
 			this.updatePower(dt)
@@ -47,14 +47,7 @@ module fly {
 			if (this.lastPowerTime > 1)
 			{
 				this.objmgr.players.forEach(player => {
-					if (p2.vec2.length(player.body.velocity) > 10)
-					{
-						player.changePower(player.power + FlyParam.move_power)
-					}
-					else
-					{
-						player.changePower(player.power + FlyParam.move_power/2)
-					}
+					player.changePower(player.power + FlyParam.move_power)
 				})
 				this.lastPowerTime -= 1
 			}
@@ -92,6 +85,7 @@ module fly {
 			let world = new p2.World({
 				gravity:[0, 0]
 			})
+			world.applyDamping = true
 			world.sleepMode = p2.World.BODY_SLEEPING
 			this.world = world
 
@@ -127,30 +121,32 @@ module fly {
 				}
 				else if (obj.type == "blockrect")
 				{
-					let block = new BlockRect(obj.x, obj.y, obj.width, obj.height, Number(obj.params["type"]))
-					if (obj.params["path"])
+					let block = new BlockRect(obj.x, obj.y, obj.width, obj.height, 
 					{
-						block.initBitmap(obj.params["path"])
-					}
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, damping:Number(obj.params["damping"])
+					})
 					this.addToWorld(block)
 				}
 				else if (obj.type == "blockcircle")
 				{
-					let block = new BlockCircle(obj.x, obj.y, obj.width/2, Number(obj.params["type"]))
-					if (obj.params["path"])
+					let block = new BlockCircle(obj.x, obj.y, obj.width/2, 
 					{
-						block.initBitmap(obj.params["path"])
-					}
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, damping:Number(obj.params["damping"])
+					})
 					this.addToWorld(block)
 				}
 				else if (obj.type == "candy")
 				{
-					let candy = new Candy(obj.x, obj.y, obj.width/2)
-					if (obj.params["path"])
+					let candy = new Candy(obj.x, obj.y, obj.width/2, 
 					{
-						candy.initBitmap(obj.params["path"])
-					}
-					candy.setDelta(Number(obj.params["delta"]))
+						path:obj.params["path"]
+						, delta:Number(obj.params["delta"])
+						, power:Number(obj.params["power"])
+					})
 					this.addToWorld(candy)
 				}
 			})

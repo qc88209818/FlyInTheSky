@@ -3,14 +3,14 @@ module fly {
 		x:number
 		y:number
 		radius:number
-		delta:number
+		op:any
 		
-		public constructor(x:number, y:number, radius:number) {
+		public constructor(x:number, y:number, radius:number, op?) {
 			super()
 			this.x = x + radius
 			this.y = y + radius
 			this.radius = radius
-			this.delta = 0
+			this.op  = op
 
 			this.initBody({
 				id:FlyConfig.getPropertyId()
@@ -22,11 +22,14 @@ module fly {
 			this.initShape(this.radius)
 			this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property)
 			
+			this.initBitmap(op.path)
 			this.updatePosition()
 		}
 
-		public initBitmap(path:string)
+		private initBitmap(path:string)
 		{
+			if (path == null) return;
+			
 			let png = FlyTools.createBitmapByName(path)
 			png.scaleX = 2 * this.radius/png.width
 			png.scaleY = 2 * this.radius/png.height
@@ -40,28 +43,24 @@ module fly {
 			this.isDestroy = true
 
 			// delta后创建新的
-			if (this.delta > 0)
+			let delta = this.op.delta
+			if (delta > 0)
 			{
 				egret.setTimeout(function () {              
-					let candy = new Candy(this.x, this.y, this.radius)
-					candy.setDelta(this.delta)
+					let candy = new Candy(this.x, this.y, this.radius, this.op)
 					this.objmgr.scene.addToWorld(candy)
-				}, this, this.delta*1000); 
+				}, this, delta*1000); 
 			}
 			
 			// 减少能量
+			let power = this.op.power
 			this.objmgr.players.forEach(value => {
 				if (value.body.id == pid)
 				{
-					value.addPower(FlyParam.candy_power)
+					value.addPower(power || FlyParam.candy_power)
 					return
 				}
 			})
-		}
-
-		public setDelta(delta:number)
-		{
-			this.delta = delta
 		}
 	}
 }

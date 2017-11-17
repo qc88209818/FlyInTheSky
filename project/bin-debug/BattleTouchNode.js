@@ -18,6 +18,7 @@ var fly;
         function BattleTouchNode(parentNode, maxDist) {
             var _this = _super.call(this) || this;
             _this.direct = [];
+            _this.normal = [];
             _this.isTouchMove = false;
             _this.parentNode = parentNode;
             _this.maxDist = maxDist;
@@ -70,14 +71,13 @@ var fly;
             var from = [this.virtualBg.x, this.virtualBg.y];
             var to = [evt.stageX, evt.stageY];
             var direct = [(to[0] - from[0]), (to[1] - from[1])];
-            var normal = [];
-            p2.vec2.normalize(normal, direct);
+            p2.vec2.normalize(this.normal, direct);
             var dist = p2.vec2.distance(to, from);
             if (dist > this.maxDist) {
                 dist = this.maxDist;
             }
-            this.direct[0] = normal[0] * dist;
-            this.direct[1] = normal[1] * dist;
+            this.direct[0] = this.normal[0] * dist;
+            this.direct[1] = this.normal[1] * dist;
             this.virtualBtn.x = from[0] + this.direct[0];
             this.virtualBtn.y = from[1] + this.direct[1];
             this.isTouchMove = true;

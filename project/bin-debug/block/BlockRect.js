@@ -16,7 +16,7 @@ var fly;
     var BlockRect = (function (_super) {
         __extends(BlockRect, _super);
         // 0:STATIC  1:DYNAMIC   2:KINEMATIC
-        function BlockRect(x, y, width, height, type) {
+        function BlockRect(x, y, width, height, op) {
             var _this = _super.call(this) || this;
             _this.x = x + width / 2;
             _this.y = y + height / 2;
@@ -25,16 +25,20 @@ var fly;
             _this.initBody({
                 id: fly.FlyConfig.getBlockId(),
                 mass: 1,
-                type: type || p2.Body.STATIC,
+                type: op.type || p2.Body.STATIC,
                 fixedRotation: true,
-                position: [_this.x, _this.y]
+                position: [_this.x, _this.y],
+                damping: op.damping
             });
             _this.initShape(_this.width, _this.height);
             _this.setGroupAndMask(fly.ObjectGroup.Block, fly.ObjectMask.Block);
+            _this.initBitmap(op.path);
             _this.updatePosition();
             return _this;
         }
         BlockRect.prototype.initBitmap = function (path) {
+            if (path == null)
+                return;
             var png = fly.FlyTools.createBitmapByName(path);
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;

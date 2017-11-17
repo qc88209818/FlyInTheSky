@@ -28,7 +28,8 @@ var fly;
                 mass: _this.mass,
                 type: p2.Body.DYNAMIC,
                 fixedRotation: true,
-                position: [x, y]
+                position: [x, y],
+                damping: 0.8
             });
             _this.initShape(_this.radius);
             _this.setGroupAndMask(fly.ObjectGroup.Player, fly.ObjectMask.Player);
@@ -68,6 +69,9 @@ var fly;
                 this.died(2);
                 return;
             }
+        };
+        Player.prototype.setVelocity = function (x, y) {
+            this.body.velocity = [x / this.body.mass, y / this.body.mass];
         };
         Player.prototype.initBitmap = function () {
             var png = fly.FlyTools.createBitmapByName("player_down_png");

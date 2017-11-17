@@ -4,6 +4,7 @@ module fly {
 		virtualBtn:egret.Bitmap
 		maxDist:number			// 最大移动距离
 		direct:number[] = []
+		normal:number[] = []
 		isTouchMove:boolean = false
 
 		parentNode:egret.DisplayObjectContainer
@@ -72,8 +73,7 @@ module fly {
 			let to = [evt.stageX, evt.stageY]
 
 			let direct = [(to[0]-from[0]), (to[1]-from[1])]
-			let normal = []
-			p2.vec2.normalize(normal, direct)
+			p2.vec2.normalize(this.normal, direct)
 
 			let dist = p2.vec2.distance(to, from)
 			if (dist > this.maxDist) 
@@ -81,8 +81,8 @@ module fly {
 				dist = this.maxDist
 			}
 
-			this.direct[0] = normal[0]*dist
-			this.direct[1] = normal[1]*dist
+			this.direct[0] = this.normal[0]*dist
+			this.direct[1] = this.normal[1]*dist
 
 			this.virtualBtn.x = from[0] + this.direct[0]
 			this.virtualBtn.y = from[1] + this.direct[1]

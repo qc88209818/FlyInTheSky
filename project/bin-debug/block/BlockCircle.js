@@ -16,7 +16,7 @@ var fly;
     var BlockCircle = (function (_super) {
         __extends(BlockCircle, _super);
         // 0:STATIC  1:DYNAMIC   2:KINEMATIC
-        function BlockCircle(x, y, radius, type) {
+        function BlockCircle(x, y, radius, op) {
             var _this = _super.call(this) || this;
             _this.x = x + radius;
             _this.y = y + radius;
@@ -24,16 +24,20 @@ var fly;
             _this.initBody({
                 id: fly.FlyConfig.getBlockId(),
                 mass: 1,
-                type: type || p2.Body.STATIC,
+                type: op.type || p2.Body.STATIC,
                 fixedRotation: true,
-                position: [_this.x, _this.y]
+                position: [_this.x, _this.y],
+                damping: op.damping
             });
             _this.initShape(_this.radius);
             _this.setGroupAndMask(fly.ObjectGroup.Block, fly.ObjectMask.Block);
+            _this.initBitmap(op.path);
             _this.updatePosition();
             return _this;
         }
         BlockCircle.prototype.initBitmap = function (path) {
+            if (path == null)
+                return;
             var png = fly.FlyTools.createBitmapByName(path);
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;

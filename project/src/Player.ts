@@ -24,6 +24,7 @@ module fly {
 				, type:p2.Body.DYNAMIC
 				, fixedRotation:true
 				, position:[x, y]
+				, damping:0.8
 			})
 			this.initShape(this.radius)
 			this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player)
@@ -80,6 +81,11 @@ module fly {
 				this.died(2)
 				return
 			}
+		}
+
+		public setVelocity(x:number, y:number)
+		{
+			this.body.velocity = [x/this.body.mass, y/this.body.mass]
 		}
 
 		private initBitmap()

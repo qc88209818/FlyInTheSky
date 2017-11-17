@@ -26,9 +26,9 @@ var fly;
         }
         BattleScene.prototype.update = function (dt) {
             if (this.touchNode.isTouchMove) {
-                var direct = this.touchNode.direct;
+                var normal = this.touchNode.normal;
                 var forceScale = fly.FlyParam.forceScale;
-                this.player.body.applyForce([direct[0] * forceScale, direct[1] * forceScale], this.player.body.position);
+                this.player.setVelocity(normal[0] * forceScale, normal[1] * forceScale);
             }
             this.updatePower(dt);
             this.updateScene(dt);
@@ -45,12 +45,7 @@ var fly;
             this.lastPowerTime += dt;
             if (this.lastPowerTime > 1) {
                 this.objmgr.players.forEach(function (player) {
-                    if (p2.vec2.length(player.body.velocity) > 10) {
-                        player.changePower(player.power + fly.FlyParam.move_power);
-                    }
-                    else {
-                        player.changePower(player.power + fly.FlyParam.move_power / 2);
-                    }
+                    player.changePower(player.power + fly.FlyParam.move_power);
                 });
                 this.lastPowerTime -= 1;
             }
@@ -78,6 +73,7 @@ var fly;
             var world = new p2.World({
                 gravity: [0, 0]
             });
+            world.applyDamping = true;
             world.sleepMode = p2.World.BODY_SLEEPING;
             this.world = world;
             //添加帧事件侦听
@@ -105,25 +101,27 @@ var fly;
                     _this.addToWorld(wall);
                 }
                 else if (obj.type == "blockrect") {
-                    var block = new fly.BlockRect(obj.x, obj.y, obj.width, obj.height, Number(obj.params["type"]));
-                    if (obj.params["path"]) {
-                        block.initBitmap(obj.params["path"]);
-                    }
+                    var block = new fly.BlockRect(obj.x, obj.y, obj.width, obj.height, {
+                        path: obj.params["path"],
+                        type: Number(obj.params["type"]),
+                        damping: Number(obj.params["damping"])
+                    });
                     _this.addToWorld(block);
                 }
                 else if (obj.type == "blockcircle") {
-                    var block = new fly.BlockCircle(obj.x, obj.y, obj.width / 2, Number(obj.params["type"]));
-                    if (obj.params["path"]) {
-                        block.initBitmap(obj.params["path"]);
-                    }
+                    var block = new fly.BlockCircle(obj.x, obj.y, obj.width / 2, {
+                        path: obj.params["path"],
+                        type: Number(obj.params["type"]),
+                        damping: Number(obj.params["damping"])
+                    });
                     _this.addToWorld(block);
                 }
                 else if (obj.type == "candy") {
-                    var candy = new fly.Candy(obj.x, obj.y, obj.width / 2);
-                    if (obj.params["path"]) {
-                        candy.initBitmap(obj.params["path"]);
-                    }
-                    candy.setDelta(Number(obj.params["delta"]));
+                    var candy = new fly.Candy(obj.x, obj.y, obj.width / 2, {
+                        path: obj.params["path"],
+                        delta: Number(obj.params["delta"]),
+                        power: Number(obj.params["power"])
+                    });
                     _this.addToWorld(candy);
                 }
             });

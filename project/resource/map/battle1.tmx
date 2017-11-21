@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="400" height="400" tilewidth="10" tileheight="10" nextobjectid="87">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="400" height="400" tilewidth="10" tileheight="10" nextobjectid="85">
  <objectgroup name="wall">
   <object id="1" name="wall" type="wall" x="0" y="0" width="50" height="4000"/>
   <object id="2" name="wall" type="wall" x="3950" y="0" width="50" height="4000"/>
@@ -9,7 +9,7 @@
   <object id="16" name="wall" type="wall" x="1000" y="2000" width="800" height="50"/>
   <object id="17" name="wall" type="wall" x="2000" y="2000" width="800" height="50"/>
   <object id="18" name="wall" type="wall" x="3000" y="2000" width="1000" height="50"/>
-  <object id="59" name="wall" type="wall" x="731.289" y="-748.869" width="200" height="50"/>
+  <object id="59" name="wall" type="wall" x="940" y="-277" width="200" height="50"/>
  </objectgroup>
  <objectgroup name="block">
   <object id="56" name="blockcircle" type="blockcircle" x="322" y="-286" width="100" height="100">
@@ -18,7 +18,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="57" name="blockrect" type="blockrect" x="827.488" y="-276.926" width="100" height="100">
+  <object id="57" name="blockrect" type="blockrect" x="646" y="-286" width="100" height="100">
    <properties>
     <property name="path" value=""/>
     <property name="type" type="int" value="0"/>
@@ -31,15 +31,9 @@
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="86" name="bed" type="blockrect" x="165.191" y="187.564" width="400" height="800">
-   <properties>
-    <property name="path" value="bed2_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="candy">
-  <object id="19" name="candy" type="candy" x="907.985" y="1388.93" width="100" height="100">
+  <object id="19" name="candy" type="candy" x="300" y="300" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
@@ -152,7 +146,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="55" name="candy" type="candy" x="69.5209" y="-721.572" width="100" height="100">
+  <object id="55" name="candy" type="candy" x="6" y="-286" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
@@ -161,7 +155,7 @@
   </object>
  </objectgroup>
  <objectgroup name="player">
-  <object id="29" name="self" type="player" x="1840.93" y="1991.83" width="120" height="120">
+  <object id="29" name="self" type="player" x="1850" y="2500" width="120" height="120">
    <ellipse/>
   </object>
   <object id="32" name="player" type="player" x="800" y="1000" width="120" height="120">

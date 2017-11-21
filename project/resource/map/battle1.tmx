@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="400" height="400" tilewidth="10" tileheight="10" nextobjectid="87">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="400" height="400" tilewidth="10" tileheight="10" nextobjectid="91">
  <objectgroup name="wall">
   <object id="1" name="wall" type="wall" x="0" y="0" width="50" height="4000"/>
   <object id="2" name="wall" type="wall" x="3950" y="0" width="50" height="4000"/>
   <object id="8" name="wall" type="wall" x="0" y="0" width="4000" height="50"/>
-  <object id="9" name="wall" type="wall" x="0" y="3950" width="4000" height="50"/>
-  <object id="14" name="wall" type="wall" x="0" y="2000" width="800" height="50"/>
-  <object id="16" name="wall" type="wall" x="1000" y="2000" width="800" height="50"/>
+  <object id="9" name="wall" type="wall" x="9.65251" y="3969.31" width="4000" height="50"/>
+  <object id="14" name="wall" type="wall" x="59.1716" y="979.29" width="999.704" height="50"/>
+  <object id="16" name="wall" type="wall" x="1007.4" y="69.5266" width="50" height="715.68"/>
   <object id="17" name="wall" type="wall" x="2000" y="2000" width="800" height="50"/>
   <object id="18" name="wall" type="wall" x="3000" y="2000" width="1000" height="50"/>
   <object id="59" name="wall" type="wall" x="731.289" y="-748.869" width="200" height="50"/>
+  <object id="90" name="wall" type="wall" x="1491.27" y="71.1518" width="50" height="708.288"/>
  </objectgroup>
  <objectgroup name="block">
   <object id="56" name="blockcircle" type="blockcircle" x="322" y="-286" width="100" height="100">
@@ -18,28 +19,46 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="57" name="blockrect" type="blockrect" x="827.488" y="-276.926" width="100" height="100">
+  <object id="57" name="toilet" type="blockrect" x="1159.58" y="100.293" width="218.343" height="292.308">
    <properties>
-    <property name="path" value=""/>
+    <property name="path" value="toilet2_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="62" name="blockrect" type="blockrect" x="1310" y="558" width="200" height="200">
+  <object id="62" name="blockrect" type="blockrect" x="2471.24" y="491.432" width="200" height="200">
    <properties>
     <property name="damping" value="0.9"/>
     <property name="path" value="tree_1_png"/>
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="86" name="bed" type="blockrect" x="165.191" y="187.564" width="400" height="800">
+  <object id="86" name="bed" type="blockrect" x="3042.41" y="669.108" width="400" height="496.248">
    <properties>
     <property name="path" value="bed2_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
+  <object id="87" name="shower_t" type="blockrect" x="586.094" y="105.325" width="240.533" height="203.55">
+   <properties>
+    <property name="path" value="shower3_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="88" name="blockrect" type="blockrect" x="844.97" y="-301.479" width="100" height="100">
+   <properties>
+    <property name="path" value=""/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="89" name="bathtub" type="blockrect" x="134.911" y="97.929" width="284.911" height="551.183">
+   <properties>
+    <property name="path" value="bathtub22_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="candy">
-  <object id="19" name="candy" type="candy" x="907.985" y="1388.93" width="100" height="100">
+  <object id="19" name="candy" type="candy" x="1706.8" y="2638.93" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
@@ -67,14 +86,14 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="23" name="candy" type="candy" x="400" y="1800" width="100" height="100">
+  <object id="23" name="candy" type="candy" x="2855.62" y="2591.42" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="24" name="candy" type="candy" x="1400" y="2200" width="100" height="100">
+  <object id="24" name="candy" type="candy" x="1400" y="2555.03" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
@@ -96,7 +115,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="37" name="candy" type="candy" x="1400" y="1800" width="100" height="100">
+  <object id="37" name="candy" type="candy" x="3249.11" y="2887.28" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
@@ -117,14 +136,14 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="40" name="candy" type="candy" x="400" y="2200" width="100" height="100">
+  <object id="40" name="candy" type="candy" x="429.586" y="2858.28" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="41" name="candy" type="candy" x="1850" y="1000" width="100" height="100">
+  <object id="41" name="candy" type="candy" x="2234.62" y="2383.14" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="candy_png"/>
@@ -164,22 +183,10 @@
   <object id="29" name="self" type="player" x="1840.93" y="1991.83" width="120" height="120">
    <ellipse/>
   </object>
-  <object id="32" name="player" type="player" x="800" y="1000" width="120" height="120">
-   <ellipse/>
-  </object>
-  <object id="34" name="player" type="player" x="2800" y="1000" width="120" height="120">
-   <ellipse/>
-  </object>
   <object id="35" name="player" type="player" x="800" y="3000" width="120" height="120">
    <ellipse/>
   </object>
-  <object id="36" name="player" type="player" x="2800" y="3000" width="120" height="120">
-   <ellipse/>
-  </object>
   <object id="60" name="player" type="player" x="1284" y="-288" width="120" height="120">
-   <ellipse/>
-  </object>
-  <object id="84" name="player" type="player" x="800" y="1000" width="120" height="120">
    <ellipse/>
   </object>
  </objectgroup>

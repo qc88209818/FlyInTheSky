@@ -32,6 +32,16 @@
 			"name": "player_down_png"
 		},
 		{
+			"url": "assets/HP_bg.png",
+			"type": "image",
+			"name": "HP_bg_png"
+		},
+		{
+			"url": "assets/HP.png",
+			"type": "image",
+			"name": "HP_png"
+		},
+		{
 			"url": "assets/hp_bg.png",
 			"type": "image",
 			"name": "hp_bg_png"
@@ -67,24 +77,169 @@
 			"name": "background_jpg"
 		},
 		{
-			"url": "assets/red_button.jpg",
+			"url": "assets/bathtub1.png",
 			"type": "image",
-			"name": "red_button_jpg"
+			"name": "bathtub1_png"
 		},
 		{
-			"url": "assets/yellow_button.jpg",
+			"url": "assets/bathtub2.png",
 			"type": "image",
-			"name": "yellow_button_jpg"
+			"name": "bathtub2_png"
 		},
 		{
-			"url": "assets/move/playerNormalMode.png",
+			"url": "assets/bed.png",
 			"type": "image",
-			"name": "playerNormalMode_png"
+			"name": "bed_png"
 		},
 		{
-			"url": "assets/move/playerNormalMode.json",
+			"url": "assets/chair1.png",
+			"type": "image",
+			"name": "chair1_png"
+		},
+		{
+			"url": "assets/chair2.png",
+			"type": "image",
+			"name": "chair2_png"
+		},
+		{
+			"url": "assets/shower.png",
+			"type": "image",
+			"name": "shower_png"
+		},
+		{
+			"url": "assets/shower2.png",
+			"type": "image",
+			"name": "shower2_png"
+		},
+		{
+			"url": "assets/sofa1.png",
+			"type": "image",
+			"name": "sofa1_png"
+		},
+		{
+			"url": "assets/sofa2.png",
+			"type": "image",
+			"name": "sofa2_png"
+		},
+		{
+			"url": "assets/sofa3.png",
+			"type": "image",
+			"name": "sofa3_png"
+		},
+		{
+			"url": "assets/sofa4.png",
+			"type": "image",
+			"name": "sofa4_png"
+		},
+		{
+			"url": "assets/sofa5.png",
+			"type": "image",
+			"name": "sofa5_png"
+		},
+		{
+			"url": "assets/table.png",
+			"type": "image",
+			"name": "table_png"
+		},
+		{
+			"url": "assets/table2.png",
+			"type": "image",
+			"name": "table2_png"
+		},
+		{
+			"url": "assets/television.png",
+			"type": "image",
+			"name": "television_png"
+		},
+		{
+			"url": "assets/toilet.png",
+			"type": "image",
+			"name": "toilet_png"
+		},
+		{
+			"name": "bathtub12_png",
+			"type": "image",
+			"url": "assets/bathtub1.png"
+		},
+		{
+			"name": "bathtub22_png",
+			"type": "image",
+			"url": "assets/bathtub2.png"
+		},
+		{
+			"name": "bed2_png",
+			"type": "image",
+			"url": "assets/bed.png"
+		},
+		{
+			"name": "chair12_png",
+			"type": "image",
+			"url": "assets/chair1.png"
+		},
+		{
+			"name": "chair22_png",
+			"type": "image",
+			"url": "assets/chair2.png"
+		},
+		{
+			"name": "shower3_png",
+			"type": "image",
+			"url": "assets/shower.png"
+		},
+		{
+			"name": "shower22_png",
+			"type": "image",
+			"url": "assets/shower2.png"
+		},
+		{
+			"name": "sofa12_png",
+			"type": "image",
+			"url": "assets/sofa1.png"
+		},
+		{
+			"name": "sofa22_png",
+			"type": "image",
+			"url": "assets/sofa2.png"
+		},
+		{
+			"name": "sofa32_png",
+			"type": "image",
+			"url": "assets/sofa3.png"
+		},
+		{
+			"name": "sofa42_png",
+			"type": "image",
+			"url": "assets/sofa4.png"
+		},
+		{
+			"name": "sofa52_png",
+			"type": "image",
+			"url": "assets/sofa5.png"
+		},
+		{
+			"name": "table3_png",
+			"type": "image",
+			"url": "assets/table.png"
+		},
+		{
+			"name": "table22_png",
+			"type": "image",
+			"url": "assets/table2.png"
+		},
+		{
+			"name": "television2_png",
+			"type": "image",
+			"url": "assets/television.png"
+		},
+		{
+			"name": "toilet2_png",
+			"type": "image",
+			"url": "assets/toilet.png"
+		},
+		{
+			"name": "playerNormalMode_json",
 			"type": "json",
-			"name": "playerNormalMode_json"
+			"url": "assets/move/playerNormalMode.json"
 		},
 		{
 			"name": "bathtub2_png",
@@ -165,6 +320,11 @@
 			"name": "toilet_png",
 			"type": "image",
 			"url": "assets/toilet.png"
+		},
+		{
+			"name": "playerNormalMode_png",
+			"type": "image",
+			"url": "assets/move/playerNormalMode.png"
 		}
 	]
 }

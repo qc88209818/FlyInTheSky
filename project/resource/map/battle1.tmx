@@ -21,7 +21,7 @@
   </object>
   <object id="57" name="toilet" type="blockrect" x="1159.58" y="100.293" width="218.343" height="292.308">
    <properties>
-    <property name="path" value="toilet2_png"/>
+    <property name="path" value="toilet_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -40,7 +40,7 @@
   </object>
   <object id="87" name="shower_t" type="blockrect" x="586.094" y="105.325" width="240.533" height="203.55">
    <properties>
-    <property name="path" value="shower3_png"/>
+    <property name="path" value="shower_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -52,7 +52,7 @@
   </object>
   <object id="89" name="bathtub" type="blockrect" x="134.911" y="97.929" width="284.911" height="551.183">
    <properties>
-    <property name="path" value="bathtub22_png"/>
+    <property name="path" value="bathtub2_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>

@@ -47,7 +47,7 @@ module fly {
 			if (delta > 0)
 			{
 				egret.setTimeout(function () {              
-					let candy = new Candy(this.x, this.y, this.radius, this.op)
+					let candy = new Candy(this.x-this.radius, this.y-this.radius, this.radius, this.op)
 					this.objmgr.scene.addToWorld(candy)
 				}, this, delta*1000); 
 			}

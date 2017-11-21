@@ -50,7 +50,7 @@ var fly;
             var delta = this.op.delta;
             if (delta > 0) {
                 egret.setTimeout(function () {
-                    var candy = new Candy(this.x, this.y, this.radius, this.op);
+                    var candy = new Candy(this.x - this.radius, this.y - this.radius, this.radius, this.op);
                     this.objmgr.scene.addToWorld(candy);
                 }, this, delta * 1000);
             }

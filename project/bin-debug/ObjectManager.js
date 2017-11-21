@@ -9,7 +9,14 @@ var fly;
             this.players = [];
         }
         ObjectManager.inst = function () {
+            if (!this.isInit) {
+                this.obj.init();
+                this.isInit = true;
+            }
             return this.obj;
+        };
+        ObjectManager.prototype.init = function () {
+            this.loadMoveClip();
         };
         ObjectManager.prototype.update = function (dt) {
             var length = this.sprites.length;
@@ -55,6 +62,13 @@ var fly;
         ObjectManager.prototype.delPlayer = function (obj) {
             obj.isDestroy = true;
         };
+        ObjectManager.prototype.loadMoveClip = function () {
+            var data = RES.getRes("playerNormalMode_json");
+            var txtr = RES.getRes("playerNormalMode_png");
+            var mcFactory = new egret.MovieClipDataFactory(data, txtr);
+            this.mcFactory = mcFactory;
+        };
+        ObjectManager.isInit = false;
         ObjectManager.obj = new ObjectManager();
         return ObjectManager;
     }());

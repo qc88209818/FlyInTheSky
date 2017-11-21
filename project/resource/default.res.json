@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "virtual_button_png,virtual_background_png,candy_png,mushroom_png,player_down_png,HP_bg_png,HP_png,hp_bg_png,hp_png,tree_1_png,tree_2_png,tree_3_png,tree_4_png,background_jpg",
+			"keys": "virtual_button_png,virtual_background_png,candy_png,mushroom_png,player_down_png,hp_bg_png,hp_png,tree_1_png,tree_2_png,tree_3_png,tree_4_png,background_jpg,red_button_jpg,yellow_button_jpg,playerNormalMode_png,playerNormalMode_json",
 			"name": "preload"
 		}
 	],
@@ -17,64 +17,74 @@
 			"name": "virtual_button_png"
 		},
 		{
-			"name": "candy_png",
+			"url": "assets/candy.png",
 			"type": "image",
-			"url": "assets/candy.png"
+			"name": "candy_png"
 		},
 		{
-			"name": "mushroom_png",
+			"url": "assets/mushroom.png",
 			"type": "image",
-			"url": "assets/mushroom.png"
+			"name": "mushroom_png"
 		},
 		{
-			"name": "player_down_png",
+			"url": "assets/player_down.png",
 			"type": "image",
-			"url": "assets/player_down.png"
+			"name": "player_down_png"
 		},
 		{
-			"name": "HP_bg_png",
+			"url": "assets/hp_bg.png",
 			"type": "image",
-			"url": "assets/HP_bg.png"
+			"name": "hp_bg_png"
 		},
 		{
-			"name": "HP_png",
+			"url": "assets/hp.png",
 			"type": "image",
-			"url": "assets/HP.png"
+			"name": "hp_png"
 		},
 		{
-			"name": "hp_bg_png",
+			"url": "assets/tree_1.png",
 			"type": "image",
-			"url": "assets/hp_bg.png"
+			"name": "tree_1_png"
 		},
 		{
-			"name": "hp_png",
+			"url": "assets/tree_2.png",
 			"type": "image",
-			"url": "assets/hp.png"
+			"name": "tree_2_png"
 		},
 		{
-			"name": "tree_1_png",
+			"url": "assets/tree_3.png",
 			"type": "image",
-			"url": "assets/tree_1.png"
+			"name": "tree_3_png"
 		},
 		{
-			"name": "tree_2_png",
+			"url": "assets/tree_4.png",
 			"type": "image",
-			"url": "assets/tree_2.png"
+			"name": "tree_4_png"
 		},
 		{
-			"name": "tree_3_png",
+			"url": "assets/background.jpg",
 			"type": "image",
-			"url": "assets/tree_3.png"
+			"name": "background_jpg"
 		},
 		{
-			"name": "tree_4_png",
+			"url": "assets/red_button.jpg",
 			"type": "image",
-			"url": "assets/tree_4.png"
+			"name": "red_button_jpg"
 		},
 		{
-			"name": "background_jpg",
+			"url": "assets/yellow_button.jpg",
 			"type": "image",
-			"url": "assets/background.jpg"
+			"name": "yellow_button_jpg"
+		},
+		{
+			"url": "assets/move/playerNormalMode.png",
+			"type": "image",
+			"name": "playerNormalMode_png"
+		},
+		{
+			"url": "assets/move/playerNormalMode.json",
+			"type": "json",
+			"name": "playerNormalMode_json"
 		}
 	]
 }

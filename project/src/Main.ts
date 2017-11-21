@@ -1,8 +1,9 @@
 
 class Main extends egret.DisplayObjectContainer {
     loadingView:UILoading
-    private url:string
-    private request:egret.HttpRequest
+    
+    isLoadRes:boolean = false
+    isLoadThm:boolean = false
 
     public constructor() {
         super()
@@ -11,7 +12,6 @@ class Main extends egret.DisplayObjectContainer {
 
     private onAddToStage(event: egret.Event) 
     {
-        //Config loading process interface
         //设置加载进度界面
         this.loadingView = new UILoading();
         this.loadingView.x = this.stage.stageWidth/2;
@@ -24,6 +24,11 @@ class Main extends egret.DisplayObjectContainer {
 
     private onConfigComplete() 
     {
+        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+
+        let theme = new eui.Theme("resource/default.thm.json", this.stage);
+        theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
+
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this)
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this)
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this)
@@ -31,10 +36,6 @@ class Main extends egret.DisplayObjectContainer {
         RES.loadGroup("preload")
     }
 
-    /**
-     * preload资源组加载完成
-     * preload resource group is loaded
-     */
     private onResourceLoadComplete(event: RES.ResourceEvent)
     {
         if (event.groupName == "preload") {
@@ -42,8 +43,9 @@ class Main extends egret.DisplayObjectContainer {
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this)
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this)
             RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this)
-            this.stage.removeChild(this.loadingView)
-            this.loadTiledMap()
+
+            this.isLoadRes = true
+            this.init()
         }
     }
 
@@ -63,60 +65,22 @@ class Main extends egret.DisplayObjectContainer {
         }
     }
 
-    private loadTiledMap()
+    private onThemeLoadComplete()
     {
-        /*初始化资源加载路径*/
-        this.url = "resource/map/battle1.tmx"; 
-        /*初始化请求*/
-        this.request = new egret.HttpRequest();
-        /*监听资源加载完成事件*/
-        this.request.once(egret.Event.COMPLETE, this.onMapComplete,this);
-        /*发送请求*/
-        this.request.open(this.url,egret.HttpMethod.GET);
-        this.request.send();
+        this.isLoadThm = true
+        this.init()
     }
 
-    /*地图加载完成*/
-    private onMapComplete(event:egret.Event) {
-        /*获取到地图数据*/
-        let data = egret.XML.parse(event.currentTarget.response);
-
-        // 初始化一些有用参数
-        fly.FlyConfig.width = data["$width"]*data["$tilewidth"]
-        fly.FlyConfig.height = data["$height"]*data["$tileheight"]
-        fly.FlyConfig.stageWidth = this.stage.stageWidth
-        fly.FlyConfig.stageHeight = this.stage.stageHeight
-
-        let tiledMapObjs = []
-        // 初始化TiledMap Object
-        data.children.forEach(group => {
-            let groupxml = <egret.XML><any>group
-            groupxml.children.forEach(object => {
-                let objectxml = <egret.XML><any>object
-                let tmObj = new TiledMapObject()
-                tmObj.name = objectxml["$name"]
-                tmObj.type = objectxml["$type"]
-                tmObj.x = Number(objectxml["$x"])
-                tmObj.y = Number(objectxml["$y"])
-                tmObj.width = Number(objectxml["$width"]*1.0)
-                tmObj.height = Number(objectxml["$height"]*1.0)
-
-                // properties
-                objectxml.children.forEach(properties => {
-                    let propertiesxml = <egret.XML><any>properties
-                    propertiesxml.children.forEach(property => {
-                        tmObj.params[property["$name"]] = property["$value"]
-                    })
-                })
-
-                tiledMapObjs.push(tmObj)         
-            })
-        })
-
-        this.initGame(tiledMapObjs)
+    private init()
+    {
+        if (this.isLoadRes && this.isLoadThm)
+        {            
+            this.stage.removeChild(this.loadingView)
+            this.initGame()
+        }
     }
 
-    private initGame(tiledMapObjs:TiledMapObject[])
+    private initGame()
     {
         egret.lifecycle.addLifecycleListener((conttext) => {
             conttext.onUpdate = () => {
@@ -134,9 +98,8 @@ class Main extends egret.DisplayObjectContainer {
             console.log('Game2 onResume!')
         }
 
-        // 战斗场景
-        let scene = new fly.BattleScene()
-        scene.initScene(tiledMapObjs)
-        this.stage.addChild(scene)
+        // 选择界面
+        let scene = new fly.StartScene()
+        scene.initScene(this, this.stage.stageWidth, this.stage.stageHeight)
     }
 }

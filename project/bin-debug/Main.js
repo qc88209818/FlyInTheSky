@@ -15,11 +15,12 @@ var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         var _this = _super.call(this) || this;
+        _this.isLoadRes = false;
+        _this.isLoadThm = false;
         _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
     Main.prototype.onAddToStage = function (event) {
-        //Config loading process interface
         //设置加载进度界面
         this.loadingView = new UILoading();
         this.loadingView.x = this.stage.stageWidth / 2;
@@ -29,24 +30,23 @@ var Main = (function (_super) {
         RES.loadConfig("resource/default.res.json", "resource/");
     };
     Main.prototype.onConfigComplete = function () {
+        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        var theme = new eui.Theme("resource/default.thm.json", this.stage);
+        theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
         RES.loadGroup("preload");
     };
-    /**
-     * preload资源组加载完成
-     * preload resource group is loaded
-     */
     Main.prototype.onResourceLoadComplete = function (event) {
         if (event.groupName == "preload") {
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
             RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-            this.stage.removeChild(this.loadingView);
-            this.loadTiledMap();
+            this.isLoadRes = true;
+            this.init();
         }
     };
     Main.prototype.onItemLoadError = function (event) {
@@ -61,52 +61,17 @@ var Main = (function (_super) {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     };
-    Main.prototype.loadTiledMap = function () {
-        /*初始化资源加载路径*/
-        this.url = "resource/map/battle1.tmx";
-        /*初始化请求*/
-        this.request = new egret.HttpRequest();
-        /*监听资源加载完成事件*/
-        this.request.once(egret.Event.COMPLETE, this.onMapComplete, this);
-        /*发送请求*/
-        this.request.open(this.url, egret.HttpMethod.GET);
-        this.request.send();
+    Main.prototype.onThemeLoadComplete = function () {
+        this.isLoadThm = true;
+        this.init();
     };
-    /*地图加载完成*/
-    Main.prototype.onMapComplete = function (event) {
-        /*获取到地图数据*/
-        var data = egret.XML.parse(event.currentTarget.response);
-        // 初始化一些有用参数
-        fly.FlyConfig.width = data["$width"] * data["$tilewidth"];
-        fly.FlyConfig.height = data["$height"] * data["$tileheight"];
-        fly.FlyConfig.stageWidth = this.stage.stageWidth;
-        fly.FlyConfig.stageHeight = this.stage.stageHeight;
-        var tiledMapObjs = [];
-        // 初始化TiledMap Object
-        data.children.forEach(function (group) {
-            var groupxml = group;
-            groupxml.children.forEach(function (object) {
-                var objectxml = object;
-                var tmObj = new TiledMapObject();
-                tmObj.name = objectxml["$name"];
-                tmObj.type = objectxml["$type"];
-                tmObj.x = Number(objectxml["$x"]);
-                tmObj.y = Number(objectxml["$y"]);
-                tmObj.width = Number(objectxml["$width"] * 1.0);
-                tmObj.height = Number(objectxml["$height"] * 1.0);
-                // properties
-                objectxml.children.forEach(function (properties) {
-                    var propertiesxml = properties;
-                    propertiesxml.children.forEach(function (property) {
-                        tmObj.params[property["$name"]] = property["$value"];
-                    });
-                });
-                tiledMapObjs.push(tmObj);
-            });
-        });
-        this.initGame(tiledMapObjs);
+    Main.prototype.init = function () {
+        if (this.isLoadRes && this.isLoadThm) {
+            this.stage.removeChild(this.loadingView);
+            this.initGame();
+        }
     };
-    Main.prototype.initGame = function (tiledMapObjs) {
+    Main.prototype.initGame = function () {
         egret.lifecycle.addLifecycleListener(function (conttext) {
             conttext.onUpdate = function () {
             };
@@ -119,10 +84,9 @@ var Main = (function (_super) {
             egret.ticker.resume();
             console.log('Game2 onResume!');
         };
-        // 战斗场景
-        var scene = new fly.BattleScene();
-        scene.initScene(tiledMapObjs);
-        this.stage.addChild(scene);
+        // 选择界面
+        var scene = new fly.StartScene();
+        scene.initScene(this, this.stage.stageWidth, this.stage.stageHeight);
     };
     return Main;
 }(egret.DisplayObjectContainer));

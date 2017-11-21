@@ -1,15 +1,28 @@
 module fly {
 	export class ObjectManager {
+		static isInit:boolean = false
 		static obj:ObjectManager = new ObjectManager()
+
 		public static inst(): ObjectManager
 		{
+			if (!this.isInit)
+			{
+				this.obj.init()
+				this.isInit = true
+			}
 			return this.obj
 		}
 
 		scene:BattleScene
 		sprites:FlyObject[] = []		// 当前所有需要计算位置的精灵
 		players:Player[] = []
-	
+		mcFactory:egret.MovieClipDataFactory
+
+		public init()
+		{
+			this.loadMoveClip()
+		}
+
 		public update(dt:number)
 		{
 			let length = this.sprites.length
@@ -69,6 +82,14 @@ module fly {
 		public delPlayer(obj:Player)
 		{
 			obj.isDestroy = true
+		}
+
+		private loadMoveClip()
+		{
+			let data = RES.getRes("playerNormalMode_json");
+			let txtr = RES.getRes("playerNormalMode_png");
+			let mcFactory = new egret.MovieClipDataFactory(data, txtr);
+			this.mcFactory = mcFactory
 		}
 	}
 }

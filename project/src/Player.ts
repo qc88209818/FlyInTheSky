@@ -1,6 +1,6 @@
 module fly {
 	export class Player extends FlyCircle {
-		render:egret.Bitmap
+		render:egret.MovieClip
 		radius:number
 		power:number
 		mass:number
@@ -90,9 +90,10 @@ module fly {
 
 		private initBitmap()
 		{
-			let png = FlyTools.createBitmapByName("player_down_png")
-			png.anchorOffsetX = png.width/2
-			png.anchorOffsetY = png.height/2
+			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("front_stand"));
+			png.gotoAndPlay("stand", -1)
+			png.anchorOffsetX = png.width/2 + 8
+			png.anchorOffsetY = png.height/2 + 5
 			png.scaleX = 2.2 * this.radius/png.width
 			png.scaleY = 2.2 * this.radius/png.height
 			this.addChild(png)
@@ -107,7 +108,6 @@ module fly {
 			this.progress = progress
 
 			progress.setPosition(progress.width/2, -100)
-
 		}
 
 		public addPower(value:number)

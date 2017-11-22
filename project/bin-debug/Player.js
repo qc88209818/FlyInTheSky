@@ -18,6 +18,8 @@ var fly;
         function Player(x, y, radius) {
             var _this = _super.call(this) || this;
             _this.step = -1;
+            _this.dir = 1;
+            _this.nowState = "front_move";
             _this.x = x + radius;
             _this.y = y + radius;
             _this.radius = radius;
@@ -38,6 +40,39 @@ var fly;
             _this.changePower(_this.power);
             return _this;
         }
+        Player.prototype.updatePosition = function () {
+            _super.prototype.updatePosition.call(this);
+            var x = Math.abs(this.body.velocity[0]);
+            var y = Math.abs(this.body.velocity[1]);
+            if (this.body.velocity[1] < 0 && x < y) {
+                if (this.nowState == "black_move")
+                    return;
+                this.render.gotoAndPlay("black_move", -1);
+                this.nowState = "black_move";
+            }
+            else if (this.body.velocity[1] > 0 && x < y) {
+                if (this.nowState == "front_move")
+                    return;
+                this.render.gotoAndPlay("front_move", -1);
+                this.nowState = "front_move";
+            }
+            else if (this.body.velocity[0] > 0 && x > y) {
+                if (this.nowState == "side_move_right")
+                    return;
+                this.render.gotoAndPlay("side_move", -1);
+                this.dir = 1;
+                this.render.scaleX = this.dir * 2.2 * this.circle.radius / this.render.width;
+                this.nowState = "side_move_right";
+            }
+            else if (this.body.velocity[0] < 0 && x > y) {
+                if (this.nowState == "side_move_left")
+                    return;
+                this.render.gotoAndPlay("side_move", -1);
+                this.dir = -1;
+                this.render.scaleX = this.dir * 2.2 * this.circle.radius / this.render.width;
+                this.nowState = "side_move_left";
+            }
+        };
         Player.prototype.setVisible = function (visible) {
             this.progress.visible = visible;
         };
@@ -56,7 +91,7 @@ var fly;
                         this.circle.updateArea();
                         this.body.mass = this.mass * fly.FlyParam.PlayerMassScale[i];
                         this.body.updateMassProperties();
-                        this.render.scaleX = 2.2 * this.circle.radius / this.render.width;
+                        this.render.scaleX = this.dir * 2.2 * this.circle.radius / this.render.width;
                         this.render.scaleY = 2.2 * this.circle.radius / this.render.height;
                         this.changeRenderSize(this.circle.radius);
                         this.step = i;

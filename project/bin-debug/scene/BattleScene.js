@@ -104,6 +104,7 @@ var fly;
                     var block = new fly.BlockRect(obj.x, obj.y, obj.width, obj.height, {
                         path: obj.params["path"],
                         type: Number(obj.params["type"]),
+                        mass: Number(obj.params["mass"]),
                         damping: Number(obj.params["damping"]),
                         rotation: Number(obj.params["rotation"])
                     });
@@ -113,6 +114,7 @@ var fly;
                     var block = new fly.BlockCircle(obj.x, obj.y, obj.width / 2, {
                         path: obj.params["path"],
                         type: Number(obj.params["type"]),
+                        mass: Number(obj.params["mass"]),
                         damping: Number(obj.params["damping"]),
                         rotation: Number(obj.params["rotation"])
                     });
@@ -121,10 +123,26 @@ var fly;
                 else if (obj.type == "candy") {
                     var candy = new fly.Candy(obj.x, obj.y, obj.width / 2, {
                         path: obj.params["path"],
+                        type: Number(obj.params["type"]),
+                        mass: Number(obj.params["mass"]),
+                        damping: Number(obj.params["damping"]),
+                        rotation: Number(obj.params["rotation"]),
                         delta: Number(obj.params["delta"]),
                         power: Number(obj.params["power"])
                     });
                     _this.addToWorld(candy);
+                }
+                else if (obj.type == "traps") {
+                    var traps = new fly.Traps(obj.x, obj.y, obj.width, obj.height, {
+                        path: obj.params["path"],
+                        type: Number(obj.params["type"]),
+                        mass: Number(obj.params["mass"]),
+                        damping: Number(obj.params["damping"]),
+                        rotation: Number(obj.params["rotation"]),
+                        delta: Number(obj.params["delta"]),
+                        power: Number(obj.params["power"])
+                    });
+                    _this.addToWorld(traps);
                 }
             });
         };

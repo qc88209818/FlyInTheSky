@@ -35,6 +35,45 @@ module fly {
 			this.changePower(this.power)
 		}
 
+		private dir:number = 1
+		private nowState:string = "front_move"
+		public updatePosition()
+		{
+			super.updatePosition()
+
+			let x = Math.abs(this.body.velocity[0])
+			let y = Math.abs(this.body.velocity[1])
+
+			if (this.body.velocity[1] < 0 && x < y)
+			{
+				if (this.nowState == "black_move") return;
+				this.render.gotoAndPlay("black_move", -1)
+				this.nowState = "black_move"
+			}
+			else if (this.body.velocity[1] > 0 && x < y)
+			{
+				if (this.nowState == "front_move") return;
+				this.render.gotoAndPlay("front_move", -1)
+				this.nowState = "front_move"
+			}
+			else if (this.body.velocity[0] > 0 && x > y)
+			{
+				if (this.nowState == "side_move_right") return;
+				this.render.gotoAndPlay("side_move", -1)
+				this.dir = 1
+				this.render.scaleX = this.dir * 2.2 * this.circle.radius/this.render.width
+				this.nowState = "side_move_right"
+			}
+			else if (this.body.velocity[0] < 0 && x > y)
+			{
+				if (this.nowState == "side_move_left") return;
+				this.render.gotoAndPlay("side_move", -1)
+				this.dir = -1
+				this.render.scaleX = this.dir * 2.2 * this.circle.radius/this.render.width
+				this.nowState = "side_move_left"
+			}
+		}
+
 		public setVisible(visible:boolean)
 		{
 			this.progress.visible = visible
@@ -64,7 +103,7 @@ module fly {
 						this.body.mass = this.mass * FlyParam.PlayerMassScale[i]
 						this.body.updateMassProperties()
 
-						this.render.scaleX = 2.2 * this.circle.radius/this.render.width
+						this.render.scaleX = this.dir * 2.2 * this.circle.radius/this.render.width
 						this.render.scaleY = 2.2 * this.circle.radius/this.render.height
 
 						this.changeRenderSize(this.circle.radius)

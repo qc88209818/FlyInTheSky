@@ -45,6 +45,11 @@ var fly;
             shape.graphics.drawRect(-width / 2, -height / 2, width, height);
             shape.graphics.endFill();
         };
+        FlyRect.prototype.setRotation = function (rotation) {
+            this.body.displays.forEach(function (value) {
+                value.rotation = rotation;
+            });
+        };
         return FlyRect;
     }(fly.FlyObject));
     fly.FlyRect = FlyRect;

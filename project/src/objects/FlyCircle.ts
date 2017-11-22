@@ -42,5 +42,11 @@ module fly {
 			shape.graphics.drawCircle(0, 0, radius)
 			shape.graphics.endFill()
 		}
+
+		protected setRotation(rotation:number)
+		{
+			this.shape.angle = rotation
+			this.rander.rotation = rotation
+		}
 	}
 }

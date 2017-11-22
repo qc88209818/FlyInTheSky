@@ -23,15 +23,17 @@ var fly;
             _this.op = op;
             _this.initBody({
                 id: fly.FlyConfig.getPropertyId(),
-                mass: 1,
-                type: p2.Body.DYNAMIC,
+                mass: op.mass || 1,
+                type: op.type || p2.Body.DYNAMIC,
                 fixedRotation: true,
-                position: [_this.x, _this.y]
+                position: [_this.x, _this.y],
+                damping: op.damping || 0
             });
             _this.initShape(_this.radius);
             _this.setGroupAndMask(fly.ObjectGroup.Property, fly.ObjectMask.Property);
             _this.initBitmap(op.path);
             _this.updatePosition();
+            _this.setRotation(op.rotation);
             return _this;
         }
         Candy.prototype.initBitmap = function (path) {

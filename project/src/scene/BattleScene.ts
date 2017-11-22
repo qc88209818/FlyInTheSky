@@ -107,6 +107,7 @@ module fly {
 				if (obj.type == "player")
 				{
 					let player = new Player(obj.x, obj.y, obj.width/2)
+					
 					this.addPlayerToWorld(player)
 					if (obj.name == "self")
 					{
@@ -125,7 +126,9 @@ module fly {
 					{
 						path:obj.params["path"]
 						, type:Number(obj.params["type"])
+						, mass:Number(obj.params["mass"])
 						, damping:Number(obj.params["damping"])
+						, rotation:Number(obj.params["rotation"])
 					})
 					this.addToWorld(block)
 				}
@@ -135,7 +138,9 @@ module fly {
 					{
 						path:obj.params["path"]
 						, type:Number(obj.params["type"])
+						, mass:Number(obj.params["mass"])
 						, damping:Number(obj.params["damping"])
+						, rotation:Number(obj.params["rotation"])
 					})
 					this.addToWorld(block)
 				}
@@ -144,10 +149,28 @@ module fly {
 					let candy = new Candy(obj.x, obj.y, obj.width/2, 
 					{
 						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, mass:Number(obj.params["mass"])
+						, damping:Number(obj.params["damping"])
+						, rotation:Number(obj.params["rotation"])
 						, delta:Number(obj.params["delta"])
 						, power:Number(obj.params["power"])
 					})
 					this.addToWorld(candy)
+				}
+				else if (obj.type == "traps")
+				{
+					let traps = new Traps(obj.x, obj.y, obj.width, obj.height, 
+					{
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, mass:Number(obj.params["mass"])
+						, damping:Number(obj.params["damping"])
+						, rotation:Number(obj.params["rotation"])
+						, delta:Number(obj.params["delta"])
+						, power:Number(obj.params["power"])
+					})
+					this.addToWorld(traps)
 				}
 			})
 		}

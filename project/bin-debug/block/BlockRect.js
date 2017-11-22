@@ -24,16 +24,17 @@ var fly;
             _this.height = height;
             _this.initBody({
                 id: fly.FlyConfig.getBlockId(),
-                mass: 1,
+                mass: op.mass || 1,
                 type: op.type || p2.Body.STATIC,
                 fixedRotation: true,
                 position: [_this.x, _this.y],
-                damping: op.damping
+                damping: op.damping || 0
             });
             _this.initShape(_this.width, _this.height);
             _this.setGroupAndMask(fly.ObjectGroup.Block, fly.ObjectMask.Block);
             _this.initBitmap(op.path);
             _this.updatePosition();
+            _this.setRotation(op.rotation);
             return _this;
         }
         BlockRect.prototype.initBitmap = function (path) {

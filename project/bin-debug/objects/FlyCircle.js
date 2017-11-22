@@ -44,6 +44,10 @@ var fly;
             shape.graphics.drawCircle(0, 0, radius);
             shape.graphics.endFill();
         };
+        FlyCircle.prototype.setRotation = function (rotation) {
+            this.shape.angle = rotation;
+            this.rander.rotation = rotation;
+        };
         return FlyCircle;
     }(fly.FlyObject));
     fly.FlyCircle = FlyCircle;

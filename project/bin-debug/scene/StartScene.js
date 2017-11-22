@@ -43,8 +43,8 @@ var fly;
                     tmObj.type = objectxml["$type"];
                     tmObj.x = Number(objectxml["$x"]);
                     tmObj.y = Number(objectxml["$y"]);
-                    tmObj.width = Number(objectxml["$width"] * 1.0);
-                    tmObj.height = Number(objectxml["$height"] * 1.0);
+                    tmObj.width = Number(objectxml["$width"]);
+                    tmObj.height = Number(objectxml["$height"]);
                     // properties
                     objectxml.children.forEach(function (properties) {
                         var propertiesxml = properties;

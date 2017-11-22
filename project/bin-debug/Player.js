@@ -74,8 +74,8 @@ var fly;
             this.body.velocity = [x / this.body.mass, y / this.body.mass];
         };
         Player.prototype.initBitmap = function () {
-            var png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("front_stand"));
-            png.gotoAndPlay("stand", -1);
+            var png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
+            png.gotoAndPlay("front_stand", -1);
             png.anchorOffsetX = png.width / 2 + 8;
             png.anchorOffsetY = png.height / 2 + 5;
             png.scaleX = 2.2 * this.radius / png.width;

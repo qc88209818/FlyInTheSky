@@ -13,11 +13,11 @@ module fly {
 
 			this.initBody({
 				id:FlyConfig.getBlockId()
-				, mass:1
+				, mass:op.mass || 1
 				, type:op.type || p2.Body.STATIC
 				, fixedRotation:true
 				, position:[this.x, this.y]
-				, damping:op.damping
+				, damping:op.damping || 0
 			})
 
 			this.initShape(this.radius)
@@ -25,6 +25,8 @@ module fly {
 
 			this.initBitmap(op.path)
 			this.updatePosition()
+
+			this.setRotation(op.rotation)
 		}
 
 		private initBitmap(path:string)

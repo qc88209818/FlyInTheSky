@@ -43,5 +43,12 @@ module fly {
 			shape.graphics.drawRect(-width/2, -height/2, width, height)
 			shape.graphics.endFill()
 		}
+
+		protected setRotation(rotation:number)
+		{
+			this.body.displays.forEach(value => {
+				value.rotation = rotation
+			})
+		}
 	}
 }

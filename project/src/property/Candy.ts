@@ -14,16 +14,19 @@ module fly {
 
 			this.initBody({
 				id:FlyConfig.getPropertyId()
-				, mass:1
-				, type:p2.Body.DYNAMIC
+				, mass:op.mass || 1
+				, type:op.type || p2.Body.DYNAMIC
 				, fixedRotation:true
 				, position:[this.x, this.y]
+				, damping:op.damping || 0
 			})
 			this.initShape(this.radius)
 			this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property)
 			
 			this.initBitmap(op.path)
 			this.updatePosition()
+			
+			this.setRotation(op.rotation)
 		}
 
 		private initBitmap(path:string)

@@ -104,7 +104,8 @@ var fly;
                     var block = new fly.BlockRect(obj.x, obj.y, obj.width, obj.height, {
                         path: obj.params["path"],
                         type: Number(obj.params["type"]),
-                        damping: Number(obj.params["damping"])
+                        damping: Number(obj.params["damping"]),
+                        rotation: Number(obj.params["rotation"])
                     });
                     _this.addToWorld(block);
                 }
@@ -112,7 +113,8 @@ var fly;
                     var block = new fly.BlockCircle(obj.x, obj.y, obj.width / 2, {
                         path: obj.params["path"],
                         type: Number(obj.params["type"]),
-                        damping: Number(obj.params["damping"])
+                        damping: Number(obj.params["damping"]),
+                        rotation: Number(obj.params["rotation"])
                     });
                     _this.addToWorld(block);
                 }

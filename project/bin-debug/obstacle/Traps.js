@@ -15,7 +15,7 @@ var fly;
 (function (fly) {
     var Traps = (function (_super) {
         __extends(Traps, _super);
-        function Traps(x, y, width, height) {
+        function Traps(x, y, width, height, op) {
             var _this = _super.call(this) || this;
             _this.x = x;
             _this.y = y;
@@ -23,19 +23,21 @@ var fly;
             _this.height = height;
             _this.initBody({
                 id: fly.FlyConfig.getPropertyId(),
-                mass: 1,
-                type: p2.Body.DYNAMIC,
+                mass: op.mass || 1,
+                type: op.type || p2.Body.DYNAMIC,
                 fixedRotation: true,
-                position: [_this.x, _this.y]
+                position: [_this.x, _this.y],
+                damping: op.damping || 0
             });
             _this.initShape(_this.width, _this.height);
             _this.setGroupAndMask(fly.ObjectGroup.Property, fly.ObjectMask.Property);
-            _this.initBitmap();
+            _this.initBitmap(op.path);
             _this.updatePosition();
+            _this.setRotation(op.rotation);
             return _this;
         }
-        Traps.prototype.initBitmap = function () {
-            var png = fly.FlyTools.createBitmapByName("mushroom_png");
+        Traps.prototype.initBitmap = function (path) {
+            var png = fly.FlyTools.createBitmapByName(path);
             png.scaleX = this.width / png.width;
             png.scaleY = this.height / png.height;
             this.addChild(png);

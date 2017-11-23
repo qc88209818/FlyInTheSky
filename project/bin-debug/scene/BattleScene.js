@@ -89,7 +89,7 @@ var fly;
             this.objmgr.scene = this;
             this.tiledMapObjs.forEach(function (obj) {
                 if (obj.type == "player") {
-                    var player = new fly.Player(obj.x, obj.y, obj.width / 2);
+                    var player = new fly.Player(obj.x, obj.y, obj.width, obj.height);
                     _this.addPlayerToWorld(player);
                     if (obj.name == "self") {
                         player.setVisible(true);
@@ -124,8 +124,6 @@ var fly;
                     var candy = new fly.Candy(obj.x, obj.y, obj.width / 2, {
                         path: obj.params["path"],
                         type: Number(obj.params["type"]),
-                        mass: Number(obj.params["mass"]),
-                        damping: Number(obj.params["damping"]),
                         rotation: Number(obj.params["rotation"]),
                         delta: Number(obj.params["delta"]),
                         power: Number(obj.params["power"])
@@ -136,11 +134,17 @@ var fly;
                     var traps = new fly.Traps(obj.x, obj.y, obj.width, obj.height, {
                         path: obj.params["path"],
                         type: Number(obj.params["type"]),
-                        mass: Number(obj.params["mass"]),
-                        damping: Number(obj.params["damping"]),
+                        rotation: Number(obj.params["rotation"])
+                    });
+                    _this.addToWorld(traps);
+                }
+                else if (obj.type == "weighttraps") {
+                    var traps = new fly.WeightTraps(obj.x, obj.y, obj.width, obj.height, {
+                        path: obj.params["path"],
+                        type: Number(obj.params["type"]),
                         rotation: Number(obj.params["rotation"]),
-                        delta: Number(obj.params["delta"]),
-                        power: Number(obj.params["power"])
+                        min: Number(obj.params["min"]),
+                        max: Number(obj.params["max"])
                     });
                     _this.addToWorld(traps);
                 }

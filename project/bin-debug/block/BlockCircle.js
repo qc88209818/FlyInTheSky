@@ -18,6 +18,7 @@ var fly;
         // 0:STATIC  1:DYNAMIC   2:KINEMATIC
         function BlockCircle(x, y, radius, op) {
             var _this = _super.call(this) || this;
+            _this.baseScale = 2;
             _this.x = x + radius;
             _this.y = y + radius;
             _this.radius = radius;
@@ -42,8 +43,8 @@ var fly;
             var png = fly.FlyTools.createBitmapByName(path);
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;
-            png.scaleX = 2 * this.radius / png.width;
-            png.scaleY = 2 * this.radius / png.height;
+            png.scaleX = this.baseScale * this.radius / png.width;
+            png.scaleY = this.baseScale * this.radius / png.height;
             this.addChild(png);
         };
         return BlockCircle;

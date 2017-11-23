@@ -111,7 +111,7 @@ module fly {
 		static forceScale:number        = 400		// 力量因子
 		static PlayerMaxPower:number 	= 300		// 人物最大能量
 		static PlayerMinPower:number 	= 20		// 人物最小能量
-		static PlayerInitPower:number 	= 150		// 人物初始能量
+		static PlayerInitPower:number 	= 270		// 人物初始能量
 		static PlayerInitMass:number    = 0.5		// 人物初始重量
 
 		static PlayerStep:number[]      = [ 61, 121, 181, 221, 261]	// 变身阶段

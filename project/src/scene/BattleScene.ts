@@ -106,7 +106,7 @@ module fly {
 			this.tiledMapObjs.forEach(obj => {
 				if (obj.type == "player")
 				{
-					let player = new Player(obj.x, obj.y, obj.width/2)
+					let player = new Player(obj.x, obj.y, obj.width, obj.height)
 					
 					this.addPlayerToWorld(player)
 					if (obj.name == "self")
@@ -150,8 +150,6 @@ module fly {
 					{
 						path:obj.params["path"]
 						, type:Number(obj.params["type"])
-						, mass:Number(obj.params["mass"])
-						, damping:Number(obj.params["damping"])
 						, rotation:Number(obj.params["rotation"])
 						, delta:Number(obj.params["delta"])
 						, power:Number(obj.params["power"])
@@ -164,11 +162,19 @@ module fly {
 					{
 						path:obj.params["path"]
 						, type:Number(obj.params["type"])
-						, mass:Number(obj.params["mass"])
-						, damping:Number(obj.params["damping"])
 						, rotation:Number(obj.params["rotation"])
-						, delta:Number(obj.params["delta"])
-						, power:Number(obj.params["power"])
+					})
+					this.addToWorld(traps)
+				}
+				else if (obj.type == "weighttraps")
+				{
+					let traps = new WeightTraps(obj.x, obj.y, obj.width, obj.height, 
+					{
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, rotation:Number(obj.params["rotation"])
+						, min:Number(obj.params["min"])
+						, max:Number(obj.params["max"])
 					})
 					this.addToWorld(traps)
 				}

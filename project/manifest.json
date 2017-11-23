@@ -20,15 +20,16 @@
 		"bin-debug/block/Wall.js",
 		"bin-debug/Main.js",
 		"bin-debug/objects/FlyConfig.js",
-		"bin-debug/ui/UIProgress.js",
 		"bin-debug/Player.js",
+		"bin-debug/ObjectManager.js",
 		"bin-debug/objects/FlyTools.js",
 		"bin-debug/obstacle/Traps.js",
+		"bin-debug/obstacle/WeightTraps.js",
 		"bin-debug/property/Candy.js",
 		"bin-debug/scene/BattleScene.js",
 		"bin-debug/scene/BattleTouchNode.js",
 		"bin-debug/scene/StartScene.js",
 		"bin-debug/ui/UILoading.js",
-		"bin-debug/ObjectManager.js"
+		"bin-debug/ui/UIProgress.js"
 	]
 }

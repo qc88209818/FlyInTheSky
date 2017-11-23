@@ -3,6 +3,8 @@ module fly {
 		radius:number
 		x:number
 		y:number
+
+		baseScale:number = 2
 		
 		// 0:STATIC  1:DYNAMIC   2:KINEMATIC
 		public constructor(x:number, y:number, radius: number, op?) {
@@ -36,8 +38,8 @@ module fly {
 			let png = FlyTools.createBitmapByName(path)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.scaleX = 2 * this.radius/png.width
-			png.scaleY = 2 * this.radius/png.height
+			png.scaleX = this.baseScale * this.radius/png.width
+			png.scaleY = this.baseScale * this.radius/png.height
 			this.addChild(png)
 		}
 	}

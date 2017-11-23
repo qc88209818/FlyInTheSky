@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="400" height="400" tilewidth="10" tileheight="10" nextobjectid="10">
+ <objectgroup name="object">
+  <object id="1" name="self" type="player" x="1500" y="1500" width="100" height="100">
+   <ellipse/>
+  </object>
+  <object id="2" x="-984" y="1168">
+   <ellipse/>
+  </object>
+  <object id="6" name="weighttraps" type="weighttraps" x="2000" y="1500" width="150" height="150">
+   <properties>
+    <property name="max" type="float" value="0.45"/>
+    <property name="min" type="float" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

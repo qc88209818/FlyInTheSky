@@ -19,6 +19,7 @@ var fly;
             var _this = _super.call(this) || this;
             _this.baseScale = 1.5;
             _this.step = -1;
+            _this.inoperable = 0;
             _this.limitVel = 50;
             _this.dir = 1;
             _this.nowState = "front_move";
@@ -39,12 +40,17 @@ var fly;
             _this.initShape(_this.width, _this.height);
             _this.setGroupAndMask(fly.ObjectGroup.Player, fly.ObjectMask.Player);
             _this.initBitmap();
-            _this.updatePosition();
+            _this.updatePosition(0);
             _this.changePower(_this.power);
             return _this;
         }
-        Player.prototype.updatePosition = function () {
-            _super.prototype.updatePosition.call(this);
+        Player.prototype.updatePosition = function (dt) {
+            if (dt === void 0) { dt = 0; }
+            _super.prototype.updatePosition.call(this, dt);
+            // 僵直时间
+            if (this.inoperable > 0) {
+                this.inoperable -= dt;
+            }
             var x = Math.abs(this.body.velocity[0]);
             var y = Math.abs(this.body.velocity[1]);
             var len = p2.vec2.len(this.body.velocity);

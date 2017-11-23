@@ -13,6 +13,8 @@ module fly {
 		mass:number
 		step:number = -1
 
+		inoperable:number = 0
+
 		public constructor(x:number, y:number, width:number, height:number) {
 			super()
 			this.x = x + width/2
@@ -35,7 +37,7 @@ module fly {
 			this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player)
 
 			this.initBitmap()
-			this.updatePosition()
+			this.updatePosition(0)
 
 			this.changePower(this.power)
 		}
@@ -43,9 +45,15 @@ module fly {
 		private limitVel = 50
 		private dir:number = 1
 		private nowState:string = "front_move"
-		public updatePosition()
+		public updatePosition(dt:number = 0)
 		{
-			super.updatePosition()
+			super.updatePosition(dt)
+
+			// 僵直时间
+			if (this.inoperable > 0)
+			{
+				this.inoperable -= dt;
+			}
 
 			let x = Math.abs(this.body.velocity[0])
 			let y = Math.abs(this.body.velocity[1])

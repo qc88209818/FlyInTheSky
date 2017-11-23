@@ -22,7 +22,7 @@ var fly;
             var length = this.sprites.length;
             for (var i = 0; i < length;) {
                 if (!this.sprites[i].isDestroy) {
-                    this.sprites[i].updatePosition();
+                    this.sprites[i].updatePosition(dt);
                     ++i;
                 }
                 else {
@@ -36,7 +36,7 @@ var fly;
             var length2 = this.players.length;
             for (var i = 0; i < length2;) {
                 if (!this.players[i].isDestroy) {
-                    this.players[i].updatePosition();
+                    this.players[i].updatePosition(dt);
                     ++i;
                 }
                 else {

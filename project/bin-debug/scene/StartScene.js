@@ -14,7 +14,7 @@ var fly;
         };
         StartScene.prototype.loadTiledMap = function () {
             /*初始化资源加载路径*/
-            this.url = "resource/map/battle2.tmx";
+            this.url = "resource/map/battle1.tmx";
             /*初始化请求*/
             this.request = new egret.HttpRequest();
             /*监听资源加载完成事件*/

@@ -20,7 +20,7 @@ module fly {
 			this.body = body
 		}
 
-		public updatePosition()
+		public updatePosition(dt:number = 0)
 		{
 			if (this.body)
 			{

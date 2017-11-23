@@ -25,7 +25,7 @@ var fly;
             return _this;
         }
         BattleScene.prototype.update = function (dt) {
-            if (this.touchNode.isTouchMove) {
+            if (this.touchNode.isTouchMove && this.player.inoperable <= 0) {
                 var normal = this.touchNode.normal;
                 var forceScale = fly.FlyParam.forceScale;
                 this.player.setVelocity(normal[0] * forceScale, normal[1] * forceScale);
@@ -167,6 +167,9 @@ var fly;
             else if (fly.FlyConfig.isPlayer(bodyB.id) && fly.FlyConfig.isProperty(bodyA.id)) {
                 this.triggerBody(bodyA.id, bodyB.id);
             }
+            else if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isPlayer(bodyB.id)) {
+                this.triggerPlayer(bodyA.id, bodyB.id);
+            }
         };
         BattleScene.prototype.triggerBody = function (id, pid) {
             var _this = this;
@@ -179,6 +182,29 @@ var fly;
                     return;
                 }
             });
+        };
+        BattleScene.prototype.triggerPlayer = function (id1, id2) {
+            var pl1 = null;
+            var pl2 = null;
+            this.objmgr.players.forEach(function (value) {
+                if (value.body.id == id1) {
+                    pl1 = value;
+                }
+                else if (value.body.id == id2) {
+                    pl2 = value;
+                }
+            });
+            if (pl1 && pl2) {
+                pl1.inoperable = 1;
+                pl2.inoperable = 1;
+                var pos1 = pl1.body.position;
+                var pos2 = pl2.body.position;
+                var normal = [];
+                p2.vec2.normalize(normal, [pos1[0] - pos2[0], pos1[1] - pos2[1]]);
+                var forceScale = fly.FlyParam.forceScale * 2;
+                pl1.setVelocity(normal[0] * pl2.body.mass * forceScale, normal[1] * pl2.body.mass * forceScale);
+                pl2.setVelocity(-normal[0] * pl1.body.mass * forceScale, -normal[1] * pl1.body.mass * forceScale);
+            }
         };
         BattleScene.prototype.addPlayerToWorld = function (obj) {
             var _this = this;

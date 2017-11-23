@@ -19,8 +19,9 @@ var fly;
             var body = new p2.Body(bodyOp);
             this.body = body;
         };
-        FlyObject.prototype.updatePosition = function () {
+        FlyObject.prototype.updatePosition = function (dt) {
             var _this = this;
+            if (dt === void 0) { dt = 0; }
             if (this.body) {
                 this.body.displays.forEach(function (value) {
                     value.x = _this.body.position[0];

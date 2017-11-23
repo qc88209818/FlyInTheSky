@@ -18,7 +18,7 @@ module fly {
 
 		public update(dt)
 		{
-			if (this.touchNode.isTouchMove)
+			if (this.touchNode.isTouchMove && this.player.inoperable <= 0)
 			{
 				let normal = this.touchNode.normal
 				let forceScale = FlyParam.forceScale
@@ -207,6 +207,10 @@ module fly {
 			{
 				this.triggerBody(bodyA.id, bodyB.id)
 			}
+			else if (FlyConfig.isPlayer(bodyA.id) &&FlyConfig.isPlayer(bodyB.id))
+			{
+				this.triggerPlayer(bodyA.id, bodyB.id)
+			}
 		}
 
 		private triggerBody(id:number, pid:number)
@@ -222,6 +226,38 @@ module fly {
 					return
 				}
 			})
+		}
+
+		private triggerPlayer(id1:number, id2:number)
+		{
+			let pl1:Player = null
+			let pl2:Player = null
+			this.objmgr.players.forEach(value => {
+				if (value.body.id == id1)
+				{
+					pl1 = value
+				}
+				else if (value.body.id == id2)
+				{
+					pl2 = value
+				}
+			})
+
+			if (pl1 && pl2)
+			{
+				pl1.inoperable = 1
+				pl2.inoperable = 1
+
+				let pos1 = pl1.body.position
+				let pos2 = pl2.body.position
+
+				let normal = []
+				p2.vec2.normalize(normal, [pos1[0] - pos2[0], pos1[1] - pos2[1]])
+
+				let forceScale = FlyParam.forceScale*2
+				pl1.setVelocity( normal[0]*pl2.body.mass*forceScale,  normal[1]*pl2.body.mass*forceScale)
+				pl2.setVelocity(-normal[0]*pl1.body.mass*forceScale, -normal[1]*pl1.body.mass*forceScale)
+			}
 		}
 
 		public addPlayerToWorld(obj:Player)

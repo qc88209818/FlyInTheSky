@@ -30,7 +30,7 @@ module fly {
 			{
 				if (!this.sprites[i].isDestroy)
 				{
-					this.sprites[i].updatePosition()
+					this.sprites[i].updatePosition(dt)
 					++i
 				}
 				else
@@ -48,7 +48,7 @@ module fly {
 			{
 				if (!this.players[i].isDestroy)
 				{
-					this.players[i].updatePosition()
+					this.players[i].updatePosition(dt)
 					++i
 				}
 				else

@@ -1,260 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="400" height="400" tilewidth="10" tileheight="10" nextobjectid="136">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="1000" height="1000" tilewidth="10" tileheight="10" nextobjectid="183">
  <objectgroup name="wall">
-  <object id="1" name="wall" type="wall" x="0" y="0" width="50" height="4000"/>
-  <object id="2" name="wall" type="wall" x="3950" y="0" width="50" height="4000"/>
-  <object id="8" name="wall" type="wall" x="0" y="0" width="4000" height="50"/>
-  <object id="9" name="wall" type="wall" x="9.65251" y="3969.31" width="4000" height="50"/>
-  <object id="14" name="wall" type="wall" x="33.8338" y="2296.86" width="1675.38" height="50"/>
-  <object id="16" name="wall" type="wall" x="2308.08" y="1451.46" width="50" height="868.806"/>
-  <object id="17" name="wall" type="wall" x="2337.84" y="1425.68" width="1661.49" height="50"/>
-  <object id="18" name="wall" type="wall" x="2298.99" y="2498.31" width="1675.68" height="50"/>
-  <object id="59" name="wall" type="wall" x="731.289" y="-748.869" width="200" height="50"/>
-  <object id="91" name="wall" type="wall" x="26.7966" y="1106.76" width="239.569" height="50"/>
-  <object id="92" name="wall" type="wall" x="777.365" y="38.5698" width="50" height="412.725"/>
-  <object id="93" name="wall" type="wall" x="666.014" y="3526.75" width="50" height="167.793"/>
-  <object id="96" name="wall" type="wall" x="1672.64" y="1482.82" width="50" height="1485.37"/>
-  <object id="98" name="wall" type="wall" x="1672.64" y="3222.69" width="50" height="767.46"/>
-  <object id="99" name="wall" type="wall" x="3032.43" y="1465.93" width="50" height="843.474"/>
-  <object id="100" name="wall" type="wall" x="2297.64" y="2791.95" width="50" height="1206.65"/>
-  <object id="103" name="wall" type="wall" x="499.645" y="1106.76" width="1207.98" height="50"/>
-  <object id="115" name="wall" type="wall" x="23.7966" y="3513.85" width="661.866" height="50"/>
-  <object id="116" name="wall" type="wall" x="777.365" y="621.34" width="50" height="512.459"/>
-  <object id="117" name="wall" type="wall" x="656.676" y="3832.68" width="50" height="167.793"/>
- </objectgroup>
- <objectgroup name="block">
-  <object id="56" name="blockcircle" type="blockcircle" x="322" y="-286" width="100" height="100">
-   <properties>
-    <property name="path" value="tree_2_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="57" name="toilet" type="blockrect" x="3228.84" y="1553" width="218.343" height="292.308">
+  <object id="1" name="wall" type="wall" x="0" y="0" width="50" height="9971.43"/>
+  <object id="2" name="wall" type="wall" x="9950" y="4.54747e-13" width="50" height="9942.86"/>
+  <object id="8" name="wall" type="wall" x="0" y="0" width="9971.43" height="50"/>
+  <object id="9" name="wall" type="wall" x="17.2398" y="9926.45" width="9971.43" height="50"/>
+  <object id="16" name="wall" type="wall" x="2468.75" y="2081.28" width="50" height="868.806"/>
+  <object id="17" name="wall" type="wall" x="2479.23" y="1843.42" width="1520.1" height="50"/>
+  <object id="18" name="wall" type="wall" x="26.815" y="2917.51" width="1912.11" height="50"/>
+  <object id="59" name="wall" type="wall" x="949.188" y="-375.328" width="200" height="50"/>
+  <object id="96" name="wall" type="wall" x="1679.94" y="2144.3" width="50" height="823.891"/>
+  <object id="99" name="wall" type="wall" x="3218.81" y="2013.24" width="50" height="913.133"/>
+  <object id="103" name="wall" type="wall" x="36.9201" y="1197.81" width="1664.28" height="50"/>
+  <object id="136" name="wall" type="wall" x="3964.93" y="1283.34" width="50" height="1667.43"/>
+  <object id="140" name="wall" type="wall" x="1676.97" y="26.3306" width="50" height="1046.08"/>
+  <object id="141" name="wall" type="wall" x="1676.97" y="1213.33" width="50" height="770.678"/>
+  <object id="142" name="wall" type="wall" x="2254.48" y="2915.35" width="1750.7" height="50"/>
+  <object id="143" name="wall" type="wall" x="41.7411" y="6422.38" width="586.045" height="50"/>
+  <object id="144" name="wall" type="wall" x="27.6164" y="8704.64" width="3126.8" height="50"/>
+  <object id="145" name="wall" type="wall" x="3111.22" y="6443.43" width="50" height="1284.36"/>
+  <object id="147" name="wall" type="wall" x="7319.49" y="8258.9" width="2635.27" height="50"/>
+  <object id="148" name="wall" type="wall" x="3115.81" y="8117.74" width="50" height="613.406"/>
+  <object id="149" name="wall" type="wall" x="6930.04" y="6718.04" width="3029.43" height="50"/>
+  <object id="150" name="wall" type="wall" x="8708.35" y="6746.26" width="50" height="1384.72"/>
+  <object id="151" name="wall" type="wall" x="744.503" y="6422.24" width="2405.93" height="50"/>
+  <object id="153" name="wall" type="wall" x="6917.55" y="7155.12" width="50" height="2513.72"/>
+  <object id="154" name="wall" type="wall" x="8703.97" y="3909.58" width="50" height="1277.84"/>
+  <object id="156" name="wall" type="wall" x="8724.3" y="3891.15" width="566.555" height="50"/>
+  <object id="157" name="wall" type="wall" x="8886.75" y="5172.32" width="1058.02" height="50"/>
+  <object id="159" name="wall" type="wall" x="1197.27" y="4745.37" width="50" height="465.223"/>
+  <object id="160" name="wall" type="wall" x="1194.63" y="3898.1" width="50" height="543.216"/>
+  <object id="161" name="wall" type="wall" x="27.9107" y="5168.59" width="1223.31" height="50"/>
+  <object id="163" name="wall" type="wall" x="199.29" y="3887.41" width="1054.77" height="50"/>
+  <object id="164" name="wall" type="wall" x="9444.09" y="3894.19" width="538.743" height="50"/>
+  <object id="165" name="toilet" type="blockrect" x="9594.37" y="1965.37" width="250" height="300">
    <properties>
     <property name="path" value="toilet_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="86" name="bed" type="blockrect" x="3407.03" y="3919.25" width="400" height="577.609" rotation="180">
+  <object id="166" name="wall" type="wall" x="7552.5" y="39.6992" width="50" height="2169.77"/>
+  <object id="167" name="wall" type="wall" x="8582.8" y="303.212" width="50" height="2120.33"/>
+  <object id="168" name="chair" type="blockrect" x="9587.86" y="522.961" width="150" height="150" rotation="270">
    <properties>
-    <property name="path" value="bed_png"/>
-    <property name="type" type="int" value="0"/>
+    <property name="path" value="sofa5_png"/>
+    <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="87" name="shower_t" type="blockrect" x="2511.77" y="1558.02" width="409.452" height="262.672">
+  <object id="169" name="shower_t" type="blockrect" x="7978.01" y="161.988" width="400" height="300">
    <properties>
     <property name="path" value="shower_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="88" name="television" type="blockrect" x="2954.66" y="94.2223" width="800" height="500">
-   <properties>
-    <property name="path" value="television_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="89" name="bathtub" type="blockrect" x="3614.64" y="1516.85" width="284.911" height="551.183">
-   <properties>
-    <property name="path" value="bathtub2_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="94" name="shower_k" type="blockrect" x="156.656" y="94.3003" width="523.556" height="319.055">
-   <properties>
-    <property name="path" value="shower2_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="95" name="table_dinner" type="blockrect" x="515.878" y="1529.39" width="725" height="404.054">
-   <properties>
-    <property name="path" value="table_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="104" name="bed" type="blockrect" x="90.7561" y="3201.17" width="450.676" height="721.19" rotation="270">
+  <object id="170" name="wall" type="wall" x="7570.64" y="2390.81" width="1057.09" height="50"/>
+  <object id="171" name="bed" type="blockrect" x="8847.22" y="111.677" width="400" height="600">
    <properties>
     <property name="path" value="bed_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="105" name="sofa_long" type="blockrect" x="3580.49" y="1333.87" width="474.662" height="250" rotation="180">
+  <object id="172" name="wall" type="wall" x="8865.63" y="1798.78" width="1089.13" height="50"/>
+  <object id="173" name="wall" type="wall" x="5204.7" y="3453.84" width="1223.31" height="50"/>
+  <object id="174" name="wall" type="wall" x="5201.86" y="4735.02" width="1223.31" height="50"/>
+  <object id="175" name="wall" type="wall" x="6384.22" y="3468.11" width="50" height="1308.91"/>
+  <object id="176" name="wall" type="wall" x="5192" y="3473.06" width="50" height="1307"/>
+  <object id="178" name="wall" type="wall" x="8868.66" y="2396.49" width="1089.13" height="50"/>
+  <object id="179" name="wall" type="wall" x="3963.7" y="32.8439" width="50" height="928.672"/>
+ </objectgroup>
+ <objectgroup name="block">
+  <object id="56" name="blockcircle" type="blockcircle" x="1489.32" y="-348.257" width="100" height="100">
    <properties>
-    <property name="path" value="sofa1_png"/>
-    <property name="type" type="int" value="0"/>
+    <property name="path" value="tree_2_png"/>
    </properties>
+   <ellipse/>
   </object>
-  <object id="106" name="sofa_short" type="blockrect" x="1322.02" y="3613.74" width="250" height="250">
-   <properties>
-    <property name="path" value="sofa3_png"/>
-    <property name="type" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="107" name="blockrect" type="blockrect" x="870.608" y="-337.162" width="100" height="100">
-   <properties>
-    <property name="path" value=""/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="108" name="sofa_short" type="blockrect" x="2715.74" y="1070.21" width="250" height="250">
-   <properties>
-    <property name="path" value="sofa2_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="109" name="table_living" type="blockrect" x="1559.95" y="73.0953" width="346.37" height="440.534" rotation="90">
-   <properties>
-    <property name="path" value="table2_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="110" name="sofa_short" type="blockrect" x="3661.87" y="1067.88" width="250" height="250">
-   <properties>
-    <property name="path" value="sofa2_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="112" name="sofa_short" type="blockrect" x="3551.18" y="2710.18" width="250" height="250">
-   <properties>
-    <property name="path" value="sofa5_png"/>
-    <property name="type" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="113" name="sofa_short" type="blockrect" x="1211.66" y="2484.12" width="250" height="250">
-   <properties>
-    <property name="path" value="sofa4_png"/>
-    <property name="type" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="114" name="toilet" type="blockrect" x="81.3118" y="3897.66" width="218.343" height="292.308" rotation="270">
+  <object id="57" name="toilet" type="blockrect" x="3331.4" y="2580.85" width="200" height="300">
    <properties>
     <property name="path" value="toilet_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="118" name="chair" type="blockrect" x="119.257" y="2247.64" width="150" height="150" rotation="270">
+  <object id="86" name="bed" type="blockrect" x="8660.03" y="9210.04" width="400" height="600">
+   <properties>
+    <property name="path" value="bed_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="87" name="shower_t" type="blockrect" x="2689.26" y="2588.76" width="400" height="300">
+   <properties>
+    <property name="path" value="shower_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="88" name="television" type="blockrect" x="2815.87" y="94.2223" width="800" height="500">
+   <properties>
+    <property name="path" value="television_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="89" name="bathtub" type="blockrect" x="3619.57" y="2331.81" width="300" height="550">
+   <properties>
+    <property name="path" value="bathtub2_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="94" name="shower_k" type="blockrect" x="125.487" y="120.274" width="500" height="300">
+   <properties>
+    <property name="path" value="shower2_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="95" name="table_dinner" type="blockrect" x="809.742" y="591.888" width="700" height="400">
+   <properties>
+    <property name="path" value="table_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="104" name="bed" type="blockrect" x="537.416" y="1312.47" width="500" height="700">
+   <properties>
+    <property name="path" value="bed_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="105" name="sofa_long" type="blockrect" x="3023.96" y="1373.91" width="474.662" height="250">
+   <properties>
+    <property name="path" value="sofa1_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="106" name="sofa_short" type="blockrect" x="1304.23" y="2571.49" width="250" height="250">
+   <properties>
+    <property name="path" value="sofa3_png"/>
+    <property name="type" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="108" name="sofa_short" type="blockrect" x="2530.21" y="1394.17" width="250" height="250">
+   <properties>
+    <property name="path" value="sofa2_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="109" name="table_living" type="blockrect" x="154.256" y="7444.69" width="346.37" height="440.534">
+   <properties>
+    <property name="path" value="table2_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="110" name="sofa_short" type="blockrect" x="3647.26" y="1389.28" width="250" height="250">
+   <properties>
+    <property name="path" value="sofa2_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="112" name="sofa_short" type="blockrect" x="2386.52" y="6631.15" width="250" height="250">
    <properties>
     <property name="path" value="sofa5_png"/>
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
+  <object id="113" name="sofa_short" type="blockrect" x="836.06" y="8314.29" width="250" height="250">
+   <properties>
+    <property name="path" value="sofa4_png"/>
+    <property name="type" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="114" name="toilet" type="blockrect" x="9521.95" y="7148.6" width="250" height="300" rotation="270">
+   <properties>
+    <property name="path" value="toilet_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="118" name="chair" type="blockrect" x="9656.54" y="8597.87" width="150" height="150" rotation="270">
+   <properties>
+    <property name="path" value="sofa5_png"/>
+    <property name="type" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="137" name="blockrect" type="blockrect" x="2412.34" y="-481.169" width="100" height="100">
+   <properties>
+    <property name="path" value=""/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="152" name="shower_t" type="blockrect" x="8952.87" y="6850.97" width="400" height="300">
+   <properties>
+    <property name="path" value="shower_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="candy">
-  <object id="21" name="candy" type="candy" x="1229.05" y="3201.69" width="100" height="100">
+  <object id="55" name="cake" type="candy" x="54.7854" y="-423.52" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
+    <property name="path" value="cake_png"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="55" name="candy" type="candy" x="69.5209" y="-721.572" width="100" height="100">
+  <object id="180" name="hamburg" type="candy" x="501.509" y="-435.016" width="100" height="100">
    <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
+    <property name="delta" value="30"/>
+    <property name="path" value="hamburg_png"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="119" name="candy" type="candy" x="2610.47" y="3007.43" width="100" height="100">
+  <object id="181" name="hamburg" type="candy" x="2426.59" y="699.22" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
+    <property name="path" value="hamburg_png"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="120" name="candy" type="candy" x="2618.92" y="2069.93" width="100" height="100">
+  <object id="182" name="cake" type="candy" x="1916.7" y="688.814" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="121" name="candy" type="candy" x="3362.16" y="2205.07" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="122" name="candy" type="candy" x="1478.72" y="1892.57" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="123" name="candy" type="candy" x="465.203" y="769.257" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="124" name="candy" type="candy" x="2711.82" y="3607.09" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="125" name="candy" type="candy" x="980.405" y="3683.11" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="126" name="candy" type="candy" x="845.27" y="2585.14" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="127" name="candy" type="candy" x="245.608" y="1546.28" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="128" name="candy" type="candy" x="2514.51" y="819.214" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="129" name="candy" type="candy" x="186.486" y="2441.55" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="130" name="candy" type="candy" x="803.041" y="3809.8" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="131" name="candy" type="candy" x="3277.7" y="2906.08" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="132" name="candy" type="candy" x="3716.89" y="2373.99" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="133" name="candy" type="candy" x="2517.57" y="237.162" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="candy_png"/>
+    <property name="path" value="cake_png"/>
    </properties>
    <ellipse/>
   </object>
@@ -263,13 +224,7 @@
   <object id="29" name="self" type="player" x="1984.51" y="277.303" width="120" height="120">
    <ellipse/>
   </object>
-  <object id="60" name="player" type="player" x="1284" y="-288" width="120" height="120">
-   <ellipse/>
-  </object>
-  <object id="134" name="self" type="player" x="2017.7" y="3090.34" width="120" height="120">
-   <ellipse/>
-  </object>
-  <object id="135" name="self" type="player" x="1891.01" y="1789.66" width="120" height="120">
+  <object id="60" name="player" type="player" x="2007.74" y="-404.732" width="100" height="100">
    <ellipse/>
   </object>
  </objectgroup>

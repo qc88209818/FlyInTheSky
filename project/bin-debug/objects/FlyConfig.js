@@ -68,7 +68,7 @@ var fly;
         FlyConfig.isObstacle = function (id) {
             return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId;
         };
-        FlyConfig.DebugMode = true; // debug模式
+        FlyConfig.DebugMode = false; // debug模式
         FlyConfig.PlayerMinId = 0;
         FlyConfig.BlockMinId = 1000;
         FlyConfig.PropertyMinId = 2000;

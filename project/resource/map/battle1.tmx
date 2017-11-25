@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="1000" height="1000" tilewidth="10" tileheight="10" nextobjectid="1293">
  <objectgroup name="wall">
-  <object id="165" name="toilet" type="blockrect" x="9658.41" y="1980.46" width="250" height="300">
+  <object id="165" name="toilet" type="blockrect" x="9664.75" y="2024.85" width="250" height="300">
    <properties>
     <property name="path" value="toilet_png"/>
+    <property name="rotation" value="180"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -13,7 +14,7 @@
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="169" name="shower_t" type="blockrect" x="7946.79" y="99.553" width="400" height="300">
+  <object id="169" name="shower_t" type="blockrect" x="7965.81" y="74.1884" width="400" height="300">
    <properties>
     <property name="path" value="shower_png"/>
     <property name="type" type="int" value="0"/>
@@ -33,33 +34,37 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="57" name="toilet" type="blockrect" x="3331.4" y="2520.08" width="200" height="300">
+  <object id="57" name="toilet" type="blockrect" x="3355.04" y="2525.99" width="200" height="300">
    <properties>
     <property name="path" value="toilet_png"/>
+    <property name="rotation" value="180"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="86" name="bed" type="blockrect" x="8677.99" y="9212.09" width="400" height="600">
+  <object id="86" name="bed" type="blockrect" x="9274.06" y="9167.7" width="400" height="600">
    <properties>
     <property name="path" value="bed_png"/>
+    <property name="rotation" value="90"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="87" name="shower_t" type="blockrect" x="2689.26" y="2508.72" width="400" height="300">
+  <object id="87" name="shower_t" type="blockrect" x="2659.71" y="2532.36" width="400" height="300">
    <properties>
     <property name="path" value="shower_png"/>
+    <property name="rotation" value="180"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="88" name="television" type="blockrect" x="2815.87" y="94.2223" width="800" height="500">
+  <object id="88" name="television" type="blockrect" x="2917.34" y="236.282" width="602.131" height="357.94">
    <properties>
     <property name="path" value="television_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="89" name="bathtub" type="blockrect" x="3633.07" y="2257.54" width="300" height="550">
+  <object id="89" name="bathtub" type="blockrect" x="3627.16" y="2275.27" width="300" height="550">
    <properties>
     <property name="path" value="bathtub2_png"/>
+    <property name="rotation" value="180"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -75,14 +80,16 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="104" name="bed" type="blockrect" x="537.416" y="1312.47" width="500" height="700">
+  <object id="104" name="bed" type="blockrect" x="262.727" y="1421.86" width="500" height="700">
    <properties>
     <property name="path" value="bed_png"/>
+    <property name="rotation" value="270"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="105" name="sofa_long" type="blockrect" x="3023.96" y="1373.91" width="474.662" height="250">
+  <object id="105" name="sofa_long" type="blockrect" x="2996.21" y="1361.58" width="474.662" height="250">
    <properties>
+    <property name=" rotation" value="180"/>
     <property name="path" value="sofa1_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
@@ -94,21 +101,23 @@
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="108" name="sofa_short" type="blockrect" x="2618.05" y="1373.9" width="250" height="250">
+  <object id="108" name="sofa_short" type="blockrect" x="2602.63" y="1358.48" width="250" height="250">
    <properties>
     <property name="path" value="sofa2_png"/>
+    <property name="rotation" value="180"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="109" name="table_living" type="blockrect" x="227.097" y="7444.69" width="346.37" height="440.534">
+  <object id="109" name="table_living" type="blockrect" x="239.86" y="7229.89" width="500" height="700">
    <properties>
     <property name="path" value="table2_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="110" name="sofa_short" type="blockrect" x="3654.02" y="1375.77" width="250" height="250">
+  <object id="110" name="sofa_short" type="blockrect" x="3595.43" y="1363.44" width="250" height="250">
    <properties>
     <property name="path" value="sofa2_png"/>
+    <property name="rotation" value="180"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -124,9 +133,10 @@
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="114" name="toilet" type="blockrect" x="9480" y="7140.56" width="250" height="300" rotation="270">
+  <object id="114" name="toilet" type="blockrect" x="9594.14" y="7096.17" width="250" height="300" rotation="270">
    <properties>
     <property name="path" value="toilet_png"/>
+    <property name="rotation" value="90"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -136,7 +146,7 @@
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="152" name="shower_t" type="blockrect" x="8699.85" y="6879.37" width="400" height="300">
+  <object id="152" name="shower_t" type="blockrect" x="8534.98" y="6834.98" width="400" height="300">
    <properties>
     <property name="path" value="shower_png"/>
     <property name="type" type="int" value="0"/>
@@ -5508,7 +5518,7 @@
   </object>
  </objectgroup>
  <objectgroup name="player">
-  <object id="29" name="self" type="player" x="1984.51" y="277.303" width="120" height="120">
+  <object id="29" name="self" type="player" x="8851.98" y="6218.96" width="120" height="120">
    <ellipse/>
   </object>
   <object id="60" name="player" type="player" x="981.668" y="-438.374" width="100" height="100">

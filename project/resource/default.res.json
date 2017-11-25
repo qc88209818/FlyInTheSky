@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "yellow_button_jpg,virtual_button_png,virtual_background_png,tree_2_png,tree_1_png,toilet_png,television_png,table2_png,table_png,sofa5_png,sofa4_png,sofa3_png,sofa2_png,sofa1_png,shower2_png,shower_png,red_button_jpg,player_down_png,mushroom_png,playerNormalMode_json,playerNormalMode_png,hp_png,hp_bg_png,chair2_png,chair1_png,candy_png,bed_png,bathtub2_png,bathtub1_png,background_jpg,cake_png,hamburg_png",
+			"keys": "yellow_button_jpg,virtual_button_png,virtual_background_png,tree_2_png,tree_1_png,toilet_png,television_png,table2_png,table_png,sofa5_png,sofa4_png,sofa3_png,sofa2_png,sofa1_png,shower2_png,shower_png,red_button_jpg,player_down_png,mushroom_png,playerNormalMode_json,playerNormalMode_png,hp_png,hp_bg_png,chair2_png,chair1_png,candy_png,bed_png,bathtub2_png,bathtub1_png,background_jpg,cake_png,hamburg_png,grassDark_png,grassHurt_png,grassLight_png,wall_png",
 			"name": "preload"
 		}
 	],
@@ -165,6 +165,26 @@
 			"name": "hamburg_png",
 			"type": "image",
 			"url": "assets/hamburg.png"
+		},
+		{
+			"name": "grassDark_png",
+			"type": "image",
+			"url": "assets/grassDark.png"
+		},
+		{
+			"name": "grassHurt_png",
+			"type": "image",
+			"url": "assets/grassHurt.png"
+		},
+		{
+			"name": "grassLight_png",
+			"type": "image",
+			"url": "assets/grassLight.png"
+		},
+		{
+			"name": "wall_png",
+			"type": "image",
+			"url": "assets/wall.png"
 		}
 	]
 }

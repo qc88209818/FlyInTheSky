@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="1000" height="1000" tilewidth="10" tileheight="10" nextobjectid="183">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="1000" height="1000" tilewidth="10" tileheight="10" nextobjectid="185">
  <objectgroup name="wall">
   <object id="1" name="wall" type="wall" x="0" y="0" width="50" height="9971.43"/>
   <object id="2" name="wall" type="wall" x="9950" y="4.54747e-13" width="50" height="9942.86"/>
@@ -33,7 +33,7 @@
   <object id="161" name="wall" type="wall" x="27.9107" y="5168.59" width="1223.31" height="50"/>
   <object id="163" name="wall" type="wall" x="199.29" y="3887.41" width="1054.77" height="50"/>
   <object id="164" name="wall" type="wall" x="9444.09" y="3894.19" width="538.743" height="50"/>
-  <object id="165" name="toilet" type="blockrect" x="9594.37" y="1965.37" width="250" height="300">
+  <object id="165" name="toilet" type="blockrect" x="9552.75" y="1965.37" width="250" height="300">
    <properties>
     <property name="path" value="toilet_png"/>
     <property name="type" type="int" value="0"/>
@@ -47,14 +47,14 @@
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="169" name="shower_t" type="blockrect" x="7978.01" y="161.988" width="400" height="300">
+  <object id="169" name="shower_t" type="blockrect" x="7946.79" y="99.553" width="400" height="300">
    <properties>
     <property name="path" value="shower_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
   <object id="170" name="wall" type="wall" x="7570.64" y="2390.81" width="1057.09" height="50"/>
-  <object id="171" name="bed" type="blockrect" x="8847.22" y="111.677" width="400" height="600">
+  <object id="171" name="bed" type="blockrect" x="8909.65" y="194.924" width="400" height="600">
    <properties>
     <property name="path" value="bed_png"/>
     <property name="type" type="int" value="0"/>
@@ -81,7 +81,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="86" name="bed" type="blockrect" x="8660.03" y="9210.04" width="400" height="600">
+  <object id="86" name="bed" type="blockrect" x="8670.44" y="9272.47" width="400" height="600">
    <properties>
     <property name="path" value="bed_png"/>
     <property name="type" type="int" value="0"/>
@@ -105,13 +105,13 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="94" name="shower_k" type="blockrect" x="125.487" y="120.274" width="500" height="300">
+  <object id="94" name="shower_k" type="blockrect" x="94.2695" y="99.4623" width="500" height="300">
    <properties>
     <property name="path" value="shower2_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="95" name="table_dinner" type="blockrect" x="809.742" y="591.888" width="700" height="400">
+  <object id="95" name="table_dinner" type="blockrect" x="820.148" y="581.482" width="700" height="400">
    <properties>
     <property name="path" value="table_png"/>
     <property name="type" type="int" value="0"/>
@@ -141,7 +141,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="109" name="table_living" type="blockrect" x="154.256" y="7444.69" width="346.37" height="440.534">
+  <object id="109" name="table_living" type="blockrect" x="227.097" y="7444.69" width="346.37" height="440.534">
    <properties>
     <property name="path" value="table2_png"/>
     <property name="type" type="int" value="0"/>
@@ -195,27 +195,31 @@
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="cake_png"/>
+    <property name="power" value="10"/>
    </properties>
    <ellipse/>
   </object>
   <object id="180" name="hamburg" type="candy" x="501.509" y="-435.016" width="100" height="100">
    <properties>
-    <property name="delta" value="30"/>
+    <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
+    <property name="power" value="30"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="181" name="hamburg" type="candy" x="2426.59" y="699.22" width="100" height="100">
+  <object id="183" name="hamburg" type="candy" x="2433.07" y="751.354" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
+    <property name="power" value="30"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="182" name="cake" type="candy" x="1916.7" y="688.814" width="100" height="100">
+  <object id="184" name="cake" type="candy" x="1891.31" y="751.354" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="cake_png"/>
+    <property name="power" value="10"/>
    </properties>
    <ellipse/>
   </object>

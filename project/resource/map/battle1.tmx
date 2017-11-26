@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="1000" height="1000" tilewidth="10" tileheight="10" nextobjectid="1427">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="1000" height="1000" tilewidth="10" tileheight="10" nextobjectid="1444">
  <objectgroup name="wall">
   <object id="165" name="toilet" type="blockrect" x="9664.75" y="2024.85" width="250" height="300">
    <properties>
@@ -5837,6 +5837,133 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
+  <object id="1427" name="weighttraps" type="weighttraps" x="2575.74" y="-308.876" width="100" height="100">
+   <properties>
+    <property name="min" value="1"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1429" name="weighttraps" type="weighttraps" x="2531.37" y="1052.07" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1430" name="weighttraps" type="weighttraps" x="2723.67" y="5201.48" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1431" name="weighttraps" type="weighttraps" x="5223.67" y="5889.35" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1432" name="weighttraps" type="weighttraps" x="1954.44" y="8041.72" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1433" name="weighttraps" type="weighttraps" x="5815.38" y="1518.05" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1434" name="weighttraps" type="weighttraps" x="6451.48" y="3285.8" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1435" name="weighttraps" type="weighttraps" x="8389.35" y="5001.78" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1436" name="weighttraps" type="weighttraps" x="9350.89" y="6288.76" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1437" name="weighttraps" type="weighttraps" x="7871.6" y="8374.56" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1438" name="weighttraps" type="weighttraps" x="5756.21" y="9543.2" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1439" name="weighttraps" type="weighttraps" x="2198.52" y="7124.56" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1440" name="weighttraps" type="weighttraps" x="4136.39" y="5290.24" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1441" name="weighttraps" type="weighttraps" x="6555.03" y="5171.89" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1442" name="weighttraps" type="weighttraps" x="5992.9" y="4262.13" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1443" name="weighttraps" type="weighttraps" x="5223.67" y="904.142" width="100" height="100">
+   <properties>
+    <property name="max" value="30"/>
+    <property name="min" value="0.8"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
  </objectgroup>
  <objectgroup name="candy">
   <object id="55" name="cake" type="candy" x="130.479" y="-473.983" width="100" height="100">
@@ -6393,7 +6520,7 @@
   </object>
  </objectgroup>
  <objectgroup name="player">
-  <object id="29" name="self" type="player" x="526.392" y="6783.63" width="120" height="120">
+  <object id="29" name="self" type="player" x="3033.79" y="896.056" width="120" height="120">
    <ellipse/>
   </object>
   <object id="60" name="player" type="player" x="981.668" y="-438.374" width="100" height="100">

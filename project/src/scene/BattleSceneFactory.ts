@@ -11,7 +11,7 @@ module fly {
 				scene.addPlayerToWorld(player)
 				if (obj.name == "self")
 				{
-					player.setVisible(true)
+					player.setVisible(true, scene)
 					scene.player = player
 				}
 			}

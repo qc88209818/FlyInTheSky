@@ -109,15 +109,15 @@ module fly {
 	{
 		static LayerScale:number 		= 0.5		// 屏幕缩放比例
 		static forceScale:number        = 1000		// 力量因子
-		static PlayerMaxPower:number 	= 300		// 人物最大能量
-		static PlayerMinPower:number 	= 20		// 人物最小能量
-		static PlayerInitPower:number 	= 100		// 人物初始能量
+		static PlayerMaxPower:number 	= 100		// 人物最大能量
+		static PlayerMinPower:number 	= 0			// 人物最小能量
+		static PlayerInitPower:number 	= 50		// 人物初始能量
 		static PlayerInitMass:number    = 1			// 人物初始重量
 		static PlayerInitForce:number   = 100		// 人物初始力量
 
-		static PlayerStep:number[]       = [51, 151, 251]	// 能量阶段
+		static PlayerStep:number[]       = [25, 75, 100]	// 能量阶段
 		static PlayerVelScale:number[]   = [2, 1, 0.5]		// 速度倍数
-		static PlayerTijiScale:number[]  = [0.5, 1, 2]		// 体积倍数
+		static PlayerTijiScale:number[]  = [0.8, 1, 1.5]	// 体积倍数
 		static PlayerMassScale:number[]  = [10, 25, 50]		// 重量倍数
 		static PlayerForceScale:number[] = [0.5, 1, 2]		// 力量倍数
 

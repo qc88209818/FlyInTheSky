@@ -65,15 +65,5 @@ module fly {
 		{
 			console.log("FlyObject onTrigger: ", pid)
 		}
-
-		public onContactBegin(pid:number)
-		{
-			console.log("FlyObject onContactBegin: ", pid)
-		}
-
-		public onContactEnd(pid:number)
-		{
-			console.log("FlyObject onContactEnd: ", pid)
-		}
 	}
 }

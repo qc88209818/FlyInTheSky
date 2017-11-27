@@ -18,15 +18,11 @@ module fly {
 
 		public update(dt)
 		{
-			if (this.touchNode.isTouchMove)
+			if (this.touchNode.isTouchMove && this.player.inoperable <= 0)
 			{
 				let normal = this.touchNode.normal
 				let forceScale = FlyParam.forceScale
 				this.player.setVelocity(normal[0]*forceScale, normal[1]*forceScale)
-			}
-			else
-			{
-				this.player.setVelocity(0, 0)
 			}
 
 			this.updatePower(dt)
@@ -100,54 +96,116 @@ module fly {
 				this.update(dt/1000)
 			}, this)
 
-			world.on("postBroadphase", this.onBeginContact, this)
-			world.on("endContact", this.onEndContact, this)
+			world.on("postBroadphase", this.onPostBroadphase, this)
 		}
 		
 		private createScene() 
 		{
 			this.objmgr.scene = this
-			
-			// 根据TiledMap创建元素
+
 			this.tiledMapObjs.forEach(obj => {
-				BattleSceneFactory.createObject(this, obj)
+				if (obj.type == "player")
+				{
+					let player = new Player(obj.x, obj.y, obj.width, obj.height)
+					
+					this.addPlayerToWorld(player)
+					if (obj.name == "self")
+					{
+						player.setVisible(true)
+						this.player = player
+					}
+				}
+				else if (obj.type == "wall")
+				{
+					let wall = new Wall(obj.x, obj.y, obj.width, obj.height)
+					this.addToWorld(wall)
+				}
+				else if (obj.type == "blockrect")
+				{
+					let block = new BlockRect(obj.x, obj.y, obj.width, obj.height, 
+					{
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, mass:Number(obj.params["mass"])
+						, damping:Number(obj.params["damping"])
+						, rotation:Number(obj.params["rotation"])
+					})
+					this.addToWorld(block)
+				}
+				else if (obj.type == "blockcircle")
+				{
+					let block = new BlockCircle(obj.x, obj.y, obj.width/2, 
+					{
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, mass:Number(obj.params["mass"])
+						, damping:Number(obj.params["damping"])
+						, rotation:Number(obj.params["rotation"])
+					})
+					this.addToWorld(block)
+				}
+				else if (obj.type == "candy")
+				{
+					let candy = new Candy(obj.x, obj.y, obj.width/2, 
+					{
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, rotation:Number(obj.params["rotation"])
+						, delta:Number(obj.params["delta"])
+						, power:Number(obj.params["power"])
+					})
+					this.addToWorld(candy)
+				}
+				else if (obj.type == "traps")
+				{
+					let traps = new Traps(obj.x, obj.y, obj.width, obj.height, 
+					{
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, rotation:Number(obj.params["rotation"])
+					})
+					this.addToWorld(traps)
+				}
+				else if (obj.type == "weighttraps")
+				{
+					let traps = new WeightTraps(obj.x, obj.y, obj.width, obj.height, 
+					{
+						path:obj.params["path"]
+						, type:Number(obj.params["type"])
+						, rotation:Number(obj.params["rotation"])
+						, min:Number(obj.params["min"])
+						, max:Number(obj.params["max"])
+					})
+					this.addToWorld(traps)
+				}
 			})
 		}
 
 		private createTouchLayer()
 		{
-			// 触摸层
 			let touchNode = new BattleTouchNode(this, 150)
 			this.touchNode = touchNode
 
 			this.touchLayer.addChild(this.touchNode)
 		}
 
-		private onBeginContact(event:any)
+		private onPostBroadphase(event:any)
 		{
 			for (let i = 0; i < event.pairs.length; i += 2)
 			{
-				this.onContactBegin(event.pairs[i], event.pairs[i+1])
+				this.onContact(event.pairs[i], event.pairs[i+1])
 			}
 		}
-		
-		private onContactBegin(bodyA:p2.Body, bodyB:p2.Body) 
+
+		private onContact(bodyA:p2.Body, bodyB:p2.Body) 
 		{
 			if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isProperty(bodyB.id))
 			{
-				this.trigger(bodyB.id, bodyA.id)
+				this.triggerBody(bodyB.id, bodyA.id)
 			}
 			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isProperty(bodyA.id))
 			{
-				this.trigger(bodyA.id, bodyB.id)
-			}
-			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
-			{
-				this.trigger(bodyB.id, bodyA.id)
-			}
-			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isObstacle(bodyA.id))
-			{
-				this.trigger(bodyA.id, bodyB.id)
+				this.triggerBody(bodyA.id, bodyB.id)
 			}
 			else if (FlyConfig.isPlayer(bodyA.id) &&FlyConfig.isPlayer(bodyB.id))
 			{
@@ -155,24 +213,7 @@ module fly {
 			}
 		}
 
-		private onEndContact(event:any)
-		{
-			this.onContactEnd(event.bodyA, event.bodyB)
-		}
-
-		private onContactEnd(bodyA:p2.Body, bodyB:p2.Body)
-		{
-			if (FlyConfig.isObstacle(bodyA.id))
-			{
-				this.contactObstacleEnd(bodyA.id, bodyB.id)
-			}
-			else if (FlyConfig.isObstacle(bodyB.id))
-			{
-				this.contactObstacleEnd(bodyB.id, bodyA.id)
-			}
-		}
-
-		private trigger(id:number, pid:number)
+		private triggerBody(id:number, pid:number)
 		{
 			this.objmgr.sprites.forEach(value => {
 				if (value.body.id == id)
@@ -182,28 +223,6 @@ module fly {
 					{
 						this.delFromWorld(value)
 					}
-					return
-				}
-			})
-		}
-
-		private contactObstacleBegin(id:number, pid:number)
-		{
-			this.objmgr.sprites.forEach(value => {
-				if (value.body.id == id)
-				{
-					value.onContactBegin(pid)
-					return
-				}
-			})
-		}
-
-		private contactObstacleEnd(id:number, pid:number)
-		{
-			this.objmgr.sprites.forEach(value => {
-				if (value.body.id == id)
-				{
-					value.onContactEnd(pid)
 					return
 				}
 			})
@@ -226,22 +245,20 @@ module fly {
 
 			if (pl1 && pl2)
 			{
+				pl1.inoperable = 1
+				pl2.inoperable = 1
+
 				let pos1 = pl1.body.position
 				let pos2 = pl2.body.position
 
 				let normal = []
 				p2.vec2.normalize(normal, [pos1[0] - pos2[0], pos1[1] - pos2[1]])
 
-				let forceScale = FlyParam.forceScale
-				pl1.setVelocity( normal[0]*forceScale,  normal[1]*forceScale)
-				pl2.setVelocity(-normal[0]*forceScale, -normal[1]*forceScale)
-
-				pl1.inoperable = 1
-				pl2.inoperable = 1
+				let forceScale = FlyParam.forceScale*2
+				pl1.setVelocity( normal[0]*pl2.body.mass*forceScale,  normal[1]*pl2.body.mass*forceScale)
+				pl2.setVelocity(-normal[0]*pl1.body.mass*forceScale, -normal[1]*pl1.body.mass*forceScale)
 			}
 		}
-
-
 
 		public addPlayerToWorld(obj:Player)
 		{

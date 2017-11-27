@@ -17,8 +17,8 @@ var fly;
         __extends(Traps, _super);
         function Traps(x, y, width, height, op) {
             var _this = _super.call(this) || this;
-            _this.x = x;
-            _this.y = y;
+            _this.x = x + width / 2;
+            _this.y = y + height / 2;
             _this.width = width;
             _this.height = height;
             _this.initBody({
@@ -38,6 +38,8 @@ var fly;
         }
         Traps.prototype.initBitmap = function (path) {
             var png = fly.FlyTools.createBitmapByName(path);
+            png.anchorOffsetX = png.width / 2;
+            png.anchorOffsetY = png.height / 2;
             png.scaleX = this.width / png.width;
             png.scaleY = this.height / png.height;
             this.addChild(png);

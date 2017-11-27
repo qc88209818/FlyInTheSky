@@ -22,18 +22,17 @@
 		"bin-debug/objects/FlyConfig.js",
 		"bin-debug/Player.js",
 		"bin-debug/TiledMapObject.js",
-		"bin-debug/objects/FlyTools.js",
 		"bin-debug/ObjectManager.js",
+		"bin-debug/ui/UIProgress.js",
 		"bin-debug/property/Candy.js",
 		"bin-debug/property/Traps.js",
 		"bin-debug/property/WeightTraps.js",
-		"bin-debug/property/WindTraps.js",
 		"bin-debug/scene/BattleScene.js",
 		"bin-debug/scene/BattleSceneContact.js",
 		"bin-debug/scene/BattleSceneFactory.js",
 		"bin-debug/scene/BattleTouchNode.js",
 		"bin-debug/scene/StartScene.js",
 		"bin-debug/ui/UILoading.js",
-		"bin-debug/ui/UIProgress.js"
+		"bin-debug/objects/FlyTools.js"
 	]
 }

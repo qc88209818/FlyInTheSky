@@ -114,9 +114,13 @@ module fly {
 			}
 		}
 
-		public setVisible(visible:boolean)
+		public setVisible(visible:boolean, parent:egret.DisplayObjectContainer)
 		{
 			this.progress.visible = visible
+			if (visible)
+			{
+				parent.addChild(this.progress)
+			}
 		}
 
 		public changePower(power:number)
@@ -188,10 +192,9 @@ module fly {
 			progress.anchorOffsetX = progress.width/2
 			progress.anchorOffsetY = progress.height/2
 			progress.visible = false
-			this.addChild(progress)
 			this.progress = progress
 
-			progress.setPosition(progress.width/2, -png.height*this.baseScale)
+			progress.setPosition(progress.width/2, progress.height)
 		}
 
 		public addPower(value:number)

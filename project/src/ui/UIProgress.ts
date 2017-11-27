@@ -6,25 +6,27 @@ module fly {
 		min:number
 		now:number
 
-		private basescale:number = 0.5
-
 		public constructor() {
 			super()
 		}
 
 		public create(max:number, min:number, now:number)
 		{
+        	let wid = FlyConfig.stageWidth - 10
+
 			let bg = FlyTools.createBitmapByName("hp_bg_png")
 			bg.anchorOffsetX = 0
 			bg.anchorOffsetY = bg.height/2
-			bg.scaleX = this.basescale
+			bg.width = wid
+			bg.height = bg.height*2
 			this.addChild(bg)
 			this.bg = bg
 
 			let fr = FlyTools.createBitmapByName("hp_png")
 			fr.anchorOffsetX = 0
 			fr.anchorOffsetY = fr.height/2
-			fr.scaleX = this.basescale
+			fr.width = wid - 10
+			fr.height = fr.height*2
 			this.addChild(fr)
 			this.fr = fr
 
@@ -37,11 +39,11 @@ module fly {
 
 		public setPosition(x:number, y:number)
 		{
-			this.bg.x = -this.bg.width/2*this.basescale + x
+			this.bg.x = x + 5
 			this.bg.y = y
 
-			this.fr.x = -this.fr.width/2*this.basescale + x
-			this.fr.y = y
+			this.fr.x = x + 10
+			this.fr.y = y + 2
 		}
 
 		public changeValue(value:number)
@@ -52,7 +54,7 @@ module fly {
 			this.now = v
 
 			let scale = (v - this.min)/(this.max - this.min)
-			this.fr.scaleX = this.basescale * scale
+			this.fr.scaleX = scale
 		}
 	}
 }

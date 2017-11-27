@@ -15,14 +15,14 @@ module fly {
 
 	export enum ObjectMask {
 		None     = 0,
-		Block    = ObjectGroup.Block|ObjectGroup.Player,
-		Player   = ObjectGroup.Player|ObjectGroup.Block,
-		Obstacle = 0,
+		Block    = ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.Obstacle,
+		Player   = ObjectGroup.Player|ObjectGroup.Block|ObjectGroup.Obstacle,
+		Obstacle = ObjectGroup.Obstacle|ObjectGroup.Block|ObjectGroup.Player,
 		Property = 0
 	}
 
 	export class FlyConfig {
-		static DebugMode:boolean	= false		// debug模式
+		static DebugMode:boolean	= true		// debug模式
 		static width:number				// 画布宽度
 		static height:number 			// 画布高度
 		static stageWidth:number		// 画布宽度
@@ -108,18 +108,18 @@ module fly {
 	export class FlyParam
 	{
 		static LayerScale:number 		= 0.5		// 屏幕缩放比例
-		static forceScale:number        = 200		// 力量因子
+		static forceScale:number        = 1000		// 力量因子
 		static PlayerMaxPower:number 	= 300		// 人物最大能量
 		static PlayerMinPower:number 	= 20		// 人物最小能量
 		static PlayerInitPower:number 	= 100		// 人物初始能量
-		static PlayerInitMass:number    = 0.2		// 人物初始重量
+		static PlayerInitMass:number    = 1			// 人物初始重量
 
-		static PlayerStep:number[]      = [ 61, 121, 181, 221, 261]	// 变身阶段
-		static PlayerTijiScale:number[] = [0.5, 0.8, 1.0, 1.5, 2.0]	// 变身阶段
-		static PlayerMassScale:number[] = [0.5, 0.8, 1.0, 1.5, 2.0]	// 变身阶段
+		static PlayerStep:number[]      = [51, 151, 251]	// 能量阶段
+		static PlayerTijiScale:number[] = [0.5, 1, 2]		// 体积倍数
+		static PlayerMassScale:number[] = [10, 25, 50]		// 重量因素
+		static PlayerVeloScale:number[] = [2, 1, 0.5]		// 速度倍数
 
 		static candy_power:number 		= 15		// 糖果能量
-		static move_power:number 		= -2		// 移动消耗能量
-
+		static move_power:number 		= -3		// 移动消耗能量
 	}
 }

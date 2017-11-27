@@ -25,10 +25,13 @@ var fly;
             return _this;
         }
         BattleScene.prototype.update = function (dt) {
-            if (this.touchNode.isTouchMove && this.player.inoperable <= 0) {
+            if (this.touchNode.isTouchMove) {
                 var normal = this.touchNode.normal;
                 var forceScale = fly.FlyParam.forceScale;
                 this.player.setVelocity(normal[0] * forceScale, normal[1] * forceScale);
+            }
+            else {
+                this.player.setVelocity(0, 0);
             }
             this.updatePower(dt);
             this.updateScene(dt);
@@ -82,96 +85,57 @@ var fly;
                 world.step(dt / 1000);
                 this.update(dt / 1000);
             }, this);
-            world.on("postBroadphase", this.onPostBroadphase, this);
+            world.on("postBroadphase", this.onBeginContact, this);
+            world.on("endContact", this.onEndContact, this);
         };
         BattleScene.prototype.createScene = function () {
             var _this = this;
             this.objmgr.scene = this;
+            // 根据TiledMap创建元素
             this.tiledMapObjs.forEach(function (obj) {
-                if (obj.type == "player") {
-                    var player = new fly.Player(obj.x, obj.y, obj.width, obj.height);
-                    _this.addPlayerToWorld(player);
-                    if (obj.name == "self") {
-                        player.setVisible(true);
-                        _this.player = player;
-                    }
-                }
-                else if (obj.type == "wall") {
-                    var wall = new fly.Wall(obj.x, obj.y, obj.width, obj.height);
-                    _this.addToWorld(wall);
-                }
-                else if (obj.type == "blockrect") {
-                    var block = new fly.BlockRect(obj.x, obj.y, obj.width, obj.height, {
-                        path: obj.params["path"],
-                        type: Number(obj.params["type"]),
-                        mass: Number(obj.params["mass"]),
-                        damping: Number(obj.params["damping"]),
-                        rotation: Number(obj.params["rotation"])
-                    });
-                    _this.addToWorld(block);
-                }
-                else if (obj.type == "blockcircle") {
-                    var block = new fly.BlockCircle(obj.x, obj.y, obj.width / 2, {
-                        path: obj.params["path"],
-                        type: Number(obj.params["type"]),
-                        mass: Number(obj.params["mass"]),
-                        damping: Number(obj.params["damping"]),
-                        rotation: Number(obj.params["rotation"])
-                    });
-                    _this.addToWorld(block);
-                }
-                else if (obj.type == "candy") {
-                    var candy = new fly.Candy(obj.x, obj.y, obj.width / 2, {
-                        path: obj.params["path"],
-                        type: Number(obj.params["type"]),
-                        rotation: Number(obj.params["rotation"]),
-                        delta: Number(obj.params["delta"]),
-                        power: Number(obj.params["power"])
-                    });
-                    _this.addToWorld(candy);
-                }
-                else if (obj.type == "traps") {
-                    var traps = new fly.Traps(obj.x, obj.y, obj.width, obj.height, {
-                        path: obj.params["path"],
-                        type: Number(obj.params["type"]),
-                        rotation: Number(obj.params["rotation"])
-                    });
-                    _this.addToWorld(traps);
-                }
-                else if (obj.type == "weighttraps") {
-                    var traps = new fly.WeightTraps(obj.x, obj.y, obj.width, obj.height, {
-                        path: obj.params["path"],
-                        type: Number(obj.params["type"]),
-                        rotation: Number(obj.params["rotation"]),
-                        min: Number(obj.params["min"]),
-                        max: Number(obj.params["max"])
-                    });
-                    _this.addToWorld(traps);
-                }
+                fly.BattleSceneFactory.createObject(_this, obj);
             });
         };
         BattleScene.prototype.createTouchLayer = function () {
+            // 触摸层
             var touchNode = new fly.BattleTouchNode(this, 150);
             this.touchNode = touchNode;
             this.touchLayer.addChild(this.touchNode);
         };
-        BattleScene.prototype.onPostBroadphase = function (event) {
+        BattleScene.prototype.onBeginContact = function (event) {
             for (var i = 0; i < event.pairs.length; i += 2) {
-                this.onContact(event.pairs[i], event.pairs[i + 1]);
+                this.onContactBegin(event.pairs[i], event.pairs[i + 1]);
             }
         };
-        BattleScene.prototype.onContact = function (bodyA, bodyB) {
+        BattleScene.prototype.onContactBegin = function (bodyA, bodyB) {
             if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isProperty(bodyB.id)) {
-                this.triggerBody(bodyB.id, bodyA.id);
+                this.trigger(bodyB.id, bodyA.id);
             }
             else if (fly.FlyConfig.isPlayer(bodyB.id) && fly.FlyConfig.isProperty(bodyA.id)) {
-                this.triggerBody(bodyA.id, bodyB.id);
+                this.trigger(bodyA.id, bodyB.id);
+            }
+            else if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isObstacle(bodyB.id)) {
+                this.trigger(bodyB.id, bodyA.id);
+            }
+            else if (fly.FlyConfig.isPlayer(bodyB.id) && fly.FlyConfig.isObstacle(bodyA.id)) {
+                this.trigger(bodyA.id, bodyB.id);
             }
             else if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isPlayer(bodyB.id)) {
                 this.triggerPlayer(bodyA.id, bodyB.id);
             }
         };
-        BattleScene.prototype.triggerBody = function (id, pid) {
+        BattleScene.prototype.onEndContact = function (event) {
+            this.onContactEnd(event.bodyA, event.bodyB);
+        };
+        BattleScene.prototype.onContactEnd = function (bodyA, bodyB) {
+            if (fly.FlyConfig.isObstacle(bodyA.id)) {
+                this.contactObstacleEnd(bodyA.id, bodyB.id);
+            }
+            else if (fly.FlyConfig.isObstacle(bodyB.id)) {
+                this.contactObstacleEnd(bodyB.id, bodyA.id);
+            }
+        };
+        BattleScene.prototype.trigger = function (id, pid) {
             var _this = this;
             this.objmgr.sprites.forEach(function (value) {
                 if (value.body.id == id) {
@@ -179,6 +143,22 @@ var fly;
                     if (value.isDestroy) {
                         _this.delFromWorld(value);
                     }
+                    return;
+                }
+            });
+        };
+        BattleScene.prototype.contactObstacleBegin = function (id, pid) {
+            this.objmgr.sprites.forEach(function (value) {
+                if (value.body.id == id) {
+                    value.onContactBegin(pid);
+                    return;
+                }
+            });
+        };
+        BattleScene.prototype.contactObstacleEnd = function (id, pid) {
+            this.objmgr.sprites.forEach(function (value) {
+                if (value.body.id == id) {
+                    value.onContactEnd(pid);
                     return;
                 }
             });
@@ -195,15 +175,15 @@ var fly;
                 }
             });
             if (pl1 && pl2) {
-                pl1.inoperable = 1;
-                pl2.inoperable = 1;
                 var pos1 = pl1.body.position;
                 var pos2 = pl2.body.position;
                 var normal = [];
                 p2.vec2.normalize(normal, [pos1[0] - pos2[0], pos1[1] - pos2[1]]);
-                var forceScale = fly.FlyParam.forceScale * 2;
-                pl1.setVelocity(normal[0] * pl2.body.mass * forceScale, normal[1] * pl2.body.mass * forceScale);
-                pl2.setVelocity(-normal[0] * pl1.body.mass * forceScale, -normal[1] * pl1.body.mass * forceScale);
+                var forceScale = fly.FlyParam.forceScale;
+                pl1.setVelocity(normal[0] * forceScale, normal[1] * forceScale);
+                pl2.setVelocity(-normal[0] * forceScale, -normal[1] * forceScale);
+                pl1.inoperable = 1;
+                pl2.inoperable = 1;
             }
         };
         BattleScene.prototype.addPlayerToWorld = function (obj) {

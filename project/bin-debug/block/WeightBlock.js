@@ -13,49 +13,58 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var fly;
 (function (fly) {
-    var Traps = (function (_super) {
-        __extends(Traps, _super);
-        function Traps(x, y, width, height, op) {
+    var WeightBlock = (function (_super) {
+        __extends(WeightBlock, _super);
+        function WeightBlock(x, y, width, height, op) {
             var _this = _super.call(this) || this;
-            _this.x = x + width / 2;
-            _this.y = y + height / 2;
+            _this.baseScale = 1.5;
+            _this.x = x;
+            _this.y = y;
             _this.width = width;
             _this.height = height;
+            _this.min = op.min || 0;
+            _this.max = op.max || 999;
             _this.initBody({
-                id: fly.FlyConfig.getObstacleId(),
+                id: fly.FlyConfig.getBlockId(),
                 mass: op.mass || 1,
-                type: op.type || p2.Body.DYNAMIC,
+                type: op.type || p2.Body.KINEMATIC,
                 fixedRotation: true,
                 position: [_this.x, _this.y],
                 damping: op.damping || 0
             });
             _this.initShape(_this.width, _this.height);
-            _this.setGroupAndMask(fly.ObjectGroup.Obstacle, fly.ObjectMask.Obstacle);
+            _this.setGroupAndMask(fly.ObjectGroup.Block, fly.ObjectMask.Block);
             _this.initBitmap(op.path);
             _this.updatePosition();
             _this.setRotation(op.rotation);
             return _this;
         }
-        Traps.prototype.initBitmap = function (path) {
+        WeightBlock.prototype.initBitmap = function (path) {
             var png = fly.FlyTools.createBitmapByName(path);
-            png.anchorOffsetX = png.width / 2;
-            png.anchorOffsetY = png.height / 2;
-            png.scaleX = this.width / png.width;
-            png.scaleY = this.height / png.height;
+            png.scaleX = this.baseScale * this.width / png.width;
+            png.scaleY = this.baseScale * this.height / png.height;
             this.addChild(png);
         };
-        Traps.prototype.onTrigger = function (pid) {
-            this.isDestroy = true;
+        WeightBlock.prototype.onContactBegin = function (pid) {
+            var _this = this;
             this.objmgr.players.forEach(function (player) {
                 if (player.body.id == pid) {
-                    player.died(3);
+                    if (_this.min < player.body.mass && player.body.mass < _this.max) {
+                        var normal = [];
+                        p2.vec2.normalize(normal, player.body.velocity);
+                        _this.body.velocity = [normal[0] * 100, normal[1] * 100];
+                    }
+                    console.log(_this.min, player.body.mass, _this.max);
                     return;
                 }
             });
         };
-        return Traps;
+        WeightBlock.prototype.onContactEnd = function (pid) {
+            this.body.velocity = [0, 0];
+        };
+        return WeightBlock;
     }(fly.FlyRect));
-    fly.Traps = Traps;
-    __reflect(Traps.prototype, "fly.Traps");
+    fly.WeightBlock = WeightBlock;
+    __reflect(WeightBlock.prototype, "fly.WeightBlock");
 })(fly || (fly = {}));
-//# sourceMappingURL=Traps.js.map
+//# sourceMappingURL=WeightBlock.js.map

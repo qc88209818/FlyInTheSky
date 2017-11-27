@@ -35,16 +35,54 @@ class UILoading extends egret.Sprite {
     }
 
     private textField:egret.TextField;
-
+    private bar:egret.Bitmap ;
+    private bar_bg:egret.Bitmap ;
+    private bar_mask:egret.Bitmap;
+    private loadAmin:egret.MovieClip;
+    private bar_width:number;
     private createView():void {
+     
+
+
+        this.bar_bg = new  egret.Bitmap();
+        this.bar_bg.texture = RES.getRes("bar_bg_png");
+        this.addChild(this.bar_bg);
+
+        this.bar = new  egret.Bitmap();
+        this.bar.texture = RES.getRes("load_bar_png");
+        this.addChild(this.bar);
+
+        this.bar_mask = new  egret.Bitmap();
+        this.bar_mask.texture = RES.getRes("load_mask_png");
+        this.bar_width =  this.bar_mask.width;
+        this.bar_mask.width = 1;
+        this.addChild(this.bar_mask);
+        this.bar.mask = this.bar_mask;
+
         this.textField = new egret.TextField();
         this.textField.anchorOffsetX = this.textField.width/2
         this.textField.anchorOffsetY = this.textField.height/2
         this.textField.textAlign = "center";
+        this.textField.scaleX = 0.68;
+        this.textField.scaleY = 0.68;
+        this.textField.x = 110;
+        this.textField.y = 6;
         this.addChild(this.textField);
+
+        let data = RES.getRes("loading_amin_json");
+        let txtr = RES.getRes("loading_amin_png");
+        let mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this.loadAmin = new egret.MovieClip( mcFactory.generateMovieClipData( "loading" ) );
+        this.loadAmin.gotoAndPlay("start",-1);
+        this.addChild(this.loadAmin);
+        this.loadAmin.y = -60;
+        this.loadAmin.x = 180;
+
+
     }
 
     public setProgress(current:number, total:number):void {
-        this.textField.text = `Loading...${current}/${total}`;
+        this.textField.text = `${current}/${total}`;
+        this.bar_mask.width = current/total * this.bar_width;
     }
 }

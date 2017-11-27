@@ -12,11 +12,7 @@ class Main extends egret.DisplayObjectContainer {
 
     private onAddToStage(event: egret.Event) 
     {
-        //设置加载进度界面
-        this.loadingView = new UILoading();
-        this.loadingView.x = this.stage.stageWidth/2;
-        this.loadingView.y = this.stage.stageHeight/2;
-        this.stage.addChild(this.loadingView);
+       
 
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this)
         RES.loadConfig("resource/default.res.json", "resource/")
@@ -33,7 +29,7 @@ class Main extends egret.DisplayObjectContainer {
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this)
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this)
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this)
-        RES.loadGroup("preload")
+        RES.loadGroup("loadUI")
     }
 
     private onResourceLoadComplete(event: RES.ResourceEvent)
@@ -46,6 +42,15 @@ class Main extends egret.DisplayObjectContainer {
 
             this.isLoadRes = true
             this.init()
+        }else if(event.groupName == "loadUI"){
+             //设置加载进度界面
+            this.loadingView = new UILoading();
+            this.loadingView.x = this.stage.stageWidth/2-200;
+            this.loadingView.y = this.stage.stageHeight/2;
+            this.loadingView.scaleX = 2;
+            this.loadingView.scaleY = 2;
+            this.stage.addChild(this.loadingView);
+            RES.loadGroup("preload")
         }
     }
 

@@ -11,7 +11,7 @@ module fly {
 			super()
 			this.x = x + radius
 			this.y = y + radius
-			this.radius = radius*2
+			this.radius = radius
 
 			this.initBody({
 				id:FlyConfig.getBlockId()

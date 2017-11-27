@@ -21,7 +21,7 @@ var fly;
             _this.baseScale = 2;
             _this.x = x + radius;
             _this.y = y + radius;
-            _this.radius = radius * 2;
+            _this.radius = radius;
             _this.initBody({
                 id: fly.FlyConfig.getBlockId(),
                 mass: op.mass || 1,

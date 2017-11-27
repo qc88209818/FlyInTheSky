@@ -38,7 +38,7 @@ var fly;
                 var groupxml = group;
                 groupxml.children.forEach(function (object) {
                     var objectxml = object;
-                    var tmObj = new fly.TiledMapObject();
+                    var tmObj = new TiledMapObject();
                     tmObj.name = objectxml["$name"];
                     tmObj.type = objectxml["$type"];
                     tmObj.x = Number(objectxml["$x"]);

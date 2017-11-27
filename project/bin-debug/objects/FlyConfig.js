@@ -20,9 +20,9 @@ var fly;
     var ObjectMask;
     (function (ObjectMask) {
         ObjectMask[ObjectMask["None"] = 0] = "None";
-        ObjectMask[ObjectMask["Block"] = ObjectGroup.Block | ObjectGroup.Player | ObjectGroup.Obstacle] = "Block";
-        ObjectMask[ObjectMask["Player"] = ObjectGroup.Player | ObjectGroup.Block | ObjectGroup.Obstacle] = "Player";
-        ObjectMask[ObjectMask["Obstacle"] = ObjectGroup.Obstacle | ObjectGroup.Block | ObjectGroup.Player] = "Obstacle";
+        ObjectMask[ObjectMask["Block"] = ObjectGroup.Block | ObjectGroup.Player] = "Block";
+        ObjectMask[ObjectMask["Player"] = ObjectGroup.Player | ObjectGroup.Block] = "Player";
+        ObjectMask[ObjectMask["Obstacle"] = 0] = "Obstacle";
         ObjectMask[ObjectMask["Property"] = 0] = "Property";
     })(ObjectMask = fly.ObjectMask || (fly.ObjectMask = {}));
     var FlyConfig = (function () {
@@ -68,7 +68,7 @@ var fly;
         FlyConfig.isObstacle = function (id) {
             return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId;
         };
-        FlyConfig.DebugMode = true; // debug模式
+        FlyConfig.DebugMode = false; // debug模式
         FlyConfig.PlayerMinId = 0;
         FlyConfig.BlockMinId = 1000;
         FlyConfig.PropertyMinId = 2000;
@@ -89,21 +89,24 @@ var fly;
         function FlyParam() {
         }
         FlyParam.LayerScale = 0.5; // 屏幕缩放比例
-        FlyParam.forceScale = 1000; // 力量因子
+        FlyParam.forceScale = 200; // 力量因子
         FlyParam.PlayerMaxPower = 300; // 人物最大能量
         FlyParam.PlayerMinPower = 20; // 人物最小能量
         FlyParam.PlayerInitPower = 100; // 人物初始能量
-        FlyParam.PlayerInitMass = 1; // 人物初始重量
-        FlyParam.PlayerStep = [51, 151, 251]; // 能量阶段
-        FlyParam.PlayerTijiScale = [0.5, 1, 2]; // 体积倍数
-        FlyParam.PlayerMassScale = [10, 25, 50]; // 重量因素
-        FlyParam.PlayerVeloScale = [2, 1, 0.5]; // 速度倍数
+        FlyParam.PlayerInitMass = 0.2; // 人物初始重量
+        FlyParam.PlayerStep = [61, 121, 181, 221, 261]; // 变身阶段
+        FlyParam.PlayerTijiScale = [0.5, 0.8, 1.0, 1.5, 2.0]; // 变身阶段
+        FlyParam.PlayerMassScale = [0.5, 0.8, 1.0, 1.5, 2.0]; // 变身阶段
         FlyParam.candy_power = 15; // 糖果能量
+<<<<<<< HEAD
         FlyParam.move_power = -3; // 移动消耗能量
         FlyParam.PlayerBaseScale = 2; // 基本缩放
         FlyParam.CandyBaseScale = 2;
         FlyParam.TrapsBaseScale = 1;
         FlyParam.WeightTrapsBaseScale = 2;
+=======
+        FlyParam.move_power = -2; // 移动消耗能量
+>>>>>>> dbfa2095c53fc846c671658765a0d1cad27ce167
         return FlyParam;
     }());
     fly.FlyParam = FlyParam;

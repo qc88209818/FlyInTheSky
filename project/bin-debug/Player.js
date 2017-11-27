@@ -15,17 +15,24 @@ var fly;
 (function (fly) {
     var Player = (function (_super) {
         __extends(Player, _super);
-        function Player(x, y, radius, op) {
+        function Player(x, y, width, height) {
             var _this = _super.call(this) || this;
+<<<<<<< HEAD
             _this.baseScale = fly.FlyParam.PlayerBaseScale;
             _this.step = 1;
             _this.inoperable = 0; // 不可操作状态
+=======
+            _this.baseScale = 1.5;
+            _this.step = -1;
+            _this.inoperable = 0;
+>>>>>>> dbfa2095c53fc846c671658765a0d1cad27ce167
             _this.limitVel = 50;
             _this.dir = 1;
-            _this.nowState = "";
-            _this.x = x + radius;
-            _this.y = y + radius;
-            _this.radius = radius;
+            _this.nowState = "front_move";
+            _this.x = x + width / 2;
+            _this.y = y + height / 2;
+            _this.width = width;
+            _this.height = height;
             _this.power = fly.FlyParam.PlayerInitPower;
             _this.mass = fly.FlyParam.PlayerInitMass;
             _this.initBody({
@@ -36,7 +43,7 @@ var fly;
                 position: [x, y],
                 damping: 0.8
             });
-            _this.initShape(_this.radius);
+            _this.initShape(_this.width, _this.height);
             _this.setGroupAndMask(fly.ObjectGroup.Player, fly.ObjectMask.Player);
             _this.initBitmap();
             _this.updatePosition(0);
@@ -52,50 +59,65 @@ var fly;
             }
             var x = Math.abs(this.body.velocity[0]);
             var y = Math.abs(this.body.velocity[1]);
+            var len = p2.vec2.len(this.body.velocity);
             if (this.body.velocity[1] < 0 && x < y) {
-                if (this.nowState == "black_move")
-                    return;
-                this.movieClip.gotoAndPlay("black_move", -1);
-                this.nowState = "black_move";
-            }
-            else if (this.body.velocity[1] > 0 && x < y) {
-                if (this.nowState == "front_move")
-                    return;
-                this.movieClip.gotoAndPlay("front_move", -1);
-                this.nowState = "front_move";
-            }
-            else if (this.body.velocity[0] > 0 && x > y) {
-                if (this.nowState == "side_move_right")
-                    return;
-                this.dir = 1;
-                this.movieClip.scaleX = this.baseScale * this.circle.radius / this.movieClip.width;
-                this.movieClip.gotoAndPlay("side_move", -1);
-                this.nowState = "side_move_right";
-            }
-            else if (this.body.velocity[0] < 0 && x > y) {
-                if (this.nowState == "side_move_left")
-                    return;
-                this.movieClip.gotoAndPlay("side_move", -1);
-                this.nowState = "side_move_left";
-                this.dir = -1;
-                this.movieClip.scaleX = -this.baseScale * this.circle.radius / this.movieClip.width;
-            }
-            if (x == 0 && y == 0) {
-                if (this.nowState == "black_move") {
-                    this.movieClip.gotoAndPlay("black_stand", -1);
+                if (len < this.limitVel) {
+                    if (this.nowState == "black_stand")
+                        return;
+                    this.render.gotoAndPlay("black_stand", -1);
                     this.nowState = "black_stand";
                 }
-                else if (this.nowState == "front_move") {
-                    this.movieClip.gotoAndPlay("front_stand", -1);
+                else {
+                    if (this.nowState == "black_move")
+                        return;
+                    this.render.gotoAndPlay("black_move", -1);
+                    this.nowState = "black_move";
+                }
+            }
+            else if (this.body.velocity[1] > 0 && x < y) {
+                if (len < this.limitVel) {
+                    if (this.nowState == "front_stand")
+                        return;
+                    this.render.gotoAndPlay("front_stand", -1);
                     this.nowState = "front_stand";
                 }
-                else if (this.nowState == "side_move_right") {
-                    this.movieClip.gotoAndPlay("side_stand", -1);
+                else {
+                    if (this.nowState == "front_move")
+                        return;
+                    this.render.gotoAndPlay("front_move", -1);
+                    this.nowState = "front_move";
+                }
+            }
+            else if (this.body.velocity[0] > 0 && x > y) {
+                this.dir = 1;
+                this.render.scaleX = this.baseScale * this.rect.width / this.render.width;
+                if (len < this.limitVel) {
+                    if (this.nowState == "side_stand_right")
+                        return;
+                    this.render.gotoAndPlay("side_stand", -1);
                     this.nowState = "side_stand_right";
                 }
-                else if (this.nowState == "side_move_left") {
-                    this.movieClip.gotoAndPlay("side_stand", -1);
+                else {
+                    if (this.nowState == "side_move_right")
+                        return;
+                    this.render.gotoAndPlay("side_move", -1);
+                    this.nowState = "side_move_right";
+                }
+            }
+            else if (this.body.velocity[0] < 0 && x > y) {
+                this.dir = -1;
+                this.render.scaleX = -this.baseScale * this.rect.width / this.render.width;
+                if (len < this.limitVel) {
+                    if (this.nowState == "side_stand_left")
+                        return;
+                    this.render.gotoAndPlay("side_stand", -1);
                     this.nowState = "side_stand_left";
+                }
+                else {
+                    if (this.nowState == "side_move_left")
+                        return;
+                    this.render.gotoAndPlay("side_move", -1);
+                    this.nowState = "side_move_left";
                 }
             }
         };
@@ -113,13 +135,14 @@ var fly;
             for (var i = 0; i < fly.FlyParam.PlayerStep.length; ++i) {
                 if (power <= fly.FlyParam.PlayerStep[i]) {
                     if (this.step != i) {
-                        this.circle.radius = this.radius * fly.FlyParam.PlayerTijiScale[i];
-                        this.circle.updateArea();
+                        this.rect.width = this.width * fly.FlyParam.PlayerTijiScale[i];
+                        this.rect.height = this.height * fly.FlyParam.PlayerTijiScale[i];
+                        this.rect.updateArea();
                         this.body.mass = this.mass * fly.FlyParam.PlayerMassScale[i];
                         this.body.updateMassProperties();
-                        this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius / this.movieClip.width;
-                        this.movieClip.scaleY = this.baseScale * this.circle.radius / this.movieClip.height;
-                        this.changeRenderSize(this.circle.radius);
+                        this.render.scaleX = this.dir * this.baseScale * this.rect.width / this.render.width;
+                        this.render.scaleY = this.baseScale * this.rect.width / this.render.height;
+                        this.changeRenderSize(this.rect.width, this.rect.height);
                         this.step = i;
                     }
                     return;
@@ -132,19 +155,17 @@ var fly;
             }
         };
         Player.prototype.setVelocity = function (x, y) {
-            if (this.inoperable > 0)
-                return;
-            this.body.velocity = [x * fly.FlyParam.PlayerVeloScale[this.step], y * fly.FlyParam.PlayerVeloScale[this.step]];
+            this.body.velocity = [x / this.body.mass, y / this.body.mass];
         };
         Player.prototype.initBitmap = function () {
             var png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
             png.gotoAndPlay("front_stand", -1);
             png.anchorOffsetX = png.width / 2 + 8;
-            png.anchorOffsetY = png.height / 8 * 7;
-            png.scaleX = this.baseScale * this.radius / png.width;
-            png.scaleY = this.baseScale * this.radius / png.height;
+            png.anchorOffsetY = png.height / 2 + 5;
+            png.scaleX = this.baseScale * this.width / png.width;
+            png.scaleY = this.baseScale * this.height / png.height;
             this.addChild(png);
-            this.movieClip = png;
+            this.render = png;
             var progress = new fly.UIProgress();
             progress.create(fly.FlyParam.PlayerMaxPower, fly.FlyParam.PlayerMinPower, fly.FlyParam.PlayerInitPower);
             progress.anchorOffsetX = progress.width / 2;
@@ -152,7 +173,7 @@ var fly;
             progress.visible = false;
             this.addChild(progress);
             this.progress = progress;
-            progress.setPosition(progress.width / 2, -png.height * this.baseScale);
+            progress.setPosition(progress.width / 2, -100);
         };
         Player.prototype.addPower = function (value) {
             this.power += value;
@@ -161,6 +182,7 @@ var fly;
         Player.prototype.reset = function (x, y) {
             this.body.position = [x, y];
             this.body.velocity = [0, 0];
+            this.body.force = [0, 0];
             this.changePower(fly.FlyParam.PlayerInitPower);
         };
         Player.prototype.died = function (reason) {
@@ -170,7 +192,7 @@ var fly;
             this.reset(this.x, this.y);
         };
         return Player;
-    }(fly.FlyCircle));
+    }(fly.FlyRect));
     fly.Player = Player;
     __reflect(Player.prototype, "fly.Player");
 })(fly || (fly = {}));

@@ -1,24 +1,30 @@
 module fly {
-	export class Player extends FlyCircle {
-		radius:number
+	export class Player extends FlyRect {
+		width:number
+		height:number
 		x:number
 		y:number
 
+<<<<<<< HEAD
 		baseScale:number = FlyParam.PlayerBaseScale
+=======
+		baseScale:number = 1.5
+>>>>>>> dbfa2095c53fc846c671658765a0d1cad27ce167
 
 		progress:UIProgress
-		movieClip:egret.MovieClip
+		render:egret.MovieClip
 		power:number
 		mass:number
-		step:number = 1
+		step:number = -1
 
-		inoperable:number = 0			// 不可操作状态
+		inoperable:number = 0
 
-		public constructor(x:number, y:number, radius:number, op?) {
+		public constructor(x:number, y:number, width:number, height:number) {
 			super()
-			this.x = x + radius
-			this.y = y + radius
-			this.radius = radius
+			this.x = x + width/2
+			this.y = y + height/2
+			this.width = width
+			this.height = height
 
 			this.power = FlyParam.PlayerInitPower
 			this.mass = FlyParam.PlayerInitMass
@@ -31,7 +37,7 @@ module fly {
 				, position:[x, y]
 				, damping:0.8
 			})
-			this.initShape(this.radius)
+			this.initShape(this.width, this.height)
 			this.setGroupAndMask(ObjectGroup.Player, ObjectMask.Player)
 
 			this.initBitmap()
@@ -42,7 +48,7 @@ module fly {
 
 		private limitVel = 50
 		private dir:number = 1
-		private nowState:string = ""
+		private nowState:string = "front_move"
 		public updatePosition(dt:number = 0)
 		{
 			super.updatePosition(dt)
@@ -55,60 +61,70 @@ module fly {
 
 			let x = Math.abs(this.body.velocity[0])
 			let y = Math.abs(this.body.velocity[1])
+			let len = p2.vec2.len(this.body.velocity)
 
 			if (this.body.velocity[1] < 0 && x < y)
 			{
-				if (this.nowState == "black_move") return;
-				this.movieClip.gotoAndPlay("black_move", -1)
-				this.nowState = "black_move"
+				if (len < this.limitVel)
+				{
+					if (this.nowState == "black_stand") return;
+					this.render.gotoAndPlay("black_stand", -1)
+					this.nowState = "black_stand"
+				}
+				else
+				{
+					if (this.nowState == "black_move") return;
+					this.render.gotoAndPlay("black_move", -1)
+					this.nowState = "black_move"
+				}
 			}
 			else if (this.body.velocity[1] > 0 && x < y)
 			{
-				if (this.nowState == "front_move") return;
-				this.movieClip.gotoAndPlay("front_move", -1)
-				this.nowState = "front_move"
+				if (len < this.limitVel)
+				{
+					if (this.nowState == "front_stand") return;
+					this.render.gotoAndPlay("front_stand", -1)
+					this.nowState = "front_stand"
+				}
+				else
+				{
+					if (this.nowState == "front_move") return;
+					this.render.gotoAndPlay("front_move", -1)
+					this.nowState = "front_move"
+				}
 			}
 			else if (this.body.velocity[0] > 0 && x > y)
 			{
-				if (this.nowState == "side_move_right") return;
-
 				this.dir = 1
-				this.movieClip.scaleX = this.baseScale * this.circle.radius/this.movieClip.width
-				
-				this.movieClip.gotoAndPlay("side_move", -1)
-				this.nowState = "side_move_right"
+				this.render.scaleX = this.baseScale * this.rect.width/this.render.width
+				if (len < this.limitVel)
+				{
+					if (this.nowState == "side_stand_right") return;
+					this.render.gotoAndPlay("side_stand", -1)
+					this.nowState = "side_stand_right"
+				}
+				else
+				{
+					if (this.nowState == "side_move_right") return;
+					this.render.gotoAndPlay("side_move", -1)
+					this.nowState = "side_move_right"
+				}
 			}
 			else if (this.body.velocity[0] < 0 && x > y)
 			{
-				if (this.nowState == "side_move_left") return;
-				this.movieClip.gotoAndPlay("side_move", -1)
-				this.nowState = "side_move_left"
-
 				this.dir = -1
-				this.movieClip.scaleX = -this.baseScale * this.circle.radius/this.movieClip.width
-			}
-
-			if (x == 0 && y == 0)
-			{
-				if (this.nowState == "black_move")
+				this.render.scaleX = -this.baseScale * this.rect.width/this.render.width
+				if (len < this.limitVel)
 				{
-					this.movieClip.gotoAndPlay("black_stand", -1)
-					this.nowState = "black_stand"
-				}
-				else if (this.nowState == "front_move")
-				{
-					this.movieClip.gotoAndPlay("front_stand", -1)
-					this.nowState = "front_stand"
-				}
-				else if (this.nowState == "side_move_right")
-				{
-					this.movieClip.gotoAndPlay("side_stand", -1)
-					this.nowState = "side_stand_right"
-				}
-				else if (this.nowState == "side_move_left")
-				{
-					this.movieClip.gotoAndPlay("side_stand", -1)
+					if (this.nowState == "side_stand_left") return;
+					this.render.gotoAndPlay("side_stand", -1)
 					this.nowState = "side_stand_left"
+				}
+				else
+				{
+					if (this.nowState == "side_move_left") return;
+					this.render.gotoAndPlay("side_move", -1)
+					this.nowState = "side_move_left"
 				}
 			}
 		}
@@ -136,16 +152,17 @@ module fly {
 				{
 					if (this.step != i)
 					{
-						this.circle.radius = this.radius * FlyParam.PlayerTijiScale[i]
-						this.circle.updateArea()
+						this.rect.width = this.width * FlyParam.PlayerTijiScale[i]
+						this.rect.height = this.height * FlyParam.PlayerTijiScale[i]
+						this.rect.updateArea()
 
 						this.body.mass = this.mass * FlyParam.PlayerMassScale[i]
 						this.body.updateMassProperties()
 
-						this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius/this.movieClip.width
-						this.movieClip.scaleY = this.baseScale * this.circle.radius/this.movieClip.height
+						this.render.scaleX = this.dir * this.baseScale * this.rect.width/this.render.width
+						this.render.scaleY = this.baseScale * this.rect.width/this.render.height
 
-						this.changeRenderSize(this.circle.radius)
+						this.changeRenderSize(this.rect.width, this.rect.height)
 
 						this.step = i
 					}
@@ -163,9 +180,7 @@ module fly {
 
 		public setVelocity(x:number, y:number)
 		{
-			if (this.inoperable > 0) return;
-
-			this.body.velocity = [x*FlyParam.PlayerVeloScale[this.step], y*FlyParam.PlayerVeloScale[this.step]]
+			this.body.velocity = [x/this.body.mass, y/this.body.mass]
 		}
 
 		private initBitmap()
@@ -173,11 +188,11 @@ module fly {
 			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
 			png.gotoAndPlay("front_stand", -1)
 			png.anchorOffsetX = png.width/2 + 8
-			png.anchorOffsetY = png.height/8*7
-			png.scaleX = this.baseScale * this.radius/png.width
-			png.scaleY = this.baseScale * this.radius/png.height
+			png.anchorOffsetY = png.height/2 + 5
+			png.scaleX = this.baseScale * this.width/png.width
+			png.scaleY = this.baseScale * this.height/png.height
 			this.addChild(png)
-			this.movieClip = png
+			this.render = png
 
 			let progress = new UIProgress()
 			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
@@ -187,7 +202,7 @@ module fly {
 			this.addChild(progress)
 			this.progress = progress
 
-			progress.setPosition(progress.width/2, -png.height*this.baseScale)
+			progress.setPosition(progress.width/2, -100)
 		}
 
 		public addPower(value:number)
@@ -200,6 +215,7 @@ module fly {
 		{
 			this.body.position = [x, y]
 			this.body.velocity = [0, 0]
+			this.body.force = [0, 0]
 			this.changePower(FlyParam.PlayerInitPower)
 		}
 

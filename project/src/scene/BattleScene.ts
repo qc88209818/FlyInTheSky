@@ -71,6 +71,15 @@ module fly {
 			this.addChild(this.uiLayer)
 			this.addChild(this.touchLayer)
 
+			this.createBackgroud()
+			this.createWorld()
+			this.createScene()
+			this.createTouchLayer()
+			this.createUI()
+		}
+
+		private createBackgroud()
+		{
 			this.baseLayer.scaleX = FlyParam.LayerScale
 			this.baseLayer.scaleY = FlyParam.LayerScale
 
@@ -78,10 +87,6 @@ module fly {
 			png.scaleX = FlyConfig.width/png.width
 			png.scaleY = FlyConfig.height/png.height
 			this.baseLayer.addChild(png)
-
-			this.createWorld()
-			this.createScene()
-			this.createTouchLayer()
 		}
 
 		private createWorld()
@@ -121,6 +126,39 @@ module fly {
 			this.touchNode = touchNode
 
 			this.touchLayer.addChild(this.touchNode)
+		}
+
+		private createUI()
+		{
+			// 显示体重条
+			let progress = new UIProgress()
+			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
+			progress.anchorOffsetX = progress.width/2
+			progress.anchorOffsetY = progress.height/2
+			progress.setPosition(progress.width/2, progress.height)
+			this.addChild(progress);
+			this.progress = progress
+
+			// 监听能量变化事件
+			this.addEventListener("ChangePower", function(evt:egret.Event) {
+				this.progress.changeValue(evt.data)
+			}, this)
+
+			// 显示生命值
+			var text:egret.TextField = new egret.TextField()
+			text.text = "当前剩余生命: " + this.player.heath
+			text.size = 36;
+			text.textColor = 0x000000;
+			text.anchorOffsetX = 0;
+			text.anchorOffsetY = 0.5
+			text.x = 5
+			text.y = progress.height + 20
+			this.addChild(text);
+
+			// 监听死亡事件
+			this.addEventListener("PlayerDead", function(evt:egret.Event) {
+				text.text = "当前剩余生命: " + this.player.heath + " (" + evt.data+ ")"
+			}, this)
 		}
 
 		private onBeginContact(event:any)

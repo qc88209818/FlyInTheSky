@@ -14,6 +14,10 @@ module fly {
 		step:number = 1
 
 		inoperable:number = 0			// 不可操作状态
+		heath:number = 3
+
+		deadReason:string[] = ["", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！"]
+		isListener:boolean  = false		// 是否被监听
 
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -114,19 +118,40 @@ module fly {
 			}
 		}
 
-		public setVisible(visible:boolean, parent:egret.DisplayObjectContainer)
+		public setVelocity(x:number, y:number)
 		{
-			this.progress.visible = visible
-			if (visible)
-			{
-				parent.addChild(this.progress)
-			}
+			if (this.inoperable > 0) return;
+			this.body.velocity = [x*FlyParam.PlayerVelScale[this.step], y*FlyParam.PlayerVelScale[this.step]]
+		}
+
+		private initBitmap()
+		{
+			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
+			png.gotoAndPlay("front_stand", -1)
+			png.anchorOffsetX = png.width/2 + 8
+			png.anchorOffsetY = png.height/8*7
+			png.scaleX = this.baseScale * this.radius/png.width
+			png.scaleY = this.baseScale * this.radius/png.height
+			this.addChild(png)
+			this.movieClip = png
+
+			let progress = new UIProgress()
+			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
+			progress.anchorOffsetX = progress.width/2
+			progress.anchorOffsetY = progress.height/2
+			progress.visible = false
+			this.progress = progress
+
+			progress.setPosition(progress.width/2, progress.height)
 		}
 
 		public changePower(power:number)
 		{
 			this.power = power
-			this.progress.changeValue(this.power)
+			if (this.isListener)
+			{
+				this.objmgr.scene.dispatchEventWith("ChangePower", false, this.power)
+			}
 
 			// 1 饿死
 			if (power < FlyParam.PlayerMinPower)
@@ -169,40 +194,6 @@ module fly {
 			}
 		}
 
-		public setVelocity(x:number, y:number)
-		{
-			if (this.inoperable > 0) return;
-
-			this.body.velocity = [x*FlyParam.PlayerVelScale[this.step], y*FlyParam.PlayerVelScale[this.step]]
-		}
-
-		private initBitmap()
-		{
-			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
-			png.gotoAndPlay("front_stand", -1)
-			png.anchorOffsetX = png.width/2 + 8
-			png.anchorOffsetY = png.height/8*7
-			png.scaleX = this.baseScale * this.radius/png.width
-			png.scaleY = this.baseScale * this.radius/png.height
-			this.addChild(png)
-			this.movieClip = png
-
-			let progress = new UIProgress()
-			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
-			progress.anchorOffsetX = progress.width/2
-			progress.anchorOffsetY = progress.height/2
-			progress.visible = false
-			this.progress = progress
-
-			progress.setPosition(progress.width/2, progress.height)
-		}
-
-		public addPower(value:number)
-		{
-			this.power += value
-			this.progress.changeValue(this.power)
-		}
-
 		public reset(x:number, y:number)
 		{
 			this.body.position = [x, y]
@@ -214,8 +205,26 @@ module fly {
 		{
 			// 1 饿死
 			// 2 胖死
-			console.log("你死了！", reason)
+			// 3 普通陷阱
+			// 4 重量陷阱
+			console.log(this.deadReason[reason])
+			this.heath -= 1
 			this.reset(this.x, this.y)
+
+			if (this.isListener)
+			{
+				this.objmgr.scene.dispatchEventWith("PlayerDead", false, this.deadReason[reason])
+			}
+		}
+
+		public beginListener()
+		{
+			this.isListener = true
+		}
+
+		public endListener()
+		{
+			this.isListener = false
 		}
 	}
 }

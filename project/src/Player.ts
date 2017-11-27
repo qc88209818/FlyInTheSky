@@ -47,7 +47,8 @@ module fly {
 		}
 
 		private dir:number = 1
-		private nowState:string = ""
+		private weight:string = "normal"
+		private nowState:string = "front_stand_normal"
 		public updatePosition(dt:number = 0)
 		{
 			super.updatePosition(dt)
@@ -60,62 +61,66 @@ module fly {
 
 			let x = Math.abs(this.body.velocity[0])
 			let y = Math.abs(this.body.velocity[1])
+			let weight = FlyParam.PlayerMoviePostfix[this.step]
 
 			if (this.body.velocity[1] < 0 && x < y)
 			{
-				if (this.nowState == "black_move") return;
-				this.movieClip.gotoAndPlay("black_move", -1)
-				this.nowState = "black_move"
+				this.gotoAndPlay("black_move")
 			}
 			else if (this.body.velocity[1] > 0 && x < y)
 			{
-				if (this.nowState == "front_move") return;
-				this.movieClip.gotoAndPlay("front_move", -1)
-				this.nowState = "front_move"
+				this.gotoAndPlay("front_move")
 			}
 			else if (this.body.velocity[0] > 0 && x > y)
 			{
-				if (this.nowState == "side_move_right") return;
-
-				this.dir = 1
-				this.movieClip.scaleX = this.baseScale * this.circle.radius/this.movieClip.width
-				
-				this.movieClip.gotoAndPlay("side_move", -1)
-				this.nowState = "side_move_right"
+				this.gotoAndPlaySide("side_move", 1)
 			}
 			else if (this.body.velocity[0] < 0 && x > y)
 			{
-				if (this.nowState == "side_move_left") return;
-				this.movieClip.gotoAndPlay("side_move", -1)
-				this.nowState = "side_move_left"
-
-				this.dir = -1
-				this.movieClip.scaleX = -this.baseScale * this.circle.radius/this.movieClip.width
+				this.gotoAndPlaySide("side_move", -1)
 			}
 
 			if (x == 0 && y == 0)
 			{
-				if (this.nowState == "black_move")
+				if (this.nowState == "black_move" || this.nowState == "black_stand")
 				{
-					this.movieClip.gotoAndPlay("black_stand", -1)
-					this.nowState = "black_stand"
+					this.gotoAndPlay("black_stand")
 				}
-				else if (this.nowState == "front_move")
+				else if (this.nowState == "front_move" || this.nowState == "front_stand")
 				{
-					this.movieClip.gotoAndPlay("front_stand", -1)
-					this.nowState = "front_stand"
+					this.gotoAndPlay("front_stand")
 				}
-				else if (this.nowState == "side_move_right")
+				else if (this.nowState == "side_move" || this.nowState == "side_stand")
 				{
-					this.movieClip.gotoAndPlay("side_stand", -1)
-					this.nowState = "side_stand_right"
-				}
-				else if (this.nowState == "side_move_left")
-				{
-					this.movieClip.gotoAndPlay("side_stand", -1)
-					this.nowState = "side_stand_left"
+					this.gotoAndPlaySide("side_stand", this.dir)
 				}
 			}
+		}
+
+		private gotoAndPlay(anim:string)
+		{
+			let weight = FlyParam.PlayerMoviePostfix[this.step]
+			
+			if (this.nowState == anim && this.weight == weight) return;
+			this.movieClip.gotoAndPlay(anim + weight, -1)
+			this.nowState = anim
+			this.weight = weight
+
+			console.log(this.nowState, this.weight)
+		}
+
+		private gotoAndPlaySide(anim:string, dir:number)
+		{
+			let weight = FlyParam.PlayerMoviePostfix[this.step]
+			
+			if (this.nowState == anim && this.weight == weight && this.dir == dir) return;
+			this.movieClip.gotoAndPlay(anim + weight, -1)
+			this.nowState = anim
+			this.weight = weight
+			this.dir = dir
+			console.log(this.nowState, this.weight, this.dir)
+
+			this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius/this.movieClip.width
 		}
 
 		public setVelocity(x:number, y:number)
@@ -126,12 +131,10 @@ module fly {
 
 		private initBitmap()
 		{
-			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
-			png.gotoAndPlay("front_stand", -1)
+			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("playerState"));
+			png.gotoAndPlay(this.nowState, -1)
 			png.anchorOffsetX = png.width/2 + 8
 			png.anchorOffsetY = png.height/8*7
-			png.scaleX = this.baseScale * this.radius/png.width
-			png.scaleY = this.baseScale * this.radius/png.height
 			this.addChild(png)
 			this.movieClip = png
 
@@ -178,9 +181,10 @@ module fly {
 						this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius/this.movieClip.width
 						this.movieClip.scaleY = this.baseScale * this.circle.radius/this.movieClip.height
 
-						this.changeRenderSize(this.circle.radius)
-
 						this.step = i
+
+						this.changeRenderSize(this.circle.radius)
+						this.updatePosition(0)
 					}
 					return
 				}
@@ -198,15 +202,16 @@ module fly {
 		{
 			this.body.position = [x, y]
 			this.body.velocity = [0, 0]
+			this.nowState = ""
+			this.weight = ""
+			this.step = -1 
+
 			this.changePower(FlyParam.PlayerInitPower)
 		}
 
 		public died(reason:number)
 		{
-			// 1 饿死
-			// 2 胖死
-			// 3 普通陷阱
-			// 4 重量陷阱
+			// 死亡原因
 			console.log(this.deadReason[reason])
 			this.heath -= 1
 			this.reset(this.x, this.y)
@@ -220,11 +225,6 @@ module fly {
 		public beginListener()
 		{
 			this.isListener = true
-		}
-
-		public endListener()
-		{
-			this.isListener = false
 		}
 	}
 }

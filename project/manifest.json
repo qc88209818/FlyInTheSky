@@ -20,7 +20,6 @@
 		"bin-debug/block/BlockRect.js",
 		"bin-debug/block/Wall.js",
 		"bin-debug/block/WeightBlock.js",
-		"bin-debug/GameManager.js",
 		"bin-debug/objects/FlyConfig.js",
 		"bin-debug/ObjectManager.js",
 		"bin-debug/ui/UIProgress.js",

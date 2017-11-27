@@ -10,10 +10,9 @@ module fly {
 		movieClip:egret.MovieClip
 		power:number
 		mass:number
-		step:number = -1
+		step:number = 1
 
 		inoperable:number = 0			// 不可操作状态
-		windyVel:number[] = [0, 0]		// 外力影响
 
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -166,7 +165,7 @@ module fly {
 		{
 			if (this.inoperable > 0) return;
 
-			this.body.velocity = [x/this.body.mass - this.windyVel[0], y/this.body.mass - this.windyVel[1]]
+			this.body.velocity = [x*FlyParam.PlayerVeloScale[this.step], y*FlyParam.PlayerVeloScale[this.step]]
 		}
 
 		private initBitmap()

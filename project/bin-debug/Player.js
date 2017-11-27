@@ -18,9 +18,8 @@ var fly;
         function Player(x, y, radius, op) {
             var _this = _super.call(this) || this;
             _this.baseScale = 2;
-            _this.step = -1;
+            _this.step = 1;
             _this.inoperable = 0; // 不可操作状态
-            _this.windyVel = [0, 0]; // 外力影响
             _this.limitVel = 50;
             _this.dir = 1;
             _this.nowState = "";
@@ -135,7 +134,7 @@ var fly;
         Player.prototype.setVelocity = function (x, y) {
             if (this.inoperable > 0)
                 return;
-            this.body.velocity = [x / this.body.mass - this.windyVel[0], y / this.body.mass - this.windyVel[1]];
+            this.body.velocity = [x * fly.FlyParam.PlayerVeloScale[this.step], y * fly.FlyParam.PlayerVeloScale[this.step]];
         };
         Player.prototype.initBitmap = function () {
             var png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));

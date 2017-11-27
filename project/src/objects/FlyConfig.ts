@@ -108,15 +108,16 @@ module fly {
 	export class FlyParam
 	{
 		static LayerScale:number 		= 0.5		// 屏幕缩放比例
-		static forceScale:number        = 10000		// 力量因子
+		static forceScale:number        = 1000		// 力量因子
 		static PlayerMaxPower:number 	= 300		// 人物最大能量
 		static PlayerMinPower:number 	= 20		// 人物最小能量
 		static PlayerInitPower:number 	= 100		// 人物初始能量
 		static PlayerInitMass:number    = 1			// 人物初始重量
 
-		static PlayerStep:number[]      = [51, 151, 251]	// 变身阶段
-		static PlayerTijiScale:number[] = [0.5, 1, 2]		// 变身阶段
-		static PlayerMassScale:number[] = [10, 25, 50]		// 变身阶段
+		static PlayerStep:number[]      = [51, 151, 251]	// 能量阶段
+		static PlayerTijiScale:number[] = [0.5, 1, 2]		// 体积倍数
+		static PlayerMassScale:number[] = [10, 25, 50]		// 重量因素
+		static PlayerVeloScale:number[] = [2, 1, 0.5]		// 速度倍数
 
 		static candy_power:number 		= 15		// 糖果能量
 		static move_power:number 		= -3		// 移动消耗能量

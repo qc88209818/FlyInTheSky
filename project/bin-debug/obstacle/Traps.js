@@ -22,7 +22,7 @@ var fly;
             _this.width = width;
             _this.height = height;
             _this.initBody({
-                id: fly.FlyConfig.getPropertyId(),
+                id: fly.FlyConfig.getObstacleId(),
                 mass: op.mass || 1,
                 type: op.type || p2.Body.DYNAMIC,
                 fixedRotation: true,
@@ -30,7 +30,7 @@ var fly;
                 damping: op.damping || 0
             });
             _this.initShape(_this.width, _this.height);
-            _this.setGroupAndMask(fly.ObjectGroup.Property, fly.ObjectMask.Property);
+            _this.setGroupAndMask(fly.ObjectGroup.Obstacle, fly.ObjectMask.Obstacle);
             _this.initBitmap(op.path);
             _this.updatePosition();
             _this.setRotation(op.rotation);

@@ -17,7 +17,7 @@ var fly;
         __extends(WeightTraps, _super);
         function WeightTraps(x, y, width, height, op) {
             var _this = _super.call(this) || this;
-            _this.baseScale = 2;
+            _this.baseScale = fly.FlyParam.WeightTrapsBaseScale;
             _this.x = x + width / 2;
             _this.y = y + height / 2;
             _this.width = width;

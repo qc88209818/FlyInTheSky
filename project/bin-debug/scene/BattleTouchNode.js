@@ -55,11 +55,11 @@ var fly;
             this.parentNode.addChildAt(btn, 101);
         };
         BattleTouchNode.prototype.onTouchBegin = function (evt) {
-            this.virtualBg.x = evt.stageX;
-            this.virtualBg.y = evt.stageY;
+            this.virtualBg.x = 450;
+            this.virtualBg.y = 1300;
             this.virtualBg.alpha = 0.5;
-            this.virtualBtn.x = evt.stageX;
-            this.virtualBtn.y = evt.stageY;
+            this.virtualBtn.x = 450;
+            this.virtualBtn.y = 1300;
             this.virtualBtn.alpha = 0.5;
         };
         BattleTouchNode.prototype.onTouchEnd = function (evt) {

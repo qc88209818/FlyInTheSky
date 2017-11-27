@@ -4,6 +4,8 @@ module fly {
 		y:number
 		width:number
 		height:number
+
+		baseScale:number = FlyParam.TrapsBaseScale
 		
 		public constructor(x:number, y:number, width:number, height:number, op?) {
 			super()
@@ -34,8 +36,8 @@ module fly {
 			let png = FlyTools.createBitmapByName(path)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.scaleX = this.width/png.width
-			png.scaleY = this.height/png.height
+			png.scaleX = this.baseScale * this.width/png.width
+			png.scaleY = this.baseScale * this.height/png.height
 			this.addChild(png)
 		}
 

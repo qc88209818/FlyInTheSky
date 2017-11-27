@@ -72,6 +72,8 @@ var Main = (function (_super) {
         }
     };
     Main.prototype.initGame = function () {
+        // var wid = document.documentElement.clientWidth;
+        // var hei = document.documentElement.clientHeight;
         egret.lifecycle.addLifecycleListener(function (conttext) {
             conttext.onUpdate = function () {
             };

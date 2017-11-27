@@ -4,6 +4,8 @@ module fly {
 		y:number
 		radius:number
 		op:any
+
+		baseScale:number = FlyParam.CandyBaseScale
 		
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -34,8 +36,8 @@ module fly {
 			if (path == null) return;
 			
 			let png = FlyTools.createBitmapByName(path)
-			png.scaleX = 2 * this.radius/png.width
-			png.scaleY = 2 * this.radius/png.height
+			png.scaleX = this.baseScale * this.radius/png.width
+			png.scaleY = this.baseScale * this.radius/png.height
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			this.addChild(png)

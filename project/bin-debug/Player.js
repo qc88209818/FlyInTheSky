@@ -17,7 +17,7 @@ var fly;
         __extends(Player, _super);
         function Player(x, y, radius, op) {
             var _this = _super.call(this) || this;
-            _this.baseScale = 2;
+            _this.baseScale = fly.FlyParam.PlayerBaseScale;
             _this.step = 1;
             _this.inoperable = 0; // 不可操作状态
             _this.limitVel = 50;

@@ -82,6 +82,9 @@ class Main extends egret.DisplayObjectContainer {
 
     private initGame()
     {
+        // var wid = document.documentElement.clientWidth;
+        // var hei = document.documentElement.clientHeight;
+ 
         egret.lifecycle.addLifecycleListener((conttext) => {
             conttext.onUpdate = () => {
 

@@ -4,7 +4,7 @@ module fly {
 		x:number
 		y:number
 
-		baseScale:number = 2
+		baseScale:number = FlyParam.PlayerBaseScale
 
 		progress:UIProgress
 		movieClip:egret.MovieClip

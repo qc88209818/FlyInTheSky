@@ -100,6 +100,10 @@ var fly;
         FlyParam.PlayerVeloScale = [2, 1, 0.5]; // 速度倍数
         FlyParam.candy_power = 15; // 糖果能量
         FlyParam.move_power = -3; // 移动消耗能量
+        FlyParam.PlayerBaseScale = 2; // 基本缩放
+        FlyParam.CandyBaseScale = 2;
+        FlyParam.TrapsBaseScale = 1;
+        FlyParam.WeightTrapsBaseScale = 2;
         return FlyParam;
     }());
     fly.FlyParam = FlyParam;

@@ -5,7 +5,7 @@ module fly {
 		width:number
 		height:number
 
-		baseScale:number = 2
+		baseScale:number = FlyParam.WeightTrapsBaseScale
 
 		max:number
 		min:number

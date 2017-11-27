@@ -17,6 +17,7 @@ var fly;
         __extends(Candy, _super);
         function Candy(x, y, radius, op) {
             var _this = _super.call(this) || this;
+            _this.baseScale = fly.FlyParam.CandyBaseScale;
             _this.x = x + radius;
             _this.y = y + radius;
             _this.radius = radius;
@@ -40,8 +41,8 @@ var fly;
             if (path == null)
                 return;
             var png = fly.FlyTools.createBitmapByName(path);
-            png.scaleX = 2 * this.radius / png.width;
-            png.scaleY = 2 * this.radius / png.height;
+            png.scaleX = this.baseScale * this.radius / png.width;
+            png.scaleY = this.baseScale * this.radius / png.height;
             png.anchorOffsetX = png.width / 2;
             png.anchorOffsetY = png.height / 2;
             this.addChild(png);

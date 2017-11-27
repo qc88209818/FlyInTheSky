@@ -121,5 +121,10 @@ module fly {
 
 		static candy_power:number 		= 15		// 糖果能量
 		static move_power:number 		= -3		// 移动消耗能量
+
+		static PlayerBaseScale:number   		= 2		// 基本缩放
+		static CandyBaseScale:number			= 2		
+		static TrapsBaseScale:number			= 1		
+		static WeightTrapsBaseScale:number		= 2		
 	}
 }

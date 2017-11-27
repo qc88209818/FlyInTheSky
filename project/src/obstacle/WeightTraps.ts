@@ -5,19 +5,15 @@ module fly {
 		width:number
 		height:number
 
-<<<<<<< HEAD
 		baseScale:number = FlyParam.WeightTrapsBaseScale
-=======
-		baseScale:number = 1.5
->>>>>>> dbfa2095c53fc846c671658765a0d1cad27ce167
 
 		max:number
 		min:number
 		
 		public constructor(x:number, y:number, width:number, height:number, op?) {
 			super()
-			this.x = x
-			this.y = y
+			this.x = x + width/2
+			this.y = y + height/2
 			this.width = width
 			this.height = height
 			this.min = op.min || 0
@@ -43,6 +39,8 @@ module fly {
 		private initBitmap(path:string)
 		{
 			let png = FlyTools.createBitmapByName(path)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
 			png.scaleX = this.baseScale * this.width/png.width
 			png.scaleY = this.baseScale * this.height/png.height
 			this.addChild(png)

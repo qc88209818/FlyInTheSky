@@ -8,6 +8,7 @@ module fly {
 
 		progress:UIProgress
 		movieClip:egret.MovieClip
+		force:number
 		power:number
 		mass:number
 		step:number = 1
@@ -20,8 +21,9 @@ module fly {
 			this.y = y + radius
 			this.radius = radius
 
+			this.force = FlyParam.PlayerInitForce
 			this.power = FlyParam.PlayerInitPower
-			this.mass = FlyParam.PlayerInitMass
+			this.mass  = FlyParam.PlayerInitMass
 
 			this.initBody({
 				id:FlyConfig.getPlayerId()
@@ -40,7 +42,6 @@ module fly {
 			this.changePower(this.power)
 		}
 
-		private limitVel = 50
 		private dir:number = 1
 		private nowState:string = ""
 		public updatePosition(dt:number = 0)
@@ -136,10 +137,13 @@ module fly {
 				{
 					if (this.step != i)
 					{
+						this.mass  = FlyParam.PlayerInitMass*FlyParam.PlayerMassScale[i]
+						this.force = FlyParam.PlayerInitForce*FlyParam.PlayerForceScale[i]
+
 						this.circle.radius = this.radius * FlyParam.PlayerTijiScale[i]
 						this.circle.updateArea()
 
-						this.body.mass = this.mass * FlyParam.PlayerMassScale[i]
+						this.body.mass = this.mass
 						this.body.updateMassProperties()
 
 						this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius/this.movieClip.width
@@ -165,7 +169,7 @@ module fly {
 		{
 			if (this.inoperable > 0) return;
 
-			this.body.velocity = [x*FlyParam.PlayerVeloScale[this.step], y*FlyParam.PlayerVeloScale[this.step]]
+			this.body.velocity = [x*FlyParam.PlayerVelScale[this.step], y*FlyParam.PlayerVelScale[this.step]]
 		}
 
 		private initBitmap()

@@ -143,11 +143,19 @@ module fly {
 			}
 			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
 			{
-				this.trigger(bodyB.id, bodyA.id)
+				// 先调用触发器，后触发碰撞逻辑
+				if (!this.trigger(bodyB.id, bodyA.id))
+				{
+					this.contactObstacleBegin(bodyB.id, bodyA.id)
+				}
 			}
 			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isObstacle(bodyA.id))
 			{
-				this.trigger(bodyA.id, bodyB.id)
+				// 先调用触发器，后触发碰撞逻辑
+				if(!this.trigger(bodyA.id, bodyB.id))
+				{
+					this.contactObstacleBegin(bodyA.id, bodyB.id)
+				}
 			}
 			else if (FlyConfig.isPlayer(bodyA.id) &&FlyConfig.isPlayer(bodyB.id))
 			{
@@ -172,21 +180,6 @@ module fly {
 			}
 		}
 
-		private trigger(id:number, pid:number)
-		{
-			this.objmgr.sprites.forEach(value => {
-				if (value.body.id == id)
-				{
-					value.onTrigger(pid)
-					if (value.isDestroy)
-					{
-						this.delFromWorld(value)
-					}
-					return
-				}
-			})
-		}
-
 		private contactObstacleBegin(id:number, pid:number)
 		{
 			this.objmgr.sprites.forEach(value => {
@@ -207,6 +200,22 @@ module fly {
 					return
 				}
 			})
+		}
+
+		private trigger(id:number, pid:number):boolean
+		{
+			this.objmgr.sprites.forEach(value => {
+				if (value.body.id == id)
+				{
+					let bRet = value.onTrigger(pid)
+					if (value.isDestroy)
+					{
+						this.delFromWorld(value)
+					}
+					return bRet
+				}
+			})
+			return false
 		}
 
 		private triggerPlayer(id1:number, id2:number)

@@ -25,7 +25,7 @@ module fly {
 				, type:op.type || p2.Body.DYNAMIC
 				, fixedRotation:true
 				, position:[this.x, this.y]
-				, damping:op.damping || 0
+				, damping:op.damping || 0.7
 			})
 			this.initShape(this.width, this.height)
 			this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property)
@@ -55,9 +55,10 @@ module fly {
 					{
 						player.died(4)
 					}
-					return
+					return true
 				}
 			})
+			return true
 		}
 	}
 }

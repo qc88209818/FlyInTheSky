@@ -20,7 +20,7 @@ module fly {
 				, type:op.type || p2.Body.DYNAMIC
 				, fixedRotation:true
 				, position:[this.x, this.y]
-				, damping:op.damping || 0
+				, damping:op.damping || 0.7
 			})
 			this.initShape(this.width, this.height)
 			this.setGroupAndMask(ObjectGroup.Obstacle, ObjectMask.Obstacle)
@@ -44,14 +44,14 @@ module fly {
 		public onTrigger(pid:number)
 		{
 			this.isDestroy = true
-
 			this.objmgr.players.forEach(player => {
 				if (player.body.id == pid)
 				{
 					player.died(3)
-					return
+					return true
 				}
 			})
+			return true
 		}
 	}
 }

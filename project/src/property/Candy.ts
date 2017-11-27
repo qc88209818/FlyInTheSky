@@ -63,9 +63,10 @@ module fly {
 				if (value.body.id == pid)
 				{
 					value.addPower(power || FlyParam.candy_power)
-					return
+					return true
 				}
 			})
+			return true
 		}
 	}
 }

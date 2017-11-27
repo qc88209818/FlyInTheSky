@@ -20,15 +20,15 @@ module fly {
 			this.max = op.max || 999
 
 			this.initBody({
-				id:FlyConfig.getBlockId()
+				id:FlyConfig.getObstacleId()
 				, mass:op.mass || 1
-				, type:op.type || p2.Body.KINEMATIC
+				, type:op.type || p2.Body.DYNAMIC
 				, fixedRotation:true
 				, position:[this.x, this.y]
-				, damping:op.damping || 0
+				, damping:op.damping || 0.8
 			})
 			this.initShape(this.width, this.height)
-			this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block)
+			this.setGroupAndMask(ObjectGroup.Obstacle, ObjectMask.Obstacle)
 
 			this.initBitmap(op.path)
 			this.updatePosition()
@@ -49,14 +49,12 @@ module fly {
 			this.objmgr.players.forEach(player => {
 				if (player.body.id == pid)
 				{
-					if (this.min < player.body.mass && player.body.mass < this.max)
+					if (this.min < player.force && player.force < this.max)
 					{
-						let normal = []
+						let normal = [0, 0]
 						p2.vec2.normalize(normal, player.body.velocity)
-						this.body.velocity = [normal[0]*100, normal[1]*100]
+						this.body.velocity = [normal[0]*player.force, normal[1]*player.force]
 					}
-
-					console.log(this.min, player.body.mass, this.max)
 					return
 				}
 			})

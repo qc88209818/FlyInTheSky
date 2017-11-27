@@ -61,9 +61,10 @@ module fly {
 			this.body.displays.push(child)
 		}
 
-		public onTrigger(pid:number)
+		public onTrigger(pid:number):boolean
 		{
 			console.log("FlyObject onTrigger: ", pid)
+			return false
 		}
 
 		public onContactBegin(pid:number)

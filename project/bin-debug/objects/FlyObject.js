@@ -52,6 +52,12 @@ var fly;
         FlyObject.prototype.onTrigger = function (pid) {
             console.log("FlyObject onTrigger: ", pid);
         };
+        FlyObject.prototype.onContactBegin = function (pid) {
+            console.log("FlyObject onContactBegin: ", pid);
+        };
+        FlyObject.prototype.onContactEnd = function (pid) {
+            console.log("FlyObject onContactEnd: ", pid);
+        };
         return FlyObject;
     }());
     fly.FlyObject = FlyObject;

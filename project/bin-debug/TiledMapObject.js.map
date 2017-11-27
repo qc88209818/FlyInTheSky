@@ -1,1 +1,1 @@
-{"version":3,"file":"TiledMapObject.js","sourceRoot":"","sources":["../src/TiledMapObject.ts"],"names":[],"mappings":";;;AAAA;IASC;QAFA,WAAM,GAA4B,EAAE,CAAA;IAGpC,CAAC;IACF,qBAAC;AAAD,CAAC,AAXD,IAWC;AAXK,UAAA,cAAc,6BAWnB,CAAA"}
+{"version":3,"file":"TiledMapObject.js","sourceRoot":"","sources":["../src/TiledMapObject.ts"],"names":[],"mappings":";;;AAAA,IAAO,GAAG,CAaT;AAbD,WAAO,GAAG;IACT;QASC;YAFA,WAAM,GAA4B,EAAE,CAAA;QAGpC,CAAC;QACF,qBAAC;IAAD,CAAC,AAXD,IAWC;IAXY,kBAAc,iBAW1B,CAAA;IAXY,UAAA,cAAc,iCAW1B,CAAA;AACF,CAAC,EAbM,GAAG,KAAH,GAAG,QAaT"}

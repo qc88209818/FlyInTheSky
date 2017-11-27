@@ -20,9 +20,9 @@ var fly;
     var ObjectMask;
     (function (ObjectMask) {
         ObjectMask[ObjectMask["None"] = 0] = "None";
-        ObjectMask[ObjectMask["Block"] = ObjectGroup.Block | ObjectGroup.Player] = "Block";
-        ObjectMask[ObjectMask["Player"] = ObjectGroup.Player | ObjectGroup.Block] = "Player";
-        ObjectMask[ObjectMask["Obstacle"] = 0] = "Obstacle";
+        ObjectMask[ObjectMask["Block"] = ObjectGroup.Block | ObjectGroup.Player | ObjectGroup.Obstacle] = "Block";
+        ObjectMask[ObjectMask["Player"] = ObjectGroup.Player | ObjectGroup.Block | ObjectGroup.Obstacle] = "Player";
+        ObjectMask[ObjectMask["Obstacle"] = ObjectGroup.Obstacle | ObjectGroup.Block | ObjectGroup.Player] = "Obstacle";
         ObjectMask[ObjectMask["Property"] = 0] = "Property";
     })(ObjectMask = fly.ObjectMask || (fly.ObjectMask = {}));
     var FlyConfig = (function () {
@@ -89,16 +89,16 @@ var fly;
         function FlyParam() {
         }
         FlyParam.LayerScale = 0.5; // 屏幕缩放比例
-        FlyParam.forceScale = 400; // 力量因子
+        FlyParam.forceScale = 80000; // 力量因子
         FlyParam.PlayerMaxPower = 300; // 人物最大能量
         FlyParam.PlayerMinPower = 20; // 人物最小能量
         FlyParam.PlayerInitPower = 150; // 人物初始能量
-        FlyParam.PlayerInitMass = 0.5; // 人物初始重量
+        FlyParam.PlayerInitMass = 100; // 人物初始重量
         FlyParam.PlayerStep = [61, 121, 181, 221, 261]; // 变身阶段
-        FlyParam.PlayerTijiScale = [0.5, 0.8, 1.0, 1.5, 2.0]; // 变身阶段
-        FlyParam.PlayerMassScale = [0.5, 0.8, 1.0, 1.5, 2.0]; // 变身阶段
+        FlyParam.PlayerTijiScale = [0.6, 0.8, 1.0, 1.4, 2.0]; // 变身阶段
+        FlyParam.PlayerMassScale = [0.6, 0.8, 1.0, 1.4, 2.0]; // 变身阶段
         FlyParam.candy_power = 15; // 糖果能量
-        FlyParam.move_power = -2; // 移动消耗能量
+        FlyParam.move_power = -3; // 移动消耗能量
         return FlyParam;
     }());
     fly.FlyParam = FlyParam;

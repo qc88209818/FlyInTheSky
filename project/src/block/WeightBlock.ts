@@ -20,7 +20,7 @@ module fly {
 			this.max = op.max || 999
 
 			this.initBody({
-				id:FlyConfig.getObstacleId()
+				id:FlyConfig.getBlockId()
 				, mass:op.mass || 1
 				, type:op.type || p2.Body.KINEMATIC
 				, fixedRotation:true
@@ -28,7 +28,7 @@ module fly {
 				, damping:op.damping || 0
 			})
 			this.initShape(this.width, this.height)
-			this.setGroupAndMask(ObjectGroup.Obstacle, ObjectMask.Obstacle)
+			this.setGroupAndMask(ObjectGroup.Block, ObjectMask.Block)
 
 			this.initBitmap(op.path)
 			this.updatePosition()

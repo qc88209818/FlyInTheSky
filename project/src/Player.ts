@@ -15,7 +15,7 @@ module fly {
 		inoperable:number = 0			// 不可操作状态
 		windyVel:number[] = [0, 0]		// 外力影响
 
-		public constructor(x:number, y:number, radius:number) {
+		public constructor(x:number, y:number, radius:number, op?) {
 			super()
 			this.x = x + radius
 			this.y = y + radius
@@ -174,7 +174,7 @@ module fly {
 			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
 			png.gotoAndPlay("front_stand", -1)
 			png.anchorOffsetX = png.width/2 + 8
-			png.anchorOffsetY = png.height/2 + 5
+			png.anchorOffsetY = png.height/8*7
 			png.scaleX = this.baseScale * this.radius/png.width
 			png.scaleY = this.baseScale * this.radius/png.height
 			this.addChild(png)
@@ -188,7 +188,7 @@ module fly {
 			this.addChild(progress)
 			this.progress = progress
 
-			progress.setPosition(progress.width/2, -100)
+			progress.setPosition(progress.width/2, -png.height*this.baseScale)
 		}
 
 		public addPower(value:number)

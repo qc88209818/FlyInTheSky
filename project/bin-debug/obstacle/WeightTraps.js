@@ -17,7 +17,7 @@ var fly;
         __extends(WeightTraps, _super);
         function WeightTraps(x, y, width, height, op) {
             var _this = _super.call(this) || this;
-            _this.baseScale = 1.5;
+            _this.baseScale = 2;
             _this.x = x + width / 2;
             _this.y = y + height / 2;
             _this.width = width;
@@ -25,7 +25,7 @@ var fly;
             _this.min = op.min || 0;
             _this.max = op.max || 999;
             _this.initBody({
-                id: fly.FlyConfig.getObstacleId(),
+                id: fly.FlyConfig.getPropertyId(),
                 mass: op.mass || 1,
                 type: op.type || p2.Body.DYNAMIC,
                 fixedRotation: true,
@@ -33,7 +33,7 @@ var fly;
                 damping: op.damping || 0
             });
             _this.initShape(_this.width, _this.height);
-            _this.setGroupAndMask(fly.ObjectGroup.Obstacle, fly.ObjectMask.Obstacle);
+            _this.setGroupAndMask(fly.ObjectGroup.Property, fly.ObjectMask.Property);
             _this.initBitmap(op.path);
             _this.updatePosition();
             _this.setRotation(op.rotation);

@@ -15,7 +15,7 @@ var fly;
 (function (fly) {
     var Player = (function (_super) {
         __extends(Player, _super);
-        function Player(x, y, radius) {
+        function Player(x, y, radius, op) {
             var _this = _super.call(this) || this;
             _this.baseScale = 2;
             _this.step = -1;
@@ -141,7 +141,7 @@ var fly;
             var png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("normalState"));
             png.gotoAndPlay("front_stand", -1);
             png.anchorOffsetX = png.width / 2 + 8;
-            png.anchorOffsetY = png.height / 2 + 5;
+            png.anchorOffsetY = png.height / 8 * 7;
             png.scaleX = this.baseScale * this.radius / png.width;
             png.scaleY = this.baseScale * this.radius / png.height;
             this.addChild(png);
@@ -153,7 +153,7 @@ var fly;
             progress.visible = false;
             this.addChild(progress);
             this.progress = progress;
-            progress.setPosition(progress.width / 2, -100);
+            progress.setPosition(progress.width / 2, -png.height * this.baseScale);
         };
         Player.prototype.addPower = function (value) {
             this.power += value;

@@ -109,16 +109,16 @@ var fly;
         };
         BattleScene.prototype.onContactBegin = function (bodyA, bodyB) {
             if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isProperty(bodyB.id)) {
-                this.triggerProperty(bodyB.id, bodyA.id);
+                this.trigger(bodyB.id, bodyA.id);
             }
             else if (fly.FlyConfig.isPlayer(bodyB.id) && fly.FlyConfig.isProperty(bodyA.id)) {
-                this.triggerProperty(bodyA.id, bodyB.id);
+                this.trigger(bodyA.id, bodyB.id);
             }
             else if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isObstacle(bodyB.id)) {
-                this.contactObstacleBegin(bodyB.id, bodyA.id);
+                this.trigger(bodyB.id, bodyA.id);
             }
             else if (fly.FlyConfig.isPlayer(bodyB.id) && fly.FlyConfig.isObstacle(bodyA.id)) {
-                this.contactObstacleBegin(bodyA.id, bodyB.id);
+                this.trigger(bodyA.id, bodyB.id);
             }
             else if (fly.FlyConfig.isPlayer(bodyA.id) && fly.FlyConfig.isPlayer(bodyB.id)) {
                 this.triggerPlayer(bodyA.id, bodyB.id);
@@ -135,7 +135,7 @@ var fly;
                 this.contactObstacleEnd(bodyB.id, bodyA.id);
             }
         };
-        BattleScene.prototype.triggerProperty = function (id, pid) {
+        BattleScene.prototype.trigger = function (id, pid) {
             var _this = this;
             this.objmgr.sprites.forEach(function (value) {
                 if (value.body.id == id) {

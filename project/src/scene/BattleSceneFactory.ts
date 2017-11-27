@@ -8,7 +8,6 @@ module fly {
 			if (obj.type == "player")
 			{
 				let player = new Player(obj.x, obj.y, obj.width/2)
-				
 				scene.addPlayerToWorld(player)
 				if (obj.name == "self")
 				{

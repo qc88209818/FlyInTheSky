@@ -135,19 +135,19 @@ module fly {
 		{
 			if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isProperty(bodyB.id))
 			{
-				this.triggerProperty(bodyB.id, bodyA.id)
+				this.trigger(bodyB.id, bodyA.id)
 			}
 			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isProperty(bodyA.id))
 			{
-				this.triggerProperty(bodyA.id, bodyB.id)
+				this.trigger(bodyA.id, bodyB.id)
 			}
 			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
 			{
-				this.contactObstacleBegin(bodyB.id, bodyA.id)
+				this.trigger(bodyB.id, bodyA.id)
 			}
 			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isObstacle(bodyA.id))
 			{
-				this.contactObstacleBegin(bodyA.id, bodyB.id)
+				this.trigger(bodyA.id, bodyB.id)
 			}
 			else if (FlyConfig.isPlayer(bodyA.id) &&FlyConfig.isPlayer(bodyB.id))
 			{
@@ -172,7 +172,7 @@ module fly {
 			}
 		}
 
-		private triggerProperty(id:number, pid:number)
+		private trigger(id:number, pid:number)
 		{
 			this.objmgr.sprites.forEach(value => {
 				if (value.body.id == id)

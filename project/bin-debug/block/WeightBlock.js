@@ -25,7 +25,7 @@ var fly;
             _this.min = op.min || 0;
             _this.max = op.max || 999;
             _this.initBody({
-                id: fly.FlyConfig.getObstacleId(),
+                id: fly.FlyConfig.getBlockId(),
                 mass: op.mass || 1,
                 type: op.type || p2.Body.KINEMATIC,
                 fixedRotation: true,
@@ -33,7 +33,7 @@ var fly;
                 damping: op.damping || 0
             });
             _this.initShape(_this.width, _this.height);
-            _this.setGroupAndMask(fly.ObjectGroup.Obstacle, fly.ObjectMask.Obstacle);
+            _this.setGroupAndMask(fly.ObjectGroup.Block, fly.ObjectMask.Block);
             _this.initBitmap(op.path);
             _this.updatePosition();
             _this.setRotation(op.rotation);

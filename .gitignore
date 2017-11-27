@@ -41,3 +41,7 @@ project/bin-debug/ui/UILoading.js
 project/bin-debug/ui/UILoading.js.map
 project/bin-debug/ui/UIProgress.js
 project/bin-debug/ui/UIProgress.js.map
+project/bin-debug/block/WeightBlock.js
+project/bin-debug/scene/BattleSceneContact.js
+project/bin-debug/scene/BattleSceneFactory.js
+.DS_Store

@@ -90,28 +90,44 @@ var fly;
             fly.FlyConfig.height = data["$height"] * data["$tileheight"];
             fly.FlyConfig.stageWidth = this._width;
             fly.FlyConfig.stageHeight = this._height;
-            var tiledMapObjs = [];
             // 初始化TiledMap Object
+            var tiledMapObjs = [];
             data.children.forEach(function (group) {
+                var groups = new fly.TiledMapGroup();
                 var groupxml = group;
                 groupxml.children.forEach(function (object) {
                     var objectxml = object;
-                    var tmObj = new fly.TiledMapObject();
-                    tmObj.name = objectxml["$name"];
-                    tmObj.type = objectxml["$type"];
-                    tmObj.x = Number(objectxml["$x"]);
-                    tmObj.y = Number(objectxml["$y"]);
-                    tmObj.width = Number(objectxml["$width"]);
-                    tmObj.height = Number(objectxml["$height"]);
-                    // properties
-                    objectxml.children.forEach(function (properties) {
-                        var propertiesxml = properties;
-                        propertiesxml.children.forEach(function (property) {
-                            tmObj.params[property["$name"]] = property["$value"];
+                    if (objectxml.localName == "object") {
+                        var tmObj_1 = new fly.TiledMapObject();
+                        tmObj_1.name = objectxml["$name"];
+                        tmObj_1.type = objectxml["$type"];
+                        tmObj_1.x = Number(objectxml["$x"]);
+                        tmObj_1.y = Number(objectxml["$y"]);
+                        tmObj_1.width = Number(objectxml["$width"]);
+                        tmObj_1.height = Number(objectxml["$height"]);
+                        // properties
+                        objectxml.children.forEach(function (properties) {
+                            var propertiesxml = properties;
+                            propertiesxml.children.forEach(function (property) {
+                                tmObj_1.params[property["$name"]] = property["$value"];
+                            });
                         });
-                    });
-                    tiledMapObjs.push(tmObj);
+                        groups.push(tmObj_1);
+                    }
+                    else if (objectxml.localName == "properties") {
+                        // properties
+                        objectxml.children.forEach(function (properties) {
+                            var propertiesxml = properties;
+                            if (propertiesxml["$name"] == "type") {
+                                groups.isArray = (propertiesxml["$value"] == "candy_array");
+                            }
+                            else if (propertiesxml["$name"] == "num") {
+                                groups.num = Number(propertiesxml["$value"] || 0);
+                            }
+                        });
+                    }
                 });
+                tiledMapObjs.push(groups);
             });
             this._parent.removeChild(this.loadingView);
             var battlescene = new fly.BattleScene();

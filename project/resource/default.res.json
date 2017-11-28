@@ -5,7 +5,7 @@
 			"name": "preload"
 		},
 		{
-			"keys": "load_bar_png,load_mask_png,loading_amin_json,loading_amin_png,bar_bg_png",
+			"keys": "load_bar_png,load_mask_png,loading_amin_json,loading_amin_png,bar_bg_png,playBtn_png,title_png",
 			"name": "loadUI"
 		}
 	],
@@ -484,6 +484,16 @@
 			"url": "assets/loading_amin.png",
 			"type": "image",
 			"name": "loading_amin_png"
+		},
+		{
+			"url": "assets/title.png",
+			"type": "image",
+			"name": "title_png"
+		},
+		{
+			"url": "assets/playBtn.png",
+			"type": "image",
+			"name": "playBtn_png"
 		}
 	]
 }

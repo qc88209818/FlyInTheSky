@@ -30,17 +30,24 @@ var fly;
             this._height = height;
             this.createMusic();
         };
+        SceneManager.prototype.getMapId = function () {
+            return this._mapId;
+        };
         SceneManager.prototype.load = function (mapId) {
             this.loadTiledMap(mapId);
         };
         SceneManager.prototype.loadNext = function () {
-            this.reset();
-            if (this._mapId + 1 <= this._maxId) {
-                this.loadTiledMap(this._mapId + 1);
-            }
-            else {
-                console.log("You Win!");
-            }
+            this.music.playVictory();
+            // 延迟3秒后，切换场景
+            egret.setTimeout(function () {
+                this.reset();
+                if (this._mapId + 1 <= this._maxId) {
+                    this.loadTiledMap(this._mapId + 1);
+                }
+                else {
+                    console.log("You Win!");
+                }
+            }, this, 3000);
         };
         SceneManager.prototype.loadAgain = function () {
             this.reset();

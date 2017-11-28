@@ -443,7 +443,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="88" name="windImage" type=" image" x="2725.06" y="2071.03" width="100" height="100">
+  <object id="88" name="windImage" type="image" x="2725.06" y="2071.03" width="100" height="100">
    <properties>
     <property name="path" value="wind_png"/>
     <property name="type" type="int" value="0"/>

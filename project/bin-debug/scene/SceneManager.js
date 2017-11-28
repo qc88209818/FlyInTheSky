@@ -19,6 +19,7 @@ var fly;
             var _this = _super !== null && _super.apply(this, arguments) || this;
             _this._mapId = 0;
             _this._maxId = 5;
+            _this.loadingView = null;
             return _this;
         }
         SceneManager.inst = function () {
@@ -60,13 +61,28 @@ var fly;
             /*初始化请求*/
             this.request = new egret.HttpRequest();
             /*监听资源加载完成事件*/
-            this.request.once(egret.Event.COMPLETE, this.onMapComplete, this);
+            this.request.addEventListener(egret.Event.COMPLETE, this.onMapComplete, this);
+            this.request.addEventListener(egret.ProgressEvent.PROGRESS, this.onMapProgress, this);
             /*发送请求*/
             this.request.open(this.url, egret.HttpMethod.GET);
             this.request.send();
+            if (this.loadingView == null) {
+                this.loadingView = new UILoading();
+            }
+            this.loadingView.x = this._parent.stage.stageWidth / 2 - 200;
+            this.loadingView.y = this._parent.stage.stageHeight / 2;
+            this.loadingView.scaleX = 2;
+            this.loadingView.scaleY = 2;
+            this._parent.addChild(this.loadingView);
+        };
+        /**加载进度 */
+        SceneManager.prototype.onMapProgress = function (event) {
+            this.loadingView.setProgress(event.bytesLoaded, event.bytesTotal);
         };
         /*地图加载完成*/
         SceneManager.prototype.onMapComplete = function (event) {
+            this.request.removeEventListener(egret.Event.COMPLETE, this.onMapComplete, this);
+            this.request.removeEventListener(egret.ProgressEvent.PROGRESS, this.onMapProgress, this);
             /*获取到地图数据*/
             var data = egret.XML.parse(event.currentTarget.response);
             // 初始化一些有用参数
@@ -97,10 +113,11 @@ var fly;
                     tiledMapObjs.push(tmObj);
                 });
             });
+            this._parent.removeChild(this.loadingView);
             var battlescene = new fly.BattleScene();
             battlescene.initScene(tiledMapObjs);
             this._parent.addChild(battlescene);
-            this.music.playBgm(1);
+            this.music.playBgm(this._mapId);
         };
         SceneManager.prototype.createMusic = function () {
             var music = new fly.FlyMusic();

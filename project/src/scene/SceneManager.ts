@@ -14,6 +14,8 @@ module fly {
 		
 		static obj:SceneManager = new SceneManager()
 
+		private loadingView:UILoading = null;
+
 		public static inst(): SceneManager
 		{
 			return this.obj
@@ -70,14 +72,29 @@ module fly {
 			/*初始化请求*/
 			this.request = new egret.HttpRequest();
 			/*监听资源加载完成事件*/
-			this.request.once(egret.Event.COMPLETE, this.onMapComplete,this);
+			this.request.addEventListener(egret.Event.COMPLETE, this.onMapComplete,this);
+			this.request.addEventListener(egret.ProgressEvent.PROGRESS,this.onMapProgress,this);
 			/*发送请求*/
 			this.request.open(this.url,egret.HttpMethod.GET);
 			this.request.send();
+			if(this.loadingView == null){
+				this.loadingView = new UILoading();
+			}
+			this.loadingView.x = this._parent.stage.stageWidth/2-200;
+        	this.loadingView.y = this._parent.stage.stageHeight/2;
+        	this.loadingView.scaleX = 2;
+        	this.loadingView.scaleY = 2;
+        	this._parent.addChild(this.loadingView);
 		}
-
+		
+		/**加载进度 */
+		private onMapProgress(event:egret.ProgressEvent){
+			this.loadingView.setProgress(event.bytesLoaded, event.bytesTotal);
+		}
 		/*地图加载完成*/
 		private onMapComplete(event:egret.Event) {
+			this.request.removeEventListener(egret.Event.COMPLETE, this.onMapComplete,this);
+			this.request.removeEventListener(egret.ProgressEvent.PROGRESS,this.onMapProgress,this);
 			/*获取到地图数据*/
 			let data = egret.XML.parse(event.currentTarget.response);
 
@@ -133,7 +150,7 @@ module fly {
 
 				tiledMapObjs.push(groups)
 			})
-
+			this._parent.removeChild(this.loadingView);
 			let battlescene = new BattleScene()
 			battlescene.initScene(tiledMapObjs)
 			this._parent.addChild(battlescene)

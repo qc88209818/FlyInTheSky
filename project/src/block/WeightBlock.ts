@@ -22,7 +22,7 @@ module fly {
 			this.initBody({
 				id:FlyConfig.getObstacleId()
 				, mass:op.mass || 1
-				, type:p2.Body.DYNAMIC
+				, type:p2.Body.STATIC
 				, fixedRotation:true
 				, position:[this.x, this.y]
 				, damping:op.damping || 0.8

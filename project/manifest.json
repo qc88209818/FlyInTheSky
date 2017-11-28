@@ -12,9 +12,9 @@
 	],
 	"game": [
 		"bin-debug/objects/FlyObject.js",
-		"bin-debug/objects/FlyRect.js",
 		"bin-debug/objects/FlyCircle.js",
-		"bin-debug/obstacle/Traps.js",
+		"bin-debug/objects/FlyRect.js",
+		"bin-debug/obstacle/WeightTraps.js",
 		"bin-debug/block/Wall.js",
 		"bin-debug/block/WeightBlock.js",
 		"bin-debug/Main.js",
@@ -24,8 +24,8 @@
 		"bin-debug/block/BlockRect.js",
 		"bin-debug/objects/FlyTools.js",
 		"bin-debug/obstacle/AiTraps.js",
-		"bin-debug/ui/UIProgress.js",
-		"bin-debug/obstacle/WeightTraps.js",
+		"bin-debug/obstacle/Traps.js",
+		"bin-debug/Player.js",
 		"bin-debug/obstacle/WindTraps.js",
 		"bin-debug/property/Candy.js",
 		"bin-debug/property/Plane.js",
@@ -38,6 +38,6 @@
 		"bin-debug/scene/SceneManager.js",
 		"bin-debug/scene/TiledMapObject.js",
 		"bin-debug/ui/UILoading.js",
-		"bin-debug/Player.js"
+		"bin-debug/ui/UIProgress.js"
 	]
 }

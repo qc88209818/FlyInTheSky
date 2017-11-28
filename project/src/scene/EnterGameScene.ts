@@ -30,6 +30,7 @@ module fly {
             this.enterGameBtn.anchorOffsetY = this.enterGameBtn.height/2
             this.enterGameBtn.x = this.stage.stageWidth/2;
             this.enterGameBtn.y = this.stage.stageHeight/2 - 70;
+            this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             this.addChild(this.enterGameBtn);
 
              this.touchEnabled = true
@@ -47,15 +48,14 @@ module fly {
         public onTouchBegin(evt:egret.TouchEvent) {
                
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
-                     this.enterGameBtn.scaleX =  this.enterGameBtn.scaleY = 0.9;
+                     this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 1.8;
                 }
                
         }
 
         private  onTouchClick(evt:egret.TouchEvent) {
             console.log(""+ this.enterGameBtn.scaleX )
-            this.enterGameBtn.scaleX = 1;
-            this.enterGameBtn.scaleY = 1;
+            this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
                     let parent = this.parent
                     parent.removeChild(this);
@@ -68,8 +68,7 @@ module fly {
 
         private  onTouchCancel(evt:egret.TouchEvent) {
             console.log(""+ this.enterGameBtn.scaleX )
-            this.enterGameBtn.scaleX = 1;
-            this.enterGameBtn.scaleY = 1;
+            this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
         }
 	}
 }

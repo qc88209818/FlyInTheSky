@@ -39,6 +39,7 @@ var fly;
             this.enterGameBtn.anchorOffsetY = this.enterGameBtn.height / 2;
             this.enterGameBtn.x = this.stage.stageWidth / 2;
             this.enterGameBtn.y = this.stage.stageHeight / 2 - 70;
+            this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             this.addChild(this.enterGameBtn);
             this.touchEnabled = true;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
@@ -52,13 +53,12 @@ var fly;
         };
         EnterGameScene.prototype.onTouchBegin = function (evt) {
             if (this.enterGameBtn.hitTestPoint(evt.localX, evt.localY)) {
-                this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 0.9;
+                this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 1.8;
             }
         };
         EnterGameScene.prototype.onTouchClick = function (evt) {
             console.log("" + this.enterGameBtn.scaleX);
-            this.enterGameBtn.scaleX = 1;
-            this.enterGameBtn.scaleY = 1;
+            this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             if (this.enterGameBtn.hitTestPoint(evt.localX, evt.localY)) {
                 var parent_1 = this.parent;
                 parent_1.removeChild(this);
@@ -69,8 +69,7 @@ var fly;
         };
         EnterGameScene.prototype.onTouchCancel = function (evt) {
             console.log("" + this.enterGameBtn.scaleX);
-            this.enterGameBtn.scaleX = 1;
-            this.enterGameBtn.scaleY = 1;
+            this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
         };
         return EnterGameScene;
     }(egret.Sprite));

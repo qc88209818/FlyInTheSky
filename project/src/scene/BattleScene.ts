@@ -380,6 +380,11 @@ module fly {
 			this.world.removeBody(obj.body)
 		}
 
+		public addImage(image:egret.Bitmap)
+		{
+			this.baseLayer.addChild(image)
+		}
+
 		public reset()
 		{
 			egret.Ticker.getInstance().unregister(this.onTickWorld, this)

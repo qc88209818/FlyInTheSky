@@ -120,7 +120,18 @@ module fly {
 					, max:Number(obj.params["max"])
 				})
 				scene.addToWorld(block)
-			}			
+			}
+			else if (obj.type == "image")
+			{
+				let png = FlyTools.createBitmapByName(obj.params["path"])
+				png.x = obj.x
+				png.y = obj.y
+				png.anchorOffsetX = png.width/2
+				png.anchorOffsetY = png.height/2
+				png.scaleX = Number(obj.params["scale"]||1)
+				png.scaleY = Number(obj.params["scale"]||1)
+				scene.addImage(png)
+			}	
 		}
 
 		static createArray(scene:BattleScene, group:TiledMapGroup)

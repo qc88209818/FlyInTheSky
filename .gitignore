@@ -55,3 +55,4 @@ project/bin-debug/obstacle/AiTraps.js
 project/manifest.json
 project/bin-debug/property/CandyArray.js
 project/bin-debug/scene/TiledMapGroup.js
+project/bin-debug/scene/SceneManager.js

@@ -74,6 +74,7 @@ var fly;
             this.world = world;
         };
         ObjectManager.prototype.reset = function () {
+            this.scene.reset();
             this.scene = null;
             this.sprites = [];
             this.players = [];

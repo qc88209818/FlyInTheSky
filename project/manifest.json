@@ -33,6 +33,7 @@
 		"bin-debug/scene/BattleSceneContact.js",
 		"bin-debug/scene/BattleSceneFactory.js",
 		"bin-debug/scene/BattleTouchNode.js",
+		"bin-debug/scene/EnterGameScene.js",
 		"bin-debug/scene/ObjectManager.js",
 		"bin-debug/scene/SceneManager.js",
 		"bin-debug/scene/TiledMapObject.js",

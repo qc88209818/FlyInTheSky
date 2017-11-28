@@ -6,7 +6,6 @@ module fly {
 
 		baseScale:number = FlyParam.PlayerBaseScale
 
-		progress:UIProgress
 		movieClip:egret.MovieClip
 		force:number
 		power:number
@@ -117,7 +116,7 @@ module fly {
 			this.weight = weight
 			this.dir = dir
 
-			this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius/this.movieClip.width
+			this.movieClip.scaleX = this.baseScale * FlyParam.PlayerTijiScale[this.step] * this.dir
 		}
 
 		public setVelocity(x:number, y:number)
@@ -131,18 +130,9 @@ module fly {
 			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("playerState"));
 			png.gotoAndPlay(this.nowState, -1)
 			png.anchorOffsetX = png.width/2 + 8
-			png.anchorOffsetY = png.height/8*7
+			png.anchorOffsetY = png.height
 			this.addChild(png)
 			this.movieClip = png
-
-			let progress = new UIProgress()
-			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
-			progress.anchorOffsetX = progress.width/2
-			progress.anchorOffsetY = progress.height/2
-			progress.visible = false
-			this.progress = progress
-
-			progress.setPosition(progress.width/2, progress.height)
 		}
 
 		public changePower(power:number)
@@ -175,8 +165,8 @@ module fly {
 						this.body.mass = this.mass
 						this.body.updateMassProperties()
 
-						this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius/this.movieClip.width
-						this.movieClip.scaleY = this.baseScale * this.circle.radius/this.movieClip.height
+						this.movieClip.scaleX = this.baseScale * FlyParam.PlayerTijiScale[i] * this.dir
+						this.movieClip.scaleY = this.baseScale * FlyParam.PlayerTijiScale[i]
 
 						this.step = i
 
@@ -209,12 +199,12 @@ module fly {
 		public died(reason:number)
 		{
 			// 死亡原因
-			console.log(this.deadReason[reason])
 			this.heath -= 1
 			this.reset(this.x, this.y)
 
 			if (this.isListener)
 			{
+				console.log(this.deadReason[reason])
 				this.objmgr.scene.dispatchEventWith("PlayerDead", false, this.deadReason[reason])
 			}
 		}

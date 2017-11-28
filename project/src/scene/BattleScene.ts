@@ -3,7 +3,7 @@ module fly {
 		world:p2.World
 		touchNode:BattleTouchNode
 		progress:UIProgress
-		tiledMapObjs:TiledMapObject[]
+		tiledMapGroups:TiledMapGroup[]
 
 		objmgr:ObjectManager = ObjectManager.inst()
 		player:Player
@@ -67,9 +67,9 @@ module fly {
 			this.playerLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
 		}
 
-		public initScene(tiledMapObjs:TiledMapObject[])
+		public initScene(tiledMapGroups:TiledMapGroup[])
 		{
-			this.tiledMapObjs = tiledMapObjs
+			this.tiledMapGroups = tiledMapGroups
 
 			this.addChild(this.baseLayer)
 			this.addChild(this.playerLayer)
@@ -119,8 +119,17 @@ module fly {
 			this.objmgr.scene = this
 			
 			// 根据TiledMap创建元素
-			this.tiledMapObjs.forEach(obj => {
-				BattleSceneFactory.createObject(this, obj)
+			this.tiledMapGroups.forEach(group => {
+				if (!group.isArray)
+				{
+					group.group.forEach(obj => {
+						BattleSceneFactory.createObject(this, obj)
+					})
+				}
+				else
+				{
+					BattleSceneFactory.createArray(this, group)
+				}
 			})
 		}
 

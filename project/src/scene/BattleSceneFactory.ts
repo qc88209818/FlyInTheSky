@@ -122,5 +122,24 @@ module fly {
 				scene.addToWorld(block)
 			}			
 		}
+
+		static createArray(scene:BattleScene, group:TiledMapGroup)
+		{
+			let array = new CandyArray()
+			array.num = group.num
+
+			group.group.forEach(obj => {
+				let candy = new Candy(obj.x, obj.y, obj.width/2, 
+				{
+					path:obj.params["path"]
+					, type:Number(obj.params["type"])
+					, rotation:Number(obj.params["rotation"])
+					, delta:Number(obj.params["delta"])
+					, power:Number(obj.params["power"])
+				})
+				scene.addToWorld(candy)
+				array.add(candy)
+			})
+		}
 	}
 }

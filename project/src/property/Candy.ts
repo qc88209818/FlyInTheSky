@@ -4,6 +4,7 @@ module fly {
 		y:number
 		radius:number
 		op:any
+		candyArray:CandyArray = null
 
 		baseScale:number = FlyParam.CandyBaseScale
 		
@@ -47,6 +48,22 @@ module fly {
 		{
 			this.isDestroy = true
 
+			// 减少能量
+			let power = this.op.power
+			this.objmgr.players.forEach(value => {
+				if (value.body.id == pid)
+				{
+					value.changePower(value.power + (power||FlyParam.candy_power))
+				}
+			})
+
+			// 如果是有组控制，则不自动生成
+			if (this.candyArray != null)
+			{
+				this.candyArray.onTrigger(this.x, this.y)
+				return true
+			}
+
 			// delta后创建新的
 			let delta = this.op.delta
 			if (delta > 0)
@@ -59,16 +76,6 @@ module fly {
 					}              
 				}, this, delta*1000); 
 			}
-			
-			// 减少能量
-			let power = this.op.power
-			this.objmgr.players.forEach(value => {
-				if (value.body.id == pid)
-				{
-					value.changePower(value.power + (power||FlyParam.candy_power))
-					return true
-				}
-			})
 			return true
 		}
 	}

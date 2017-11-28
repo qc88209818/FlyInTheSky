@@ -52,3 +52,6 @@ project/bin-debug/scene/BattleSceneContact.js.map
 project/bin-debug/scene/BattleSceneFactory.js
 project/bin-debug/scene/BattleSceneFactory.js.map
 project/bin-debug/obstacle/AiTraps.js
+project/manifest.json
+project/bin-debug/property/CandyArray.js
+project/bin-debug/scene/TiledMapGroup.js

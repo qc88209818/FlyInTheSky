@@ -87,30 +87,51 @@ module fly {
 			fly.FlyConfig.stageWidth = this._width
 			fly.FlyConfig.stageHeight = this._height
 
-			let tiledMapObjs = []
 			// 初始化TiledMap Object
+			let tiledMapObjs = []
 			data.children.forEach(group => {
+				let groups = new TiledMapGroup()
 				let groupxml = <egret.XML><any>group
 				groupxml.children.forEach(object => {
 					let objectxml = <egret.XML><any>object
-					let tmObj = new TiledMapObject()
-					tmObj.name = objectxml["$name"]
-					tmObj.type = objectxml["$type"]
-					tmObj.x = Number(objectxml["$x"])
-					tmObj.y = Number(objectxml["$y"])
-					tmObj.width = Number(objectxml["$width"])
-					tmObj.height = Number(objectxml["$height"])
+					if (objectxml.localName == "object")
+					{
+						let tmObj = new TiledMapObject()
+						tmObj.name = objectxml["$name"]
+						tmObj.type = objectxml["$type"]
+						tmObj.x = Number(objectxml["$x"])
+						tmObj.y = Number(objectxml["$y"])
+						tmObj.width = Number(objectxml["$width"])
+						tmObj.height = Number(objectxml["$height"])
 
-					// properties
-					objectxml.children.forEach(properties => {
-						let propertiesxml = <egret.XML><any>properties
-						propertiesxml.children.forEach(property => {
-							tmObj.params[property["$name"]] = property["$value"]
+						// properties
+						objectxml.children.forEach(properties => {
+							let propertiesxml = <egret.XML><any>properties
+							propertiesxml.children.forEach(property => {
+								tmObj.params[property["$name"]] = property["$value"]
+							})
 						})
-					})
 
-					tiledMapObjs.push(tmObj)         
+						groups.push(tmObj)
+					}     
+					else if (objectxml.localName == "properties")
+					{
+						// properties
+						objectxml.children.forEach(properties => {
+							let propertiesxml = <egret.XML><any>properties
+							if (propertiesxml["$name"] == "type")
+							{
+								groups.isArray = (propertiesxml["$value"] == "candy_array")
+							}
+							else if (propertiesxml["$name"] == "num")
+							{
+								groups.num = Number(propertiesxml["$value"] || 0)
+							}
+						})
+					} 
 				})
+
+				tiledMapObjs.push(groups)
 			})
 
 			let battlescene = new BattleScene()

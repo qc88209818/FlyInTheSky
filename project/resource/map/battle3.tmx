@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="100" height="100" tilewidth="10" tileheight="10" nextobjectid="135">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="100" height="100" tilewidth="10" tileheight="10" nextobjectid="138">
  <objectgroup name="object">
   <object id="1" name="self" type="player" x="94.9347" y="799.898" width="100" height="100">
    <ellipse/>
@@ -12,7 +12,7 @@
   </object>
   <object id="11" name="blockrect" type="blockrect" x="0" y="0" width="50" height="1000">
    <properties>
-    <property name="path" value=""/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -73,19 +73,19 @@
   </object>
   <object id="107" name="blockrect" type="blockrect" x="0" y="0" width="1000" height="50">
    <properties>
-    <property name="path" value=""/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
   <object id="108" name="blockrect" type="blockrect" x="0" y="950" width="1000" height="50">
    <properties>
-    <property name="path" value=""/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
   <object id="109" name="blockrect" type="blockrect" x="950" y="0" width="50" height="1000">
    <properties>
-    <property name="path" value=""/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -149,13 +149,6 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="121" name="tree" type="weightblock" x="448.429" y="318.098" width="100" height="100">
-   <properties>
-    <property name="min" value="180"/>
-    <property name="path" value="treeCut_png"/>
-    <property name="type" type="int" value="1"/>
-   </properties>
-  </object>
   <object id="122" name="wall" type="blockrect" x="148.429" y="318.098" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
@@ -200,14 +193,6 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="129" name="cake" type="candy" x="597.482" y="786.664" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
   <object id="130" name="hamburg" type="candy" x="96.5494" y="450.933" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
@@ -216,10 +201,10 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="132" name="tree" type="weightblock" x="548.383" y="318.389" width="100" height="100">
+  <object id="132" name="bucket" type="weightblock" x="384.781" y="-207.356" width="100" height="100">
    <properties>
-    <property name="min" value="180"/>
-    <property name="path" value="treeCut_png"/>
+    <property name="min" value="280"/>
+    <property name="path" value="bucket_png"/>
     <property name="type" type="int" value="1"/>
    </properties>
   </object>
@@ -231,13 +216,33 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="134" name="hamburg" type="candy" x="354.468" y="456.549" width="100" height="100">
+  <object id="134" name="hamburg" type="candy" x="554.932" y="783.622" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
     <property name="power" value="30"/>
    </properties>
    <ellipse/>
+  </object>
+  <object id="135" name="hamburg" type="candy" x="359.369" y="456.436" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="30"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="136" name="bucket" type="weightblock" x="548.527" y="318.122" width="100" height="100">
+   <properties>
+    <property name="min" value="280"/>
+    <property name="path" value="bucket_png"/>
+   </properties>
+  </object>
+  <object id="137" name="wall" type="blockrect" x="129.615" y="-479.722" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

@@ -9,6 +9,7 @@ module fly {
 		player:Player
 
 		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
+		playerLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		text:egret.TextField
@@ -62,6 +63,8 @@ module fly {
 		{
 			this.baseLayer.x = -this.player.body.position[0]*FlyParam.LayerScale + FlyConfig.stageWidth/2
 			this.baseLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
+			this.playerLayer.x = -this.player.body.position[0]*FlyParam.LayerScale + FlyConfig.stageWidth/2
+			this.playerLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
 		}
 
 		public initScene(tiledMapObjs:TiledMapObject[])
@@ -69,6 +72,7 @@ module fly {
 			this.tiledMapObjs = tiledMapObjs
 
 			this.addChild(this.baseLayer)
+			this.addChild(this.playerLayer)
 			this.addChild(this.uiLayer)
 			this.addChild(this.touchLayer)
 
@@ -83,6 +87,8 @@ module fly {
 		{
 			this.baseLayer.scaleX = FlyParam.LayerScale
 			this.baseLayer.scaleY = FlyParam.LayerScale
+			this.playerLayer.scaleX = FlyParam.LayerScale
+			this.playerLayer.scaleY = FlyParam.LayerScale
 
 			let png = FlyTools.createBitmapByName("background_jpg")
 			png.scaleX = FlyConfig.width/png.width
@@ -141,17 +147,28 @@ module fly {
 			// 监听能量变化事件
 			this.addEventListener("ChangePower", this.onChangePower, this)
 
-			// 显示生命值
+			// 显示关卡
 			var text:egret.TextField = new egret.TextField()
-			text.text = "当前剩余生命: " + this.player.heath
+			text.text = "当前关卡: " + SceneManager.inst().getMapId()
 			text.size = 36;
 			text.textColor = 0x000000;
 			text.anchorOffsetX = 0;
 			text.anchorOffsetY = 0.5
 			text.x = 5
-			text.y = progress.height + 20
+			text.y = progress.height + 25
 			this.addChild(text);
-			this.text = text
+
+			// 显示生命值
+			var text2:egret.TextField = new egret.TextField()
+			text2.text = "当前剩余生命: " + this.player.heath
+			text2.size = 36;
+			text2.textColor = 0x000000;
+			text2.anchorOffsetX = 0;
+			text2.anchorOffsetY = 0.5
+			text2.x = 5
+			text2.y = progress.height + text.height + 40
+			this.addChild(text2);
+			this.text = text2
 
 			// 监听死亡事件
 			this.addEventListener("PlayerDead", this.onPlayerDead, this)
@@ -298,7 +315,7 @@ module fly {
 		{
 			this.world.addBody(obj.body)
 			obj.body.displays.forEach(value => { 
-				this.baseLayer.addChild(value)
+				this.playerLayer.addChild(value)
 			})
 
 			this.objmgr.addPlayer(obj)

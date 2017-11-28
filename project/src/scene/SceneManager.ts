@@ -28,6 +28,11 @@ module fly {
 			this.createMusic()
 		}
 
+		public getMapId()
+		{
+			return this._mapId
+		}
+
 		public load(mapId:number)
 		{
 			this.loadTiledMap(mapId)
@@ -35,15 +40,19 @@ module fly {
 
 		public loadNext()
 		{
-			this.reset()
-			if (this._mapId + 1 <= this._maxId)
-			{
-				this.loadTiledMap(this._mapId + 1)
-			}
-			else
-			{
-				console.log("You Win!")
-			}
+			this.music.playVictory()    
+			// 延迟3秒后，切换场景
+			egret.setTimeout(function () {    
+				this.reset()
+				if (this._mapId + 1 <= this._maxId)
+				{
+					this.loadTiledMap(this._mapId + 1)
+				}
+				else
+				{
+					console.log("You Win!")
+				} 
+			}, this, 3000); 
 		}
 
 		public loadAgain()

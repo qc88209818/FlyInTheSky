@@ -87,6 +87,28 @@ module fly {
 				})
 				scene.addToWorld(traps)
 			}	
+			else if (obj.type == "windtraps")
+			{
+				let traps = new WindTraps(obj.x, obj.y, obj.width/2, 
+				{
+					type:Number(obj.params["type"])
+					, min:Number(obj.params["min"])
+					, max:Number(obj.params["max"])
+				})
+				scene.addToWorld(traps)
+			}
+			else if (obj.type == "aitraps")
+			{
+				let traps = new AiTraps(obj.x, obj.y, obj.width/2, 
+				{
+					path:obj.params["path"]
+					, damping:Number(obj.params["damping"])
+					, rotation:Number(obj.params["rotation"])
+					, lookRadius:Number(obj.params["radius"])
+					, lookVelocity:Number(obj.params["velocity"])
+				})
+				scene.addToWorld(traps)
+			}
 			else if (obj.type == "weightblock")
 			{
 				let block = new WeightBlock(obj.x, obj.y, obj.width, obj.height, 

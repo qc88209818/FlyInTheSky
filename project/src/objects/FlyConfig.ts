@@ -10,19 +10,21 @@ module fly {
 		Block    = Math.pow(2,0),
 		Player   = Math.pow(2,1),
 		Obstacle = Math.pow(2,2),
-		Property = Math.pow(2,3)
+		Property = Math.pow(2,3),
+		AiPlayer = Math.pow(2,4),
 	}
 
 	export enum ObjectMask {
 		None     = 0,
-		Block    = ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.Obstacle,
-		Player   = ObjectGroup.Player|ObjectGroup.Block|ObjectGroup.Obstacle,
-		Obstacle = ObjectGroup.Obstacle|ObjectGroup.Block|ObjectGroup.Player,
-		Property = 0
+		Block    = ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.Obstacle|ObjectGroup.AiPlayer,
+		Player   = ObjectGroup.Player|ObjectGroup.Block|ObjectGroup.Obstacle|ObjectGroup.AiPlayer,
+		Obstacle = ObjectGroup.Obstacle|ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.AiPlayer,
+		Property = 0,
+		AiPlayer = ObjectGroup.AiPlayer|ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.Obstacle
 	}
 
 	export class FlyConfig {
-		static DebugMode:boolean	= false		// debug模式
+		static DebugMode:boolean	= true		// debug模式
 		static width:number				// 画布宽度
 		static height:number 			// 画布高度
 		static stageWidth:number		// 画布宽度
@@ -32,16 +34,19 @@ module fly {
 		private static BlockMinId:number 		= 1000
 		private static PropertyMinId:number 	= 2000
 		private static ObstacleMinId:number 	= 3000
+		private static AiPlayerMinId:number 	= 4000
 
 		private static PlayerMaxId:number 		= 1000
 		private static BlockMaxId:number 		= 2000
 		private static PropertyMaxId:number 	= 3000
 		private static ObstacleMaxId:number 	= 4000
+		private static AiPlayerMaxId:number 	= 5000
 
 		private static PlayerId:number 		= FlyConfig.PlayerMinId
 		private static BlockId:number 		= FlyConfig.BlockMinId
 		private static PropertyId:number 	= FlyConfig.PropertyMinId
 		private static ObstacleId:number 	= FlyConfig.ObstacleMinId
+		private static AiPlayerId:number 	= FlyConfig.AiPlayerMinId
 
 		public static getPlayerId():number
 		{
@@ -83,6 +88,16 @@ module fly {
 			return FlyConfig.ObstacleId
 		}
 
+		public static getAiPlayerId():number
+		{
+			FlyConfig.AiPlayerId++
+			if (FlyConfig.AiPlayerId >= FlyConfig.AiPlayerMaxId)
+			{
+				FlyConfig.AiPlayerId = FlyConfig.AiPlayerMinId
+			}
+			return FlyConfig.AiPlayerId
+		}
+
 		public static isPlayer(id:number): boolean
 		{
 			return FlyConfig.PlayerMinId <= id && id < FlyConfig.PlayerMaxId
@@ -103,12 +118,18 @@ module fly {
 			return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId
 		}
 
+		public static isAiPlayer(id:number): boolean
+		{
+			return FlyConfig.AiPlayerMinId <= id && id < FlyConfig.AiPlayerMaxId
+		}
+
 		public static reset()
 		{
 			FlyConfig.PlayerId 	 = FlyConfig.PlayerMinId
 			FlyConfig.BlockId 	 = FlyConfig.BlockMinId
 			FlyConfig.PropertyId = FlyConfig.PropertyMinId
 			FlyConfig.ObstacleId = FlyConfig.ObstacleMinId
+			FlyConfig.AiPlayerId = FlyConfig.AiPlayerMinId
 		}
 	}
 
@@ -137,5 +158,6 @@ module fly {
 		static TrapsBaseScale:number			= 1		
 		static WeightTrapsBaseScale:number		= 2		
 		static PlaneBaseScale:number			= 2
+		static AiBaseScale:number				= 3
 	}
 }

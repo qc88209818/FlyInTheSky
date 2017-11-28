@@ -117,7 +117,7 @@ module fly {
 			battlescene.initScene(tiledMapObjs)
 			this._parent.addChild(battlescene)
 
-			this.music.playBgm(1)
+			this.music.playBgm(this._mapId)
 		}
 
 		private createMusic()

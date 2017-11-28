@@ -51,9 +51,12 @@ module fly {
 			let delta = this.op.delta
 			if (delta > 0)
 			{
-				egret.setTimeout(function () {              
-					let candy = new Candy(this.x-this.radius, this.y-this.radius, this.radius, this.op)
-					this.objmgr.scene.addToWorld(candy)
+				egret.setTimeout(function () {
+					if (this.objmgr.scene)
+					{
+						let candy = new Candy(this.x-this.radius, this.y-this.radius, this.radius, this.op)
+						this.objmgr.scene.addToWorld(candy)
+					}              
 				}, this, delta*1000); 
 			}
 			

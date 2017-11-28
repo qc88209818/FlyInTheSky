@@ -16,7 +16,7 @@ module fly {
 		inoperable:number = 0			// 不可操作状态
 		heath:number = 3
 
-		deadReason:string[] = ["", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！"]
+		deadReason:string[] = ["", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 		isListener:boolean  = false		// 是否被监听
 
 		public constructor(x:number, y:number, radius:number, op?) {

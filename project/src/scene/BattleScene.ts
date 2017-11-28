@@ -194,6 +194,7 @@ module fly {
 		
 		private onContactBegin(bodyA:p2.Body, bodyB:p2.Body) 
 		{
+			// 玩家触碰道具
 			if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isProperty(bodyB.id))
 			{
 				this.trigger(bodyB.id, bodyA.id)
@@ -202,6 +203,16 @@ module fly {
 			{
 				this.trigger(bodyA.id, bodyB.id)
 			}
+			// AI触碰陷阱
+			else if (FlyConfig.isAiPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
+			{
+				this.triggerAi(bodyB.id, bodyA.id)
+			}
+			else if (FlyConfig.isAiPlayer(bodyB.id) && FlyConfig.isObstacle(bodyA.id))
+			{
+				this.triggerAi(bodyA.id, bodyB.id)
+			}
+			// 玩家触碰陷阱
 			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
 			{
 				// 先调用触发器，后触发碰撞逻辑
@@ -218,6 +229,7 @@ module fly {
 					this.contactObstacleBegin(bodyA.id, bodyB.id)
 				}
 			}
+			// 玩家触碰玩家
 			else if (FlyConfig.isPlayer(bodyA.id) &&FlyConfig.isPlayer(bodyB.id))
 			{
 				this.triggerPlayer(bodyA.id, bodyB.id)
@@ -274,6 +286,26 @@ module fly {
 						this.delFromWorld(value)
 					}
 					return bRet
+				}
+			})
+			return false
+		}
+
+		private triggerAi(id:number, pid:number):boolean
+		{
+			this.objmgr.sprites.forEach(value => {
+				if (value.body.id == id)
+				{
+					let bRet = value.onTrigger(pid)
+					if (value.isDestroy)
+					{
+						this.delFromWorld(value)
+					}
+				}
+				else if (value.body.id == pid)
+				{
+					value.isDestroy = true
+					this.delFromWorld(value)
 				}
 			})
 			return false

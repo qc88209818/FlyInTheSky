@@ -14,6 +14,8 @@ module fly {
 		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		text:egret.TextField
 
+		isDestory:boolean = false
+
 		public constructor() {
 			super()
 		}
@@ -105,13 +107,7 @@ module fly {
 			egret.Ticker.getInstance().register(this.onTickWorld, this)
 			world.on("postBroadphase", this.onBeginContact, this)
 			world.on("endContact", this.onEndContact, this)
-		}
-
-		private onTickWorld(dt)
-		{
-			//使世界时间向后运动
-			this.world.step(dt/1000)
-			this.update(dt/1000)
+			world.on("postStep", this.onPostStep, this)
 		}
 		
 		private createScene() 
@@ -193,6 +189,23 @@ module fly {
 			this.text.text = "当前剩余生命: " + this.player.heath + " (" + evt.data+ ")"
 		}
 
+		private onTickWorld(dt)
+		{
+			//使世界时间向后运动
+			this.world.step(dt/1000)
+			this.update(dt/1000)
+		}
+
+		private onPostStep()
+		{
+			if (this.isDestory)
+			{
+				this.reset()
+				this.objmgr.reset()
+				SceneManager.inst().loadNext()
+			}
+		}
+
 		private onBeginContact(event:any)
 		{
 			for (let i = 0; i < event.pairs.length; i += 2)
@@ -212,15 +225,6 @@ module fly {
 			{
 				this.trigger(bodyA.id, bodyB.id)
 			}
-			// AI触碰陷阱
-			else if (FlyConfig.isAiPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
-			{
-				this.triggerAi(bodyB.id, bodyA.id)
-			}
-			else if (FlyConfig.isAiPlayer(bodyB.id) && FlyConfig.isObstacle(bodyA.id))
-			{
-				this.triggerAi(bodyA.id, bodyB.id)
-			}
 			// 玩家触碰陷阱
 			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
 			{
@@ -237,6 +241,24 @@ module fly {
 				{
 					this.contactObstacleBegin(bodyA.id, bodyB.id)
 				}
+			}
+			// 玩家触碰Ai
+			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isAiPlayer(bodyB.id))
+			{
+				this.trigger(bodyB.id, bodyA.id)
+			}
+			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isAiPlayer(bodyA.id))
+			{
+				this.trigger(bodyA.id, bodyB.id)
+			}
+			// AI触碰陷阱
+			else if (FlyConfig.isAiPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
+			{
+				this.triggerAi(bodyB.id, bodyA.id)
+			}
+			else if (FlyConfig.isAiPlayer(bodyB.id) && FlyConfig.isObstacle(bodyA.id))
+			{
+				this.triggerAi(bodyA.id, bodyB.id)
 			}
 			// 玩家触碰玩家
 			else if (FlyConfig.isPlayer(bodyA.id) &&FlyConfig.isPlayer(bodyB.id))
@@ -392,6 +414,7 @@ module fly {
 			this.removeEventListener("PlayerDead", this.onPlayerDead, this)
 			this.world.off("postBroadphase", this.onBeginContact)
 			this.world.off("endContact", this.onEndContact)
+			this.world.off("postStep", this.onPostStep)
 		}
 	}
 }

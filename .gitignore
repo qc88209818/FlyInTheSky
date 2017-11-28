@@ -56,3 +56,5 @@ project/manifest.json
 project/bin-debug/property/CandyArray.js
 project/bin-debug/scene/TiledMapGroup.js
 project/bin-debug/scene/SceneManager.js
+project/bin-debug/scene/ObjectManager.js
+project/bin-debug/objects/FlyMusic.js

@@ -102,8 +102,6 @@ module fly {
 
 		public reset()
 		{
-			this.scene.reset()
-			
 			this.scene = null
 			this.sprites = []
 			this.players = []

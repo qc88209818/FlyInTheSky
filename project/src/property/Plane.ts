@@ -44,8 +44,7 @@ module fly {
 
 		public onTrigger(pid:number)
 		{
-			this.objmgr.reset()
-			SceneManager.inst().loadNext()
+			this.objmgr.scene.isDestory = true
 			return true
 		}
 	}

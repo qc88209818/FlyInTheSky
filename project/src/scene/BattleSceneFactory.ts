@@ -56,6 +56,15 @@ module fly {
 				})
 				scene.addToWorld(candy)
 			}
+			else if (obj.type == "plane")
+			{
+				let plane = new Plane(obj.x, obj.y, obj.width/2, 
+				{
+					path:obj.params["path"]
+					, rotation:Number(obj.params["rotation"])
+				})
+				scene.addToWorld(plane)
+			}
 			else if (obj.type == "traps")
 			{
 				let traps = new Traps(obj.x, obj.y, obj.width, obj.height, 

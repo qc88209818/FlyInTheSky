@@ -11,6 +11,7 @@ module fly {
 		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
+		text:egret.TextField
 
 		public constructor() {
 			super()
@@ -91,22 +92,20 @@ module fly {
 
 		private createWorld()
 		{
-			let world = new p2.World({
-				gravity:[0, 0]
-			})
-			world.applyDamping = true
-			world.sleepMode = p2.World.BODY_SLEEPING
+			let world = this.objmgr.world
 			this.world = world
 
 			//添加帧事件侦听
-			egret.Ticker.getInstance().register(function (dt) {
-				//使世界时间向后运动
-				world.step(dt/1000)
-				this.update(dt/1000)
-			}, this)
-
+			egret.Ticker.getInstance().register(this.onTickWorld, this)
 			world.on("postBroadphase", this.onBeginContact, this)
 			world.on("endContact", this.onEndContact, this)
+		}
+
+		private onTickWorld(dt)
+		{
+			//使世界时间向后运动
+			this.world.step(dt/1000)
+			this.update(dt/1000)
 		}
 		
 		private createScene() 
@@ -140,9 +139,7 @@ module fly {
 			this.progress = progress
 
 			// 监听能量变化事件
-			this.addEventListener("ChangePower", function(evt:egret.Event) {
-				this.progress.changeValue(evt.data)
-			}, this)
+			this.addEventListener("ChangePower", this.onChangePower, this)
 
 			// 显示生命值
 			var text:egret.TextField = new egret.TextField()
@@ -154,11 +151,20 @@ module fly {
 			text.x = 5
 			text.y = progress.height + 20
 			this.addChild(text);
+			this.text = text
 
 			// 监听死亡事件
-			this.addEventListener("PlayerDead", function(evt:egret.Event) {
-				text.text = "当前剩余生命: " + this.player.heath + " (" + evt.data+ ")"
-			}, this)
+			this.addEventListener("PlayerDead", this.onPlayerDead, this)
+		}
+
+		private onChangePower(evt:egret.Event)
+		{
+			this.progress.changeValue(evt.data)
+		}
+
+		private onPlayerDead(evt:egret.Event)
+		{
+			this.text.text = "当前剩余生命: " + this.player.heath + " (" + evt.data+ ")"
 		}
 
 		private onBeginContact(event:any)
@@ -288,8 +294,6 @@ module fly {
 			}
 		}
 
-
-
 		public addPlayerToWorld(obj:Player)
 		{
 			this.world.addBody(obj.body)
@@ -316,6 +320,15 @@ module fly {
 				this.baseLayer.removeChild(value)
 			})
 			this.world.removeBody(obj.body)
+		}
+
+		public reset()
+		{
+			egret.Ticker.getInstance().unregister(this.onTickWorld, this)
+			this.removeEventListener("ChangePower", this.onChangePower, this)
+			this.removeEventListener("PlayerDead", this.onPlayerDead, this)
+			this.world.off("postBroadphase", this.onBeginContact)
+			this.world.off("endContact", this.onEndContact)
 		}
 	}
 }

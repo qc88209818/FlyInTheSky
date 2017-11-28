@@ -1,30 +1,63 @@
 module fly {
-	export class StartScene {
+	export class SceneManager extends egret.DisplayObject {
 		private url:string
 		private request:egret.HttpRequest
 		private icon:egret.Shape
+		private music:FlyMusic
 
-		private width:number
-		private height:number
-		private parent:egret.DisplayObjectContainer
+		private _width:number
+		private _height:number
+		private _mapId:number = 0
+		private _maxId:number = 5
+
+		private _parent:egret.DisplayObjectContainer
 		
-		public constructor() {
+		static obj:SceneManager = new SceneManager()
+
+		public static inst(): SceneManager
+		{
+			return this.obj
+		}
+
+		public init(parent:egret.DisplayObjectContainer, width:number, height:number)
+		{
+			this._parent = parent
+			this._width = width
+			this._height = height
+
+			this.createMusic()
+		}
+
+		public load(mapId:number)
+		{
+			this.loadTiledMap(mapId)
+		}
+
+		public loadNext()
+		{
+			this.reset()
+			if (this._mapId + 1 <= this._maxId)
+			{
+				this.loadTiledMap(this._mapId + 1)
+			}
+			else
+			{
+				console.log("You Win!")
+			}
+		}
+
+		public loadAgain()
+		{
+			this.reset()
+			this.loadTiledMap(this._mapId)
+		}
+
+		private loadTiledMap(mapId:number)
+		{
+			this._mapId = mapId
 			
-		}
-
-		public initScene(parent:egret.DisplayObjectContainer, width:number, height:number)
-		{
-			this.parent = parent
-			this.width = width
-			this.height = height
-
-			this.loadTiledMap()
-		}
-
-		private loadTiledMap()
-		{
 			/*初始化资源加载路径*/
-			this.url = "resource/map/battle1.tmx"; 
+			this.url = "resource/map/battle" + mapId + ".tmx"; 
 			/*初始化请求*/
 			this.request = new egret.HttpRequest();
 			/*监听资源加载完成事件*/
@@ -42,8 +75,8 @@ module fly {
 			// 初始化一些有用参数
 			fly.FlyConfig.width = data["$width"]*data["$tilewidth"]
 			fly.FlyConfig.height = data["$height"]*data["$tileheight"]
-			fly.FlyConfig.stageWidth = this.width
-			fly.FlyConfig.stageHeight = this.height
+			fly.FlyConfig.stageWidth = this._width
+			fly.FlyConfig.stageHeight = this._height
 
 			let tiledMapObjs = []
 			// 初始化TiledMap Object
@@ -73,7 +106,23 @@ module fly {
 
 			let battlescene = new BattleScene()
 			battlescene.initScene(tiledMapObjs)
-			this.parent.addChild(battlescene)
+			this._parent.addChild(battlescene)
+
+			this.music.playBgm(1)
+		}
+
+		private createMusic()
+		{
+			let music = new FlyMusic()
+			this.music = music
+		}
+
+		public reset()
+		{
+			this._parent.removeChildren()
+			
+			this.music.stop()
+			FlyConfig.reset()
 		}
 	}
 }

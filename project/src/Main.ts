@@ -107,7 +107,8 @@ class Main extends egret.DisplayObjectContainer {
         }
 
         // 选择界面
-        let scene = new fly.StartScene()
-        scene.initScene(this, this.stage.stageWidth, this.stage.stageHeight)
+        let mgr = fly.SceneManager.inst()
+        mgr.init(this, this.stage.stageWidth, this.stage.stageHeight)
+        mgr.load(1)
     }
 }

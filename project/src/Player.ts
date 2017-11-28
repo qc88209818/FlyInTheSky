@@ -105,8 +105,6 @@ module fly {
 			this.movieClip.gotoAndPlay(anim + weight, -1)
 			this.nowState = anim
 			this.weight = weight
-
-			console.log(this.nowState, this.weight)
 		}
 
 		private gotoAndPlaySide(anim:string, dir:number)
@@ -118,7 +116,6 @@ module fly {
 			this.nowState = anim
 			this.weight = weight
 			this.dir = dir
-			console.log(this.nowState, this.weight, this.dir)
 
 			this.movieClip.scaleX = this.dir * this.baseScale * this.circle.radius/this.movieClip.width
 		}

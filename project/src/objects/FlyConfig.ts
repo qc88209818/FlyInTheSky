@@ -43,7 +43,6 @@ module fly {
 		private static PropertyId:number 	= FlyConfig.PropertyMinId
 		private static ObstacleId:number 	= FlyConfig.ObstacleMinId
 
-
 		public static getPlayerId():number
 		{
 			FlyConfig.PlayerId++
@@ -103,6 +102,14 @@ module fly {
 		{
 			return FlyConfig.ObstacleMinId <= id && id < FlyConfig.ObstacleMaxId
 		}
+
+		public static reset()
+		{
+			FlyConfig.PlayerId 	 = FlyConfig.PlayerMinId
+			FlyConfig.BlockId 	 = FlyConfig.BlockMinId
+			FlyConfig.PropertyId = FlyConfig.PropertyMinId
+			FlyConfig.ObstacleId = FlyConfig.ObstacleMinId
+		}
 	}
 
 	export class FlyParam
@@ -129,5 +136,6 @@ module fly {
 		static CandyBaseScale:number			= 2		
 		static TrapsBaseScale:number			= 1		
 		static WeightTrapsBaseScale:number		= 2		
+		static PlaneBaseScale:number			= 2
 	}
 }

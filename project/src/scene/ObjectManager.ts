@@ -16,6 +16,8 @@ module fly {
 		scene:BattleScene
 		sprites:FlyObject[] = []		// 当前所有需要计算位置的精灵
 		players:Player[] = []
+
+		world:p2.World
 		mcFactory:egret.MovieClipDataFactory
 
 		public init()
@@ -90,6 +92,26 @@ module fly {
 			let txtr = RES.getRes("playerNormalMode_png");
 			let mcFactory = new egret.MovieClipDataFactory(data, txtr);
 			this.mcFactory = mcFactory
+
+			let world = new p2.World()
+			world.gravity = [0, 0]
+			world.applyDamping = true
+			world.sleepMode = p2.World.BODY_SLEEPING
+			this.world = world
+		}
+
+		public reset()
+		{
+			this.scene.reset()
+			
+			this.scene = null
+			this.sprites = []
+			this.players = []
+
+			this.world.clear()
+			this.world.gravity = [0, 0]
+			this.world.applyDamping = true
+			this.world.sleepMode = p2.World.BODY_SLEEPING
 		}
 	}
 }

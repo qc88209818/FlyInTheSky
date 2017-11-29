@@ -22,7 +22,7 @@ module fly {
 
 		public init()
 		{
-			this.loadMoveClip()
+			this.loadMovieClip()
 		}
 
 		public update(dt:number)
@@ -86,7 +86,7 @@ module fly {
 			obj.isDestroy = true
 		}
 
-		private loadMoveClip()
+		private loadMovieClip()
 		{
 			let data = RES.getRes("playerNormalMode_json");
 			let txtr = RES.getRes("playerNormalMode_png");

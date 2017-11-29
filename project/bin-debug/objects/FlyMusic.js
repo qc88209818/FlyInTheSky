@@ -32,16 +32,19 @@ var fly;
         };
         FlyMusic.prototype.onLoad = function () {
             this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this);
-            console.log("播放音乐");
+            // console.log("播放音乐")
             this.play();
         };
         //播放完成
         FlyMusic.prototype.onComplete = function () {
-            console.log("播放完成");
+            // console.log("播放完成")
             this.stop();
         };
         FlyMusic.prototype.playVictory = function () {
             this.loadMusic("resource/music/victory.mp3");
+        };
+        FlyMusic.prototype.playDefeated = function () {
+            this.loadMusic("resource/music/defeated.mp3");
         };
         FlyMusic.prototype.playBgm = function (num) {
             this.loadMusic("resource/music/bgm" + num + ".mp3", true);

@@ -19,11 +19,13 @@ var fly;
             var _this = _super !== null && _super.apply(this, arguments) || this;
             _this._mapId = 0;
             _this._maxId = 5;
-            _this.loadingView = null;
+            _this._tiledMapObjs = [];
+            _this.health = 1;
+            _this.reasons = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"];
             return _this;
         }
         SceneManager.inst = function () {
-            return this.obj;
+            return this.scenemgr;
         };
         SceneManager.prototype.init = function (parent, width, height) {
             this._parent = parent;
@@ -38,51 +40,54 @@ var fly;
             this.loadTiledMap(mapId);
         };
         SceneManager.prototype.loadNext = function () {
-            this.music.playVictory();
-            // 延迟3秒后，切换场景
-            egret.setTimeout(function () {
-                this.reset();
-                if (this._mapId + 1 <= this._maxId) {
-                    this.loadTiledMap(this._mapId + 1);
-                }
-                else {
-                    console.log("You Win!");
-                }
-            }, this, 3000);
-        };
-        SceneManager.prototype.loadAgain = function () {
             this.reset();
-            this.loadTiledMap(this._mapId);
+            if (this._mapId + 1 <= this._maxId) {
+                this.loadTiledMap(this._mapId + 1);
+            }
+            else {
+                console.log("You Win!");
+            }
+        };
+        SceneManager.prototype.loadAgain = function (reason) {
+            this.health -= 1;
+            this.reset();
+            this.loadNow();
+        };
+        SceneManager.prototype.loadNow = function () {
+            var battlescene = new fly.BattleScene();
+            battlescene.initScene(this._tiledMapObjs);
+            this._parent.addChild(battlescene);
+            this.music.playBgm(this._mapId);
         };
         SceneManager.prototype.loadTiledMap = function (mapId) {
             this._mapId = mapId;
             /*初始化资源加载路径*/
-            this.url = "resource/map/battle" + mapId + ".tmx";
+            this._url = "resource/map/battle" + mapId + ".tmx";
             /*初始化请求*/
-            this.request = new egret.HttpRequest();
+            this._request = new egret.HttpRequest();
             /*监听资源加载完成事件*/
-            this.request.addEventListener(egret.Event.COMPLETE, this.onMapComplete, this);
-            this.request.addEventListener(egret.ProgressEvent.PROGRESS, this.onMapProgress, this);
+            this._request.addEventListener(egret.Event.COMPLETE, this.onMapComplete, this);
+            this._request.addEventListener(egret.ProgressEvent.PROGRESS, this.onMapProgress, this);
             /*发送请求*/
-            this.request.open(this.url, egret.HttpMethod.GET);
-            this.request.send();
-            if (this.loadingView == null) {
-                this.loadingView = new UILoading();
+            this._request.open(this._url, egret.HttpMethod.GET);
+            this._request.send();
+            if (this._loadingView == null) {
+                this._loadingView = new UILoading();
             }
-            this.loadingView.x = this._parent.stage.stageWidth / 2 - 200;
-            this.loadingView.y = this._parent.stage.stageHeight / 2;
-            this.loadingView.scaleX = 2;
-            this.loadingView.scaleY = 2;
-            this._parent.addChild(this.loadingView);
+            this._loadingView.x = this._parent.stage.stageWidth / 2 - 200;
+            this._loadingView.y = this._parent.stage.stageHeight / 2;
+            this._loadingView.scaleX = 2;
+            this._loadingView.scaleY = 2;
+            this._parent.addChild(this._loadingView);
         };
         /**加载进度 */
         SceneManager.prototype.onMapProgress = function (event) {
-            this.loadingView.setProgress(event.bytesLoaded, event.bytesTotal);
+            this._loadingView.setProgress(event.bytesLoaded, event.bytesTotal);
         };
         /*地图加载完成*/
         SceneManager.prototype.onMapComplete = function (event) {
-            this.request.removeEventListener(egret.Event.COMPLETE, this.onMapComplete, this);
-            this.request.removeEventListener(egret.ProgressEvent.PROGRESS, this.onMapProgress, this);
+            this._request.removeEventListener(egret.Event.COMPLETE, this.onMapComplete, this);
+            this._request.removeEventListener(egret.ProgressEvent.PROGRESS, this.onMapProgress, this);
             /*获取到地图数据*/
             var data = egret.XML.parse(event.currentTarget.response);
             // 初始化一些有用参数
@@ -129,11 +134,9 @@ var fly;
                 });
                 tiledMapObjs.push(groups);
             });
-            this._parent.removeChild(this.loadingView);
-            var battlescene = new fly.BattleScene();
-            battlescene.initScene(tiledMapObjs);
-            this._parent.addChild(battlescene);
-            this.music.playBgm(this._mapId);
+            this._parent.removeChild(this._loadingView);
+            this._tiledMapObjs = tiledMapObjs;
+            this.loadNow();
         };
         SceneManager.prototype.createMusic = function () {
             var music = new fly.FlyMusic();
@@ -142,9 +145,54 @@ var fly;
         SceneManager.prototype.reset = function () {
             this._parent.removeChildren();
             this.music.stop();
-            fly.FlyConfig.reset();
         };
-        SceneManager.obj = new SceneManager();
+        SceneManager.prototype.createMovie = function (reason) {
+            // let objmgr = ObjectManager.inst()
+            // // 死亡动画
+            // let png = new egret.MovieClip(objmgr.dieFactory.generateMovieClipData("playerDie"));
+            // png.gotoAndPlay("die"+reason, 1)
+            // png.anchorOffsetX = png.width/2
+            // png.anchorOffsetY = png.height/2
+            // png.x = FlyConfig.stageWidth/2
+            // png.y = FlyConfig.stageHeight/2
+            // png.scaleX = 2
+            // png.scaleY = 2
+            // this._parent.addChild(png)
+            // // 原因
+            // var text:egret.TextField = new egret.TextField()
+            // text.text = this.reasons[reason]
+            // text.size = 48
+            // text.textColor = 0x000000
+            // text.anchorOffsetX = text.width/2
+            // text.anchorOffsetY = text.height/2
+            // text.x = FlyConfig.stageWidth/2
+            // text.y = FlyConfig.stageHeight/2 - png.height*2
+            // this._parent.addChild(text);
+            // if (reason > 0)
+            // {
+            // 	egret.setTimeout(function () {
+            // 		// 图标
+            // 		let icon = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
+            // 		icon.gotoAndPlay("front_move_normal", -1)
+            // 		icon.anchorOffsetX = icon.width/2
+            // 		icon.anchorOffsetY = icon.height/2
+            // 		icon.x = FlyConfig.stageWidth/2 - png.width
+            // 		icon.y = FlyConfig.stageHeight/2 + png.height*2 + 100
+            // 		this._parent.addChild(icon)
+            // 		// 生命
+            // 		var text:egret.TextField = new egret.TextField()
+            // 		text.text = "x " + this.health
+            // 		text.size = 96
+            // 		text.textColor = 0x000000
+            // 		text.anchorOffsetX = text.width/2
+            // 		text.anchorOffsetY = text.height/2
+            // 		text.x = FlyConfig.stageWidth/2 + 50
+            // 		text.y = FlyConfig.stageHeight/2 + png.height*2 + 120
+            // 		this._parent.addChild(text);
+            // 	}, this, 3000);
+            // }
+        };
+        SceneManager.scenemgr = new SceneManager();
         return SceneManager;
     }(egret.DisplayObject));
     fly.SceneManager = SceneManager;

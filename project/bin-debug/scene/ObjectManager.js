@@ -5,6 +5,7 @@ var fly;
 (function (fly) {
     var ObjectManager = (function () {
         function ObjectManager() {
+            this.delayKeys = [];
             this.sprites = []; // 当前所有需要计算位置的精灵
             this.players = [];
         }
@@ -16,7 +17,7 @@ var fly;
             return this.obj;
         };
         ObjectManager.prototype.init = function () {
-            this.loadMoveClip();
+            this.loadMovieClip();
         };
         ObjectManager.prototype.update = function (dt) {
             var length = this.sprites.length;
@@ -62,11 +63,15 @@ var fly;
         ObjectManager.prototype.delPlayer = function (obj) {
             obj.isDestroy = true;
         };
-        ObjectManager.prototype.loadMoveClip = function () {
+        ObjectManager.prototype.loadMovieClip = function () {
             var data = RES.getRes("playerNormalMode_json");
             var txtr = RES.getRes("playerNormalMode_png");
             var mcFactory = new egret.MovieClipDataFactory(data, txtr);
             this.mcFactory = mcFactory;
+            var data = RES.getRes("playerDie_json");
+            var txtr = RES.getRes("playerDie_png");
+            var dieFactory = new egret.MovieClipDataFactory(data, txtr);
+            this.dieFactory = dieFactory;
             var world = new p2.World();
             world.gravity = [0, 0];
             world.applyDamping = true;
@@ -81,6 +86,7 @@ var fly;
             this.world.gravity = [0, 0];
             this.world.applyDamping = true;
             this.world.sleepMode = p2.World.BODY_SLEEPING;
+            fly.FlyConfig.reset();
         };
         ObjectManager.isInit = false;
         ObjectManager.obj = new ObjectManager();

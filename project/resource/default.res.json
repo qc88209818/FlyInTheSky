@@ -1,11 +1,11 @@
 {
 	"groups": [
 		{
-			"keys": "yellow_button_jpg,virtual_button_png,virtual_background_png,tree_2_png,tree_1_png,toilet_png,television_png,table2_png,table_png,sofa5_png,sofa4_png,sofa3_png,sofa2_png,sofa1_png,shower2_png,shower_png,red_button_jpg,player_down_png,mushroom_png,playerNormalMode_json,playerNormalMode_png,hp_png,hp_bg_png,chair2_png,chair1_png,candy_png,bed_png,bathtub2_png,bathtub1_png,background_jpg,cake_png,hamburg_png,grassDark_png,grassHurt_png,grassLight_png,wall_png,ice_png,switch_png,traps_png,well_png,cake2_png,grassDark2_png,grassHurt2_png,grassLight2_png,hamburg2_png,ice2_png,switch2_png,traps2_png,wall2_png,well2_png,mushroom2_png,grassLight3_png,playerNormalMode2_json,playerNormalMode2_png,virtual_background2_png,cake3_png,grassDark3_png,candy2_png,chair12_png,chair22_png,sofa12_png,yellow_button2_jpg,tree_22_png,sofa22_png,shower3_png,tree_12_png,television2_png,sofa32_png,grassHurt3_png,load_mask_png,sofa42_png,bed2_png,background2_jpg,sofa52_png,bathtub12_png,well3_png,bathtub22_png,loading_amin_json,ice3_png,switch3_png,player_down2_png,wall3_png,table22_png,hp2_png,virtual_button2_png,red_button2_jpg,load_bar_png,toilet2_png,traps3_png,table3_png,bar_bg_png,shower22_png,hp_bg2_png,hamburg3_png,loading_amin_png,playBtn_png,title_png,bgm4_mp3,bgm5_mp3,plane_png,treeCut_png,bucket_png,dog_png,wind_png",
+			"keys": "yellow_button_jpg,wind_png,well_png,wall_png,virtual_button_png,virtual_background_png,treeCut_png,tree_2_png,tree_1_png,traps_png,toilet_png,title_png,television_png,table2_png,table_png,switch_png,sofa5_png,sofa4_png,sofa3_png,sofa2_png,sofa1_png,shower2_png,shower_png,red_button_jpg,player_down_png,playBtn_png,plane_png,mushroom_png,playerNormalMode_png,playerNormalMode_json,loading_amin_png,loading_amin_json,load_mask_png,load_bar_png,ice_png,hp_png,hp_bg_png,hamburg_png,grassLight_png,grassHurt_png,grassDark_png,dog_png,chair2_png,chair1_png,candy_png,cake_png,bucket_png,bed_png,bathtub2_png,bathtub1_png,bar_bg_png,background_jpg",
 			"name": "preload"
 		},
 		{
-			"keys": "load_bar_png,load_mask_png,loading_amin_json,loading_amin_png,bar_bg_png",
+			"keys": "yellow_button_jpg,playBtn_png,load_bar_png,loading_amin_json,loading_amin_png,load_mask_png",
 			"name": "loadUI"
 		}
 	],
@@ -14,6 +14,11 @@
 			"url": "assets/background.jpg",
 			"type": "image",
 			"name": "background_jpg"
+		},
+		{
+			"url": "assets/bar_bg.png",
+			"type": "image",
+			"name": "bar_bg_png"
 		},
 		{
 			"url": "assets/bathtub1.png",
@@ -31,6 +36,21 @@
 			"name": "bed_png"
 		},
 		{
+			"url": "assets/bucket.png",
+			"type": "image",
+			"name": "bucket_png"
+		},
+		{
+			"url": "assets/cake.png",
+			"type": "image",
+			"name": "cake_png"
+		},
+		{
+			"url": "assets/candy.png",
+			"type": "image",
+			"name": "candy_png"
+		},
+		{
 			"url": "assets/chair1.png",
 			"type": "image",
 			"name": "chair1_png"
@@ -41,9 +61,29 @@
 			"name": "chair2_png"
 		},
 		{
-			"url": "assets/candy.png",
+			"url": "assets/dog.png",
 			"type": "image",
-			"name": "candy_png"
+			"name": "dog_png"
+		},
+		{
+			"url": "assets/grassDark.png",
+			"type": "image",
+			"name": "grassDark_png"
+		},
+		{
+			"url": "assets/grassHurt.png",
+			"type": "image",
+			"name": "grassHurt_png"
+		},
+		{
+			"url": "assets/grassLight.png",
+			"type": "image",
+			"name": "grassLight_png"
+		},
+		{
+			"url": "assets/hamburg.png",
+			"type": "image",
+			"name": "hamburg_png"
 		},
 		{
 			"url": "assets/hp_bg.png",
@@ -51,14 +91,44 @@
 			"name": "hp_bg_png"
 		},
 		{
+			"url": "assets/hp.png",
+			"type": "image",
+			"name": "hp_png"
+		},
+		{
+			"url": "assets/ice.png",
+			"type": "image",
+			"name": "ice_png"
+		},
+		{
+			"url": "assets/load_bar.png",
+			"type": "image",
+			"name": "load_bar_png"
+		},
+		{
+			"url": "assets/load_mask.png",
+			"type": "image",
+			"name": "load_mask_png"
+		},
+		{
+			"url": "assets/loading_amin.png",
+			"type": "image",
+			"name": "loading_amin_png"
+		},
+		{
 			"url": "assets/mushroom.png",
 			"type": "image",
 			"name": "mushroom_png"
 		},
 		{
-			"url": "assets/hp.png",
+			"url": "assets/plane.png",
 			"type": "image",
-			"name": "hp_png"
+			"name": "plane_png"
+		},
+		{
+			"url": "assets/playBtn.png",
+			"type": "image",
+			"name": "playBtn_png"
 		},
 		{
 			"url": "assets/player_down.png",
@@ -86,14 +156,14 @@
 			"name": "sofa1_png"
 		},
 		{
-			"url": "assets/sofa3.png",
-			"type": "image",
-			"name": "sofa3_png"
-		},
-		{
 			"url": "assets/sofa2.png",
 			"type": "image",
 			"name": "sofa2_png"
+		},
+		{
+			"url": "assets/sofa3.png",
+			"type": "image",
+			"name": "sofa3_png"
 		},
 		{
 			"url": "assets/sofa4.png",
@@ -104,6 +174,11 @@
 			"url": "assets/sofa5.png",
 			"type": "image",
 			"name": "sofa5_png"
+		},
+		{
+			"url": "assets/switch.png",
+			"type": "image",
+			"name": "switch_png"
 		},
 		{
 			"url": "assets/table.png",
@@ -121,9 +196,19 @@
 			"name": "television_png"
 		},
 		{
+			"url": "assets/title.png",
+			"type": "image",
+			"name": "title_png"
+		},
+		{
 			"url": "assets/toilet.png",
 			"type": "image",
 			"name": "toilet_png"
+		},
+		{
+			"url": "assets/traps.png",
+			"type": "image",
+			"name": "traps_png"
 		},
 		{
 			"url": "assets/tree_1.png",
@@ -136,14 +221,34 @@
 			"name": "tree_2_png"
 		},
 		{
+			"url": "assets/treeCut.png",
+			"type": "image",
+			"name": "treeCut_png"
+		},
+		{
 			"url": "assets/virtual_background.png",
 			"type": "image",
 			"name": "virtual_background_png"
 		},
 		{
+			"url": "assets/wall.png",
+			"type": "image",
+			"name": "wall_png"
+		},
+		{
 			"url": "assets/virtual_button.png",
 			"type": "image",
 			"name": "virtual_button_png"
+		},
+		{
+			"url": "assets/well.png",
+			"type": "image",
+			"name": "well_png"
+		},
+		{
+			"url": "assets/wind.png",
+			"type": "image",
+			"name": "wind_png"
 		},
 		{
 			"url": "assets/yellow_button.jpg",
@@ -156,379 +261,14 @@
 			"name": "playerNormalMode_png"
 		},
 		{
-			"url": "assets/move/playerNormalMode.json",
-			"type": "json",
-			"name": "playerNormalMode_json"
-		},
-		{
-			"url": "assets/cake.png",
-			"type": "image",
-			"name": "cake_png"
-		},
-		{
-			"url": "assets/hamburg.png",
-			"type": "image",
-			"name": "hamburg_png"
-		},
-		{
-			"url": "assets/grassDark.png",
-			"type": "image",
-			"name": "grassDark_png"
-		},
-		{
-			"url": "assets/grassHurt.png",
-			"type": "image",
-			"name": "grassHurt_png"
-		},
-		{
-			"url": "assets/grassLight.png",
-			"type": "image",
-			"name": "grassLight_png"
-		},
-		{
-			"url": "assets/wall.png",
-			"type": "image",
-			"name": "wall_png"
-		},
-		{
-			"url": "assets/ice.png",
-			"type": "image",
-			"name": "ice_png"
-		},
-		{
-			"url": "assets/switch.png",
-			"type": "image",
-			"name": "switch_png"
-		},
-		{
-			"url": "assets/traps.png",
-			"type": "image",
-			"name": "traps_png"
-		},
-		{
-			"url": "assets/well.png",
-			"type": "image",
-			"name": "well_png"
-		},
-		{
-			"url": "assets/cake.png",
-			"type": "image",
-			"name": "cake2_png"
-		},
-		{
-			"url": "assets/grassDark.png",
-			"type": "image",
-			"name": "grassDark2_png"
-		},
-		{
-			"url": "assets/grassHurt.png",
-			"type": "image",
-			"name": "grassHurt2_png"
-		},
-		{
-			"url": "assets/grassLight.png",
-			"type": "image",
-			"name": "grassLight2_png"
-		},
-		{
-			"url": "assets/hamburg.png",
-			"type": "image",
-			"name": "hamburg2_png"
-		},
-		{
-			"url": "assets/ice.png",
-			"type": "image",
-			"name": "ice2_png"
-		},
-		{
-			"url": "assets/switch.png",
-			"type": "image",
-			"name": "switch2_png"
-		},
-		{
-			"url": "assets/traps.png",
-			"type": "image",
-			"name": "traps2_png"
-		},
-		{
-			"url": "assets/wall.png",
-			"type": "image",
-			"name": "wall2_png"
-		},
-		{
-			"url": "assets/well.png",
-			"type": "image",
-			"name": "well2_png"
-		},
-		{
-			"url": "assets/mushroom.png",
-			"type": "image",
-			"name": "mushroom2_png"
-		},
-		{
-			"url": "assets/grassLight.png",
-			"type": "image",
-			"name": "grassLight3_png"
-		},
-		{
-			"url": "assets/move/playerNormalMode.json",
-			"type": "json",
-			"name": "playerNormalMode2_json"
-		},
-		{
-			"url": "assets/move/playerNormalMode.png",
-			"type": "image",
-			"name": "playerNormalMode2_png"
-		},
-		{
-			"url": "assets/virtual_background.png",
-			"type": "image",
-			"name": "virtual_background2_png"
-		},
-		{
-			"url": "assets/cake.png",
-			"type": "image",
-			"name": "cake3_png"
-		},
-		{
-			"url": "assets/grassDark.png",
-			"type": "image",
-			"name": "grassDark3_png"
-		},
-		{
-			"url": "assets/candy.png",
-			"type": "image",
-			"name": "candy2_png"
-		},
-		{
-			"url": "assets/chair1.png",
-			"type": "image",
-			"name": "chair12_png"
-		},
-		{
-			"url": "assets/chair2.png",
-			"type": "image",
-			"name": "chair22_png"
-		},
-		{
-			"url": "assets/sofa1.png",
-			"type": "image",
-			"name": "sofa12_png"
-		},
-		{
-			"url": "assets/yellow_button.jpg",
-			"type": "image",
-			"name": "yellow_button2_jpg"
-		},
-		{
-			"url": "assets/tree_2.png",
-			"type": "image",
-			"name": "tree_22_png"
-		},
-		{
-			"url": "assets/sofa2.png",
-			"type": "image",
-			"name": "sofa22_png"
-		},
-		{
-			"url": "assets/shower.png",
-			"type": "image",
-			"name": "shower3_png"
-		},
-		{
-			"url": "assets/tree_1.png",
-			"type": "image",
-			"name": "tree_12_png"
-		},
-		{
-			"url": "assets/television.png",
-			"type": "image",
-			"name": "television2_png"
-		},
-		{
-			"url": "assets/sofa3.png",
-			"type": "image",
-			"name": "sofa32_png"
-		},
-		{
-			"url": "assets/grassHurt.png",
-			"type": "image",
-			"name": "grassHurt3_png"
-		},
-		{
-			"url": "assets/load_mask.png",
-			"type": "image",
-			"name": "load_mask_png"
-		},
-		{
-			"url": "assets/sofa4.png",
-			"type": "image",
-			"name": "sofa42_png"
-		},
-		{
-			"url": "assets/bed.png",
-			"type": "image",
-			"name": "bed2_png"
-		},
-		{
-			"url": "assets/background.jpg",
-			"type": "image",
-			"name": "background2_jpg"
-		},
-		{
-			"url": "assets/sofa5.png",
-			"type": "image",
-			"name": "sofa52_png"
-		},
-		{
-			"url": "assets/bathtub1.png",
-			"type": "image",
-			"name": "bathtub12_png"
-		},
-		{
-			"url": "assets/well.png",
-			"type": "image",
-			"name": "well3_png"
-		},
-		{
-			"url": "assets/bathtub2.png",
-			"type": "image",
-			"name": "bathtub22_png"
-		},
-		{
 			"url": "assets/loading_amin.json",
 			"type": "json",
 			"name": "loading_amin_json"
 		},
 		{
-			"url": "assets/ice.png",
-			"type": "image",
-			"name": "ice3_png"
-		},
-		{
-			"url": "assets/switch.png",
-			"type": "image",
-			"name": "switch3_png"
-		},
-		{
-			"url": "assets/player_down.png",
-			"type": "image",
-			"name": "player_down2_png"
-		},
-		{
-			"url": "assets/wall.png",
-			"type": "image",
-			"name": "wall3_png"
-		},
-		{
-			"url": "assets/table2.png",
-			"type": "image",
-			"name": "table22_png"
-		},
-		{
-			"url": "assets/hp.png",
-			"type": "image",
-			"name": "hp2_png"
-		},
-		{
-			"url": "assets/virtual_button.png",
-			"type": "image",
-			"name": "virtual_button2_png"
-		},
-		{
-			"url": "assets/red_button.jpg",
-			"type": "image",
-			"name": "red_button2_jpg"
-		},
-		{
-			"url": "assets/load_bar.png",
-			"type": "image",
-			"name": "load_bar_png"
-		},
-		{
-			"url": "assets/toilet.png",
-			"type": "image",
-			"name": "toilet2_png"
-		},
-		{
-			"url": "assets/traps.png",
-			"type": "image",
-			"name": "traps3_png"
-		},
-		{
-			"url": "assets/table.png",
-			"type": "image",
-			"name": "table3_png"
-		},
-		{
-			"url": "assets/bar_bg.png",
-			"type": "image",
-			"name": "bar_bg_png"
-		},
-		{
-			"url": "assets/shower2.png",
-			"type": "image",
-			"name": "shower22_png"
-		},
-		{
-			"url": "assets/hp_bg.png",
-			"type": "image",
-			"name": "hp_bg2_png"
-		},
-		{
-			"url": "assets/hamburg.png",
-			"type": "image",
-			"name": "hamburg3_png"
-		},
-		{
-			"url": "assets/loading_amin.png",
-			"type": "image",
-			"name": "loading_amin_png"
-		},
-		{
-			"url": "assets/title.png",
-			"type": "image",
-			"name": "title_png"
-		},
-		{
-			"url": "assets/playBtn.png",
-			"type": "image",
-			"name": "playBtn_png"
-		},
-		{
-			"name": "bgm4_mp3",
-			"type": "sound",
-			"url": "music/bgm4.mp3"
-		},
-		{
-			"name": "bgm5_mp3",
-			"type": "sound",
-			"url": "music/bgm5.mp3"
-		},
-		{
-			"name": "plane_png",
-			"type": "image",
-			"url": "assets/plane.png"
-		},
-		{
-			"name": "treeCut_png",
-			"type": "image",
-			"url": "assets/treeCut.png"
-		},
-		{
-			"name": "bucket_png",
-			"type": "image",
-			"url": "assets/bucket.png"
-		},
-		{
-			"name": "dog_png",
-			"type": "image",
-			"url": "assets/dog.png"
-		},
-		{
-			"name": "wind_png",
-			"type": "image",
-			"url": "assets/wind.png"
+			"url": "assets/move/playerNormalMode.json",
+			"type": "json",
+			"name": "playerNormalMode_json"
 		}
 	]
 }

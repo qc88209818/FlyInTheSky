@@ -44,7 +44,7 @@ module fly {
 
 		public onTrigger(pid:number)
 		{
-			this.objmgr.scene.isRunning = 0
+			this.objmgr.scene.player.win()
 			return true
 		}
 	}

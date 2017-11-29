@@ -43,21 +43,14 @@ module fly {
 		public loadNext()
 		{
 			this.reset()
-			this.music.playVictory()   
-			this.createMovie(0) 
-
-			// 延迟3秒后，切换场景
-			egret.setTimeout(function () {    
-				this.reset()
-				if (this._mapId + 1 <= this._maxId)
-				{
-					this.loadTiledMap(this._mapId + 1)
-				}
-				else
-				{
-					console.log("You Win!")
-				}
-			}, this, 3000); 
+			if (this._mapId + 1 <= this._maxId)
+			{
+				this.loadTiledMap(this._mapId + 1)
+			}
+			else
+			{
+				console.log("You Win!")
+			}
 		}
 
 		public loadAgain(reason:number)
@@ -65,12 +58,8 @@ module fly {
 			this.health -= 1
 
 			this.reset()
-			this.music.playDefeated()
-			this.createMovie(reason)
 
-			egret.setTimeout(function () {
-				this.loadNow()
-			}, this, 4000);
+			this.loadNow()
 		}
 
 		private loadNow()
@@ -191,54 +180,54 @@ module fly {
 
 		public createMovie(reason:number)
 		{
-			let objmgr = ObjectManager.inst()
+			// let objmgr = ObjectManager.inst()
 
-			// 死亡动画
-			let png = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
-			png.gotoAndPlay("front_move_fat", -1)
-			png.anchorOffsetX = png.width/2
-			png.anchorOffsetY = png.height/2
-			png.x = FlyConfig.stageWidth/2
-			png.y = FlyConfig.stageHeight/2
-			png.scaleX = 2
-			png.scaleY = 2
-			this._parent.addChild(png)
+			// // 死亡动画
+			// let png = new egret.MovieClip(objmgr.dieFactory.generateMovieClipData("playerDie"));
+			// png.gotoAndPlay("die"+reason, 1)
+			// png.anchorOffsetX = png.width/2
+			// png.anchorOffsetY = png.height/2
+			// png.x = FlyConfig.stageWidth/2
+			// png.y = FlyConfig.stageHeight/2
+			// png.scaleX = 2
+			// png.scaleY = 2
+			// this._parent.addChild(png)
 
-			// 原因
-			var text:egret.TextField = new egret.TextField()
-			text.text = this.reasons[reason]
-			text.size = 48
-			text.textColor = 0x000000
-			text.anchorOffsetX = text.width/2
-			text.anchorOffsetY = text.height/2
-			text.x = FlyConfig.stageWidth/2
-			text.y = FlyConfig.stageHeight/2 - png.height*2
-			this._parent.addChild(text);
+			// // 原因
+			// var text:egret.TextField = new egret.TextField()
+			// text.text = this.reasons[reason]
+			// text.size = 48
+			// text.textColor = 0x000000
+			// text.anchorOffsetX = text.width/2
+			// text.anchorOffsetY = text.height/2
+			// text.x = FlyConfig.stageWidth/2
+			// text.y = FlyConfig.stageHeight/2 - png.height*2
+			// this._parent.addChild(text);
 
-			if (reason > 0)
-			{
-				egret.setTimeout(function () {
-					// 图标
-					let icon = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
-					icon.gotoAndPlay("front_move_normal", -1)
-					icon.anchorOffsetX = icon.width/2
-					icon.anchorOffsetY = icon.height/2
-					icon.x = FlyConfig.stageWidth/2 - png.width
-					icon.y = FlyConfig.stageHeight/2 + png.height*2 + 100
-					this._parent.addChild(icon)
+			// if (reason > 0)
+			// {
+			// 	egret.setTimeout(function () {
+			// 		// 图标
+			// 		let icon = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
+			// 		icon.gotoAndPlay("front_move_normal", -1)
+			// 		icon.anchorOffsetX = icon.width/2
+			// 		icon.anchorOffsetY = icon.height/2
+			// 		icon.x = FlyConfig.stageWidth/2 - png.width
+			// 		icon.y = FlyConfig.stageHeight/2 + png.height*2 + 100
+			// 		this._parent.addChild(icon)
 
-					// 生命
-					var text:egret.TextField = new egret.TextField()
-					text.text = "x " + this.health
-					text.size = 96
-					text.textColor = 0x000000
-					text.anchorOffsetX = text.width/2
-					text.anchorOffsetY = text.height/2
-					text.x = FlyConfig.stageWidth/2 + 50
-					text.y = FlyConfig.stageHeight/2 + png.height*2 + 120
-					this._parent.addChild(text);
-				}, this, 3000);
-			}
+			// 		// 生命
+			// 		var text:egret.TextField = new egret.TextField()
+			// 		text.text = "x " + this.health
+			// 		text.size = 96
+			// 		text.textColor = 0x000000
+			// 		text.anchorOffsetX = text.width/2
+			// 		text.anchorOffsetY = text.height/2
+			// 		text.x = FlyConfig.stageWidth/2 + 50
+			// 		text.y = FlyConfig.stageHeight/2 + png.height*2 + 120
+			// 		this._parent.addChild(text);
+			// 	}, this, 3000);
+			// }
 
 		}
 	}

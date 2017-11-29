@@ -57,14 +57,14 @@ module fly {
 				model.use = true
 				this.nowNum += 1
 
-				egret.setTimeout(function () {
-					if (this.objmgr.scene)
+				egret.setTimeout(function (scene) {
+					if (this.objmgr.scene == scene)
 					{
 						let candy = new Candy(model.x-model.radius, model.y-model.radius, model.radius, model.op)
 						candy.candyArray = this
 						this.objmgr.scene.addToWorld(candy)
 					}              
-				}, this, model.op.delta*1000); 
+				}, this, model.op.delta*1000, this.objmgr.scene); 
 			}
 		}
 	}

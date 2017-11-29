@@ -7,11 +7,14 @@ module fly {
 		baseScale:number = FlyParam.PlayerBaseScale
 
 		movieClip:egret.MovieClip
+		dieMovieClip:egret.MovieClip
+
 		force:number
 		power:number
 		mass:number
 		step:number = 1
 
+		reason:number = 0
 		inoperable:number = 0			// 不可操作状态
 		isListener:boolean  = false		// 是否被监听
 
@@ -124,18 +127,27 @@ module fly {
 
 		private initBitmap()
 		{
-			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("playerState"));
+			var png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("playerState"));
 			png.gotoAndPlay(this.nowState, -1)
 			png.anchorOffsetX = png.width/2 + 8
-			png.anchorOffsetY = png.height
+			png.anchorOffsetY = png.height - 20
 			this.addChild(png)
 			this.movieClip = png
+
+			var png = new egret.MovieClip(this.objmgr.dieFactory.generateMovieClipData("playerDie"));
+			png.visible = false
+			png.anchorOffsetX = png.width/2 + 23
+			png.anchorOffsetY = png.height - 20
+			this.addChild(png)
+			this.dieMovieClip = png
+
+			this.dieMovieClip.addEventListener(egret.Event.COMPLETE, this.afterMovieClip, this);
 		}
 
 		public changePower(power:number)
 		{
 			this.power = power
-			if (this.isListener)
+			if (this.isListener && this.objmgr.scene)
 			{
 				this.objmgr.scene.dispatchEventWith("ChangePower", false, this.power)
 			}
@@ -156,7 +168,7 @@ module fly {
 						this.mass  = FlyParam.PlayerInitMass*FlyParam.PlayerMassScale[i]
 						this.force = FlyParam.PlayerInitForce*FlyParam.PlayerForceScale[i]
 
-						this.circle.radius = this.radius * FlyParam.PlayerTijiScale[i]
+						this.circle.radius = this.radius * FlyParam.PlayerRadiusScale[i]
 						this.circle.updateArea()
 
 						this.body.mass = this.mass
@@ -164,6 +176,9 @@ module fly {
 
 						this.movieClip.scaleX = this.baseScale * FlyParam.PlayerTijiScale[i] * this.dir
 						this.movieClip.scaleY = this.baseScale * FlyParam.PlayerTijiScale[i]
+
+						this.dieMovieClip.scaleX = this.baseScale * FlyParam.PlayerTijiScale[i]
+						this.dieMovieClip.scaleY = this.baseScale * FlyParam.PlayerTijiScale[i]
 
 						this.step = i
 
@@ -182,6 +197,11 @@ module fly {
 			}
 		}
 
+		public beginListener()
+		{
+			this.isListener = true
+		}
+
 		public reset(x:number, y:number)
 		{
 			this.body.position = [x, y]
@@ -195,17 +215,49 @@ module fly {
 
 		public died(reason:number)
 		{
-			// 死亡原因
-			this.reset(this.x, this.y)
+			if (this.isDestroy) return
+			this.isDestroy = true
+
+			this.reason = reason
+			this.dieMovieClip.visible = true
+			this.movieClip.visible = false
+			this.dieMovieClip.gotoAndPlay("die1", 1)
+			// this.dieMovieClip.gotoAndPlay("die"+reason, 1)
+
 			if (this.isListener)
 			{
-				this.objmgr.scene.isRunning = reason
+				this.objmgr.scene.stop()
+				SceneManager.inst().music.playDefeated()
 			}
 		}
 
-		public beginListener()
+		public win()
 		{
-			this.isListener = true
+			if (this.isDestroy) return
+			this.isDestroy = true
+
+			this.reason = 0
+			this.dieMovieClip.visible = true
+			this.movieClip.visible = false
+			this.dieMovieClip.gotoAndPlay("die1", 1)
+			this.objmgr.scene.stop()
+
+			if (this.isListener)
+			{
+				SceneManager.inst().music.playVictory()
+			}
+		}
+
+		private afterMovieClip()
+		{
+			this.objmgr.scene.delPlayerToWorld(this)
+
+			egret.setTimeout(function(){
+				if (this.isListener)
+				{
+					this.objmgr.scene.isRunning = this.reason
+				}
+			}, this, 500)
 		}
 	}
 }

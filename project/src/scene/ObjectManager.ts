@@ -3,6 +3,8 @@ module fly {
 		static isInit:boolean = false
 		static obj:ObjectManager = new ObjectManager()
 
+		private delayKeys:number[] = []
+
 		public static inst(): ObjectManager
 		{
 			if (!this.isInit)
@@ -19,6 +21,7 @@ module fly {
 
 		world:p2.World
 		mcFactory:egret.MovieClipDataFactory
+		dieFactory:egret.MovieClipDataFactory
 
 		public init()
 		{
@@ -88,10 +91,15 @@ module fly {
 
 		private loadMovieClip()
 		{
-			let data = RES.getRes("playerNormalMode_json");
-			let txtr = RES.getRes("playerNormalMode_png");
+			var data = RES.getRes("playerNormalMode_json");
+			var txtr = RES.getRes("playerNormalMode_png");
 			let mcFactory = new egret.MovieClipDataFactory(data, txtr);
 			this.mcFactory = mcFactory
+
+			var data = RES.getRes("playerDie_json");
+			var txtr = RES.getRes("playerDie_png");
+			let dieFactory = new egret.MovieClipDataFactory(data, txtr);
+			this.dieFactory = dieFactory
 
 			let world = new p2.World()
 			world.gravity = [0, 0]

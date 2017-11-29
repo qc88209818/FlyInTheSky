@@ -39,14 +39,14 @@ module fly {
 		{
 			this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this)
 			
-			console.log("播放音乐")
+			// console.log("播放音乐")
 			this.play()
 		}
 
 		//播放完成
 		public onComplete()
 		{
-			console.log("播放完成")
+			// console.log("播放完成")
 			this.stop();
 		}
 

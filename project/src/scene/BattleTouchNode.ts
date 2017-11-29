@@ -6,6 +6,7 @@ module fly {
 		direct:number[] = []
 		normal:number[] = []
 		isTouchMove:boolean = false
+		background:egret.Shape
 
 		parentNode:egret.DisplayObjectContainer
 
@@ -17,12 +18,22 @@ module fly {
 			this.createTouchLayer()
 		}
 
+		public setTouchEnable(enable:boolean)
+		{
+			this.background.touchEnabled = enable
+			if (!enable)
+			{
+				this.onTouchEnd(null)
+			}
+		}
+
 		private createTouchLayer()
 		{
 			let background = new egret.Shape()
 			background.graphics.beginFill(0x555555, 1)
 			background.graphics.drawRect(0, 0, FlyConfig.stageWidth, FlyConfig.stageHeight)
 			background.graphics.endFill()
+			this.background = background
 			this.parentNode.addChildAt(background, 0)
 
 			background.touchEnabled = true

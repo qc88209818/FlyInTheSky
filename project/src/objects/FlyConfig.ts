@@ -24,7 +24,7 @@ module fly {
 	}
 
 	export class FlyConfig {
-		static DebugMode:boolean	= false		// debug模式
+		static DebugMode:boolean	= true		// debug模式
 		static width:number				// 画布宽度
 		static height:number 			// 画布高度
 		static stageWidth:number		// 画布宽度
@@ -145,13 +145,14 @@ module fly {
     
 		static PlayerStep:number[]       = [25, 75, 100]	// 能量阶段
 		static PlayerVelScale:number[]   = [0.5, 0.4, 0.3]	// 速度倍数
-		static PlayerTijiScale:number[]  = [0.7, 1, 1.5]	// 体积倍数
+		static PlayerTijiScale:number[]  = [0.9, 1, 1.1]	// 体积倍数-图片
+		static PlayerRadiusScale:number[]= [0.7, 1, 1.5]	// 体积倍数-刚体
 		static PlayerMassScale:number[]  = [10, 25, 50]		// 重量倍数
 		static PlayerForceScale:number[] = [0.5, 1, 2]		// 力量倍数
 		static PlayerMoviePostfix:string[] = ["_lean", "_normal", "_fat"]	// 力量倍数
 
 		static candy_power:number 		= 10		// 糖果能量
-		static move_power:number 		= -2		// 移动消耗能量
+		static move_power:number 		= -3		// 移动消耗能量
 
 		static PlayerBaseScale:number   		= 1		// 基本缩放
 		static CandyBaseScale:number			= 2		

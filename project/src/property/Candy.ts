@@ -46,6 +46,7 @@ module fly {
 
 		public onTrigger(pid:number)
 		{
+			if (this.isDestroy) return
 			this.isDestroy = true
 
 			// 增加能量
@@ -53,7 +54,6 @@ module fly {
 			this.objmgr.players.forEach(value => {
 				if (value.body.id == pid)
 				{
-					console.log("add: ", power)
 					value.changePower(value.power + (power||FlyParam.candy_power))
 				}
 			})
@@ -69,13 +69,13 @@ module fly {
 			let delta = this.op.delta
 			if (delta > 0)
 			{
-				egret.setTimeout(function () {
-					if (this.objmgr.scene)
+				egret.setTimeout(function (scene) {
+					if (ObjectManager.inst().scene == scene)
 					{
 						let candy = new Candy(this.x-this.radius, this.y-this.radius, this.radius, this.op)
 						this.objmgr.scene.addToWorld(candy)
 					}              
-				}, this, delta*1000); 
+				}, this, delta*1000, this.objmgr.scene); 
 			}
 			return true
 		}

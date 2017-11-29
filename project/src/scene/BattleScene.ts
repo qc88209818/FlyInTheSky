@@ -194,7 +194,6 @@ module fly {
 			
 			this.reset()
 			this.objmgr.reset()
-
 			if (this.isRunning == 0)
 				SceneManager.inst().loadNext()
 			else
@@ -371,6 +370,14 @@ module fly {
 			this.objmgr.addPlayer(obj)
 		}
 
+		public delPlayerToWorld(obj:Player)
+		{
+			obj.body.displays.forEach(value => {
+				this.playerLayer.removeChild(value)
+			})
+			this.world.removeBody(obj.body)
+		}
+
 		public addToWorld(obj:FlyObject)
 		{
 			this.world.addBody(obj.body)
@@ -401,6 +408,11 @@ module fly {
 			this.world.off("postBroadphase", this.onBeginContact)
 			this.world.off("endContact", this.onEndContact)
 			this.world.off("postStep", this.onPostStep)
+		}
+
+		public stop()
+		{
+			this.touchNode.setTouchEnable(false)
 		}
 	}
 }

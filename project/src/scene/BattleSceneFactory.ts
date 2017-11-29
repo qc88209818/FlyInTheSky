@@ -137,8 +137,8 @@ module fly {
 			else if (obj.type == "image")
 			{
 				let png = FlyTools.createBitmapByName(obj.params["path"])
-				png.x = obj.x
-				png.y = obj.y
+				png.x = obj.x + png.width/2
+				png.y = obj.y + png.height/2
 				png.anchorOffsetX = png.width/2
 				png.anchorOffsetY = png.height/2
 				png.scaleX = Number(obj.params["scale"]||1)

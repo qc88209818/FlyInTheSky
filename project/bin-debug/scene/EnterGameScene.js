@@ -76,3 +76,4 @@ var fly;
     fly.EnterGameScene = EnterGameScene;
     __reflect(EnterGameScene.prototype, "fly.EnterGameScene");
 })(fly || (fly = {}));
+//# sourceMappingURL=EnterGameScene.js.map

@@ -54,3 +54,4 @@ var fly;
     fly.FlyMusic = FlyMusic;
     __reflect(FlyMusic.prototype, "fly.FlyMusic");
 })(fly || (fly = {}));
+//# sourceMappingURL=FlyMusic.js.map

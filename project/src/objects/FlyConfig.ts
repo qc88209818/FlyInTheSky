@@ -24,7 +24,7 @@ module fly {
 	}
 
 	export class FlyConfig {
-		static DebugMode:boolean	= true		// debug模式
+		static DebugMode:boolean	= false		// debug模式
 		static width:number				// 画布宽度
 		static height:number 			// 画布高度
 		static stageWidth:number		// 画布宽度

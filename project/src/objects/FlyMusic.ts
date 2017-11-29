@@ -55,6 +55,11 @@ module fly {
 			this.loadMusic("resource/music/victory.mp3")
 		}
 
+		public playDefeated()
+		{
+			this.loadMusic("resource/music/defeated.mp3")
+		}
+
 		public playBgm(num:number)
 		{
 			this.loadMusic("resource/music/bgm" + num + ".mp3", true)

@@ -44,7 +44,7 @@ module fly {
 
 		public onTrigger(pid:number)
 		{
-			this.objmgr.scene.isDestory = true
+			this.objmgr.scene.isRunning = 0
 			return true
 		}
 	}

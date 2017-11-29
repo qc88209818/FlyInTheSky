@@ -110,6 +110,7 @@ module fly {
 			this.world.gravity = [0, 0]
 			this.world.applyDamping = true
 			this.world.sleepMode = p2.World.BODY_SLEEPING
+			FlyConfig.reset()
 		}
 	}
 }

@@ -13,9 +13,6 @@ module fly {
 		step:number = 1
 
 		inoperable:number = 0			// 不可操作状态
-		heath:number = 3
-
-		deadReason:string[] = ["", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 		isListener:boolean  = false		// 是否被监听
 
 		public constructor(x:number, y:number, radius:number, op?) {
@@ -199,13 +196,10 @@ module fly {
 		public died(reason:number)
 		{
 			// 死亡原因
-			this.heath -= 1
 			this.reset(this.x, this.y)
-
 			if (this.isListener)
 			{
-				console.log(this.deadReason[reason])
-				this.objmgr.scene.dispatchEventWith("PlayerDead", false, this.deadReason[reason])
+				this.objmgr.scene.isRunning = reason
 			}
 		}
 

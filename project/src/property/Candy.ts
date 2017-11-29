@@ -48,11 +48,12 @@ module fly {
 		{
 			this.isDestroy = true
 
-			// 减少能量
+			// 增加能量
 			let power = this.op.power
 			this.objmgr.players.forEach(value => {
 				if (value.body.id == pid)
 				{
+					console.log("add: ", power)
 					value.changePower(value.power + (power||FlyParam.candy_power))
 				}
 			})

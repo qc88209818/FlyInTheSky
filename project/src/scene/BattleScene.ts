@@ -14,7 +14,7 @@ module fly {
 		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		text:egret.TextField
 
-		isDestory:boolean = false
+		isRunning:number = -1
 
 		public constructor() {
 			super()
@@ -165,7 +165,7 @@ module fly {
 
 			// 显示生命值
 			var text2:egret.TextField = new egret.TextField()
-			text2.text = "当前剩余生命: " + this.player.heath
+			text2.text = "当前剩余生命: " + SceneManager.inst().health
 			text2.size = 36;
 			text2.textColor = 0x000000;
 			text2.anchorOffsetX = 0;
@@ -174,19 +174,11 @@ module fly {
 			text2.y = progress.height + text.height + 40
 			this.addChild(text2);
 			this.text = text2
-
-			// 监听死亡事件
-			this.addEventListener("PlayerDead", this.onPlayerDead, this)
 		}
 
 		private onChangePower(evt:egret.Event)
 		{
 			this.progress.changeValue(evt.data)
-		}
-
-		private onPlayerDead(evt:egret.Event)
-		{
-			this.text.text = "当前剩余生命: " + this.player.heath + " (" + evt.data+ ")"
 		}
 
 		private onTickWorld(dt)
@@ -198,12 +190,15 @@ module fly {
 
 		private onPostStep()
 		{
-			if (this.isDestory)
-			{
-				this.reset()
-				this.objmgr.reset()
+			if (this.isRunning < 0) return
+			
+			this.reset()
+			this.objmgr.reset()
+
+			if (this.isRunning == 0)
 				SceneManager.inst().loadNext()
-			}
+			else
+				SceneManager.inst().loadAgain(this.isRunning)
 		}
 
 		private onBeginContact(event:any)
@@ -403,7 +398,6 @@ module fly {
 		{
 			egret.Ticker.getInstance().unregister(this.onTickWorld, this)
 			this.removeEventListener("ChangePower", this.onChangePower, this)
-			this.removeEventListener("PlayerDead", this.onPlayerDead, this)
 			this.world.off("postBroadphase", this.onBeginContact)
 			this.world.off("endContact", this.onEndContact)
 			this.world.off("postStep", this.onPostStep)

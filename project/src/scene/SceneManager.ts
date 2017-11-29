@@ -1,24 +1,24 @@
 module fly {
 	export class SceneManager extends egret.DisplayObject {
-		private url:string
-		private request:egret.HttpRequest
-		private icon:egret.Shape
-		private music:FlyMusic
+		private _url:string
+		private _request:egret.HttpRequest
+		private _loadingView:UILoading;
+		private _parent:egret.DisplayObjectContainer
 
 		private _width:number
 		private _height:number
 		private _mapId:number = 0
 		private _maxId:number = 5
+		private _tiledMapObjs:TiledMapGroup[] = []
 
-		private _parent:egret.DisplayObjectContainer
-		
-		static obj:SceneManager = new SceneManager()
+		health:number = 1
+		music:FlyMusic
+		reasons:string[] = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 
-		private loadingView:UILoading = null;
-
+		static scenemgr:SceneManager = new SceneManager()
 		public static inst(): SceneManager
 		{
-			return this.obj
+			return this.scenemgr
 		}
 
 		public init(parent:egret.DisplayObjectContainer, width:number, height:number)
@@ -42,7 +42,10 @@ module fly {
 
 		public loadNext()
 		{
-			this.music.playVictory()    
+			this.reset()
+			this.music.playVictory()   
+			this.createMovie(0) 
+
 			// 延迟3秒后，切换场景
 			egret.setTimeout(function () {    
 				this.reset()
@@ -53,14 +56,30 @@ module fly {
 				else
 				{
 					console.log("You Win!")
-				} 
+				}
 			}, this, 3000); 
 		}
 
-		public loadAgain()
+		public loadAgain(reason:number)
 		{
+			this.health -= 1
+
 			this.reset()
-			this.loadTiledMap(this._mapId)
+			this.music.playDefeated()
+			this.createMovie(reason)
+
+			egret.setTimeout(function () {
+				this.loadNow()
+			}, this, 4000);
+		}
+
+		private loadNow()
+		{
+			let battlescene = new BattleScene()
+			battlescene.initScene(this._tiledMapObjs)
+			this._parent.addChild(battlescene)
+
+			this.music.playBgm(this._mapId)
 		}
 
 		private loadTiledMap(mapId:number)
@@ -68,33 +87,35 @@ module fly {
 			this._mapId = mapId
 			
 			/*初始化资源加载路径*/
-			this.url = "resource/map/battle" + mapId + ".tmx"; 
+			this._url = "resource/map/battle" + mapId + ".tmx"; 
 			/*初始化请求*/
-			this.request = new egret.HttpRequest();
+			this._request = new egret.HttpRequest();
 			/*监听资源加载完成事件*/
-			this.request.addEventListener(egret.Event.COMPLETE, this.onMapComplete,this);
-			this.request.addEventListener(egret.ProgressEvent.PROGRESS,this.onMapProgress,this);
+			this._request.addEventListener(egret.Event.COMPLETE, this.onMapComplete,this);
+			this._request.addEventListener(egret.ProgressEvent.PROGRESS,this.onMapProgress,this);
 			/*发送请求*/
-			this.request.open(this.url,egret.HttpMethod.GET);
-			this.request.send();
-			if(this.loadingView == null){
-				this.loadingView = new UILoading();
+			this._request.open(this._url,egret.HttpMethod.GET);
+			this._request.send();
+
+			if(this._loadingView == null){
+				this._loadingView = new UILoading();
 			}
-			this.loadingView.x = this._parent.stage.stageWidth/2-200;
-        	this.loadingView.y = this._parent.stage.stageHeight/2;
-        	this.loadingView.scaleX = 2;
-        	this.loadingView.scaleY = 2;
-        	this._parent.addChild(this.loadingView);
+			this._loadingView.x = this._parent.stage.stageWidth/2-200;
+        	this._loadingView.y = this._parent.stage.stageHeight/2;
+        	this._loadingView.scaleX = 2;
+        	this._loadingView.scaleY = 2;
+        	this._parent.addChild(this._loadingView);
 		}
 		
 		/**加载进度 */
 		private onMapProgress(event:egret.ProgressEvent){
-			this.loadingView.setProgress(event.bytesLoaded, event.bytesTotal);
+			this._loadingView.setProgress(event.bytesLoaded, event.bytesTotal);
 		}
+
 		/*地图加载完成*/
 		private onMapComplete(event:egret.Event) {
-			this.request.removeEventListener(egret.Event.COMPLETE, this.onMapComplete,this);
-			this.request.removeEventListener(egret.ProgressEvent.PROGRESS,this.onMapProgress,this);
+			this._request.removeEventListener(egret.Event.COMPLETE, this.onMapComplete,this);
+			this._request.removeEventListener(egret.ProgressEvent.PROGRESS,this.onMapProgress,this);
 			/*获取到地图数据*/
 			let data = egret.XML.parse(event.currentTarget.response);
 
@@ -150,12 +171,10 @@ module fly {
 
 				tiledMapObjs.push(groups)
 			})
-			this._parent.removeChild(this.loadingView);
-			let battlescene = new BattleScene()
-			battlescene.initScene(tiledMapObjs)
-			this._parent.addChild(battlescene)
 
-			this.music.playBgm(this._mapId)
+			this._parent.removeChild(this._loadingView)
+			this._tiledMapObjs = tiledMapObjs
+			this.loadNow()
 		}
 
 		private createMusic()
@@ -167,9 +186,60 @@ module fly {
 		public reset()
 		{
 			this._parent.removeChildren()
-			
 			this.music.stop()
-			FlyConfig.reset()
+		}
+
+		public createMovie(reason:number)
+		{
+			let objmgr = ObjectManager.inst()
+
+			// 死亡动画
+			let png = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
+			png.gotoAndPlay("front_move_fat", -1)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.x = FlyConfig.stageWidth/2
+			png.y = FlyConfig.stageHeight/2
+			png.scaleX = 2
+			png.scaleY = 2
+			this._parent.addChild(png)
+
+			// 原因
+			var text:egret.TextField = new egret.TextField()
+			text.text = this.reasons[reason]
+			text.size = 48
+			text.textColor = 0x000000
+			text.anchorOffsetX = text.width/2
+			text.anchorOffsetY = text.height/2
+			text.x = FlyConfig.stageWidth/2
+			text.y = FlyConfig.stageHeight/2 - png.height*2
+			this._parent.addChild(text);
+
+			if (reason > 0)
+			{
+				egret.setTimeout(function () {
+					// 图标
+					let icon = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
+					icon.gotoAndPlay("front_move_normal", -1)
+					icon.anchorOffsetX = icon.width/2
+					icon.anchorOffsetY = icon.height/2
+					icon.x = FlyConfig.stageWidth/2 - png.width
+					icon.y = FlyConfig.stageHeight/2 + png.height*2 + 100
+					this._parent.addChild(icon)
+
+					// 生命
+					var text:egret.TextField = new egret.TextField()
+					text.text = "x " + this.health
+					text.size = 96
+					text.textColor = 0x000000
+					text.anchorOffsetX = text.width/2
+					text.anchorOffsetY = text.height/2
+					text.x = FlyConfig.stageWidth/2 + 50
+					text.y = FlyConfig.stageHeight/2 + png.height*2 + 120
+					this._parent.addChild(text);
+				}, this, 3000);
+			}
+
 		}
 	}
 }

@@ -104,8 +104,8 @@ module fly {
 					path:obj.params["path"]
 					, damping:Number(obj.params["damping"])
 					, rotation:Number(obj.params["rotation"])
-					, lookRadius:Number(obj.params["radius"])
-					, lookVelocity:Number(obj.params["velocity"])
+					, pRadius:Number(obj.params["radius"])
+					, pVelocity:Number(obj.params["velocity"])
 				})
 				scene.addToWorld(traps)
 			}
@@ -120,6 +120,19 @@ module fly {
 					, max:Number(obj.params["max"])
 				})
 				scene.addToWorld(block)
+			}
+			else if (obj.type == "movetraps")
+			{
+				let traps = new MoveTraps(obj.x, obj.y, obj.width, obj.height, 
+				{
+					path:obj.params["path"]
+					, type:Number(obj.params["type"])
+					, rotation:Number(obj.params["rotation"])
+					, tx:Number(obj.params["tx"])
+					, ty:Number(obj.params["ty"])
+					, pVelocity:Number(obj.params["velocity"])
+				})
+				scene.addToWorld(traps)
 			}
 			else if (obj.type == "image")
 			{

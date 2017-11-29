@@ -6,16 +6,16 @@ module fly {
 		op:any
 
 		baseScale:number = FlyParam.AiBaseScale
-		lookRadius:number
-		lookVelocity:number
+		pRadius:number
+		pVelocity:number
 		
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
 			this.x = x + radius
 			this.y = y + radius
 			this.radius = radius
-			this.lookRadius = op.lookRadius || radius*4
-			this.lookVelocity = op.lookVelocity || FlyParam.forceScale/3
+			this.pRadius = op.pRadius || radius*4
+			this.pVelocity = op.pVelocity || FlyParam.forceScale/3
 
 			this.initBody({
 				id:FlyConfig.getAiPlayerId()
@@ -61,13 +61,13 @@ module fly {
 			let player = this.objmgr.scene.player
 			let dist = p2.vec2.dist(player.body.position, this.body.position)
 
-			if (dist <= this.lookRadius)
+			if (dist <= this.pRadius)
 			{
 				let dir = [player.body.position[0] - this.body.position[0], player.body.position[1] - this.body.position[1]]
 				let normal = []
 				p2.vec2.normalize(normal, dir)
 
-				let forceScale = this.lookVelocity
+				let forceScale = this.pVelocity
 				this.body.velocity = [normal[0]*forceScale,  normal[1]*forceScale]
 			}
 			else

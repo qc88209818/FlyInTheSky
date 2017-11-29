@@ -1,18 +1,31 @@
 module fly {
-	export class Traps  extends FlyRect {
+	export class MoveTraps extends FlyRect{
 		x:number
 		y:number
 		width:number
 		height:number
+		tx:number
+		ty:number
+
+		pVelocity:number
+
+		source:number[] = []
+		target:number[] = []
 
 		baseScale:number = FlyParam.TrapsBaseScale
-		
+
 		public constructor(x:number, y:number, width:number, height:number, op?) {
 			super()
 			this.x = x + width/2
 			this.y = y + height/2
 			this.width = width
 			this.height = height
+			this.tx = op.tx + width/2
+			this.ty = op.ty + height/2
+			this.pVelocity = op.pVelocity || 200
+
+			this.source = [this.x, this.y]
+			this.target = [this.tx, this.ty]
 
 			this.initBody({
 				id:FlyConfig.getObstacleId()
@@ -51,6 +64,26 @@ module fly {
 				}
 			})
 			return true
+		}
+
+		public updatePosition(dt:number = 0)
+		{
+			super.updatePosition(dt)
+
+			let dist = p2.vec2.dist(this.body.position, this.target)
+			if (dist < 10)
+			{
+				let tmp = this.target
+				this.target = this.source
+				this.source = tmp
+			}
+
+			let dir = [this.target[0] - this.body.position[0], this.target[1] - this.body.position[1]]
+			let normal = []
+			p2.vec2.normalize(normal, dir)
+
+			let forceScale = this.pVelocity
+			this.body.velocity = [normal[0]*forceScale,  normal[1]*forceScale]
 		}
 	}
 }

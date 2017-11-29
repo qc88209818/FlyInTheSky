@@ -325,15 +325,7 @@ module fly {
 		private triggerAi(id:number, pid:number):boolean
 		{
 			this.objmgr.sprites.forEach(value => {
-				if (value.body.id == id)
-				{
-					let bRet = value.onTrigger(pid)
-					if (value.isDestroy)
-					{
-						this.delFromWorld(value)
-					}
-				}
-				else if (value.body.id == pid)
+				if (value.body.id == id || value.body.id == pid)
 				{
 					value.isDestroy = true
 					this.delFromWorld(value)

@@ -95,4 +95,3 @@ var fly;
     fly.ObjectManager = ObjectManager;
     __reflect(ObjectManager.prototype, "fly.ObjectManager");
 })(fly || (fly = {}));
-//# sourceMappingURL=ObjectManager.js.map

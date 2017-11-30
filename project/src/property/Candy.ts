@@ -54,7 +54,7 @@ module fly {
 			this.objmgr.players.forEach(value => {
 				if (value.body.id == pid)
 				{
-					value.changePower(value.power + (power||FlyParam.candy_power))
+					value.addPower(power||FlyParam.candy_power)
 				}
 			})
 

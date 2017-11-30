@@ -8,6 +8,7 @@ module fly {
 
 		movieClip:egret.MovieClip
 		dieMovieClip:egret.MovieClip
+		powerText:egret.TextField
 
 		force:number
 		power:number
@@ -17,6 +18,7 @@ module fly {
 		reason:number = 0
 		inoperable:number = 0			// 不可操作状态
 		isListener:boolean  = false		// 是否被监听
+		addPowerTime:number  = 0		// 是否飘字
 
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -58,6 +60,12 @@ module fly {
 				this.inoperable -= dt;
 			}
 
+			this.updateMovieClip(dt)
+			this.updatePowerFly(dt)
+		}
+
+		private updateMovieClip(dt:number)
+		{
 			let x = Math.abs(this.body.velocity[0])
 			let y = Math.abs(this.body.velocity[1])
 			let weight = FlyParam.PlayerMoviePostfix[this.step]
@@ -93,6 +101,23 @@ module fly {
 				{
 					this.gotoAndPlaySide("side_stand", this.dir)
 				}
+			}
+		}
+
+		private updatePowerFly(dt:number)
+		{
+			// 飘字动画
+			if (this.addPowerTime > 0)
+			{
+				this.powerText.x = this.body.position[0] + 20
+				this.powerText.y = this.body.position[1] - 150 + this.addPowerTime*50
+				this.powerText.alpha = this.addPowerTime/2
+				this.powerText.visible = true
+				this.addPowerTime -= dt
+			}
+			else if (this.powerText)
+			{
+				this.powerText.visible = false
 			}
 		}
 
@@ -141,7 +166,22 @@ module fly {
 			this.addChild(png)
 			this.dieMovieClip = png
 
+			// 飘字
+			var text:egret.TextField = new egret.TextField()
+			text.visible = false
+			text.text = "+" + 10
+			text.size = 60;
+			text.textColor = 0xFFA500
+			this.addChild(text);
+			this.powerText = text
+
 			this.dieMovieClip.addEventListener(egret.Event.COMPLETE, this.afterMovieClip, this);
+		}
+
+		public addPower(power:number)
+		{
+			this.addPowerMovie(power)
+			this.changePower(this.power + power)
 		}
 
 		public changePower(power:number)
@@ -258,6 +298,12 @@ module fly {
 					this.objmgr.scene.isRunning = this.reason
 				}
 			}, this, 500)
+		}
+
+		private addPowerMovie(power:number)
+		{
+			this.addPowerTime = 2
+			this.powerText.text = "+" + power
 		}
 	}
 }

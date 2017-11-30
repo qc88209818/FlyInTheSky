@@ -3,6 +3,7 @@ module fly {
 		private _url:string
 		private _request:egret.HttpRequest
 		private _loadingView:UILoading;
+		private _passScene:PassScene
 		private _parent:egret.DisplayObjectContainer
 
 		private _width:number
@@ -13,11 +14,9 @@ module fly {
 
 		music:FlyMusic		// 音乐
 		sound:FlyMusic 		// 音效
-
 		soundObj:any
 
 		health:number = 1
-		reasons:string[] = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 
 		static scenemgr:SceneManager = new SceneManager()
 		public static inst(): SceneManager
@@ -46,24 +45,16 @@ module fly {
 
 		public loadNext()
 		{
+			this.health = 3
 			this.reset()
-			if (this._mapId + 1 <= this._maxId)
-			{
-				this.loadTiledMap(this._mapId + 1)
-			}
-			else
-			{
-				console.log("You Win!")
-			}
+			this.createPassScene(0, this)
 		}
 
 		public loadAgain(reason:number)
 		{
 			this.health -= 1
-
 			this.reset()
-
-			this.loadNow()
+			this.createPassScene(reason, this)
 		}
 
 		private loadNow()
@@ -72,7 +63,29 @@ module fly {
 			battlescene.initScene(this._tiledMapObjs)
 			this._parent.addChild(battlescene)
 
-			// this.playMusic("bgm" + this._mapId + ".mp3")
+			this.playMusic("bgm" + this._mapId + ".mp3")
+		}
+
+		public onClickBtn(reason:number)
+		{
+			if (this._passScene)
+			{
+				this._parent.removeChild(this._passScene)
+				this._passScene = null
+			}
+
+			if (reason > 0)
+			{
+				this.loadNow()
+			}
+			else if (this._mapId + 1 <= this._maxId)
+			{
+				this.loadTiledMap(this._mapId + 1)
+			}
+			else
+			{
+				console.log("You Win!")
+			}
 		}
 
 		private loadTiledMap(mapId:number)
@@ -209,57 +222,12 @@ module fly {
 			this.sound.stop()
 		}
 
-		public createMovie(reason:number)
+		public createPassScene(reason:number, mgr:SceneManager)
 		{
-			// let objmgr = ObjectManager.inst()
-
-			// // 死亡动画
-			// let png = new egret.MovieClip(objmgr.dieFactory.generateMovieClipData("playerDie"));
-			// png.gotoAndPlay("die"+reason, 1)
-			// png.anchorOffsetX = png.width/2
-			// png.anchorOffsetY = png.height/2
-			// png.x = FlyConfig.stageWidth/2
-			// png.y = FlyConfig.stageHeight/2
-			// png.scaleX = 2
-			// png.scaleY = 2
-			// this._parent.addChild(png)
-
-			// // 原因
-			// var text:egret.TextField = new egret.TextField()
-			// text.text = this.reasons[reason]
-			// text.size = 48
-			// text.textColor = 0x000000
-			// text.anchorOffsetX = text.width/2
-			// text.anchorOffsetY = text.height/2
-			// text.x = FlyConfig.stageWidth/2
-			// text.y = FlyConfig.stageHeight/2 - png.height*2
-			// this._parent.addChild(text);
-
-			// if (reason > 0)
-			// {
-			// 	egret.setTimeout(function () {
-			// 		// 图标
-			// 		let icon = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
-			// 		icon.gotoAndPlay("front_move_normal", -1)
-			// 		icon.anchorOffsetX = icon.width/2
-			// 		icon.anchorOffsetY = icon.height/2
-			// 		icon.x = FlyConfig.stageWidth/2 - png.width
-			// 		icon.y = FlyConfig.stageHeight/2 + png.height*2 + 100
-			// 		this._parent.addChild(icon)
-
-			// 		// 生命
-			// 		var text:egret.TextField = new egret.TextField()
-			// 		text.text = "x " + this.health
-			// 		text.size = 96
-			// 		text.textColor = 0x000000
-			// 		text.anchorOffsetX = text.width/2
-			// 		text.anchorOffsetY = text.height/2
-			// 		text.x = FlyConfig.stageWidth/2 + 50
-			// 		text.y = FlyConfig.stageHeight/2 + png.height*2 + 120
-			// 		this._parent.addChild(text);
-			// 	}, this, 3000);
-			// }
-
+			let scene = new PassScene()
+			scene.initScene(reason, mgr)
+			this._parent.addChild(scene)
+			this._passScene = scene
 		}
 	}
 }

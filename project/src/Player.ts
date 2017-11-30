@@ -78,11 +78,11 @@ module fly {
 			{
 				this.gotoAndPlay("front_move")
 			}
-			else if (this.body.velocity[0] > 0 && x > y)
+			else if (this.body.velocity[0] > 0 && x >= y)
 			{
 				this.gotoAndPlaySide("side_move", 1)
 			}
-			else if (this.body.velocity[0] < 0 && x > y)
+			else if (this.body.velocity[0] < 0 && x >= y)
 			{
 				this.gotoAndPlaySide("side_move", -1)
 			}
@@ -107,12 +107,18 @@ module fly {
 		private updatePowerFly(dt:number)
 		{
 			// 飘字动画
-			if (this.addPowerTime > 0)
+			if (this.addPowerTime > 0 && this.powerText.textColor == 0xFFA500)
 			{
 				this.powerText.x = this.body.position[0] + 20
 				this.powerText.y = this.body.position[1] - 150 + this.addPowerTime*50
 				this.powerText.alpha = this.addPowerTime/2
-				this.powerText.visible = true
+				this.addPowerTime -= dt
+			}
+			else if (this.addPowerTime > 0 && this.powerText.textColor == 0x3399FF)
+			{
+				this.powerText.x = this.body.position[0] + 20
+				this.powerText.y = this.body.position[1] - 50 - this.addPowerTime*50
+				this.powerText.alpha = this.addPowerTime/2
 				this.addPowerTime -= dt
 			}
 			else if (this.powerText)
@@ -303,7 +309,18 @@ module fly {
 		private addPowerMovie(power:number)
 		{
 			this.addPowerTime = 2
-			this.powerText.text = "+" + power
+			this.powerText.visible = true
+
+			if (power > 0)
+			{
+				this.powerText.text = "+" + power
+				this.powerText.textColor = 0xFFA500
+			}
+			else
+			{
+				this.powerText.text = "" + power
+				this.powerText.textColor = 0x3399FF
+			}
 		}
 	}
 }

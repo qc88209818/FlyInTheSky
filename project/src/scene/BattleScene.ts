@@ -56,9 +56,12 @@ module fly {
 			this.lastPowerTime += dt
 			if (this.lastPowerTime > 0.5)
 			{
-				this.objmgr.players.forEach(player => {
-					player.changePower(player.power + FlyParam.move_power*0.5)
-				})
+				if (this.player.body.velocity[0] != 0 || this.player.body.velocity[1] != 0)
+				{
+					this.objmgr.players.forEach(player => {
+						player.changePower(player.power + FlyParam.move_power*0.5)
+					})
+				}
 				this.lastPowerTime -= 0.5
 			}
 		}
@@ -134,7 +137,7 @@ module fly {
 		private createTouchLayer()
 		{
 			// 触摸层
-			let touchNode = new BattleTouchNode(this, 150)
+			let touchNode = new BattleTouchNode(this, 120)
 			this.touchNode = touchNode
 
 			this.touchLayer.addChild(this.touchNode)

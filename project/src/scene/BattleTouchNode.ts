@@ -45,8 +45,8 @@ module fly {
 
 			let bg = FlyTools.createBitmapByName("virtual_background_png")
 			bg.alpha = 0
-			bg.scaleX = 0.5
-			bg.scaleY = 0.5
+			bg.scaleX = 1.2
+			bg.scaleY = 1.2
 			bg.anchorOffsetX = bg.width/2
 			bg.anchorOffsetY = bg.height/2
 			this.virtualBg = bg
@@ -86,18 +86,63 @@ module fly {
 			let direct = [(to[0]-from[0]), (to[1]-from[1])]
 			p2.vec2.normalize(this.normal, direct)
 
-			let dist = p2.vec2.distance(to, from)
-			if (dist > this.maxDist) 
-			{
-				dist = this.maxDist
-			}
+			this.normal = this.normal8dir(this.normal)
 
-			this.direct[0] = this.normal[0]*dist
-			this.direct[1] = this.normal[1]*dist
+			this.direct[0] = this.normal[0]*this.maxDist
+			this.direct[1] = this.normal[1]*this.maxDist
 
 			this.virtualBtn.x = from[0] + this.direct[0]
 			this.virtualBtn.y = from[1] + this.direct[1]
 			this.isTouchMove = true
+		}
+
+		private normal8dir(dir:number[]):number[]
+		{
+			let out = [0, 0]
+
+			let tmp = Math.sqrt(2)/2
+			let angle = Math.acos(dir[0])/Math.PI*180
+			if (dir[1] < 0)
+				angle = 360 - angle
+
+			if (angle >= -22.5 + 360 || angle < 22.5)
+			{
+				out = [1, 0]
+			}
+			else if (angle >= -22.5 + 315)
+			{
+				out = [tmp, -tmp]
+			}
+			else if (angle >= -22.5 + 270)
+			{
+				out = [0 , -1]
+			}
+			else if (angle >= -22.5 + 225)
+			{
+				out = [-tmp, -tmp]
+			}
+			else if (angle >= -22.5 + 180)
+			{
+				out = [-1, 0]
+			}
+			else if (angle >= -22.5 + 135)
+			{
+				out = [-tmp, tmp]
+			}
+			else if (angle >= -22.5 + 90)
+			{
+				out = [0, 1]
+			}
+			else if (angle >= -22.5 + 45)
+			{
+				out = [tmp, tmp]
+			}
+			else
+			{
+				out = dir
+			}
+
+			return out
 		}
 	}
 }

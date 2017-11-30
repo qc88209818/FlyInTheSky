@@ -643,7 +643,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="305" name="windBlock" type="blockrect" x="575" y="620" width="50" height="50">
+  <object id="305" name="windBlock" type="blockrect" x="375" y="678" width="80" height="120">
    <properties>
     <property name="path" value="wind_reverse_png"/>
     <property name="type" type="int" value="0"/>
@@ -1815,7 +1815,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="550" name="windtraps" type="windtraps" x="525" y="575" width="250" height="250">
+  <object id="550" name="windtraps" type="windtraps" x="483" y="571" width="250" height="250">
    <properties>
     <property name="max" type="float" value="40"/>
    </properties>

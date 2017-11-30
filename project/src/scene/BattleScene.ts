@@ -151,18 +151,6 @@ module fly {
 			this.addChild(progress);
 			this.progress = progress
 
-			// 体重条数值
-			var text:egret.TextField = new egret.TextField()
-			text.text = FlyParam.PlayerInitPower + "/100"
-			text.size = 36;
-			text.textColor = 0x000000;
-			text.anchorOffsetX = 0;
-			text.anchorOffsetY = 0.5
-			text.x = 20
-			text.y = progress.height/2
-			this.addChild(text);
-			this.progressText = text
-
 			// 监听能量变化事件
 			this.addEventListener("ChangePower", this.onChangePower, this)
 
@@ -193,7 +181,6 @@ module fly {
 		private onChangePower(evt:egret.Event)
 		{
 			this.progress.changeValue(evt.data)
-			this.progressText.text = evt.data + "/100"
 		}
 
 		private onTickWorld(dt)

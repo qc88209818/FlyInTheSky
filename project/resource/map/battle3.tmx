@@ -267,7 +267,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="389" name="cake" type="candy" x="166.83" y="146.18" width="100" height="100">
+  <object id="389" name="cake" type="candy" x="90.7399" y="111.061" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="cake_png"/>
@@ -301,13 +301,13 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="394" name="grass" type="blockrect" x="383.46" y="222.806" width="379.183" height="50">
+  <object id="394" name="grass" type="blockrect" x="278.104" y="222.806" width="303.093" height="50">
    <properties>
     <property name="path" value=""/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="395" name="grass" type="blockrect" x="219.623" y="313.319" width="50" height="175.479">
+  <object id="395" name="grass" type="blockrect" x="219.623" y="219.67" width="50" height="175.479">
    <properties>
     <property name="path" value=""/>
     <property name="type" type="int" value="0"/>

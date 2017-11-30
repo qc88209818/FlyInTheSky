@@ -372,7 +372,7 @@
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
-    <property name="power" value="30"/>
+    <property name="power" value="20"/>
    </properties>
    <ellipse/>
   </object>
@@ -380,7 +380,7 @@
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
-    <property name="power" value="30"/>
+    <property name="power" value="20"/>
    </properties>
    <ellipse/>
   </object>
@@ -388,7 +388,7 @@
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
-    <property name="power" value="30"/>
+    <property name="power" value="20"/>
    </properties>
    <ellipse/>
   </object>

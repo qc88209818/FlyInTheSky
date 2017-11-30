@@ -20,9 +20,7 @@ var fly;
             _this._mapId = 0;
             _this._maxId = 5;
             _this._tiledMapObjs = [];
-            _this.soundName = "";
             _this.health = 1;
-            _this.reasons = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"];
             return _this;
         }
         SceneManager.inst = function () {
@@ -41,24 +39,53 @@ var fly;
             this.loadTiledMap(mapId);
         };
         SceneManager.prototype.loadNext = function () {
+            this.health = 3;
             this.reset();
-            if (this._mapId + 1 <= this._maxId) {
-                this.loadTiledMap(this._mapId + 1);
+            if (this._mapId + 1 < this._maxId) {
+                this.createPassScene(0, this);
             }
             else {
-                console.log("You Win!");
+                this.createPassScene(-1, this);
             }
         };
         SceneManager.prototype.loadAgain = function (reason) {
             this.health -= 1;
             this.reset();
-            this.loadNow();
+            this.createPassScene(reason, this);
         };
         SceneManager.prototype.loadNow = function () {
             var battlescene = new fly.BattleScene();
             battlescene.initScene(this._tiledMapObjs);
             this._parent.addChild(battlescene);
             this.playMusic("bgm" + this._mapId + ".mp3");
+        };
+        SceneManager.prototype.onClickBtn = function (reason) {
+            if (reason > 0) {
+                if (this._passScene) {
+                    this._parent.removeChild(this._passScene);
+                    this._passScene = null;
+                }
+                this.loadNow();
+            }
+            else if (reason == 0) {
+                if (this._passScene) {
+                    this._parent.removeChild(this._passScene);
+                    this._passScene = null;
+                }
+                this.loadTiledMap(this._mapId + 1);
+            }
+            else {
+                console.log("分享");
+            }
+        };
+        SceneManager.prototype.onClickBack = function () {
+            if (this._passScene) {
+                this._parent.removeChild(this._passScene);
+                this._passScene = null;
+            }
+            this.reset();
+            var enterGameScene = new fly.EnterGameScene();
+            this._parent.addChild(enterGameScene);
         };
         SceneManager.prototype.loadTiledMap = function (mapId) {
             this._mapId = mapId;
@@ -145,75 +172,32 @@ var fly;
             var sound = new fly.FlyMusic();
             this.sound = sound;
         };
-        SceneManager.prototype.playSound = function (name, time) {
+        SceneManager.prototype.playSound = function (name, obj, time) {
             if (time === void 0) { time = 0; }
-            this.sound.playObject(name, time);
-            if (time == 0) {
-                this.soundName = name;
+            if (this.soundObj == null) {
+                this.sound.playObject(name, time);
+                this.soundObj = obj;
             }
         };
-        SceneManager.prototype.stopSound = function (name) {
-            if (this.soundName == name) {
+        SceneManager.prototype.stopSound = function (name, obj) {
+            if (this.soundObj == obj) {
                 this.sound.stop();
-                this.soundName = "";
+                this.soundObj = null;
             }
         };
         SceneManager.prototype.playMusic = function (name) {
             this.music.playObject(name);
-        };
-        SceneManager.prototype.isRunningSound = function (name) {
-            return this.soundName == name;
         };
         SceneManager.prototype.reset = function () {
             this._parent.removeChildren();
             this.music.stop();
             this.sound.stop();
         };
-        SceneManager.prototype.createMovie = function (reason) {
-            // let objmgr = ObjectManager.inst()
-            // // 死亡动画
-            // let png = new egret.MovieClip(objmgr.dieFactory.generateMovieClipData("playerDie"));
-            // png.gotoAndPlay("die"+reason, 1)
-            // png.anchorOffsetX = png.width/2
-            // png.anchorOffsetY = png.height/2
-            // png.x = FlyConfig.stageWidth/2
-            // png.y = FlyConfig.stageHeight/2
-            // png.scaleX = 2
-            // png.scaleY = 2
-            // this._parent.addChild(png)
-            // // 原因
-            // var text:egret.TextField = new egret.TextField()
-            // text.text = this.reasons[reason]
-            // text.size = 48
-            // text.textColor = 0x000000
-            // text.anchorOffsetX = text.width/2
-            // text.anchorOffsetY = text.height/2
-            // text.x = FlyConfig.stageWidth/2
-            // text.y = FlyConfig.stageHeight/2 - png.height*2
-            // this._parent.addChild(text);
-            // if (reason > 0)
-            // {
-            // 	egret.setTimeout(function () {
-            // 		// 图标
-            // 		let icon = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
-            // 		icon.gotoAndPlay("front_move_normal", -1)
-            // 		icon.anchorOffsetX = icon.width/2
-            // 		icon.anchorOffsetY = icon.height/2
-            // 		icon.x = FlyConfig.stageWidth/2 - png.width
-            // 		icon.y = FlyConfig.stageHeight/2 + png.height*2 + 100
-            // 		this._parent.addChild(icon)
-            // 		// 生命
-            // 		var text:egret.TextField = new egret.TextField()
-            // 		text.text = "x " + this.health
-            // 		text.size = 96
-            // 		text.textColor = 0x000000
-            // 		text.anchorOffsetX = text.width/2
-            // 		text.anchorOffsetY = text.height/2
-            // 		text.x = FlyConfig.stageWidth/2 + 50
-            // 		text.y = FlyConfig.stageHeight/2 + png.height*2 + 120
-            // 		this._parent.addChild(text);
-            // 	}, this, 3000);
-            // }
+        SceneManager.prototype.createPassScene = function (reason, mgr) {
+            var scene = new fly.PassScene();
+            scene.initScene(reason, mgr);
+            this._parent.addChild(scene);
+            this._passScene = scene;
         };
         SceneManager.scenemgr = new SceneManager();
         return SceneManager;

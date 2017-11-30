@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="400" tilewidth="10" tileheight="10" nextobjectid="552">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="400" tilewidth="10" tileheight="10" nextobjectid="553">
  <objectgroup name="object">
   <object id="1" name="self" type="player" x="186.731" y="3706.41" width="100" height="100">
    <ellipse/>
@@ -643,7 +643,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="305" name="windBlock" type="blockrect" x="600" y="675" width="50" height="50">
+  <object id="305" name="windBlock" type="blockrect" x="575" y="620" width="50" height="50">
    <properties>
     <property name="path" value="wind_reverse_png"/>
     <property name="type" type="int" value="0"/>

@@ -13,7 +13,8 @@ module fly {
 
 		music:FlyMusic		// 音乐
 		sound:FlyMusic 		// 音效
-		soundName:string = ""
+
+		soundObj:any
 
 		health:number = 1
 		reasons:string[] = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
@@ -71,7 +72,7 @@ module fly {
 			battlescene.initScene(this._tiledMapObjs)
 			this._parent.addChild(battlescene)
 
-			this.playMusic("bgm" + this._mapId + ".mp3")
+			// this.playMusic("bgm" + this._mapId + ".mp3")
 		}
 
 		private loadTiledMap(mapId:number)
@@ -178,32 +179,27 @@ module fly {
 			this.sound = sound
 		}
 
-		public playSound(name:string, time:number = 0)
+		public playSound(name:string, obj:any, time:number = 0)
 		{
-			this.sound.playObject(name, time)
-			if (time == 0)
+			if (this.soundObj == null)
 			{
-				this.soundName = name
+				this.sound.playObject(name, time)
+				this.soundObj = obj
 			}
 		}
 
-		public stopSound(name:string)
+		public stopSound(name:string, obj:any)
 		{
-			if (this.soundName == name)
+			if (this.soundObj == obj)
 			{
 				this.sound.stop()
-				this.soundName = ""
+				this.soundObj = null
 			}
 		}
 
 		public playMusic(name:string)
 		{
 			this.music.playObject(name)
-		}
-
-		public isRunningSound(name:string)
-		{
-			return this.soundName == name
 		}
 
 		public reset()

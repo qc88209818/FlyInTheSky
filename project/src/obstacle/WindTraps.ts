@@ -47,16 +47,28 @@ module fly {
 						let forceScale = FlyParam.forceScale
 						player.setVelocity(normal[0]*forceScale,  normal[1]*forceScale)
 						player.inoperable = 1
-
-						if (SceneManager.inst().isRunningSound(""))
-						{
-							SceneManager.inst().playSound(this.soundName, 1)
-						}
 					}
 					return true
 				}
 			})
 			return true
+		}
+
+		public updatePosition(dt:number = 0)
+		{
+			super.updatePosition(dt)
+	
+			let player = this.objmgr.scene.player
+			let dist = p2.vec2.dist(player.body.position, this.body.position)
+
+			if (dist < this.radius * 2)
+			{
+				SceneManager.inst().playSound(this.soundName, this)
+			}
+			else
+			{
+				SceneManager.inst().stopSound(this.soundName, this)
+			}
 		}
 	}
 }

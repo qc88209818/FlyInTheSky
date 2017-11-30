@@ -48,7 +48,7 @@ module fly {
 		public destroy()
 		{
 			super.destroy()
-			SceneManager.inst().stopSound(this.soundName)
+			SceneManager.inst().stopSound(this.soundName, this)
 		}
 
 		public onTrigger(pid:number)
@@ -80,19 +80,12 @@ module fly {
 				let forceScale = this.pVelocity
 				this.body.velocity = [normal[0]*forceScale,  normal[1]*forceScale]
 
-				if (SceneManager.inst().isRunningSound(""))
-				{
-					SceneManager.inst().playSound(this.soundName)
-				}
+				SceneManager.inst().playSound(this.soundName, this)
 			}
 			else
 			{
 				this.body.velocity = [0, 0]
-				
-				if (SceneManager.inst().isRunningSound(this.soundName))
-				{
-					SceneManager.inst().stopSound(this.soundName)
-				}
+				SceneManager.inst().stopSound(this.soundName, this)
 			}
 		}
 	}

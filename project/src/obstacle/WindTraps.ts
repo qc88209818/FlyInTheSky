@@ -8,7 +8,10 @@ module fly {
 		max:number
 		min:number
 
+		baseScale:number = FlyParam.WindBaseScale
+
 		soundName:string = ""
+		movieClip:egret.MovieClip
 
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -30,7 +33,20 @@ module fly {
 			this.initShape(this.radius)
 			this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property)
 			
+			this.initBitmap()
 			this.updatePosition()
+		}
+
+		private initBitmap()
+		{
+			var png = new egret.MovieClip(this.objmgr.windFactory.generateMovieClipData("wind"));
+			png.gotoAndPlay("play", -1)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.scaleX = this.baseScale
+			png.scaleY = this.baseScale
+			this.addChild(png)
+			this.movieClip = png
 		}
 
 		public onTrigger(pid:number)

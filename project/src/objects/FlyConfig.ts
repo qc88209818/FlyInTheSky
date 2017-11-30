@@ -161,5 +161,6 @@ module fly {
 		static PlaneBaseScale:number			= 2
 		static AiBaseScale:number				= 3
 		static WeightBlockBaseScale:number		= 1
+		static WindBaseScale:number				= 2
 	}
 }

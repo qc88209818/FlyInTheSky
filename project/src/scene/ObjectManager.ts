@@ -22,6 +22,7 @@ module fly {
 		world:p2.World
 		mcFactory:egret.MovieClipDataFactory
 		dieFactory:egret.MovieClipDataFactory
+		windFactory:egret.MovieClipDataFactory
 
 		public init()
 		{
@@ -100,6 +101,11 @@ module fly {
 			var txtr = RES.getRes("playerDie_png");
 			let dieFactory = new egret.MovieClipDataFactory(data, txtr);
 			this.dieFactory = dieFactory
+
+			var data = RES.getRes("wind_json");
+			var txtr = RES.getRes("wind_png");
+			let windFactory = new egret.MovieClipDataFactory(data, txtr);
+			this.windFactory = windFactory
 
 			let world = new p2.World()
 			world.gravity = [0, 0]

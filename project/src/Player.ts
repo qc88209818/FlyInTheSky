@@ -227,7 +227,7 @@ module fly {
 			if (this.isListener)
 			{
 				this.objmgr.scene.stop()
-				SceneManager.inst().music.playDefeated()
+				SceneManager.inst().music.playObject("defeated.mp3")
 			}
 		}
 
@@ -244,7 +244,7 @@ module fly {
 
 			if (this.isListener)
 			{
-				SceneManager.inst().music.playVictory()
+				SceneManager.inst().music.playObject("victory.mp3")
 			}
 		}
 

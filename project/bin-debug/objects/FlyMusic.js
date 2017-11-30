@@ -6,20 +6,31 @@ var fly;
     var FlyMusic = (function () {
         function FlyMusic() {
             this._sound = new egret.Sound();
-            this._forever = false;
+            this._time = 0;
+            this._initFinish = false;
         }
         // 加载音乐
-        FlyMusic.prototype.loadMusic = function (path, forever) {
-            if (forever === void 0) { forever = false; }
+        FlyMusic.prototype.loadMusic = function (path, time) {
+            if (time === void 0) { time = 0; }
             this.stop();
+            this._initFinish = false;
             this._sound.load(path);
             this._sound.addEventListener(egret.Event.COMPLETE, this.onLoad, this);
-            this._forever = forever;
+            this._time = time;
+        };
+        FlyMusic.prototype.loadMusicOnly = function (path) {
+            this.stop();
+            this._initFinish = false;
+            this._sound.load(path);
+            this._sound.addEventListener(egret.Event.COMPLETE, this.onLoadOnly, this);
         };
         //播放
-        FlyMusic.prototype.play = function () {
+        FlyMusic.prototype.play = function (time) {
+            if (time === void 0) { time = 0; }
+            if (!this._initFinish)
+                return;
             //sound 播放会返回一个 SoundChannel 对象，暂停、音量等操作请控制此对象
-            this._channel = this._sound.play(0, this._forever ? 0 : 1);
+            this._channel = this._sound.play(0, time);
             this._channel.addEventListener(egret.Event.SOUND_COMPLETE, this.onComplete, this);
         };
         //停止
@@ -32,25 +43,28 @@ var fly;
         };
         FlyMusic.prototype.onLoad = function () {
             this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this);
-            // console.log("播放音乐")
-            this.play();
+            this._initFinish = true;
+            this.play(this._time);
+        };
+        FlyMusic.prototype.onLoadOnly = function () {
+            this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this);
+            this._initFinish = true;
         };
         //播放完成
         FlyMusic.prototype.onComplete = function () {
             // console.log("播放完成")
             this.stop();
         };
-        FlyMusic.prototype.playVictory = function () {
-            this.loadMusic("resource/music/victory.mp3");
+        FlyMusic.prototype.playObject = function (obj, time) {
+            if (time === void 0) { time = 0; }
+            this.loadMusic("resource/music/" + obj, time);
         };
-        FlyMusic.prototype.playDefeated = function () {
-            this.loadMusic("resource/music/defeated.mp3");
-        };
-        FlyMusic.prototype.playBgm = function (num) {
-            this.loadMusic("resource/music/bgm" + num + ".mp3", true);
+        FlyMusic.prototype.loadObject = function (obj) {
+            this.loadMusicOnly("resource/music/" + obj);
         };
         return FlyMusic;
     }());
     fly.FlyMusic = FlyMusic;
     __reflect(FlyMusic.prototype, "fly.FlyMusic");
 })(fly || (fly = {}));
+//# sourceMappingURL=FlyMusic.js.map

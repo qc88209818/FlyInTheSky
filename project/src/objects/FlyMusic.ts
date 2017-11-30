@@ -3,26 +3,40 @@ module fly {
 
 		private _sound: egret.Sound = new egret.Sound()
 		private _channel: egret.SoundChannel
-		private _forever:boolean = false
+		private _time:number = 0
+
+		private _initFinish:boolean = false
 
 		public constructor() {
 		}
 
 		// 加载音乐
-		public loadMusic(path:string, forever:boolean = false)
+		public loadMusic(path:string, time:number = 0)
 		{
 			this.stop();
-			
+			this._initFinish = false
+
 			this._sound.load(path)
         	this._sound.addEventListener(egret.Event.COMPLETE, this.onLoad, this)
-			this._forever = forever
+			this._time = time
+		}
+
+		public loadMusicOnly(path:string)
+		{
+			this.stop();
+			this._initFinish = false
+
+			this._sound.load(path)
+        	this._sound.addEventListener(egret.Event.COMPLETE, this.onLoadOnly, this)
 		}
 
 		//播放
-		public play()
+		public play(time:number = 0)
 		{
+			if (!this._initFinish) return
+			
 			//sound 播放会返回一个 SoundChannel 对象，暂停、音量等操作请控制此对象
-			this._channel = this._sound.play(0, this._forever?0:1);
+			this._channel = this._sound.play(0, time);
 			this._channel.addEventListener(egret.Event.SOUND_COMPLETE, this.onComplete, this);
 		}
 
@@ -38,9 +52,14 @@ module fly {
 		private onLoad()
 		{
 			this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this)
-			
-			// console.log("播放音乐")
-			this.play()
+			this._initFinish = true
+			this.play(this._time)
+		}
+
+		private onLoadOnly()
+		{
+			this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this)
+			this._initFinish = true
 		}
 
 		//播放完成
@@ -50,19 +69,14 @@ module fly {
 			this.stop();
 		}
 
-		public playVictory()
+		public playObject(obj:string, time:number = 0)
 		{
-			this.loadMusic("resource/music/victory.mp3")
+			this.loadMusic("resource/music/" + obj, time)
 		}
-
-		public playDefeated()
+		
+		public loadObject(obj:string)
 		{
-			this.loadMusic("resource/music/defeated.mp3")
-		}
-
-		public playBgm(num:number)
-		{
-			this.loadMusic("resource/music/bgm" + num + ".mp3", true)
+			this.loadMusicOnly("resource/music/" + obj)
 		}
 	}
 }

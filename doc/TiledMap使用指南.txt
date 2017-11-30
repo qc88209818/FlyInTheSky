@@ -57,6 +57,7 @@
 自定义属性：
 	min:最小体重，默认0
 	max:最大体重，默认999
+	sound:当前配音（wind.mp3）
 
 
 类型 aitraps
@@ -66,6 +67,7 @@
 	radius:巡逻半径，500左右
 	velocity:移动速度，最好小于500
 	damping:阻尼（0-1，1最大）
+	sound:当前配音（barking.mp3）
 
 
 类型 movetraps

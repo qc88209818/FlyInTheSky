@@ -8,6 +8,8 @@ module fly {
 		max:number
 		min:number
 
+		soundName:string = ""
+
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
 			this.x = x + radius
@@ -16,6 +18,7 @@ module fly {
 			this.op  = op
 			this.min = op.min || 0
 			this.max = op.max || 999
+			this.soundName = op.sound || "wind.mp3"
 
 			this.initBody({
 				id:FlyConfig.getPropertyId()
@@ -44,6 +47,11 @@ module fly {
 						let forceScale = FlyParam.forceScale
 						player.setVelocity(normal[0]*forceScale,  normal[1]*forceScale)
 						player.inoperable = 1
+
+						if (SceneManager.inst().isRunningSound(""))
+						{
+							SceneManager.inst().playSound(this.soundName, 1)
+						}
 					}
 					return true
 				}

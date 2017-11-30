@@ -17,11 +17,13 @@ var fly;
         __extends(EnterGameScene, _super);
         function EnterGameScene() {
             var _this = _super.call(this) || this;
+            _this.music = new fly.FlyMusic();
             _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
             _this.addEventListener(egret.Event.REMOVED_FROM_STAGE, _this.removeStage, _this);
             return _this;
         }
         EnterGameScene.prototype.onAddToStage = function () {
+            this.music.playObject("start.mp3");
             this.graphics.beginFill(0x000000, 0);
             this.graphics.drawRect(0, 0, this.stage.stageWidth, this.stage.stageHeight);
             this.graphics.endFill();
@@ -57,9 +59,9 @@ var fly;
             }
         };
         EnterGameScene.prototype.onTouchClick = function (evt) {
-            console.log("" + this.enterGameBtn.scaleX);
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             if (this.enterGameBtn.hitTestPoint(evt.localX, evt.localY)) {
+                this.music.stop();
                 var parent_1 = this.parent;
                 parent_1.removeChild(this);
                 var mgr = fly.SceneManager.inst();
@@ -68,7 +70,6 @@ var fly;
             }
         };
         EnterGameScene.prototype.onTouchCancel = function (evt) {
-            console.log("" + this.enterGameBtn.scaleX);
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
         };
         return EnterGameScene;
@@ -76,3 +77,4 @@ var fly;
     fly.EnterGameScene = EnterGameScene;
     __reflect(EnterGameScene.prototype, "fly.EnterGameScene");
 })(fly || (fly = {}));
+//# sourceMappingURL=EnterGameScene.js.map

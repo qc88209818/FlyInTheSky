@@ -94,6 +94,7 @@ module fly {
 					type:Number(obj.params["type"])
 					, min:Number(obj.params["min"])
 					, max:Number(obj.params["max"])
+					, sound:Number(obj.params["sound"])
 				})
 				scene.addToWorld(traps)
 			}
@@ -106,6 +107,7 @@ module fly {
 					, rotation:Number(obj.params["rotation"])
 					, pRadius:Number(obj.params["radius"])
 					, pVelocity:Number(obj.params["velocity"])
+					, sound:Number(obj.params["sound"])
 				})
 				scene.addToWorld(traps)
 			}

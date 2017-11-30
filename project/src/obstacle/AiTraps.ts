@@ -8,6 +8,8 @@ module fly {
 		baseScale:number = FlyParam.AiBaseScale
 		pRadius:number
 		pVelocity:number
+
+		soundName:string = ""
 		
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -16,6 +18,7 @@ module fly {
 			this.radius = radius
 			this.pRadius = op.pRadius || radius*4
 			this.pVelocity = op.pVelocity || FlyParam.forceScale/3
+			this.soundName = op.sound || "barking.mp3"
 
 			this.initBody({
 				id:FlyConfig.getAiPlayerId()
@@ -42,6 +45,12 @@ module fly {
 			this.addChild(png)
 		}
 
+		public destroy()
+		{
+			super.destroy()
+			SceneManager.inst().stopSound(this.soundName)
+		}
+
 		public onTrigger(pid:number)
 		{
 			this.objmgr.players.forEach(player => {
@@ -61,6 +70,7 @@ module fly {
 			let player = this.objmgr.scene.player
 			let dist = p2.vec2.dist(player.body.position, this.body.position)
 
+			let nowState = ""
 			if (dist <= this.pRadius)
 			{
 				let dir = [player.body.position[0] - this.body.position[0], player.body.position[1] - this.body.position[1]]
@@ -69,10 +79,20 @@ module fly {
 
 				let forceScale = this.pVelocity
 				this.body.velocity = [normal[0]*forceScale,  normal[1]*forceScale]
+
+				if (SceneManager.inst().isRunningSound(""))
+				{
+					SceneManager.inst().playSound(this.soundName)
+				}
 			}
 			else
 			{
 				this.body.velocity = [0, 0]
+				
+				if (SceneManager.inst().isRunningSound(this.soundName))
+				{
+					SceneManager.inst().stopSound(this.soundName)
+				}
 			}
 		}
 	}

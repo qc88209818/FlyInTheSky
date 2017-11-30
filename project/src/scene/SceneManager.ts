@@ -11,8 +11,11 @@ module fly {
 		private _maxId:number = 5
 		private _tiledMapObjs:TiledMapGroup[] = []
 
+		music:FlyMusic		// 音乐
+		sound:FlyMusic 		// 音效
+		soundName:string = ""
+
 		health:number = 1
-		music:FlyMusic
 		reasons:string[] = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 
 		static scenemgr:SceneManager = new SceneManager()
@@ -27,7 +30,7 @@ module fly {
 			this._width = width
 			this._height = height
 
-			this.createMusic()
+			this.createMusicAndSound()
 		}
 
 		public getMapId()
@@ -68,7 +71,7 @@ module fly {
 			battlescene.initScene(this._tiledMapObjs)
 			this._parent.addChild(battlescene)
 
-			this.music.playBgm(this._mapId)
+			this.playMusic("bgm" + this._mapId + ".mp3")
 		}
 
 		private loadTiledMap(mapId:number)
@@ -166,16 +169,48 @@ module fly {
 			this.loadNow()
 		}
 
-		private createMusic()
+		private createMusicAndSound()
 		{
 			let music = new FlyMusic()
 			this.music = music
+
+			let sound = new FlyMusic()
+			this.sound = sound
+		}
+
+		public playSound(name:string, time:number = 0)
+		{
+			this.sound.playObject(name, time)
+			if (time == 0)
+			{
+				this.soundName = name
+			}
+		}
+
+		public stopSound(name:string)
+		{
+			if (this.soundName == name)
+			{
+				this.sound.stop()
+				this.soundName = ""
+			}
+		}
+
+		public playMusic(name:string)
+		{
+			this.music.playObject(name)
+		}
+
+		public isRunningSound(name:string)
+		{
+			return this.soundName == name
 		}
 
 		public reset()
 		{
 			this._parent.removeChildren()
 			this.music.stop()
+			this.sound.stop()
 		}
 
 		public createMovie(reason:number)

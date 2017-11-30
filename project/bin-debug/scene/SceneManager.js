@@ -20,6 +20,7 @@ var fly;
             _this._mapId = 0;
             _this._maxId = 5;
             _this._tiledMapObjs = [];
+            _this.soundName = "";
             _this.health = 1;
             _this.reasons = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"];
             return _this;
@@ -31,7 +32,7 @@ var fly;
             this._parent = parent;
             this._width = width;
             this._height = height;
-            this.createMusic();
+            this.createMusicAndSound();
         };
         SceneManager.prototype.getMapId = function () {
             return this._mapId;
@@ -57,7 +58,7 @@ var fly;
             var battlescene = new fly.BattleScene();
             battlescene.initScene(this._tiledMapObjs);
             this._parent.addChild(battlescene);
-            this.music.playBgm(this._mapId);
+            this.playMusic("bgm" + this._mapId + ".mp3");
         };
         SceneManager.prototype.loadTiledMap = function (mapId) {
             this._mapId = mapId;
@@ -138,13 +139,35 @@ var fly;
             this._tiledMapObjs = tiledMapObjs;
             this.loadNow();
         };
-        SceneManager.prototype.createMusic = function () {
+        SceneManager.prototype.createMusicAndSound = function () {
             var music = new fly.FlyMusic();
             this.music = music;
+            var sound = new fly.FlyMusic();
+            this.sound = sound;
+        };
+        SceneManager.prototype.playSound = function (name, time) {
+            if (time === void 0) { time = 0; }
+            this.sound.playObject(name, time);
+            if (time == 0) {
+                this.soundName = name;
+            }
+        };
+        SceneManager.prototype.stopSound = function (name) {
+            if (this.soundName == name) {
+                this.sound.stop();
+                this.soundName = "";
+            }
+        };
+        SceneManager.prototype.playMusic = function (name) {
+            this.music.playObject(name);
+        };
+        SceneManager.prototype.isRunningSound = function (name) {
+            return this.soundName == name;
         };
         SceneManager.prototype.reset = function () {
             this._parent.removeChildren();
             this.music.stop();
+            this.sound.stop();
         };
         SceneManager.prototype.createMovie = function (reason) {
             // let objmgr = ObjectManager.inst()
@@ -198,3 +221,4 @@ var fly;
     fly.SceneManager = SceneManager;
     __reflect(SceneManager.prototype, "fly.SceneManager");
 })(fly || (fly = {}));
+//# sourceMappingURL=SceneManager.js.map

@@ -2,8 +2,10 @@ module fly {
 	export class BattleScene extends egret.DisplayObjectContainer {
 		world:p2.World
 		touchNode:BattleTouchNode
-		progress:UIProgress
 		tiledMapGroups:TiledMapGroup[]
+
+		progress:UIProgress
+		progressText:egret.TextField
 
 		objmgr:ObjectManager = ObjectManager.inst()
 		player:Player
@@ -52,12 +54,12 @@ module fly {
 		private updatePower(dt:number)
 		{
 			this.lastPowerTime += dt
-			if (this.lastPowerTime > 1)
+			if (this.lastPowerTime > 0.5)
 			{
 				this.objmgr.players.forEach(player => {
-					player.changePower(player.power + FlyParam.move_power)
+					player.changePower(player.power + FlyParam.move_power*0.5)
 				})
-				this.lastPowerTime -= 1
+				this.lastPowerTime -= 0.5
 			}
 		}
 
@@ -149,6 +151,18 @@ module fly {
 			this.addChild(progress);
 			this.progress = progress
 
+			// 体重条数值
+			var text:egret.TextField = new egret.TextField()
+			text.text = FlyParam.PlayerInitPower + "/100"
+			text.size = 36;
+			text.textColor = 0x000000;
+			text.anchorOffsetX = 0;
+			text.anchorOffsetY = 0.5
+			text.x = 20
+			text.y = progress.height/2
+			this.addChild(text);
+			this.progressText = text
+
 			// 监听能量变化事件
 			this.addEventListener("ChangePower", this.onChangePower, this)
 
@@ -179,6 +193,7 @@ module fly {
 		private onChangePower(evt:egret.Event)
 		{
 			this.progress.changeValue(evt.data)
+			this.progressText.text = evt.data + "/100"
 		}
 
 		private onTickWorld(dt)
@@ -321,7 +336,7 @@ module fly {
 			this.objmgr.sprites.forEach(value => {
 				if (value.body.id == id || value.body.id == pid)
 				{
-					value.isDestroy = true
+					value.destroy()
 					this.delFromWorld(value)
 				}
 			})

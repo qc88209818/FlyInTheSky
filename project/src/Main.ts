@@ -12,8 +12,6 @@ class Main extends egret.DisplayObjectContainer {
 
     private onAddToStage(event: egret.Event) 
     {
-       
-
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this)
         RES.loadConfig("resource/default.res.json", "resource/")
     }

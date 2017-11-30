@@ -63,18 +63,23 @@ module fly {
 
 		public onTrigger(pid:number):boolean
 		{
-			console.log("FlyObject onTrigger: ", pid)
+			// console.log("FlyObject onTrigger: ", pid)
 			return false
 		}
 
 		public onContactBegin(pid:number)
 		{
-			console.log("FlyObject onContactBegin: ", pid)
+			// console.log("FlyObject onContactBegin: ", pid)
 		}
 
 		public onContactEnd(pid:number)
 		{
-			console.log("FlyObject onContactEnd: ", pid)
+			// console.log("FlyObject onContactEnd: ", pid)
+		}
+
+		public destroy()
+		{
+			this.isDestroy = true
 		}
 	}
 }

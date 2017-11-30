@@ -1,5 +1,7 @@
 module fly {
 	export class EnterGameScene extends egret.Sprite {
+
+        private music:FlyMusic = new FlyMusic()
 	
         public constructor() {
             super()
@@ -9,6 +11,7 @@ module fly {
         private title_bg:egret.Bitmap ;
         private enterGameBtn:egret.Bitmap;
         private  onAddToStage():void{
+            this.music.playObject("start.mp3")
           
 			this.graphics.beginFill(0x000000, 0);
 			this.graphics.drawRect(0, 0, this.stage.stageWidth, this.stage.stageHeight);
@@ -54,9 +57,10 @@ module fly {
         }
 
         private  onTouchClick(evt:egret.TouchEvent) {
-            console.log(""+ this.enterGameBtn.scaleX )
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
+                    this.music.stop()
+
                     let parent = this.parent
                     parent.removeChild(this);
                     let mgr = fly.SceneManager.inst();
@@ -67,7 +71,6 @@ module fly {
         }
 
         private  onTouchCancel(evt:egret.TouchEvent) {
-            console.log(""+ this.enterGameBtn.scaleX )
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
         }
 	}

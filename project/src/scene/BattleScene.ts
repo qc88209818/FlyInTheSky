@@ -241,6 +241,23 @@ module fly {
 					this.contactObstacleBegin(bodyA.id, bodyB.id)
 				}
 			}
+			// 玩家触碰障碍物
+			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isBlock(bodyB.id))
+			{
+				// 先调用触发器，后触发碰撞逻辑
+				if (!this.trigger(bodyB.id, bodyA.id))
+				{
+					this.contactObstacleBegin(bodyB.id, bodyA.id)
+				}
+			}
+			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isBlock(bodyA.id))
+			{
+				// 先调用触发器，后触发碰撞逻辑
+				if(!this.trigger(bodyA.id, bodyB.id))
+				{
+					this.contactObstacleBegin(bodyA.id, bodyB.id)
+				}
+			}
 			// 玩家触碰Ai
 			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isAiPlayer(bodyB.id))
 			{

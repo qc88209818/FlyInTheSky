@@ -20,7 +20,7 @@ module fly {
 				, type:op.type || p2.Body.DYNAMIC
 				, fixedRotation:true
 				, position:[this.x, this.y]
-				, damping:op.damping || 0.7
+				, damping:op.damping || 0.8
 			})
 			this.initShape(this.width, this.height)
 			this.setGroupAndMask(ObjectGroup.Obstacle, ObjectMask.Obstacle)

@@ -47,7 +47,14 @@ module fly {
 		{
 			this.health = 3
 			this.reset()
-			this.createPassScene(0, this)
+			if (this._mapId + 1 < this._maxId)
+			{
+				this.createPassScene(0, this)
+			}
+			else
+			{
+				this.createPassScene(-1, this)
+			}
 		}
 
 		public loadAgain(reason:number)
@@ -68,24 +75,41 @@ module fly {
 
 		public onClickBtn(reason:number)
 		{
+			if (reason > 0)
+			{
+				if (this._passScene)
+				{
+					this._parent.removeChild(this._passScene)
+					this._passScene = null
+				}
+				this.loadNow()
+			}
+			else if (reason == 0)
+			{
+				if (this._passScene)
+				{
+					this._parent.removeChild(this._passScene)
+					this._passScene = null
+				}
+				this.loadTiledMap(this._mapId + 1)
+			}
+			else
+			{
+				console.log("分享")
+			}
+		}
+
+		public onClickBack()
+		{
 			if (this._passScene)
 			{
 				this._parent.removeChild(this._passScene)
 				this._passScene = null
 			}
+			this.reset()
 
-			if (reason > 0)
-			{
-				this.loadNow()
-			}
-			else if (this._mapId + 1 <= this._maxId)
-			{
-				this.loadTiledMap(this._mapId + 1)
-			}
-			else
-			{
-				console.log("You Win!")
-			}
+			let enterGameScene = new fly.EnterGameScene();
+        	this._parent.addChild(enterGameScene);
 		}
 
 		private loadTiledMap(mapId:number)

@@ -9,7 +9,12 @@ module fly {
 		pRadius:number
 		pVelocity:number
 
-		soundName:string = ""
+		private _soundName:string = ""
+
+		private _dir:number = 1
+		private _nowState:string = "front"
+		private _movieClip:egret.MovieClip
+
 		
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -18,7 +23,7 @@ module fly {
 			this.radius = radius
 			this.pRadius = op.pRadius || radius*4
 			this.pVelocity = op.pVelocity || FlyParam.forceScale/3
-			this.soundName = op.sound || "barking.mp3"
+			this._soundName = op.sound || "dog.mp3"
 
 			this.initBody({
 				id:FlyConfig.getAiPlayerId()
@@ -37,18 +42,20 @@ module fly {
 
 		private initBitmap(path:string)
 		{
-			let png = FlyTools.createBitmapByName(path)
+			var png = new egret.MovieClip(this.objmgr.dogFactory.generateMovieClipData("dog"));
+			png.gotoAndPlay("front", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.scaleX = this.baseScale * this.radius/png.width
+			png.scaleX = this.baseScale * this.radius/png.width * this._dir
 			png.scaleY = this.baseScale * this.radius/png.height
 			this.addChild(png)
+			this._movieClip = png
 		}
 
 		public destroy()
 		{
 			super.destroy()
-			SceneManager.inst().stopSound(this.soundName, this)
+			SceneManager.inst().stopSound(this._soundName, this)
 		}
 
 		public onTrigger(pid:number)
@@ -80,13 +87,54 @@ module fly {
 				let forceScale = this.pVelocity
 				this.body.velocity = [normal[0]*forceScale,  normal[1]*forceScale]
 
-				SceneManager.inst().playSound(this.soundName, this)
+				SceneManager.inst().playSound(this._soundName, this)
 			}
 			else
 			{
 				this.body.velocity = [0, 0]
-				SceneManager.inst().stopSound(this.soundName, this)
+				SceneManager.inst().stopSound(this._soundName, this)
 			}
+
+			this.updateDir()
+		}
+
+		private updateDir()
+		{
+			let x = Math.abs(this.body.velocity[0])
+			let y = Math.abs(this.body.velocity[1])
+			if (this.body.velocity[1] < 0 && x < y)
+			{
+				this.gotoAndPlay("back")
+			}
+			else if (this.body.velocity[1] > 0 && x < y)
+			{
+				this.gotoAndPlay("front")
+			}
+			else if (this.body.velocity[0] > 0 && x >= y)
+			{
+				this.gotoAndPlaySide("right", 1)
+			}
+			else if (this.body.velocity[0] < 0 && x >= y)
+			{
+				this.gotoAndPlaySide("right", -1)
+			}
+		}
+
+		private gotoAndPlay(anim:string)
+		{
+			if (this._nowState == anim) return;
+			this._movieClip.gotoAndPlay(anim, -1)
+			this._nowState = anim
+		}
+
+		private gotoAndPlaySide(anim:string, dir:number)
+		{
+			if (this._nowState == anim && this._dir == dir) return;
+			this._movieClip.gotoAndPlay(anim, -1)
+			this._nowState = anim
+			this._dir = dir
+
+			this._movieClip.scaleX = this.baseScale * this.radius/this._movieClip.width * this._dir
 		}
 	}
 }

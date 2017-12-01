@@ -16,9 +16,9 @@ module fly {
 
 	export enum ObjectMask {
 		None     = 0,
-		Block    = ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.Obstacle|ObjectGroup.AiPlayer,
-		Player   = ObjectGroup.Player|ObjectGroup.Block|ObjectGroup.Obstacle|ObjectGroup.AiPlayer,
-		Obstacle = ObjectGroup.Obstacle|ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.AiPlayer,
+		Block    = ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.AiPlayer,
+		Player   = ObjectGroup.Player|ObjectGroup.Block|ObjectGroup.AiPlayer,
+		Obstacle = ObjectGroup.Obstacle|ObjectGroup.AiPlayer,
 		Property = 0,
 		AiPlayer = ObjectGroup.AiPlayer|ObjectGroup.Block|ObjectGroup.Player|ObjectGroup.Obstacle
 	}

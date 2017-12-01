@@ -292,8 +292,15 @@ module fly {
 
 		private afterMovieClip()
 		{
-			this.objmgr.scene.delPlayerToWorld(this)
-			this.objmgr.scene.isRunning = this.reason
+			if (this.isListener)
+			{
+				this.objmgr.scene.delPlayerToWorld(this)
+				this.objmgr.scene.isRunning = this.reason
+			}
+			else
+			{
+				this.reset(this.x, this.y)
+			}
 		}
 
 		private addPowerMovie(power:number)

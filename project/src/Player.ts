@@ -264,7 +264,7 @@ module fly {
 			if (this.isDestroy) return
 			this.isDestroy = true
 
-			this.reason = reason>2?2:reason
+			this.reason = reason<=2?reason:(this.step==0?1:2)
 			this.dieMovieClip.visible = true
 			this.movieClip.visible = false
 			this.dieMovieClip.gotoAndPlay("die"+this.reason, 1)
@@ -272,7 +272,7 @@ module fly {
 			if (this.isListener)
 			{
 				this.objmgr.scene.stop()
-				SceneManager.inst().music.playObject("defeated.mp3")
+				SceneManager.inst().music.playObject("defeated.mp3", 1)
 			}
 		}
 
@@ -285,7 +285,7 @@ module fly {
 			if (this.isListener)
 			{
 				this.objmgr.scene.stop()
-				SceneManager.inst().music.playObject("victory.mp3")
+				SceneManager.inst().music.playObject("victory.mp3", 1)
 				this.afterMovieClip()
 			}
 		}

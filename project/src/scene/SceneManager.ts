@@ -227,9 +227,9 @@ module fly {
 			this.sound = sound
 		}
 
-		public playSound(name:string, obj:any, time:number = 0)
+		public playSound(name:string, obj:any, time:number = 0, force:boolean = false)
 		{
-			if (this.soundObj == null)
+			if (this.soundObj == null || force)
 			{
 				this.sound.playObject(name, time)
 				this.soundObj = obj

@@ -637,12 +637,6 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="305" name="windBlock" type="blockrect" x="375" y="678" width="80" height="120">
-   <properties>
-    <property name="path" value="wind_reverse_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
   <object id="308" name="wall" type="blockrect" x="1339.06" y="854.246" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>

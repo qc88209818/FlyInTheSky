@@ -79,7 +79,7 @@ module fly {
 
 			if (dist < this.radius * 2)
 			{
-				SceneManager.inst().playSound(this.soundName, this)
+				SceneManager.inst().playSound(this.soundName, this, 0, true)
 			}
 			else
 			{

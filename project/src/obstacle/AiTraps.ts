@@ -46,8 +46,8 @@ module fly {
 			png.gotoAndPlay("front", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.scaleX = this.baseScale * this.radius/png.width * this._dir
-			png.scaleY = this.baseScale * this.radius/png.height
+			png.scaleX = this.baseScale * this._dir
+			png.scaleY = this.baseScale
 			this.addChild(png)
 			this._movieClip = png
 		}
@@ -134,7 +134,7 @@ module fly {
 			this._nowState = anim
 			this._dir = dir
 
-			this._movieClip.scaleX = this.baseScale * this.radius/this._movieClip.width * this._dir
+			this._movieClip.scaleX = this.baseScale * this._dir
 		}
 	}
 }

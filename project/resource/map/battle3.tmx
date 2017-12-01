@@ -4,77 +4,9 @@
   <object id="1" name="self" type="player" x="960.895" y="1738.71" width="100" height="100">
    <ellipse/>
   </object>
-  <object id="2" x="-1864.65" y="729.195">
-   <ellipse/>
-  </object>
-  <object id="10" name="player" type="player" x="-1236.77" y="1597.82" width="100" height="100">
-   <ellipse/>
-  </object>
-  <object id="12" name="blockcircle" type="blockcircle" x="-689.622" y="156.934" width="100" height="100">
-   <properties>
-    <property name="path" value="tree_2_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="15" name="traps" type="traps" x="-510.69" y="1169.73" width="100" height="100">
-   <properties>
-    <property name="path" value="traps_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="16" name="grassDark" type="blockrect" x="-1482.42" y="621.049" width="100" height="100">
-   <properties>
-    <property name="path" value="grassDark_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="17" name="weighttraps" type="weighttraps" x="-535.568" y="1507.08" width="100" height="100">
-   <properties>
-    <property name="max" value="3"/>
-    <property name="min" value="0.5"/>
-    <property name="path" value=""/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="18" name="cake" type="candy" x="-1128.4" y="986.612" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
   <object id="19" name="grass" type="blockrect" x="-3.40551" y="1.0808" width="50" height="1985.67">
    <properties>
     <property name="path" value=""/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="78" name="hamburg" type="candy" x="-1091.03" y="587.917" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="30"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="98" name="weighttraps" type="weighttraps" x="-541.707" y="1723.2" width="100" height="100">
-   <properties>
-    <property name="min" value="1"/>
-    <property name="path" value="well_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="132" name="bucket" type="weightblock" x="-1085.57" y="171.322" width="100" height="100">
-   <properties>
-    <property name="min" value="280"/>
-    <property name="path" value="bucket_png"/>
-    <property name="type" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="137" name="wall" type="blockrect" x="-1505.33" y="300.892" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -85,15 +17,6 @@
     <property name="velocity" value="300"/>
    </properties>
    <ellipse/>
-  </object>
-  <object id="288" name="movetraps" type="movetraps" x="-494.291" y="665.339" width="100" height="100">
-   <properties>
-    <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1100"/>
-    <property name="ty" value="1227"/>
-    <property name="type" type="int" value="0"/>
-    <property name="velocity" value="200"/>
-   </properties>
   </object>
   <object id="362" name="dog" type="aitraps" x="1343" y="517.695" width="150" height="150">
    <properties>

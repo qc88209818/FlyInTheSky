@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "yellow_button_jpg,well_png,wall_png,virtual_button_png,virtual_background_png,treeCut_png,traps_png,toilet_png,title_png,television_png,table2_png,table_png,switch_png,sofa5_png,sofa4_png,sofa3_png,sofa2_png,sofa1_png,shower2_png,shower_png,red_button_jpg,playBtn_png,plane_png,load_mask_png,load_bar_png,ice_png,hamburg_png,grassLight_png,grassDark_png,chair2_png,chair1_png,cake_png,bucket_png,bed_png,bathtub2_png,bathtub1_png,bar_bg_png,background_jpg,playerNormalMode_png,playerNormalMode_json,playerDie_png,playerDie_json,moveTraps_png,grassLight_half_png,grassDark_half_png,wall_half_png,progress_bar_frame_png,progress_bar_png,progress_bar_background_png,nextBtn_png,againBtn_png,backBtn_png,wind_png,wind_json,shareBtn_png,monsterWall_png,dog_json,monsterWall_json,dog_png,erweima_png,player_win_png,player_win_json",
+			"keys": "yellow_button_jpg,well_png,wall_png,virtual_button_png,virtual_background_png,treeCut_png,traps_png,toilet_png,title_png,television_png,table2_png,table_png,switch_png,sofa5_png,sofa4_png,sofa3_png,sofa2_png,sofa1_png,shower2_png,shower_png,red_button_jpg,playBtn_png,plane_png,load_mask_png,load_bar_png,ice_png,hamburg_png,grassLight_png,grassDark_png,chair2_png,chair1_png,cake_png,bucket_png,bed_png,bathtub2_png,bathtub1_png,bar_bg_png,background_jpg,playerNormalMode_png,playerNormalMode_json,playerDie_png,playerDie_json,moveTraps_png,grassLight_half_png,grassDark_half_png,wall_half_png,progress_bar_frame_png,progress_bar_png,progress_bar_background_png,nextBtn_png,againBtn_png,backBtn_png,wind_png,wind_json,shareBtn_png,monsterWall_png,dog_json,monsterWall_json,dog_png,erweima_png,player_win_png,player_win_json,drug_png",
 			"name": "preload"
 		},
 		{
@@ -329,6 +329,11 @@
 			"url": "assets/movieclip/player_win.json",
 			"type": "json",
 			"name": "player_win_json"
+		},
+		{
+			"name": "drug_png",
+			"type": "image",
+			"url": "assets/drug.png"
 		}
 	]
 }

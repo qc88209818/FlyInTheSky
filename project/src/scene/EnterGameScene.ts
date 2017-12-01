@@ -6,8 +6,9 @@ module fly {
         public constructor() {
             super()
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-                this.addEventListener(egret.Event.REMOVED_FROM_STAGE,this.removeStage,this);
-            }
+            this.addEventListener(egret.Event.REMOVED_FROM_STAGE,this.removeStage,this);
+        }
+
         private title_bg:egret.Bitmap ;
         private enterGameBtn:egret.Bitmap;
         private  onAddToStage():void{
@@ -17,29 +18,43 @@ module fly {
 			this.graphics.drawRect(0, 0, this.stage.stageWidth, this.stage.stageHeight);
 			this.graphics.endFill()
 
+            let width = this.stage.stageWidth
+            let height = this.stage.stageHeight
 
-            this.title_bg = new  egret.Bitmap();
-            this.title_bg.texture = RES.getRes("title_png");
-            this.title_bg.anchorOffsetX = this.title_bg.width/2
-            this.title_bg.anchorOffsetY = this.title_bg.height/2
-            this.title_bg.x = this.stage.stageWidth/2;
-            this.title_bg.y = 170;
-            this.title_bg.scaleX = this.title_bg.scaleY = 2;
-            this.addChild(this.title_bg);
+            let title_bg = new  egret.Bitmap();
+            title_bg.texture = RES.getRes("title_png");
+            title_bg.anchorOffsetX = title_bg.width/2
+            title_bg.anchorOffsetY = title_bg.height/2
+            title_bg.x = width/2;
+            title_bg.y = 170;
+            title_bg.scaleX = title_bg.scaleY = 2;
+            this.addChild(title_bg);
+            this.title_bg = title_bg
 
-            this.enterGameBtn = new  egret.Bitmap();
-            this.enterGameBtn.texture = RES.getRes("playBtn_png");
-            this.enterGameBtn.anchorOffsetX = this.enterGameBtn.width/2
-            this.enterGameBtn.anchorOffsetY = this.enterGameBtn.height/2
-            this.enterGameBtn.x = this.stage.stageWidth/2;
-            this.enterGameBtn.y = this.stage.stageHeight/2 - 70;
-            this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
-            this.addChild(this.enterGameBtn);
+            // 过场动画
+            let png = new egret.MovieClip(ObjectManager.inst().winFactory.generateMovieClipData("Win"));
+			png.gotoAndPlay("play", -1)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.x = width/2 - 10
+			png.y = height/2 - 270
+			png.scaleX = png.scaleY = 2
+			this.addChild(png)
 
-             this.touchEnabled = true
-			 this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this)
-			 this.addEventListener(egret.TouchEvent.TOUCH_END,   this.onTouchClick,   this)
-			 this.addEventListener(egret.TouchEvent.TOUCH_CANCEL,this.onTouchCancel,   this)
+            // 开始按钮
+            let enterGameBtn = FlyTools.createBitmapByName("playBtn_png")
+            enterGameBtn.anchorOffsetX = enterGameBtn.width/2
+            enterGameBtn.anchorOffsetY = enterGameBtn.height/2
+            enterGameBtn.x = width/2
+            enterGameBtn.y = png.y + png.height*2 + 150;
+            enterGameBtn.scaleX = enterGameBtn.scaleY = 2;
+            this.addChild(enterGameBtn);
+            this.enterGameBtn = enterGameBtn
+
+            this.touchEnabled = true
+			this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this)
+			this.addEventListener(egret.TouchEvent.TOUCH_END,   this.onTouchClick,   this)
+			this.addEventListener(egret.TouchEvent.TOUCH_CANCEL,this.onTouchCancel,   this)
             this.addEventListener(egret.TouchEvent.TOUCH_TAP,   this.onTouchCancel,   this)
         }
 

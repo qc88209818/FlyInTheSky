@@ -6,19 +6,16 @@ module fly {
 
 		// reasons:string[] = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 
+		private movieclip:egret.MovieClip
 		private enterGameBtn:egret.Bitmap
 		private backGameBtn:egret.Bitmap
 		private erweima:egret.Bitmap
 		private reason:number
 		private mgr:SceneManager
 
-		height:number
-
         public initScene(reason:number, mgr:SceneManager):void{
 			this.reason = reason
 			this.mgr = mgr
-
-			let objmgr = ObjectManager.inst()
 
 			// 背景
 			var bg = FlyTools.createBitmapByName("background_jpg")
@@ -36,54 +33,31 @@ module fly {
             title_bg.scaleX = title_bg.scaleY = 2;
             this.addChild(title_bg);
 
-			// 死亡动画
-			let png = new egret.MovieClip(objmgr.mcFactory.generateMovieClipData("playerState"));
-			png.gotoAndPlay("front_move_normal", -1)
-			png.anchorOffsetX = png.width/2
-			png.anchorOffsetY = png.height/2
-			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 250
-			png.scaleX = 2
-			png.scaleY = 2
-			this.addChild(png)
+
+			let array = []
+			if (reason == 0)
+			{
+				array = this.createWinScene()
+			}
+			else if(reason > 0)
+			{
+				array = this.createLoseScene(reason)
+			}
+			else
+			{
+				array = this.createPassScene()
+			}
 
 			// 原因
-			var txt = "我死了" + SceneManager.inst().health + "次完成所有关卡！不服来战！"
-			if (SceneManager.inst().health == 0)
-			{
-				txt = "无伤通关，舍我其谁！不服来战！"
-			}
-			if (reason > 0)
-			{
-				txt = "胜败乃兵家常事，请大侠重新来过！"
-			}
-			else if (reason == 0)
-			{
-				txt = "恭喜过关，请再接再厉！"
-			}
-
 			var text:egret.TextField = new egret.TextField()
-			text.text = txt
+			text.text = array[0]
 			text.size = 48
 			text.textColor = 0x000000
 			text.anchorOffsetX = text.width/2
 			text.anchorOffsetY = text.height/2
 			text.x = FlyConfig.stageWidth/2
-			text.y = png.y + png.height*png.scaleY
+			text.y = this.movieclip.y + this.movieclip.height*2 + 30
 			this.addChild(text);
-
-			// 下一步
-			var path = "shareBtn_png"
-			if (reason > 0)
-			{
-				path = "againBtn_png"
-			}
-			else if (reason == 0)
-			{
-				path = "nextBtn_png"
-			}
-
-			this.height = text.y + 70
 
 			// 二维码
 			let erweima = FlyTools.createBitmapByName("erweima_png")
@@ -97,7 +71,7 @@ module fly {
 			this.erweima = erweima
 
 			// 下一步
-			var enterGameBtn = FlyTools.createBitmapByName(path)
+			var enterGameBtn = FlyTools.createBitmapByName(array[1])
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = FlyConfig.stageWidth/2
@@ -111,7 +85,7 @@ module fly {
             backGameBtn.anchorOffsetX = backGameBtn.width/2
             backGameBtn.anchorOffsetY = backGameBtn.height/2
             backGameBtn.x = FlyConfig.stageWidth/2
-            backGameBtn.y = enterGameBtn.y + enterGameBtn.height + 150;
+            backGameBtn.y = this.enterGameBtn.y + this.enterGameBtn.height + 150;
             backGameBtn.scaleX = backGameBtn.scaleY = 2;
             this.addChild(backGameBtn);
 			this.backGameBtn = backGameBtn
@@ -122,6 +96,67 @@ module fly {
 			this.addEventListener(egret.TouchEvent.TOUCH_CANCEL,this.onTouchCancel,   this)
             this.addEventListener(egret.TouchEvent.TOUCH_TAP,   this.onTouchCancel,   this)
         }
+
+		private createWinScene()
+		{
+			let objmgr = ObjectManager.inst()
+
+			// 过场动画
+			let png = new egret.MovieClip(objmgr.winFactory.generateMovieClipData("Win"));
+			png.gotoAndPlay("play", -1)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.x = FlyConfig.stageWidth/2 - 10
+			png.y = FlyConfig.stageHeight/2 - 270
+			png.scaleX = png.scaleY = 2
+			this.addChild(png)
+			this.movieclip = png
+
+			return ["恭喜过关，请再接再厉！", "nextBtn_png"]
+		}
+
+		private createLoseScene(reason:number)
+		{
+			let objmgr = ObjectManager.inst()
+
+			// 过场动画
+			let png = new egret.MovieClip(objmgr.dieFactory.generateMovieClipData("playerDie"));
+			png.gotoAndPlay("die"+reason, -1)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.x = FlyConfig.stageWidth/2 - 10
+			png.y = FlyConfig.stageHeight/2 - 270
+			png.scaleX = png.scaleY = 2
+			this.addChild(png)
+			this.movieclip = png
+
+			return ["胜败乃兵家常事，请大侠重新来过！", "againBtn_png"]
+		}
+
+
+		private createPassScene()
+		{
+			let objmgr = ObjectManager.inst()
+
+			// 过场动画
+			let png = new egret.MovieClip(objmgr.winFactory.generateMovieClipData("Win"));
+			png.gotoAndPlay("play", -1)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.x = FlyConfig.stageWidth/2 - 10
+			png.y = FlyConfig.stageHeight/2 - 270
+			png.scaleX = png.scaleY = 2
+			this.addChild(png)
+			this.movieclip = png
+
+			var txt = "我死了" + SceneManager.inst().health + "次完成所有关卡！不服来战！"
+			if (SceneManager.inst().health == 0)
+			{
+				txt = "无伤通关，舍我其谁！不服来战！"
+			}
+
+			return [txt, "shareBtn_png"]
+		}
 
 		private onTouchBegin(evt:egret.TouchEvent) {
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){

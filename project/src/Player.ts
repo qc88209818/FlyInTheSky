@@ -264,11 +264,10 @@ module fly {
 			if (this.isDestroy) return
 			this.isDestroy = true
 
-			this.reason = reason
+			this.reason = reason>2?2:reason
 			this.dieMovieClip.visible = true
 			this.movieClip.visible = false
-			this.dieMovieClip.gotoAndPlay("die1", 1)
-			// this.dieMovieClip.gotoAndPlay("die"+reason, 1)
+			this.dieMovieClip.gotoAndPlay("die"+this.reason, 1)
 
 			if (this.isListener)
 			{
@@ -283,27 +282,18 @@ module fly {
 			this.isDestroy = true
 
 			this.reason = 0
-			this.dieMovieClip.visible = true
-			this.movieClip.visible = false
-			this.dieMovieClip.gotoAndPlay("die1", 1)
-			this.objmgr.scene.stop()
-
 			if (this.isListener)
 			{
+				this.objmgr.scene.stop()
 				SceneManager.inst().music.playObject("victory.mp3")
+				this.afterMovieClip()
 			}
 		}
 
 		private afterMovieClip()
 		{
 			this.objmgr.scene.delPlayerToWorld(this)
-
-			egret.setTimeout(function(){
-				if (this.isListener)
-				{
-					this.objmgr.scene.isRunning = this.reason
-				}
-			}, this, 500)
+			this.objmgr.scene.isRunning = this.reason
 		}
 
 		private addPowerMovie(power:number)

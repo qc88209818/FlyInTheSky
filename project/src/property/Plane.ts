@@ -35,8 +35,8 @@ module fly {
 			if (path == null) return;
 			
 			let png = FlyTools.createBitmapByName(path)
-			png.scaleX = this.baseScale
-			png.scaleY = this.baseScale
+			png.scaleX = this.baseScale * this.radius/png.width
+			png.scaleY = this.baseScale * this.radius/png.height
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			this.addChild(png)

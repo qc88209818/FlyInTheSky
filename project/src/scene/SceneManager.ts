@@ -16,7 +16,7 @@ module fly {
 		sound:FlyMusic 		// 音效
 		soundObj:any
 
-		health:number = 1
+		health:number
 
 		static scenemgr:SceneManager = new SceneManager()
 		public static inst(): SceneManager
@@ -29,6 +29,7 @@ module fly {
 			this._parent = parent
 			this._width = width
 			this._height = height
+			this.health = 0
 
 			this.createMusicAndSound()
 		}
@@ -45,7 +46,6 @@ module fly {
 
 		public loadNext()
 		{
-			this.health = 3
 			this.reset()
 			if (this._mapId + 1 < this._maxId)
 			{
@@ -59,7 +59,7 @@ module fly {
 
 		public loadAgain(reason:number)
 		{
-			this.health -= 1
+			this.health += 1
 			this.reset()
 			this.createPassScene(reason, this)
 		}
@@ -95,12 +95,23 @@ module fly {
 			}
 			else
 			{
-				console.log("分享")
+				let rt:egret.RenderTexture = new egret.RenderTexture;
+				let rect = new egret.Rectangle(0, 0, FlyConfig.stageWidth, FlyConfig.stageHeight)
+				rt.drawToTexture(this._passScene, rect);
+				// rt.saveToFile("image/png", "share.png", rect);
+
+				let divImage = document.getElementById("divImage");//获取DIV
+				let shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
+				shareImage.src = rt.toDataURL('image/png');//把数据赋值给Image
+				divImage.style.display = "block";//显示DIV
+
+				this.onClickBack()
 			}
 		}
 
 		public onClickBack()
 		{
+			this.health = 0
 			if (this._passScene)
 			{
 				this._parent.removeChild(this._passScene)

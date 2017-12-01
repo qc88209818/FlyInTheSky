@@ -6,16 +6,25 @@ module fly {
 
 		// reasons:string[] = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 
-		private enterGameBtn:egret.Bitmap;
-		private backGameBtn:egret.Bitmap;
+		private enterGameBtn:egret.Bitmap
+		private backGameBtn:egret.Bitmap
+		private erweima:egret.Bitmap
 		private reason:number
 		private mgr:SceneManager
+
+		height:number
 
         public initScene(reason:number, mgr:SceneManager):void{
 			this.reason = reason
 			this.mgr = mgr
 
 			let objmgr = ObjectManager.inst()
+
+			// 背景
+			var bg = FlyTools.createBitmapByName("background_jpg")
+			bg.scaleX = FlyConfig.width/bg.width
+			bg.scaleY = FlyConfig.height/bg.height
+			this.addChild(bg)
 
 			// 标题
 			let title_bg = new  egret.Bitmap();
@@ -39,7 +48,11 @@ module fly {
 			this.addChild(png)
 
 			// 原因
-			var txt = "已经完成所有关卡！恭喜恭喜！"
+			var txt = "我死了" + SceneManager.inst().health + "次完成所有关卡！不服来战！"
+			if (SceneManager.inst().health == 0)
+			{
+				txt = "无伤通关，舍我其谁！不服来战！"
+			}
 			if (reason > 0)
 			{
 				txt = "胜败乃兵家常事，请大侠重新来过！"
@@ -70,8 +83,21 @@ module fly {
 				path = "nextBtn_png"
 			}
 
-			var enterGameBtn = new  egret.Bitmap();
-            enterGameBtn.texture = RES.getRes(path);
+			this.height = text.y + 70
+
+			// 二维码
+			let erweima = FlyTools.createBitmapByName("erweima_png")
+            erweima.anchorOffsetX = erweima.width/2
+            erweima.anchorOffsetY = erweima.height/2
+            erweima.x = FlyConfig.stageWidth/2
+            erweima.y = text.y + text.height*2 + 220;
+            erweima.scaleX = erweima.scaleY = 1.5;
+			erweima.visible = false
+			this.addChild(erweima)
+			this.erweima = erweima
+
+			// 下一步
+			var enterGameBtn = FlyTools.createBitmapByName(path)
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = FlyConfig.stageWidth/2
@@ -81,8 +107,7 @@ module fly {
 			this.enterGameBtn = enterGameBtn
 
 			// 返回
-			var backGameBtn = new  egret.Bitmap();
-            backGameBtn.texture = RES.getRes("backBtn_png");
+			var backGameBtn = FlyTools.createBitmapByName("backBtn_png")
             backGameBtn.anchorOffsetX = backGameBtn.width/2
             backGameBtn.anchorOffsetY = backGameBtn.height/2
             backGameBtn.x = FlyConfig.stageWidth/2
@@ -111,6 +136,9 @@ module fly {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             this.backGameBtn.scaleX = this.backGameBtn.scaleY = 2;
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
+				this.erweima.visible = true
+				this.enterGameBtn.visible = false
+				this.backGameBtn.visible = false
 				this.mgr.onClickBtn(this.reason)
             }
 			else if(this.backGameBtn.hitTestPoint(evt.localX,evt.localY)){

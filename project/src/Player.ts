@@ -161,7 +161,7 @@ module fly {
 			var png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("playerState"));
 			png.gotoAndPlay(this.nowState, -1)
 			png.anchorOffsetX = png.width/2 + 8
-			png.anchorOffsetY = png.height - 20
+			png.anchorOffsetY = png.height*0.8
 			this.addChild(png)
 			this.movieClip = png
 

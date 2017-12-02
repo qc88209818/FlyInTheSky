@@ -158,8 +158,8 @@ module fly {
 		static CandyBaseScale:number			= 2		
 		static TrapsBaseScale:number			= 1		
 		static WeightTrapsBaseScale:number		= 1.5		
-		static PlaneBaseScale:number			= 2
-		static AiBaseScale:number				= 3
+		static PlaneBaseScale:number			= 1.5
+		static AiBaseScale:number				= 1.2
 		static WeightBlockBaseScale:number		= 1
 		static WindBaseScale:number				= 2
 	}

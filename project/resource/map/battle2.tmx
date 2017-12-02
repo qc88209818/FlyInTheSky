@@ -1,1258 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="1108">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="400" tilewidth="10" tileheight="10" nextobjectid="579">
  <objectgroup name="object">
-  <object id="462" name="wall" type="blockrect" x="400.843" y="1899.19" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="463" name="wall" type="blockrect" x="200.843" y="1899.19" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="464" name="wall" type="blockrect" x="700.633" y="1899.23" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="465" name="wall" type="blockrect" x="300.843" y="1899.19" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="466" name="wall" type="blockrect" x="1201.72" y="1900.28" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="467" name="wall" type="blockrect" x="600.633" y="1899.23" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="468" name="wall" type="blockrect" x="100.843" y="1899.19" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="470" name="wall" type="blockrect" x="1000.86" y="1900.48" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="471" name="wall" type="blockrect" x="900.493" y="1899.45" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="472" name="wall" type="blockrect" x="500.843" y="1899.19" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="473" name="wall" type="blockrect" x="1101.62" y="1900.37" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="474" name="wall" type="blockrect" x="800.623" y="1899.23" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="577" name="wall_half" type="blockrect" x="0.43521" y="1843.62" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="578" name="wall_half" type="blockrect" x="0.26721" y="1377.22" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="579" name="wall_half" type="blockrect" x="0.61471" y="1740.47" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="580" name="wall_half" type="blockrect" x="0.29331" y="1532.14" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="581" name="wall_half" type="blockrect" x="0.55551" y="1688.35" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="582" name="wall_half" type="blockrect" x="0.57391" y="1636.43" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="583" name="wall" type="blockrect" x="0.286073" y="1899.01" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="584" name="wall_half" type="blockrect" x="0.24621" y="1428.7" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="585" name="wall_half" type="blockrect" x="0.50001" y="1583.86" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="586" name="wall_half" type="blockrect" x="0.24791" y="1480.34" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="587" name="wall_half" type="blockrect" x="0.58611" y="1792.03" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="588" name="wall_half" type="blockrect" x="0.439999" y="1273.36" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="589" name="wall_half" type="blockrect" x="0.418999" y="1324.84" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="652" name="wall" type="blockrect" x="1302.3" y="1900.13" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="683" name="wall" type="blockrect" x="1503.52" y="1899.94" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="686" name="wall" type="blockrect" x="1703.52" y="1899.94" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="689" name="wall" type="blockrect" x="1603.52" y="1899.94" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="691" name="wall" type="blockrect" x="1903.52" y="1899.94" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="694" name="wall" type="blockrect" x="1803.52" y="1899.94" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="699" name="wall_half" type="blockrect" x="0.497858" y="1220.24" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="700" name="wall_half" type="blockrect" x="0.636558" y="1013.05" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="701" name="wall_half" type="blockrect" x="0.310558" y="856.958" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="702" name="wall_half" type="blockrect" x="0.329858" y="753.838" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="703" name="wall_half" type="blockrect" x="0.481647" y="701.458" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="704" name="wall_half" type="blockrect" x="0.677358" y="1117.09" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="705" name="wall_half" type="blockrect" x="0.355958" y="908.758" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="706" name="wall_half" type="blockrect" x="0.648758" y="1168.65" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="707" name="wall_half" type="blockrect" x="0.618158" y="1064.97" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="708" name="wall_half" type="blockrect" x="0.562658" y="960.478" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="709" name="wall_half" type="blockrect" x="0.308858" y="805.318" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="710" name="wall_half" type="blockrect" x="0.502647" y="649.978" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="711" name="wall_half" type="blockrect" x="0.496855" y="597.998" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="712" name="wall_half" type="blockrect" x="0.635555" y="390.808" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="713" name="wall_half" type="blockrect" x="0.309555" y="234.718" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="714" name="wall_half" type="blockrect" x="0.328855" y="131.598" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="715" name="wall_half" type="blockrect" x="0.480644" y="79.2185" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="716" name="wall_half" type="blockrect" x="0.676355" y="494.848" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="717" name="wall_half" type="blockrect" x="0.354955" y="286.518" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="718" name="wall_half" type="blockrect" x="0.647755" y="546.408" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="719" name="wall_half" type="blockrect" x="0.617155" y="442.728" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="720" name="wall_half" type="blockrect" x="0.561655" y="338.238" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="721" name="wall_half" type="blockrect" x="0.307855" y="183.078" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="722" name="wall_half" type="blockrect" x="0.501644" y="27.7385" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="723" name="wall_half" type="blockrect" x="0.658561" y="-23.7455" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="724" name="wall" type="blockrect" x="901.532" y="-23.3639" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="725" name="wall" type="blockrect" x="701.542" y="-23.3639" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="726" name="wall" type="blockrect" x="101.195" y="-23.5839" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="727" name="wall" type="blockrect" x="1503.88" y="-22.8339" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="728" name="wall" type="blockrect" x="301.752" y="-23.4039" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="729" name="wall" type="blockrect" x="201.752" y="-23.4039" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="730" name="wall" type="blockrect" x="1202.53" y="-22.2239" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="731" name="wall" type="blockrect" x="1804.43" y="-22.6539" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="733" name="wall" type="blockrect" x="501.752" y="-23.4039" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="734" name="wall" type="blockrect" x="1403.21" y="-22.4639" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="735" name="wall" type="blockrect" x="1101.53" y="-23.1139" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="737" name="wall" type="blockrect" x="401.752" y="-23.4039" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="738" name="wall" type="blockrect" x="1001.4" y="-23.1439" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="741" name="wall" type="blockrect" x="1704.43" y="-22.6539" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="742" name="wall" type="blockrect" x="801.542" y="-23.3639" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="743" name="wall" type="blockrect" x="1604.43" y="-22.6539" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="744" name="wall_half" type="blockrect" x="1903.62" y="1223.67" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="747" name="wall_half" type="blockrect" x="1903.24" y="1638.72" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="748" name="wall_half" type="blockrect" x="1903.58" y="497.388" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="749" name="wall_half" type="blockrect" x="1903.25" y="911.898" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="750" name="wall_half" type="blockrect" x="1903.3" y="393.098" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="751" name="wall_half" type="blockrect" x="1903.59" y="1275.23" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="752" name="wall_half" type="blockrect" x="1903.38" y="1379.94" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="754" name="wall_half" type="blockrect" x="1903.44" y="1326.82" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="755" name="wall_half" type="blockrect" x="1903.27" y="860.418" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="756" name="wall_half" type="blockrect" x="1903.25" y="341.298" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="757" name="wall_half" type="blockrect" x="1903.25" y="289.658" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="758" name="wall_half" type="blockrect" x="1903.44" y="704.578" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="760" name="wall_half" type="blockrect" x="1903.56" y="549.308" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="761" name="wall_half" type="blockrect" x="1903.56" y="1171.55" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="762" name="wall_half" type="blockrect" x="1903.45" y="756.558" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="764" name="wall_half" type="blockrect" x="1903.5" y="444.818" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="765" name="wall_half" type="blockrect" x="1903.56" y="1847.05" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="766" name="wall_half" type="blockrect" x="1903.44" y="134.319" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="768" name="wall_half" type="blockrect" x="1903.62" y="601.428" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="769" name="wall_half" type="blockrect" x="1903.42" y="185.799" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="770" name="wall_half" type="blockrect" x="1903.52" y="1743.01" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="772" name="wall_half" type="blockrect" x="1903.59" y="652.988" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="773" name="wall_half" type="blockrect" x="1903.42" y="808.038" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="775" name="wall_half" type="blockrect" x="1903.6" y="82.835" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="776" name="wall_half" type="blockrect" x="1903.5" y="1794.93" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="777" name="wall_half" type="blockrect" x="1903.44" y="1690.44" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="778" name="wall_half" type="blockrect" x="1903.27" y="238.178" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="779" name="wall_half" type="blockrect" x="1904.05" y="29.2891" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="780" name="wall_half" type="blockrect" x="1904.21" y="-22.1949" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="781" name="wall_half" type="blockrect" x="601.122" y="235.926" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="782" name="wall_half" type="blockrect" x="601.142" y="131.806" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="783" name="wall_half" type="blockrect" x="601.471" y="-23.5373" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="784" name="wall_half" type="blockrect" x="601.375" y="339.446" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="785" name="wall_half" type="blockrect" x="601.315" y="27.9467" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="786" name="wall_half" type="blockrect" x="601.168" y="287.726" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="787" name="wall_half" type="blockrect" x="601.121" y="183.286" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="788" name="wall_half" type="blockrect" x="601.294" y="79.4267" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="790" name="wall_half" type="blockrect" x="600.987" y="548.138" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="791" name="wall_half" type="blockrect" x="601.317" y="391.794" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="793" name="wall_half" type="blockrect" x="601.16" y="444.278" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="795" name="wall_half" type="blockrect" x="600.966" y="600.618" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="796" name="wall_half" type="blockrect" x="601.139" y="495.758" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="824" name="wall_half" type="blockrect" x="1302.85" y="134.279" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="827" name="wall_half" type="blockrect" x="1302.25" y="1486.41" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="831" name="wall_half" type="blockrect" x="1303.18" y="-21.064" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="834" name="wall_half" type="blockrect" x="1302.25" y="1434.77" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="839" name="wall_half" type="blockrect" x="1302.3" y="1538.21" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="843" name="wall_half" type="blockrect" x="1302.27" y="1383.29" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="844" name="wall_half" type="blockrect" x="1303.02" y="30.42" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="846" name="wall_half" type="blockrect" x="1302.42" y="1330.91" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="855" name="wall_half" type="blockrect" x="1303" y="81.9" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="859" name="wall" type="blockrect" x="202.018" y="860.184" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="861" name="wall" type="blockrect" x="302.018" y="860.184" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="886" name="wall" type="blockrect" x="904.518" y="1645.39" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="895" name="wall" type="blockrect" x="1803.23" y="397.01" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="897" name="wall" type="blockrect" x="200.813" y="394.415" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="898" name="wall" type="blockrect" x="100.813" y="394.415" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="900" name="wall" type="blockrect" x="601.112" y="653.359" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="901" name="wall" type="blockrect" x="301.454" y="394.271" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="902" name="wall" type="blockrect" x="200.451" y="1383.03" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="903" name="wall" type="blockrect" x="100.451" y="1383.03" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="904" name="wall" type="blockrect" x="300.451" y="1383.03" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="907" name="self" type="player" x="120.467" y="255.775" width="100" height="100">
+  <object id="1" name="self" type="player" x="186.731" y="3706.41" width="100" height="100">
    <ellipse/>
   </object>
-  <object id="908" name="wall_half" type="blockrect" x="301.413" y="342.305" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
+  <object id="2" x="-1874" y="318">
+   <ellipse/>
   </object>
-  <object id="909" name="wall_half" type="blockrect" x="301.367" y="290.505" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="910" name="wall_half" type="blockrect" x="301.366" y="237.865" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="913" name="wall_half" type="blockrect" x="301.899" y="755.697" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="914" name="wall_half" type="blockrect" x="302.051" y="703.317" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="915" name="wall_half" type="blockrect" x="302.072" y="651.837" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="916" name="wall_half" type="blockrect" x="301.878" y="807.177" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="922" name="wall_half" type="blockrect" x="200.813" y="1332.06" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="923" name="wall_half" type="blockrect" x="200.986" y="1228.2" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="924" name="wall_half" type="blockrect" x="201.007" y="1176.72" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="925" name="wall_half" type="blockrect" x="200.834" y="1280.58" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="929" name="wall_half" type="blockrect" x="400.598" y="1434.94" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="930" name="wall_half" type="blockrect" x="400.446" y="1487.32" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="931" name="wall_half" type="blockrect" x="400.619" y="1383.46" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="934" name="wall_half" type="blockrect" x="400.408" y="1540.15" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="935" name="wall_half" type="blockrect" x="400.464" y="1592.64" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="936" name="wall" type="blockrect" x="400.554" y="1645.29" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="937" name="wall" type="blockrect" x="200.207" y="1645.12" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="938" name="wall" type="blockrect" x="300.207" y="1645.12" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="947" name="wall_half" type="blockrect" x="1001.87" y="552.491" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="948" name="wall_half" type="blockrect" x="1001.87" y="499.851" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="955" name="wall_half" type="blockrect" x="1003.78" y="1799.64" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="956" name="wall_half" type="blockrect" x="1003.47" y="1643.63" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="957" name="wall_half" type="blockrect" x="1003.52" y="1695.43" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="958" name="wall_half" type="blockrect" x="1003.72" y="1747.15" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="959" name="wall_half" type="blockrect" x="1003.62" y="1851.12" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="960" name="wall_half" type="blockrect" x="1001.66" y="711.219" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="963" name="wall_half" type="blockrect" x="1001.66" y="763.859" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="964" name="wall_half" type="blockrect" x="1001.54" y="658.622" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="965" name="wall_half" type="blockrect" x="1001.54" y="605.982" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="966" name="wall_half" type="blockrect" x="1001.79" y="923.065" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="967" name="wall_half" type="blockrect" x="1001.75" y="870.424" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="968" name="wall_half" type="blockrect" x="1001.75" y="817.784" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="969" name="wall_half" type="blockrect" x="1001.79" y="975.705" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="970" name="wall_half" type="blockrect" x="1001.91" y="1080.94" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="971" name="wall_half" type="blockrect" x="1001.91" y="1028.3" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="972" name="wall" type="blockrect" x="1002.45" y="1238.36" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="983" name="wall_half" type="blockrect" x="1002.11" y="1132.96" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="984" name="wall_half" type="blockrect" x="1002.11" y="1185.6" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="985" name="wall" type="blockrect" x="1302.33" y="1591.98" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="986" name="wall" type="blockrect" x="1603.68" y="1427.44" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="987" name="wall" type="blockrect" x="1703.81" y="1427.25" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="992" name="wall_half" type="blockrect" x="1703.74" y="1270.64" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="993" name="wall_half" type="blockrect" x="1703.48" y="1114.43" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="994" name="wall_half" type="blockrect" x="1703.76" y="1218.72" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="996" name="wall_half" type="blockrect" x="1703.8" y="1322.76" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="997" name="wall_half" type="blockrect" x="1703.77" y="1374.32" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="998" name="wall_half" type="blockrect" x="1703.69" y="1166.15" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1003" name="wall" type="blockrect" x="1402.69" y="1591.52" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1008" name="wall_half" type="blockrect" x="1503.5" y="1848.92" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1009" name="wall_half" type="blockrect" x="1503.19" y="1692.91" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1010" name="wall_half" type="blockrect" x="1503.24" y="1744.71" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1011" name="wall_half" type="blockrect" x="1503.44" y="1796.43" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1012" name="wall" type="blockrect" x="1302.97" y="186.809" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1030" name="wall" type="blockrect" x="1603.27" y="502.425" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1031" name="wall_half" type="blockrect" x="1603.35" y="449.436" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1032" name="wall_half" type="blockrect" x="1603.54" y="396.994" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1033" name="wall" type="blockrect" x="1503.09" y="502.776" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1034" name="wall" type="blockrect" x="1603.44" y="1114.39" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1037" name="wall" type="blockrect" x="1503.26" y="1113.62" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1041" name="wall_half" type="blockrect" x="1903.59" y="1534.82" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1042" name="wall_half" type="blockrect" x="1903.53" y="1587.94" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1043" name="wall_half" type="blockrect" x="1903.77" y="1431.67" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1044" name="wall_half" type="blockrect" x="1903.74" y="1483.23" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1046" name="wall_half" type="blockrect" x="1503.03" y="1640.23" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1047" name="wall_half" type="blockrect" x="1502.98" y="1587.43" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1048" name="wall_half" type="blockrect" x="1502.95" y="1534.13" width="100" height="55">
-   <properties>
-    <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1049" name="plane" type="plane" x="1651.61" y="1610.43" width="200" height="200">
+  <object id="110" name="plane" type="plane" x="228.556" y="216.565" width="200" height="200">
    <properties>
     <property name="path" value="plane_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1050" name="wall" type="blockrect" x="101.327" y="859.875" width="100" height="100">
+  <object id="113" name="wall" type="blockrect" x="135.317" y="2989.36" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1052" name="wall" type="blockrect" x="1703.35" y="397.085" width="100" height="100">
+  <object id="114" name="wall" type="blockrect" x="235.317" y="2989.36" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1053" name="wall" type="blockrect" x="1402.67" y="502.882" width="100" height="100">
+  <object id="115" name="wall" type="blockrect" x="335.317" y="2989.36" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1056" name="wall_half" type="blockrect" x="1503.43" y="1480.57" width="100" height="55">
+  <object id="116" name="wall" type="blockrect" x="435.317" y="2989.36" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1057" name="wall_half" type="blockrect" x="1503.4" y="1427.27" width="100" height="55">
+  <object id="117" name="wall" type="blockrect" x="535.317" y="2989.36" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1062" name="grassLight" type="blockrect" x="702.846" y="894.229" width="100" height="100">
+  <object id="120" name="wall" type="blockrect" x="1037.86" y="3663.27" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1063" name="hamburg" type="candy" x="306.067" y="1009.06" width="100" height="100">
+  <object id="124" name="wall" type="blockrect" x="835.511" y="3663.3" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="125" name="wall" type="blockrect" x="735.511" y="3663.3" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="126" name="wall" type="blockrect" x="935.511" y="3663.3" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="127" name="wall" type="blockrect" x="735.585" y="3455.06" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="130" name="hamburg" type="candy" x="334.022" y="2519.8" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -1260,7 +81,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1064" name="hamburg" type="candy" x="812.928" y="720.418" width="100" height="100">
+  <object id="133" name="hamburg" type="candy" x="1576.22" y="3524.63" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -1268,21 +89,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1066" name="cake" type="candy" x="306.979" y="1768.6" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1067" name="windtraps" type="windtraps" x="1127.97" y="322.456" width="250" height="250">
-   <properties>
-    <property name="max" type="float" value="40"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1068" name="hamburg" type="candy" x="1537.26" y="640.578" width="100" height="100">
+  <object id="134" name="hamburg" type="candy" x="438.508" y="3205.03" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -1290,7 +97,337 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1070" name="dog" type="aitraps" x="1054.51" y="1417.25" width="150" height="150">
+  <object id="135" name="hamburg" type="candy" x="1712.98" y="3526.12" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="136" name="bucket" type="weightblock" x="1341.16" y="3351.68" width="100" height="100">
+   <properties>
+    <property name="min" value="180"/>
+    <property name="path" value="bucket_png"/>
+   </properties>
+  </object>
+  <object id="142" name="hamburg" type="candy" x="181.541" y="3198.69" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="144" name="wall" type="blockrect" x="434.998" y="3871.18" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="146" name="wall" type="blockrect" x="234.998" y="3871.18" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="147" name="wall" type="blockrect" x="334.998" y="3871.18" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="148" name="wall" type="blockrect" x="534.998" y="3871.18" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="149" name="wall" type="blockrect" x="134.998" y="3871.18" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="150" name="wall" type="blockrect" x="34.9978" y="3871.18" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="154" name="wall" type="blockrect" x="1339.76" y="3663.3" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="155" name="wall" type="blockrect" x="1239.76" y="3663.3" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="156" name="wall" type="blockrect" x="1139.76" y="3663.3" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="157" name="wall" type="blockrect" x="1442.11" y="3663.27" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="158" name="wall" type="blockrect" x="1239.68" y="3352.05" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="159" name="wall" type="blockrect" x="1139.68" y="3352.05" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="161" name="wall" type="blockrect" x="1039.68" y="3352.05" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="163" name="wall" type="blockrect" x="1743.83" y="3663.06" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="164" name="wall" type="blockrect" x="1542.93" y="3663.03" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="166" name="wall" type="blockrect" x="1643.83" y="3663.06" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="167" name="wall" type="blockrect" x="1644.68" y="3351.93" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="168" name="wall" type="blockrect" x="1744.68" y="3351.93" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="169" name="wall" type="blockrect" x="1542.78" y="3351.9" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="171" name="wall" type="blockrect" x="938.636" y="3352.58" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="179" name="traps" type="traps" x="1517.78" y="2757.96" width="100" height="100">
+   <properties>
+    <property name="path" value="traps_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="182" name="wall" type="blockrect" x="1342.34" y="2262.38" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="184" name="wall" type="blockrect" x="1442.34" y="2262.38" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="186" name="wall" type="blockrect" x="1242.34" y="2262.38" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="189" name="wall" type="blockrect" x="939.412" y="2774.24" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="191" name="wall" type="blockrect" x="739.375" y="2774.37" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="193" name="wall" type="blockrect" x="839.241" y="2774.24" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="194" name="wall" type="blockrect" x="841.213" y="2263.37" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="196" name="wall" type="blockrect" x="640.169" y="2263.9" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="197" name="wall" type="blockrect" x="941.213" y="2263.37" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="199" name="wall" type="blockrect" x="741.213" y="2263.37" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="200" name="wall" type="blockrect" x="336.162" y="2669.87" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="202" name="wall" type="blockrect" x="136.118" y="2669.84" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="203" name="wall" type="blockrect" x="436.162" y="2669.87" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="205" name="wall" type="blockrect" x="236.162" y="2669.87" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="206" name="hamburg" type="candy" x="1593.14" y="1152.57" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="207" name="weighttraps" type="weighttraps" x="620.021" y="2396.18" width="100" height="100">
+   <properties>
+    <property name="min" value="30"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="209" name="weighttraps" type="weighttraps" x="622.171" y="2528.79" width="100" height="100">
+   <properties>
+    <property name="min" value="30"/>
+    <property name="path" value="well_png"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="210" name="hamburg" type="candy" x="1345.12" y="557.79" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="211" name="hamburg" type="candy" x="949.878" y="2383.81" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="239" name="wall" type="blockrect" x="640.381" y="1958.74" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="254" name="wall" type="blockrect" x="638.396" y="2669.27" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="255" name="wall" type="blockrect" x="537.396" y="2669.27" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="256" name="wall" type="blockrect" x="1141.69" y="2261.37" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="257" name="wall" type="blockrect" x="1041.69" y="2261.37" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="258" name="wall" type="blockrect" x="1041.05" y="1748.46" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="259" name="wall" type="blockrect" x="840.408" y="1747.45" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="260" name="wall" type="blockrect" x="940.408" y="1747.45" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="261" name="wall" type="blockrect" x="740.523" y="1958.96" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="262" name="wall" type="blockrect" x="1141.05" y="1748.46" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="264" name="dog" type="aitraps" x="354.358" y="1393.27" width="150" height="150">
    <properties>
     <property name="path" value="dog_png"/>
     <property name="radius" value="500"/>
@@ -1298,172 +435,274 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1071" name="wall_half" type="blockrect" x="1302.41" y="1279.01" width="100" height="55">
+  <object id="265" name="wall" type="blockrect" x="1541.25" y="1383.75" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1072" name="wall_half" type="blockrect" x="1302.58" y="1123.51" width="100" height="55">
+  <object id="266" name="wall" type="blockrect" x="1641.9" y="1383.76" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1073" name="wall_half" type="blockrect" x="1302.43" y="1175.89" width="100" height="55">
+  <object id="267" name="wall" type="blockrect" x="1441.25" y="1383.75" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1074" name="wall_half" type="blockrect" x="1302.41" y="1227.37" width="100" height="55">
+  <object id="270" name="wall" type="blockrect" x="1340.78" y="1383.75" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1075" name="grassLight" type="blockrect" x="1399.41" y="808.797" width="100" height="100">
+  <object id="279" name="wall" type="blockrect" x="336.393" y="1059.77" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1076" name="grassLight" type="blockrect" x="1499.58" y="808.824" width="100" height="100">
+  <object id="280" name="wall" type="blockrect" x="837.726" y="1060.8" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1077" name="grassDark" type="blockrect" x="1600.42" y="808.824" width="100" height="100">
+  <object id="281" name="wall" type="blockrect" x="637.076" y="1059.79" width="100" height="100">
    <properties>
-    <property name="path" value="grassDark_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1078" name="movetraps" type="movetraps" x="1151.79" y="953.723" width="100" height="100">
+  <object id="282" name="wall" type="blockrect" x="436.589" y="1059.8" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="283" name="wall" type="blockrect" x="1037.72" y="1060.8" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="284" name="wall" type="blockrect" x="236.233" y="1059.61" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="285" name="wall" type="blockrect" x="737.076" y="1059.79" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="286" name="wall" type="blockrect" x="536.589" y="1059.8" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="287" name="wall" type="blockrect" x="937.726" y="1060.8" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="288" name="movetraps" type="movetraps" x="743.282" y="1208.2" width="100" height="100">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1800"/>
-    <property name="ty" value="953"/>
+    <property name="tx" value="1300"/>
+    <property name="ty" value="1208"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
    </properties>
   </object>
-  <object id="1079" name="hamburg" type="candy" x="1007.9" y="132.136" width="100" height="100">
+  <object id="289" name="wall" type="blockrect" x="1238.51" y="1060.41" width="100" height="100">
    <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1081" name="bucket" type="weightblock" x="801.28" y="552.509" width="100" height="100">
-   <properties>
-    <property name="min" value="180"/>
-    <property name="path" value="bucket_png"/>
-   </properties>
-  </object>
-  <object id="1082" name="bucket" type="weightblock" x="701.53" y="552.449" width="100" height="100">
-   <properties>
-    <property name="min" value="180"/>
-    <property name="path" value="bucket_png"/>
-   </properties>
-  </object>
-  <object id="1083" name="bucket" type="weightblock" x="901.356" y="552.435" width="100" height="100">
-   <properties>
-    <property name="min" value="180"/>
-    <property name="path" value="bucket_png"/>
-   </properties>
-  </object>
-  <object id="1085" name="grassLight" type="blockrect" x="603.103" y="1214.41" width="100" height="100">
-   <properties>
-    <property name="path" value="grassLight_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1086" name="grassLight" type="blockrect" x="802.823" y="893.107" width="100" height="100">
+  <object id="290" name="wall" type="blockrect" x="1545.2" y="439.467" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1088" name="grassDark" type="blockrect" x="902.289" y="893.47" width="100" height="100">
+  <object id="291" name="wall" type="blockrect" x="1138.51" y="1060.41" width="100" height="100">
    <properties>
-    <property name="path" value="grassDark_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1090" name="grassLight_half" type="blockrect" x="603.087" y="1160.46" width="100" height="55">
+  <object id="294" name="wall" type="blockrect" x="1438.43" y="1060.59" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1091" name="grassLight_half" type="blockrect" x="603.299" y="1106.99" width="100" height="55">
+  <object id="295" name="wall" type="blockrect" x="1338.51" y="1060.41" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1092" name="grassLight_half" type="blockrect" x="603.299" y="1053.31" width="100" height="55">
+  <object id="308" name="wall" type="blockrect" x="1339.06" y="854.246" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1093" name="grassLight_half" type="blockrect" x="603.087" y="999.626" width="100" height="55">
+  <object id="309" name="wall" type="blockrect" x="1039.45" y="854.534" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1094" name="grassLight_half" type="blockrect" x="603.299" y="945.732" width="100" height="55">
+  <object id="310" name="wall" type="blockrect" x="643.101" y="440.655" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1095" name="grassLight_half" type="blockrect" x="603.299" y="892.687" width="100" height="55">
+  <object id="311" name="wall" type="blockrect" x="844.145" y="440.125" width="100" height="100">
    <properties>
-    <property name="path" value="grassLight_half_png"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1096" name="movetraps" type="movetraps" x="504.672" y="1647.86" width="100" height="100">
+  <object id="312" name="wall" type="blockrect" x="1345.14" y="440.726" width="100" height="100">
    <properties>
-    <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="800"/>
-    <property name="ty" value="1648"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
-    <property name="velocity" value="150"/>
    </properties>
   </object>
-  <object id="1097" name="hamburg" type="candy" x="860.223" y="1772.01" width="100" height="100">
+  <object id="313" name="wall" type="blockrect" x="744.145" y="440.125" width="100" height="100">
    <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1098" name="hamburg" type="candy" x="199.706" y="1510.56" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1100" name="movetraps" type="movetraps" x="1426.16" y="268.957" width="100" height="100">
-   <properties>
-    <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1800"/>
-    <property name="ty" value="269"/>
+    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
-    <property name="velocity" value="200"/>
    </properties>
   </object>
-  <object id="1101" name="cake" type="candy" x="298.078" y="101.076" width="100" height="100">
+  <object id="314" name="wall" type="blockrect" x="1245.27" y="441.135" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="315" name="wall" type="blockrect" x="1445.13" y="440.726" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="316" name="wall" type="blockrect" x="1044.62" y="440.125" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="317" name="wall" type="blockrect" x="944.145" y="440.125" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="318" name="wall" type="blockrect" x="1144.62" y="440.125" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="319" name="wall" type="blockrect" x="1238.75" y="853.855" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="320" name="wall" type="blockrect" x="1139.32" y="854.171" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="330" name="wall" type="blockrect" x="539.209" y="856.168" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="331" name="wall" type="blockrect" x="439.209" y="856.168" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="332" name="wall" type="blockrect" x="938.62" y="854.996" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="333" name="wall" type="blockrect" x="738.888" y="855.758" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="334" name="wall" type="blockrect" x="639.209" y="856.168" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="335" name="wall" type="blockrect" x="838.888" y="855.758" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="336" name="wall" type="blockrect" x="338.478" y="856.614" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="341" name="wall" type="blockrect" x="241.348" y="25.6753" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="342" name="wall" type="blockrect" x="442.248" y="25.2499" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="343" name="wall" type="blockrect" x="140.425" y="26.604" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="344" name="wall" type="blockrect" x="342.415" y="25.4733" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="351" name="wall" type="blockrect" x="139.064" y="648.898" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="357" name="cake" type="candy" x="1010.77" y="1469.56" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="cake_png"/>
@@ -1471,34 +710,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1102" name="movetraps" type="movetraps" x="201.39" y="524.088" width="100" height="100">
-   <properties>
-    <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="500"/>
-    <property name="ty" value="524"/>
-    <property name="type" type="int" value="0"/>
-    <property name="velocity" value="200"/>
-   </properties>
-  </object>
-  <object id="1103" name="drug" type="candy" x="809.707" y="245.376" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="drug_png"/>
-    <property name="power" value="-30"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1104" name="movetraps" type="movetraps" x="798.565" y="1132.47" width="100" height="100">
-   <properties>
-    <property name="path" value="moveTraps_png"/>
-    <property name="rotation" value="90"/>
-    <property name="tx" value="798.5"/>
-    <property name="ty" value="1500"/>
-    <property name="type" type="int" value="0"/>
-    <property name="velocity" value="200"/>
-   </properties>
-  </object>
-  <object id="1105" name="hamburg" type="candy" x="1169.66" y="1741.61" width="100" height="100">
+  <object id="359" name="hamburg" type="candy" x="1503.3" y="558.459" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -1506,15 +718,1137 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1106" name="traps" type="traps" x="1787.18" y="964.065" width="100" height="100">
+  <object id="361" name="cake" type="candy" x="489.554" y="3569.05" width="100" height="100">
    <properties>
-    <property name="path" value="traps_png"/>
+    <property name="delta" value="10"/>
+    <property name="path" value="cake_png"/>
+    <property name="power" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="362" name="wall_half" type="blockrect" x="35.3005" y="3818.7" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1107" name="wall" type="blockrect" x="1903.31" y="964.795" width="100" height="100">
+  <object id="363" name="wall_half" type="blockrect" x="35.4514" y="3767.11" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="364" name="wall_half" type="blockrect" x="35.48" y="3715.55" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="365" name="wall_half" type="blockrect" x="35.4208" y="3663.43" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="366" name="wall_half" type="blockrect" x="35.4392" y="3611.51" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="367" name="wall_half" type="blockrect" x="35.3653" y="3558.94" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="368" name="wall_half" type="blockrect" x="35.1586" y="3507.22" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="369" name="wall_half" type="blockrect" x="35.1132" y="3455.42" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="370" name="wall_half" type="blockrect" x="35.1115" y="3403.78" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="371" name="wall_half" type="blockrect" x="35.1325" y="3352.3" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="372" name="wall_half" type="blockrect" x="635.296" y="3351.82" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="374" name="wall_half" type="blockrect" x="635.275" y="3403.3" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="377" name="wall" type="blockrect" x="635.039" y="3871.4" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="378" name="wall_half" type="blockrect" x="635.493" y="3767.33" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="379" name="wall_half" type="blockrect" x="635.342" y="3818.92" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="380" name="wall_half" type="blockrect" x="635.521" y="3715.77" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="381" name="wall_half" type="blockrect" x="635.283" y="3663.02" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="386" name="wall" type="blockrect" x="635.142" y="3454.79" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="387" name="wall" type="blockrect" x="835.7" y="3455.09" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="388" name="wall_half" type="blockrect" x="835.854" y="3352.12" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="389" name="wall_half" type="blockrect" x="835.833" y="3403.6" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="390" name="wall_half" type="blockrect" x="1844.39" y="3455.52" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="391" name="wall_half" type="blockrect" x="1844.27" y="3610.79" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="392" name="wall_half" type="blockrect" x="1844.45" y="3507.64" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="393" name="wall_half" type="blockrect" x="1844.41" y="3403.6" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="394" name="wall_half" type="blockrect" x="1844.42" y="3559.2" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="395" name="wall" type="blockrect" x="1843.97" y="3663.27" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="396" name="wall_half" type="blockrect" x="1844.58" y="3350.86" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="397" name="wall_half" type="blockrect" x="1139.77" y="3247.21" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="398" name="wall_half" type="blockrect" x="1139.94" y="3194.47" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="399" name="wall_half" type="blockrect" x="1139.75" y="3299.13" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="400" name="wall_half" type="blockrect" x="1140.24" y="3038.51" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="401" name="wall_half" type="blockrect" x="1140.41" y="2985.77" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="402" name="wall_half" type="blockrect" x="1140.22" y="3090.43" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="404" name="wall_half" type="blockrect" x="1140.28" y="3142.55" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="407" name="wall_half" type="blockrect" x="1039.5" y="2774" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="408" name="wall_half" type="blockrect" x="1039.53" y="2877.68" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="409" name="wall_half" type="blockrect" x="1039.38" y="2929.27" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="410" name="wall" type="blockrect" x="1039.08" y="2981.75" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="411" name="wall_half" type="blockrect" x="1039.56" y="2826.12" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="412" name="wall_half" type="blockrect" x="1643.63" y="2468.94" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="413" name="wall_half" type="blockrect" x="1643.89" y="2625.15" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="414" name="wall_half" type="blockrect" x="1643.77" y="2780.42" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="415" name="wall_half" type="blockrect" x="1643.58" y="2365.5" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="416" name="wall_half" type="blockrect" x="1643.84" y="2520.66" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="417" name="wall_half" type="blockrect" x="1643.95" y="2677.27" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="418" name="wall_half" type="blockrect" x="1643.6" y="2314.02" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="419" name="wall_half" type="blockrect" x="1643.59" y="2417.14" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="420" name="wall_half" type="blockrect" x="1643.91" y="2573.23" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="421" name="wall_half" type="blockrect" x="1643.92" y="2728.83" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="422" name="wall_half" type="blockrect" x="1643.78" y="2987.56" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="423" name="wall_half" type="blockrect" x="1644.04" y="3143.77" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="424" name="wall_half" type="blockrect" x="1643.92" y="3299.04" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="425" name="wall_half" type="blockrect" x="1643.74" y="2884.12" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="426" name="wall_half" type="blockrect" x="1643.99" y="3039.28" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="427" name="wall_half" type="blockrect" x="1644.1" y="3195.89" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="428" name="wall_half" type="blockrect" x="1643.76" y="2832.64" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="429" name="wall_half" type="blockrect" x="1643.74" y="2935.76" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="430" name="wall_half" type="blockrect" x="1644.06" y="3091.85" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="431" name="wall_half" type="blockrect" x="1644.08" y="3247.45" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="432" name="wall_half" type="blockrect" x="1643.64" y="2261.71" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="433" name="wall_half" type="blockrect" x="135.654" y="1267.1" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="434" name="wall_half" type="blockrect" x="135.764" y="1682.28" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="435" name="wall_half" type="blockrect" x="136.124" y="1994.05" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="436" name="wall_half" type="blockrect" x="135.624" y="1112.18" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="437" name="wall_half" type="blockrect" x="135.784" y="1630.8" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="438" name="wall_half" type="blockrect" x="135.664" y="1059.87" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="439" name="wall_half" type="blockrect" x="135.974" y="1475.43" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="440" name="wall_half" type="blockrect" x="135.794" y="1578.58" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="441" name="wall_half" type="blockrect" x="135.944" y="1526.99" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="442" name="wall_half" type="blockrect" x="135.934" y="1371.39" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="443" name="wall_half" type="blockrect" x="135.614" y="1215.3" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="444" name="wall_half" type="blockrect" x="136.064" y="1941.93" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="445" name="wall_half" type="blockrect" x="135.864" y="1318.82" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="446" name="wall_half" type="blockrect" x="135.804" y="1785.72" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="447" name="wall_half" type="blockrect" x="136.014" y="1837.44" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="448" name="wall_half" type="blockrect" x="136.084" y="1890.01" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="449" name="wall_half" type="blockrect" x="135.764" y="1733.92" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="450" name="wall_half" type="blockrect" x="135.914" y="1423.31" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="451" name="wall_half" type="blockrect" x="135.604" y="1163.66" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="452" name="wall_half" type="blockrect" x="136.223" y="2254.2" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="455" name="wall_half" type="blockrect" x="136.193" y="2099.28" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="456" name="wall_half" type="blockrect" x="136.353" y="2617.9" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="457" name="wall_half" type="blockrect" x="136.233" y="2046.97" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="458" name="wall_half" type="blockrect" x="136.543" y="2462.53" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="459" name="wall_half" type="blockrect" x="136.363" y="2565.68" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="460" name="wall_half" type="blockrect" x="136.513" y="2514.09" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="461" name="wall_half" type="blockrect" x="136.503" y="2358.49" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="462" name="wall_half" type="blockrect" x="136.183" y="2202.4" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="464" name="wall_half" type="blockrect" x="136.433" y="2305.92" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="469" name="wall_half" type="blockrect" x="136.483" y="2410.41" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="470" name="wall_half" type="blockrect" x="136.173" y="2150.76" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="471" name="wall_half" type="blockrect" x="1438.83" y="957.089" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="472" name="wall_half" type="blockrect" x="1438.87" y="1008.89" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="474" name="wall_half" type="blockrect" x="1438.84" y="853.969" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="475" name="wall_half" type="blockrect" x="1438.82" y="905.449" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="476" name="wall_half" type="blockrect" x="239.067" y="700.815" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="477" name="wall_half" type="blockrect" x="239.097" y="649.255" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="479" name="wall_half" type="blockrect" x="238.907" y="804.625" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="481" name="wall" type="blockrect" x="238.672" y="856.565" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="482" name="wall_half" type="blockrect" x="238.917" y="752.405" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="483" name="wall_half" type="blockrect" x="39.2794" y="25.9349" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="484" name="wall_half" type="blockrect" x="39.5594" y="493.055" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="485" name="wall_half" type="blockrect" x="39.5894" y="441.495" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="486" name="wall_half" type="blockrect" x="39.5294" y="389.375" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="487" name="wall_half" type="blockrect" x="39.4794" y="284.885" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="488" name="wall_half" type="blockrect" x="39.2294" y="181.365" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="489" name="wall_half" type="blockrect" x="39.2694" y="233.165" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="490" name="wall_half" type="blockrect" x="39.3994" y="596.865" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="491" name="wall_half" type="blockrect" x="39.2194" y="129.725" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="492" name="wall_half" type="blockrect" x="39.2394" y="78.2449" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="493" name="wall_half" type="blockrect" x="39.5494" y="337.455" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="497" name="wall" type="blockrect" x="39.1644" y="648.805" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="498" name="wall_half" type="blockrect" x="39.4094" y="544.645" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="499" name="wall_half" type="blockrect" x="542.338" y="181.349" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="500" name="wall" type="blockrect" x="541.973" y="440.779" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="501" name="wall_half" type="blockrect" x="542.358" y="129.429" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="502" name="wall_half" type="blockrect" x="542.078" y="25.1391" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="503" name="wall_half" type="blockrect" x="542.218" y="336.619" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="504" name="wall_half" type="blockrect" x="542.288" y="76.8591" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="505" name="wall_half" type="blockrect" x="542.368" y="285.029" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="506" name="wall_half" type="blockrect" x="542.398" y="233.469" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="508" name="wall_half" type="blockrect" x="542.208" y="388.839" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="509" name="wall_half" type="blockrect" x="1644.88" y="492.013" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="510" name="wall_half" type="blockrect" x="1644.89" y="439.793" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="512" name="wall" type="blockrect" x="1644.65" y="543.953" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="513" name="wall_half" type="blockrect" x="1742.92" y="760.972" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="514" name="wall_half" type="blockrect" x="1743.2" y="1228.09" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="515" name="wall_half" type="blockrect" x="1743.23" y="1176.53" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="516" name="wall_half" type="blockrect" x="1743.17" y="1124.41" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="517" name="wall_half" type="blockrect" x="1743.12" y="1019.92" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="518" name="wall_half" type="blockrect" x="1742.87" y="916.402" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="519" name="wall_half" type="blockrect" x="1742.91" y="968.202" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="520" name="wall_half" type="blockrect" x="1743.04" y="1331.9" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="521" name="wall_half" type="blockrect" x="1742.86" y="864.762" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="522" name="wall_half" type="blockrect" x="1742.88" y="813.282" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="523" name="wall_half" type="blockrect" x="1743.19" y="1072.49" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="524" name="wall_half" type="blockrect" x="1742.75" y="655.932" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="525" name="wall_half" type="blockrect" x="1742.77" y="604.012" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="526" name="wall_half" type="blockrect" x="1742.81" y="708.052" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="527" name="wall" type="blockrect" x="1742.8" y="1383.84" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="528" name="wall_half" type="blockrect" x="1743.05" y="1279.68" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="529" name="wall_half" type="blockrect" x="1742.74" y="551.444" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="530" name="wall_half" type="blockrect" x="1240.24" y="1539.74" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="531" name="wall_half" type="blockrect" x="1240.25" y="1695.34" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="532" name="wall_half" type="blockrect" x="1239.92" y="1383.65" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="533" name="wall_half" type="blockrect" x="1240.1" y="1746.93" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="534" name="wall_half" type="blockrect" x="1240.09" y="1799.15" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="535" name="wall" type="blockrect" x="540.231" y="1958.5" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="536" name="wall_half" type="blockrect" x="1240.17" y="1487.17" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="537" name="wall_half" type="blockrect" x="1240.28" y="1643.78" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="538" name="wall_half" type="blockrect" x="1239.96" y="1435.45" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="539" name="wall_half" type="blockrect" x="1240.22" y="1591.66" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="540" name="wall_half" type="blockrect" x="1241.68" y="1953.65" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="541" name="wall_half" type="blockrect" x="1241.69" y="2109.25" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="543" name="wall_half" type="blockrect" x="1241.54" y="2160.84" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="544" name="wall_half" type="blockrect" x="1241.53" y="2213.06" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="545" name="wall" type="blockrect" x="540.189" y="2264.26" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="546" name="wall_half" type="blockrect" x="1241.61" y="1901.09" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="547" name="wall_half" type="blockrect" x="1241.72" y="2057.69" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="548" name="wall_half" type="blockrect" x="1241.4" y="1849.37" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="549" name="wall_half" type="blockrect" x="1241.66" y="2005.57" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="550" name="windtraps" type="windtraps" x="483" y="571" width="250" height="250">
+   <properties>
+    <property name="max" type="float" value="40"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="553" name="bucket" type="weightblock" x="1441.91" y="3351.74" width="100" height="100">
+   <properties>
+    <property name="min" value="180"/>
+    <property name="path" value="bucket_png"/>
+   </properties>
+  </object>
+  <object id="554" name="wall_half" type="blockrect" x="35.247" y="3195.57" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="555" name="wall_half" type="blockrect" x="35.3209" y="3248.14" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="556" name="wall_half" type="blockrect" x="34.9949" y="3092.05" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="557" name="wall_half" type="blockrect" x="35.0142" y="2988.93" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="558" name="wall_half" type="blockrect" x="34.9932" y="3040.41" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="559" name="wall_half" type="blockrect" x="35.0403" y="3143.85" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="560" name="wall_half" type="blockrect" x="35.3025" y="3300.06" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="561" name="wall_half" type="blockrect" x="635.333" y="3195.43" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="562" name="wall_half" type="blockrect" x="635.406" y="3248" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="563" name="wall_half" type="blockrect" x="635.08" y="3091.91" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="564" name="wall_half" type="blockrect" x="635.1" y="2988.79" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="565" name="wall_half" type="blockrect" x="635.079" y="3040.27" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="566" name="wall_half" type="blockrect" x="635.126" y="3143.71" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="567" name="wall_half" type="blockrect" x="635.388" y="3299.92" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="568" name="drug" type="candy" x="1040.05" y="2095.16" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="drug_png"/>
+    <property name="power" value="-30"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="569" name="wall" type="blockrect" x="1542.55" y="2262.5" width="100" height="100">
+   <properties>
+    <property name="path" value="wall_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="570" name="wall_half" type="blockrect" x="739.628" y="2669.02" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="571" name="wall_half" type="blockrect" x="739.458" y="2721.76" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="572" name="hamburg" type="candy" x="1110.8" y="2384.23" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="573" name="wall_half" type="blockrect" x="740.456" y="1747.57" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="574" name="wall_half" type="blockrect" x="740.526" y="1800.13" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="577" name="wall_half" type="blockrect" x="740.393" y="1853.06" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="578" name="wall_half" type="blockrect" x="740.463" y="1905.62" width="100" height="55">
+   <properties>
+    <property name="path" value="wall_half_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>

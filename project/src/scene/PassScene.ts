@@ -112,7 +112,7 @@ module fly {
 			this.addChild(png)
 			this.movieclip = png
 
-			return ["恭喜过关，请再接再厉！", "nextBtn_png"]
+			return ["多吃少运动，胖的真可爱！", "nextBtn_png"]
 		}
 
 		private createLoseScene(reason:number)
@@ -130,7 +130,7 @@ module fly {
 			this.addChild(png)
 			this.movieclip = png
 
-			return ["胜败乃兵家常事，请大侠重新来过！", "againBtn_png"]
+			return ["大风大雨也刮不跑你！", "againBtn_png"]
 		}
 
 
@@ -152,7 +152,7 @@ module fly {
 			var txt = "我死了" + SceneManager.inst().health + "次完成所有关卡！不服来战！"
 			if (SceneManager.inst().health == 0)
 			{
-				txt = "无伤通关，舍我其谁！不服来战！"
+				txt = "不是一家胖人，不进一家胖门！"
 			}
 
 			return [txt, "shareBtn_png"]

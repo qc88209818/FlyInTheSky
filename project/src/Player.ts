@@ -272,7 +272,7 @@ module fly {
 			if (this.isListener)
 			{
 				this.objmgr.scene.stop()
-				SceneManager.inst().music.playObject("defeated.mp3")
+				SceneManager.inst().music.playObject("defeated.mp3", 1)
 			}
 		}
 
@@ -285,7 +285,7 @@ module fly {
 			if (this.isListener)
 			{
 				this.objmgr.scene.stop()
-				SceneManager.inst().music.playObject("victory.mp3")
+				SceneManager.inst().music.playObject("victory.mp3", 1)
 				this.afterMovieClip()
 			}
 		}
@@ -294,6 +294,7 @@ module fly {
 		{
 			if (this.isListener)
 			{
+				SceneManager.inst().setPassTime(this.objmgr.scene.clickTime, this.reason)
 				this.objmgr.scene.delPlayerToWorld(this)
 				this.objmgr.scene.isRunning = this.reason
 			}

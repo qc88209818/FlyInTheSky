@@ -6,16 +6,19 @@ module fly {
 
 		// reasons:string[] = ["恭喜过关！", "你饿死了！", "你胖死了！", "你被陷阱杀死了！", "你太胖，摔死了！", "你被AI抓到了！"]
 
+		enterGameBtn:egret.Bitmap
+		shareGameBtn:egret.Bitmap
+		erweima:egret.Bitmap
+
 		private movieclip:egret.MovieClip
-		private enterGameBtn:egret.Bitmap
-		private backGameBtn:egret.Bitmap
-		private erweima:egret.Bitmap
 		private reason:number
 		private mgr:SceneManager
+		private objmgr:ObjectManager
 
         public initScene(reason:number, mgr:SceneManager):void{
 			this.reason = reason
 			this.mgr = mgr
+			this.objmgr = ObjectManager.inst()
 
 			// 背景
 			var bg = FlyTools.createBitmapByName("background_jpg")
@@ -32,8 +35,7 @@ module fly {
             title_bg.y = 170;
             title_bg.scaleX = title_bg.scaleY = 2;
             this.addChild(title_bg);
-
-
+			
 			let array = []
 			if (reason == 0)
 			{
@@ -48,6 +50,8 @@ module fly {
 				array = this.createPassScene()
 			}
 
+			var height = this.movieclip.y + this.movieclip.height*2 + 30
+
 			// 原因
 			var text:egret.TextField = new egret.TextField()
 			text.text = array[0]
@@ -56,7 +60,31 @@ module fly {
 			text.anchorOffsetX = text.width/2
 			text.anchorOffsetY = text.height/2
 			text.x = FlyConfig.stageWidth/2
-			text.y = this.movieclip.y + this.movieclip.height*2 + 30
+			text.y = height
+			this.addChild(text);
+
+			height = height + text.height + 30
+
+			// 本次用时
+			var text:egret.TextField = new egret.TextField()
+			if (reason < 0)
+			{	
+				text.text = "总用时: " + parseInt(""+this.mgr.getPassTimeAll()*10, 10)/10 + "秒"
+			}
+			else if (reason == 0)
+			{	
+				text.text = "本次用时: " + parseInt(""+this.mgr.getLastTime()*10, 10)/10 + "秒" + "(最短用时: " + parseInt(""+this.mgr.getPassTime()*10, 10)/10 + "秒)"
+			}
+			else
+			{
+				text.text = "本次用时: " + parseInt(""+this.mgr.getLastTime()*10, 10)/10 + "秒"
+			}
+			text.size = 48
+			text.textColor = 0x000000
+			text.anchorOffsetX = text.width/2
+			text.anchorOffsetY = text.height/2
+			text.x = FlyConfig.stageWidth/2
+			text.y = height
 			this.addChild(text);
 
 			// 二维码
@@ -70,25 +98,25 @@ module fly {
 			this.addChild(erweima)
 			this.erweima = erweima
 
+			// 分享
+			var shareGameBtn = FlyTools.createBitmapByName("shareBtn_png")
+            shareGameBtn.anchorOffsetX = shareGameBtn.width/2
+            shareGameBtn.anchorOffsetY = shareGameBtn.height/2
+            shareGameBtn.x = FlyConfig.stageWidth/2
+            shareGameBtn.y = text.y + text.height*2 + 100; 
+            shareGameBtn.scaleX = shareGameBtn.scaleY = 2
+            this.addChild(shareGameBtn)
+			this.shareGameBtn = shareGameBtn
+
 			// 下一步
 			var enterGameBtn = FlyTools.createBitmapByName(array[1])
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = FlyConfig.stageWidth/2
-            enterGameBtn.y = text.y + text.height*2 + 150;
-            enterGameBtn.scaleX = enterGameBtn.scaleY = 2;
-            this.addChild(enterGameBtn);
+            enterGameBtn.y = this.shareGameBtn.y + this.shareGameBtn.height + 150
+            enterGameBtn.scaleX = enterGameBtn.scaleY = 2
+            this.addChild(enterGameBtn)
 			this.enterGameBtn = enterGameBtn
-
-			// 返回
-			var backGameBtn = FlyTools.createBitmapByName("backBtn_png")
-            backGameBtn.anchorOffsetX = backGameBtn.width/2
-            backGameBtn.anchorOffsetY = backGameBtn.height/2
-            backGameBtn.x = FlyConfig.stageWidth/2
-            backGameBtn.y = this.enterGameBtn.y + this.enterGameBtn.height + 150;
-            backGameBtn.scaleX = backGameBtn.scaleY = 2;
-            this.addChild(backGameBtn);
-			this.backGameBtn = backGameBtn
 
 			this.touchEnabled = true
 			this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin,    this)
@@ -99,10 +127,8 @@ module fly {
 
 		private createWinScene()
 		{
-			let objmgr = ObjectManager.inst()
-
 			// 过场动画
-			let png = new egret.MovieClip(objmgr.winFactory.generateMovieClipData("Win"));
+			let png = new egret.MovieClip(this.objmgr.winFactory.generateMovieClipData("Win"));
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
@@ -117,10 +143,8 @@ module fly {
 
 		private createLoseScene(reason:number)
 		{
-			let objmgr = ObjectManager.inst()
-
 			// 过场动画
-			let png = new egret.MovieClip(objmgr.dieFactory.generateMovieClipData("playerDie"));
+			let png = new egret.MovieClip(this.objmgr.dieFactory.generateMovieClipData("playerDie"));
 			png.gotoAndPlay("die"+reason, -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
@@ -133,13 +157,10 @@ module fly {
 			return ["大风大雨也刮不跑你！", "againBtn_png"]
 		}
 
-
 		private createPassScene()
 		{
-			let objmgr = ObjectManager.inst()
-
 			// 过场动画
-			let png = new egret.MovieClip(objmgr.winFactory.generateMovieClipData("Win"));
+			let png = new egret.MovieClip(this.objmgr.winFactory.generateMovieClipData("Win"));
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
@@ -155,35 +176,32 @@ module fly {
 				txt = "不是一家胖人，不进一家胖门！"
 			}
 
-			return [txt, "shareBtn_png"]
+			return [txt, "backBtn_png"]
 		}
 
 		private onTouchBegin(evt:egret.TouchEvent) {
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
                 this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 1.8;
             }
-			else if(this.backGameBtn.hitTestPoint(evt.localX,evt.localY)){
-                this.backGameBtn.scaleX = this.backGameBtn.scaleY = 1.8;
+			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY)){
+                this.shareGameBtn.scaleX = this.shareGameBtn.scaleY = 1.8;
             }
         }
 
         private  onTouchClick(evt:egret.TouchEvent) {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
-            this.backGameBtn.scaleX = this.backGameBtn.scaleY = 2;
+            this.shareGameBtn.scaleX = this.shareGameBtn.scaleY = 2;
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
-				this.erweima.visible = true
-				this.enterGameBtn.visible = false
-				this.backGameBtn.visible = false
 				this.mgr.onClickBtn(this.reason)
             }
-			else if(this.backGameBtn.hitTestPoint(evt.localX,evt.localY)){
-				this.mgr.onClickBack()
+			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY)){
+				this.mgr.onClickShare()
             }
         }
 
         private  onTouchCancel(evt:egret.TouchEvent) {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
-            this.backGameBtn.scaleX = this.backGameBtn.scaleY = 2;
+            this.shareGameBtn.scaleX = this.shareGameBtn.scaleY = 2;
         }
 	}
 }

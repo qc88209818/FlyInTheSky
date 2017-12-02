@@ -15,8 +15,10 @@ module fly {
 		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		text:egret.TextField
+		time:egret.TextField
 
 		isRunning:number = -1
+		clickTime:number = 0
 
 		public constructor() {
 			super()
@@ -37,6 +39,7 @@ module fly {
 
 			this.updatePower(dt)
 			this.updateScene(dt)
+			this.updateTime(dt)
 			this.objmgr.update(dt)
 		}
 
@@ -72,6 +75,15 @@ module fly {
 			this.baseLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
 			this.playerLayer.x = -this.player.body.position[0]*FlyParam.LayerScale + FlyConfig.stageWidth/2
 			this.playerLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
+		}
+
+		private updateTime(dt:number)
+		{
+			this.clickTime += dt
+			if (this.time)
+			{
+				this.time.text = "当前用时: " + parseInt(""+this.clickTime*10, 10)/10 + " 秒"
+			}
 		}
 
 		public initScene(tiledMapGroups:TiledMapGroup[])
@@ -170,7 +182,7 @@ module fly {
 
 			// 显示生命值
 			var text2:egret.TextField = new egret.TextField()
-			text2.text = "当前尝试次数: " + SceneManager.inst().health
+			text2.text = "死亡次数: " + SceneManager.inst().health
 			text2.size = 36;
 			text2.textColor = 0x000000;
 			text2.anchorOffsetX = 0;
@@ -179,6 +191,18 @@ module fly {
 			text2.y = progress.height + text.height + 40
 			this.addChild(text2);
 			this.text = text2
+
+			// 显示时间
+			var text3:egret.TextField = new egret.TextField()
+			text3.text = "当前用时: " + this.clickTime + " 秒"
+			text3.size = 36;
+			text3.textColor = 0x000000;
+			text3.anchorOffsetX = 0;
+			text3.anchorOffsetY = 0.5
+			text3.x = 5
+			text3.y = progress.height + text.height + text2.height + 55
+			this.addChild(text3);
+			this.time = text3
 		}
 
 		private onChangePower(evt:egret.Event)

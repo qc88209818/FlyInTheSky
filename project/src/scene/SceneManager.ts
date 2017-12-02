@@ -18,6 +18,9 @@ module fly {
 
 		health:number
 
+		times:number[] = []	// 最短时间	
+		lastTime:number 	// 本次时间
+
 		static scenemgr:SceneManager = new SceneManager()
 		public static inst(): SceneManager
 		{
@@ -49,11 +52,11 @@ module fly {
 			this.reset()
 			if (this._mapId + 1 < this._maxId)
 			{
-				this.createPassScene(0, this)
+				this.createPassScene(0)
 			}
 			else
 			{
-				this.createPassScene(-1, this)
+				this.createPassScene(-1)
 			}
 		}
 
@@ -61,7 +64,7 @@ module fly {
 		{
 			this.health += 1
 			this.reset()
-			this.createPassScene(reason, this)
+			this.createPassScene(reason)
 		}
 
 		private loadNow()
@@ -75,52 +78,48 @@ module fly {
 
 		public onClickBtn(reason:number)
 		{
-			if (reason > 0)
-			{
-				if (this._passScene)
-				{
-					this._parent.removeChild(this._passScene)
-					this._passScene = null
-				}
-				this.loadNow()
-			}
-			else if (reason == 0)
-			{
-				if (this._passScene)
-				{
-					this._parent.removeChild(this._passScene)
-					this._passScene = null
-				}
-				this.loadTiledMap(this._mapId + 1)
-			}
-			else
-			{
-				let rt:egret.RenderTexture = new egret.RenderTexture;
-				let rect = new egret.Rectangle(0, 0, FlyConfig.stageWidth, FlyConfig.stageHeight)
-				rt.drawToTexture(this._passScene, rect);
-				// rt.saveToFile("image/png", "share.png", rect);
-
-				let divImage = document.getElementById("divImage");//获取DIV
-				let shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
-				shareImage.src = rt.toDataURL('image/png');//把数据赋值给Image
-				divImage.style.display = "block";//显示DIV
-
-				this.onClickBack()
-			}
-		}
-
-		public onClickBack()
-		{
-			this.health = 0
 			if (this._passScene)
 			{
 				this._parent.removeChild(this._passScene)
 				this._passScene = null
 			}
-			this.reset()
 
-			let enterGameScene = new fly.EnterGameScene();
-        	this._parent.addChild(enterGameScene);
+			if (reason > 0)
+			{
+				this.loadNow()
+			}
+			else if (reason == 0)
+			{
+				this.loadTiledMap(this._mapId + 1)
+			}
+			else
+			{
+				this.reset()
+
+				let enterGameScene = new fly.EnterGameScene();
+				this._parent.addChild(enterGameScene);
+			}
+		}
+
+		public onClickShare()
+		{
+			this._passScene.erweima.visible = true
+			this._passScene.enterGameBtn.visible = false
+			this._passScene.shareGameBtn.visible = false
+
+			let rt:egret.RenderTexture = new egret.RenderTexture;
+			let rect = new egret.Rectangle(0, 0, FlyConfig.stageWidth, FlyConfig.stageHeight)
+			rt.drawToTexture(this._passScene, rect);
+			// rt.saveToFile("image/png", "share.png", rect);
+
+			let divImage = document.getElementById("divImage");//获取DIV
+			let shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
+			shareImage.src = rt.toDataURL('image/png');//把数据赋值给Image
+			divImage.style.display = "block";//显示DIV
+
+			this._passScene.erweima.visible = false
+			this._passScene.enterGameBtn.visible = true
+			this._passScene.shareGameBtn.visible = true
 		}
 
 		private loadTiledMap(mapId:number)
@@ -257,12 +256,44 @@ module fly {
 			this.sound.stop()
 		}
 
-		public createPassScene(reason:number, mgr:SceneManager)
+		public createPassScene(reason:number)
 		{
 			let scene = new PassScene()
-			scene.initScene(reason, mgr)
+			scene.initScene(reason, this)
 			this._parent.addChild(scene)
 			this._passScene = scene
+		}
+
+		public setPassTime(time:number, reason:number)
+		{
+			this.lastTime = time
+			if (reason <= 0 && this.times.length < this._mapId)
+			{
+				this.times.push(time)
+			}
+			else if(reason <= 0 && this.times[this._mapId-1])
+			{
+				this.times[this._mapId-1] = time
+			}
+		}
+
+		public getLastTime()
+		{
+			return this.lastTime
+		}
+
+		public getPassTime()
+		{
+			return this.times[this._mapId-1]
+		}
+
+		public getPassTimeAll()
+		{
+			let time = 0
+			this.times.forEach(value => {
+				time += value
+			})
+			return time
 		}
 	}
 }

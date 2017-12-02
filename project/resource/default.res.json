@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "yellow_button_jpg,well_png,wall_png,virtual_button_png,virtual_background_png,treeCut_png,traps_png,toilet_png,title_png,television_png,table2_png,table_png,switch_png,sofa5_png,sofa4_png,sofa3_png,sofa2_png,sofa1_png,shower2_png,shower_png,red_button_jpg,playBtn_png,plane_png,load_mask_png,load_bar_png,ice_png,hamburg_png,grassLight_png,grassDark_png,chair2_png,chair1_png,cake_png,bucket_png,bed_png,bathtub2_png,bathtub1_png,bar_bg_png,background_jpg,playerNormalMode_png,playerNormalMode_json,playerDie_png,playerDie_json,moveTraps_png,grassLight_half_png,grassDark_half_png,wall_half_png,progress_bar_frame_png,progress_bar_png,progress_bar_background_png,nextBtn_png,againBtn_png,backBtn_png,wind_png,wind_json,shareBtn_png,monsterWall_png,dog_json,monsterWall_json,dog_png,erweima_png,player_win_png,player_win_json,drug_png",
+			"keys": "yellow_button_jpg,well_png,wall_png,virtual_button_png,virtual_background_png,traps_png,title_png,switch_png,red_button_jpg,playBtn_png,plane_png,load_mask_png,load_bar_png,hamburg_png,grassLight_png,grassDark_png,cake_png,bucket_png,bar_bg_png,background_jpg,playerNormalMode_png,playerNormalMode_json,playerDie_png,playerDie_json,moveTraps_png,grassLight_half_png,grassDark_half_png,wall_half_png,progress_bar_frame_png,progress_bar_png,progress_bar_background_png,nextBtn_png,againBtn_png,backBtn_png,wind_png,wind_json,shareBtn_png,monsterWall_png,dog_json,monsterWall_json,dog_png,erweima_png,player_win_png,player_win_json,drug_png,close_btn_png",
 			"name": "preload"
 		},
 		{
@@ -21,21 +21,6 @@
 			"name": "bar_bg_png"
 		},
 		{
-			"url": "assets/bathtub1.png",
-			"type": "image",
-			"name": "bathtub1_png"
-		},
-		{
-			"url": "assets/bathtub2.png",
-			"type": "image",
-			"name": "bathtub2_png"
-		},
-		{
-			"url": "assets/bed.png",
-			"type": "image",
-			"name": "bed_png"
-		},
-		{
 			"url": "assets/bucket.png",
 			"type": "image",
 			"name": "bucket_png"
@@ -44,16 +29,6 @@
 			"url": "assets/cake.png",
 			"type": "image",
 			"name": "cake_png"
-		},
-		{
-			"url": "assets/chair1.png",
-			"type": "image",
-			"name": "chair1_png"
-		},
-		{
-			"url": "assets/chair2.png",
-			"type": "image",
-			"name": "chair2_png"
 		},
 		{
 			"url": "assets/grassDark.png",
@@ -69,11 +44,6 @@
 			"url": "assets/hamburg.png",
 			"type": "image",
 			"name": "hamburg_png"
-		},
-		{
-			"url": "assets/ice.png",
-			"type": "image",
-			"name": "ice_png"
 		},
 		{
 			"url": "assets/load_bar.png",
@@ -106,59 +76,9 @@
 			"name": "red_button_jpg"
 		},
 		{
-			"url": "assets/shower.png",
-			"type": "image",
-			"name": "shower_png"
-		},
-		{
-			"url": "assets/shower2.png",
-			"type": "image",
-			"name": "shower2_png"
-		},
-		{
-			"url": "assets/sofa1.png",
-			"type": "image",
-			"name": "sofa1_png"
-		},
-		{
-			"url": "assets/sofa2.png",
-			"type": "image",
-			"name": "sofa2_png"
-		},
-		{
-			"url": "assets/sofa3.png",
-			"type": "image",
-			"name": "sofa3_png"
-		},
-		{
-			"url": "assets/sofa4.png",
-			"type": "image",
-			"name": "sofa4_png"
-		},
-		{
-			"url": "assets/sofa5.png",
-			"type": "image",
-			"name": "sofa5_png"
-		},
-		{
 			"url": "assets/switch.png",
 			"type": "image",
 			"name": "switch_png"
-		},
-		{
-			"url": "assets/table.png",
-			"type": "image",
-			"name": "table_png"
-		},
-		{
-			"url": "assets/table2.png",
-			"type": "image",
-			"name": "table2_png"
-		},
-		{
-			"url": "assets/television.png",
-			"type": "image",
-			"name": "television_png"
 		},
 		{
 			"url": "assets/title.png",
@@ -166,19 +86,9 @@
 			"name": "title_png"
 		},
 		{
-			"url": "assets/toilet.png",
-			"type": "image",
-			"name": "toilet_png"
-		},
-		{
 			"url": "assets/traps.png",
 			"type": "image",
 			"name": "traps_png"
-		},
-		{
-			"url": "assets/treeCut.png",
-			"type": "image",
-			"name": "treeCut_png"
 		},
 		{
 			"url": "assets/virtual_background.png",
@@ -334,6 +244,11 @@
 			"name": "drug_png",
 			"type": "image",
 			"url": "assets/drug.png"
+		},
+		{
+			"name": "close_btn_png",
+			"type": "image",
+			"url": "assets/close_btn.png"
 		}
 	]
 }

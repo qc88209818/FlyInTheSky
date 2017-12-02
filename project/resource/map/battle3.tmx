@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="1236">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="1238">
  <objectgroup name="object">
   <object id="462" name="wall" type="blockrect" x="400.843" y="1899.19" width="100" height="100">
    <properties>
@@ -148,12 +148,6 @@
   <object id="589" name="wall_half" type="blockrect" x="0.418999" y="1324.84" width="100" height="55">
    <properties>
     <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="652" name="wall" type="blockrect" x="1302.3" y="1900.13" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -844,12 +838,6 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1106" name="traps" type="traps" x="1787.18" y="964.065" width="100" height="100">
-   <properties>
-    <property name="path" value="traps_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
   <object id="1107" name="wall" type="blockrect" x="1903.31" y="964.795" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
@@ -1513,6 +1501,20 @@
     <property name="path" value="wall_half_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
+  </object>
+  <object id="1236" name="bucket" type="weightblock" x="1301.86" y="1899.33" width="100" height="100">
+   <properties>
+    <property name="min" value="180"/>
+    <property name="path" value="bucket_png"/>
+   </properties>
+  </object>
+  <object id="1237" name="dog" type="aitraps" x="1621.51" y="922.627" width="150" height="150">
+   <properties>
+    <property name="path" value="dog_png"/>
+    <property name="radius" value="500"/>
+    <property name="velocity" value="300"/>
+   </properties>
+   <ellipse/>
   </object>
  </objectgroup>
 </map>

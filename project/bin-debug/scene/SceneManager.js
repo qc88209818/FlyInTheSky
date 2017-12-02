@@ -20,7 +20,6 @@ var fly;
             _this._mapId = 0;
             _this._maxId = 5;
             _this._tiledMapObjs = [];
-            _this.health = 1;
             return _this;
         }
         SceneManager.inst = function () {
@@ -30,6 +29,7 @@ var fly;
             this._parent = parent;
             this._width = width;
             this._height = height;
+            this.health = 0;
             this.createMusicAndSound();
         };
         SceneManager.prototype.getMapId = function () {
@@ -39,7 +39,6 @@ var fly;
             this.loadTiledMap(mapId);
         };
         SceneManager.prototype.loadNext = function () {
-            this.health = 3;
             this.reset();
             if (this._mapId + 1 < this._maxId) {
                 this.createPassScene(0, this);
@@ -49,7 +48,7 @@ var fly;
             }
         };
         SceneManager.prototype.loadAgain = function (reason) {
-            this.health -= 1;
+            this.health += 1;
             this.reset();
             this.createPassScene(reason, this);
         };
@@ -75,10 +74,19 @@ var fly;
                 this.loadTiledMap(this._mapId + 1);
             }
             else {
-                console.log("分享");
+                var rt = new egret.RenderTexture;
+                var rect = new egret.Rectangle(0, 0, fly.FlyConfig.stageWidth, fly.FlyConfig.stageHeight);
+                rt.drawToTexture(this._passScene, rect);
+                // rt.saveToFile("image/png", "share.png", rect);
+                var divImage = document.getElementById("divImage"); //获取DIV
+                var shareImage = document.getElementById("shareImage"); //获取Image标签
+                shareImage.src = rt.toDataURL('image/png'); //把数据赋值给Image
+                divImage.style.display = "block"; //显示DIV
+                this.onClickBack();
             }
         };
         SceneManager.prototype.onClickBack = function () {
+            this.health = 0;
             if (this._passScene) {
                 this._parent.removeChild(this._passScene);
                 this._passScene = null;

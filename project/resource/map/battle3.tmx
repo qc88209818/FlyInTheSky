@@ -678,19 +678,19 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1075" name="grassLight" type="blockrect" x="1399.41" y="808.797" width="100" height="100">
+  <object id="1075" name="grassLight" type="blockrect" x="1399.41" y="773.413" width="100" height="100">
    <properties>
     <property name="path" value="grassLight_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1076" name="grassLight" type="blockrect" x="1499.58" y="808.824" width="100" height="100">
+  <object id="1076" name="grassLight" type="blockrect" x="1499.58" y="773.44" width="100" height="100">
    <properties>
     <property name="path" value="grassLight_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1077" name="grassDark" type="blockrect" x="1600.42" y="808.824" width="100" height="100">
+  <object id="1077" name="grassDark" type="blockrect" x="1600.42" y="773.44" width="100" height="100">
    <properties>
     <property name="path" value="grassDark_png"/>
     <property name="type" type="int" value="0"/>
@@ -882,7 +882,7 @@
     <property name="path" value="bucket_png"/>
    </properties>
   </object>
-  <object id="1114" name="cake" type="candy" x="1498.33" y="642.9" width="100" height="100">
+  <object id="1114" name="cake" type="candy" x="1502.41" y="633.374" width="100" height="100">
    <properties>
     <property name="delta" value="0"/>
     <property name="path" value="cake_png"/>
@@ -1508,7 +1508,7 @@
     <property name="path" value="bucket_png"/>
    </properties>
   </object>
-  <object id="1237" name="dog" type="aitraps" x="1621.51" y="922.627" width="150" height="150">
+  <object id="1237" name="dog" type="aitraps" x="1630.52" y="914.48" width="150" height="150">
    <properties>
     <property name="path" value="dog_png"/>
     <property name="radius" value="500"/>

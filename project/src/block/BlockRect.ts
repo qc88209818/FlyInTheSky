@@ -8,7 +8,7 @@ module fly {
 		// 0:STATIC  1:DYNAMIC   2:KINEMATIC
 		public constructor(x:number, y:number, width:number, height:number, op?) {
 			super()
-
+			this.layerIndex = 1
 			this.x = x + width/2
 			this.y = y + height/2
 			this.width = width

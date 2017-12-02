@@ -22,6 +22,7 @@ module fly {
 
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
+			this.layerIndex = 5
 			this.x = x + radius
 			this.y = y + radius
 			this.radius = radius
@@ -107,7 +108,7 @@ module fly {
 		private updatePowerFly(dt:number)
 		{
 			// 飘字动画
-			if (this.addPowerTime > 0 && this.powerText.textColor == 0xFFA500)
+			if (this.addPowerTime > 0 && this.powerText.textColor == 0xFF0000)
 			{
 				this.powerText.x = this.body.position[0] + 20
 				this.powerText.y = this.body.position[1] - 150 + this.addPowerTime*50
@@ -295,7 +296,7 @@ module fly {
 			if (this.isListener)
 			{
 				SceneManager.inst().setPassTime(this.objmgr.scene.clickTime, this.reason)
-				this.objmgr.scene.delPlayerToWorld(this)
+				this.objmgr.scene.delPlayerFromWorld(this)
 				this.objmgr.scene.isRunning = this.reason
 			}
 			else
@@ -312,7 +313,7 @@ module fly {
 			if (power > 0)
 			{
 				this.powerText.text = "+" + power
-				this.powerText.textColor = 0xFFA500
+				this.powerText.textColor = 0xFF0000
 			}
 			else
 			{

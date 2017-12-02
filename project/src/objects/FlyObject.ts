@@ -9,6 +9,7 @@ module fly {
 		body:p2.Body
 		shape:p2.Shape
 
+		layerIndex:number = 0
 		isDestroy:boolean = false
 		indexOf:number = -1
 

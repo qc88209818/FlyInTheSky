@@ -15,6 +15,7 @@ module fly {
 
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
+			this.layerIndex = 4
 			this.x = x + radius
 			this.y = y + radius
 			this.radius = radius

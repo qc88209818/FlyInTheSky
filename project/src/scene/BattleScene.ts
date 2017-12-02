@@ -11,9 +11,11 @@ module fly {
 		player:Player
 
 		baseLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
-		playerLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		uiLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
 		touchLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer
+
+		layers:egret.DisplayObjectContainer[] = []
+
 		text:egret.TextField
 		time:egret.TextField
 
@@ -73,8 +75,6 @@ module fly {
 		{
 			this.baseLayer.x = -this.player.body.position[0]*FlyParam.LayerScale + FlyConfig.stageWidth/2
 			this.baseLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
-			this.playerLayer.x = -this.player.body.position[0]*FlyParam.LayerScale + FlyConfig.stageWidth/2
-			this.playerLayer.y = -this.player.body.position[1]*FlyParam.LayerScale + FlyConfig.stageHeight/2
 		}
 
 		private updateTime(dt:number)
@@ -91,7 +91,6 @@ module fly {
 			this.tiledMapGroups = tiledMapGroups
 
 			this.addChild(this.baseLayer)
-			this.addChild(this.playerLayer)
 			this.addChild(this.uiLayer)
 			this.addChild(this.touchLayer)
 
@@ -106,13 +105,24 @@ module fly {
 		{
 			this.baseLayer.scaleX = FlyParam.LayerScale
 			this.baseLayer.scaleY = FlyParam.LayerScale
-			this.playerLayer.scaleX = FlyParam.LayerScale
-			this.playerLayer.scaleY = FlyParam.LayerScale
 
 			let png = FlyTools.createBitmapByName("background_jpg")
 			png.scaleX = FlyConfig.width/png.width
 			png.scaleY = FlyConfig.height/png.height
 			this.baseLayer.addChild(png)
+
+			// object layers
+			// 1 blocks
+			// 2 candy || traps
+			// 3 dynamic blocks
+			// 4 aitraps || movetraps || windtraps
+			// 5 player
+			for(let i = 0; i < 6; ++i)
+			{
+				let layer = new egret.DisplayObjectContainer()
+				this.layers.push(layer)
+				this.baseLayer.addChild(layer)
+			}
 		}
 
 		private createWorld()
@@ -408,27 +418,30 @@ module fly {
 
 		public addPlayerToWorld(obj:Player)
 		{
+			let idx = obj.layerIndex || 0
 			this.world.addBody(obj.body)
 			obj.body.displays.forEach(value => { 
-				this.playerLayer.addChild(value)
+				this.layers[idx].addChild(value)
 			})
 
 			this.objmgr.addPlayer(obj)
 		}
 
-		public delPlayerToWorld(obj:Player)
+		public delPlayerFromWorld(obj:FlyObject)
 		{
+			let idx = obj.layerIndex || 0
 			obj.body.displays.forEach(value => {
-				this.playerLayer.removeChild(value)
+				this.layers[idx].removeChild(value)
 			})
 			this.world.removeBody(obj.body)
 		}
 
 		public addToWorld(obj:FlyObject)
 		{
+			let idx = obj.layerIndex || 0
 			this.world.addBody(obj.body)
 			obj.body.displays.forEach(value => { 
-				this.baseLayer.addChild(value)
+				this.layers[idx].addChild(value)
 			})
 
 			this.objmgr.addSprite(obj)
@@ -436,15 +449,16 @@ module fly {
 
 		public delFromWorld(obj:FlyObject)
 		{
+			let idx = obj.layerIndex || 0
 			obj.body.displays.forEach(value => {
-				this.baseLayer.removeChild(value)
+				this.layers[idx].removeChild(value)
 			})
 			this.world.removeBody(obj.body)
 		}
 
 		public addImage(image:egret.Bitmap)
 		{
-			this.baseLayer.addChild(image)
+			this.layers[0].addChild(image)
 		}
 
 		public reset()

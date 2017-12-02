@@ -9,6 +9,7 @@ module fly {
 		
 		public constructor(x:number, y:number, width:number, height:number, op?) {
 			super()
+			this.layerIndex = 2
 			this.x = x + width/2
 			this.y = y + height/2
 			this.width = width

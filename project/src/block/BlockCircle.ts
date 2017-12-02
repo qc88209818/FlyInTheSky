@@ -9,6 +9,7 @@ module fly {
 		// 0:STATIC  1:DYNAMIC   2:KINEMATIC
 		public constructor(x:number, y:number, radius: number, op?) {
 			super()
+			this.layerIndex = 1
 			this.x = x + radius
 			this.y = y + radius
 			this.radius = radius*2

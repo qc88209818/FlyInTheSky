@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="397">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="406">
  <objectgroup name="object">
   <object id="1" name="self" type="player" x="960.895" y="1738.71" width="100" height="100">
    <ellipse/>
@@ -126,86 +126,6 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="381" name="cake" type="candy" x="146.18" y="1405.86" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="382" name="cake" type="candy" x="363.01" y="1756.92" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="383" name="cake" type="candy" x="636.629" y="1756.92" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="384" name="cake" type="candy" x="1261.31" y="1736.27" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="385" name="cake" type="candy" x="1586.55" y="1741.43" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="386" name="cake" type="candy" x="1157.63" y="1148.68" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="387" name="cake" type="candy" x="1648.5" y="332.034" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="388" name="cake" type="candy" x="130.692" y="590.165" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="389" name="cake" type="candy" x="90.7399" y="111.061" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="390" name="cake" type="candy" x="1013.5" y="724.393" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
   <object id="391" name="grass" type="blockrect" x="1399.38" y="1214.86" width="50" height="193.844">
    <properties>
     <property name="path" value=""/>
@@ -236,11 +156,59 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="396" name="cake" type="candy" x="479.837" y="712.644" width="100" height="100">
+  <object id="397" name="hamburg" type="candy" x="461.86" y="1747.75" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="400" name="hamburg" type="candy" x="1481.42" y="1747.75" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="401" name="hamburg" type="candy" x="137.266" y="1414.84" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="402" name="hamburg" type="candy" x="1140.18" y="1152.66" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="403" name="hamburg" type="candy" x="678.256" y="715.71" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="404" name="hamburg" type="candy" x="1726.95" y="162.235" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="405" name="hamburg" type="candy" x="83.1669" y="99.8127" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
    </properties>
    <ellipse/>
   </object>

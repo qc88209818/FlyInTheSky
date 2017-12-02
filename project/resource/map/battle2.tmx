@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="400" tilewidth="10" tileheight="10" nextobjectid="579">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="400" tilewidth="10" tileheight="10" nextobjectid="603">
  <objectgroup name="object">
   <object id="1" name="self" type="player" x="186.731" y="3706.41" width="100" height="100">
    <ellipse/>
@@ -73,23 +73,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="130" name="hamburg" type="candy" x="334.022" y="2519.8" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
   <object id="133" name="hamburg" type="candy" x="1576.22" y="3524.63" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="134" name="hamburg" type="candy" x="438.508" y="3205.03" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -110,14 +94,6 @@
     <property name="min" value="180"/>
     <property name="path" value="bucket_png"/>
    </properties>
-  </object>
-  <object id="142" name="hamburg" type="candy" x="181.541" y="3198.69" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
   </object>
   <object id="144" name="wall" type="blockrect" x="434.998" y="3871.18" width="100" height="100">
    <properties>
@@ -281,30 +257,6 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="194" name="wall" type="blockrect" x="841.213" y="2263.37" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="196" name="wall" type="blockrect" x="640.169" y="2263.9" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="197" name="wall" type="blockrect" x="941.213" y="2263.37" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="199" name="wall" type="blockrect" x="741.213" y="2263.37" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
   <object id="200" name="wall" type="blockrect" x="336.162" y="2669.87" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
@@ -329,22 +281,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="206" name="hamburg" type="candy" x="1593.14" y="1152.57" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="207" name="weighttraps" type="weighttraps" x="620.021" y="2396.18" width="100" height="100">
-   <properties>
-    <property name="min" value="30"/>
-    <property name="path" value="well_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="209" name="weighttraps" type="weighttraps" x="622.171" y="2528.79" width="100" height="100">
+  <object id="209" name="weighttraps" type="weighttraps" x="591.785" y="2455.86" width="100" height="100">
    <properties>
     <property name="min" value="30"/>
     <property name="path" value="well_png"/>
@@ -359,20 +296,6 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="211" name="hamburg" type="candy" x="949.878" y="2383.81" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="239" name="wall" type="blockrect" x="640.381" y="1958.74" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
   <object id="254" name="wall" type="blockrect" x="638.396" y="2669.27" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
@@ -380,48 +303,6 @@
    </properties>
   </object>
   <object id="255" name="wall" type="blockrect" x="537.396" y="2669.27" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="256" name="wall" type="blockrect" x="1141.69" y="2261.37" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="257" name="wall" type="blockrect" x="1041.69" y="2261.37" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="258" name="wall" type="blockrect" x="1041.05" y="1748.46" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="259" name="wall" type="blockrect" x="840.408" y="1747.45" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="260" name="wall" type="blockrect" x="940.408" y="1747.45" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="261" name="wall" type="blockrect" x="740.523" y="1958.96" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="262" name="wall" type="blockrect" x="1141.05" y="1748.46" width="100" height="100">
    <properties>
     <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
@@ -702,9 +583,9 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="357" name="cake" type="candy" x="1010.77" y="1469.56" width="100" height="100">
+  <object id="357" name="cake" type="candy" x="1010.77" y="1384.48" width="100" height="100">
    <properties>
-    <property name="delta" value="10"/>
+    <property name="delta" value="0"/>
     <property name="path" value="cake_png"/>
     <property name="power" value="10"/>
    </properties>
@@ -720,7 +601,7 @@
   </object>
   <object id="361" name="cake" type="candy" x="489.554" y="3569.05" width="100" height="100">
    <properties>
-    <property name="delta" value="10"/>
+    <property name="delta" value="0"/>
     <property name="path" value="cake_png"/>
     <property name="power" value="10"/>
    </properties>
@@ -1614,12 +1495,6 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="535" name="wall" type="blockrect" x="540.231" y="1958.5" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
   <object id="536" name="wall_half" type="blockrect" x="1240.17" y="1487.17" width="100" height="55">
    <properties>
     <property name="path" value="wall_half_png"/>
@@ -1665,12 +1540,6 @@
   <object id="544" name="wall_half" type="blockrect" x="1241.53" y="2213.06" width="100" height="55">
    <properties>
     <property name="path" value="wall_half_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="545" name="wall" type="blockrect" x="540.189" y="2264.26" width="100" height="100">
-   <properties>
-    <property name="path" value="wall_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
@@ -1820,7 +1689,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="572" name="hamburg" type="candy" x="1110.8" y="2384.23" width="100" height="100">
+  <object id="572" name="hamburg" type="candy" x="977.102" y="2469.31" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -1828,27 +1697,135 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="573" name="wall_half" type="blockrect" x="740.456" y="1747.57" width="100" height="55">
+  <object id="579" name="cake" type="candy" x="220.435" y="3170.91" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="delta" value="0"/>
+    <property name="path" value="cake_png"/>
+    <property name="power" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="580" name="cake" type="candy" x="436.174" y="3176.98" width="100" height="100">
+   <properties>
+    <property name="delta" value="0"/>
+    <property name="path" value="cake_png"/>
+    <property name="power" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="581" name="cake" type="candy" x="357.171" y="2098.28" width="100" height="100">
+   <properties>
+    <property name="delta" value="0"/>
+    <property name="path" value="cake_png"/>
+    <property name="power" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="582" name="grassLight_half" type="blockrect" x="741.523" y="1802.56" width="100" height="55">
+   <properties>
+    <property name="path" value="grassLight_half_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="574" name="wall_half" type="blockrect" x="740.526" y="1800.13" width="100" height="55">
+  <object id="583" name="grassLight" type="blockrect" x="741.327" y="1962.66" width="100" height="100">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="grassLight_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="577" name="wall_half" type="blockrect" x="740.393" y="1853.06" width="100" height="55">
+  <object id="584" name="grassLight_half" type="blockrect" x="741.311" y="1909.71" width="100" height="55">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="grassLight_half_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="578" name="wall_half" type="blockrect" x="740.463" y="1905.62" width="100" height="55">
+  <object id="585" name="grassLight_half" type="blockrect" x="741.311" y="1748.88" width="100" height="55">
    <properties>
-    <property name="path" value="wall_half_png"/>
+    <property name="path" value="grassLight_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="588" name="grassLight_half" type="blockrect" x="741.523" y="1856.24" width="100" height="55">
+   <properties>
+    <property name="path" value="grassLight_half_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="589" name="grassLight" type="blockrect" x="541.393" y="1962.68" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="590" name="grassDark" type="blockrect" x="640.859" y="1963.04" width="100" height="100">
+   <properties>
+    <property name="path" value="grassDark_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="591" name="grassLight" type="blockrect" x="1041.18" y="1749.39" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="592" name="grassLight" type="blockrect" x="841.243" y="1749.41" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="593" name="grassDark" type="blockrect" x="940.709" y="1749.77" width="100" height="100">
+   <properties>
+    <property name="path" value="grassDark_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="594" name="grassLight" type="blockrect" x="1141.21" y="1749.29" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="595" name="grassDark" type="blockrect" x="941.508" y="2262.51" width="100" height="100">
+   <properties>
+    <property name="path" value="grassDark_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="596" name="grassLight" type="blockrect" x="842.042" y="2262.15" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="597" name="grassLight" type="blockrect" x="1041.98" y="2262.13" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="598" name="grassLight" type="blockrect" x="1142.01" y="2262.03" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="599" name="grassDark" type="blockrect" x="541.01" y="2262.87" width="100" height="100">
+   <properties>
+    <property name="path" value="grassDark_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="601" name="grassLight" type="blockrect" x="641.481" y="2262.49" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="602" name="grassLight" type="blockrect" x="741.511" y="2262.39" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>

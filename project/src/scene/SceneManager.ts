@@ -271,7 +271,7 @@ module fly {
 			{
 				this.times.push(time)
 			}
-			else if(reason <= 0 && this.times[this._mapId-1])
+			else if(reason <= 0 && this.times[this._mapId-1] > time )
 			{
 				this.times[this._mapId-1] = time
 			}

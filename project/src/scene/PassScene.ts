@@ -69,7 +69,7 @@ module fly {
 			var text:egret.TextField = new egret.TextField()
 			if (reason < 0)
 			{	
-				text.text = "总用时: " + parseInt(""+this.mgr.getPassTimeAll()*10, 10)/10 + "秒"
+				text.text = "最佳用时: " + parseInt(""+this.mgr.getPassTimeAll()*10, 10)/10 + "秒"
 			}
 			else if (reason == 0)
 			{	

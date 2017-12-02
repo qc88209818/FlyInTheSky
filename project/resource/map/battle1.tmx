@@ -968,7 +968,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1688" name="self" type="player" x="865.531" y="1757.9" width="100" height="100">
+  <object id="1688" name="self" type="player" x="881.979" y="1775.53" width="100" height="100">
    <ellipse/>
   </object>
   <object id="1689" name="hamburg" type="candy" x="271.432" y="1755.28" width="100" height="100">
@@ -1106,13 +1106,13 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1708" name="new" type="image" x="660.249" y="1644.61" width="200" height="40">
+  <object id="1708" name="new" type="image" x="468.495" y="1664.75" width="200" height="40">
    <properties>
     <property name="path" value="newLeft_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1709" name="skilled" type="image" x="969.388" y="1645.79" width="200" height="40">
+  <object id="1709" name="skilled" type="image" x="940.003" y="1660.66" width="200" height="40">
    <properties>
     <property name="path" value="skilledRight_png"/>
     <property name="type" type="int" value="0"/>

@@ -213,3 +213,4 @@ var fly;
     fly.SceneManager = SceneManager;
     __reflect(SceneManager.prototype, "fly.SceneManager");
 })(fly || (fly = {}));
+//# sourceMappingURL=SceneManager.js.map

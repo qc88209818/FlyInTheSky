@@ -42,6 +42,8 @@ class UILoading extends egret.Sprite {
     private bar_width:number;
     private createView(width:number, height:number):void {
 		let bg = fly.FlyTools.createBitmapByName("background_jpg")
+        bg.x = (bg.x + 200)*2
+        bg.y = bg.y*2
 		bg.scaleX = width/bg.width
 		bg.scaleY = height/bg.height
 		this.addChild(bg)
@@ -79,8 +81,6 @@ class UILoading extends egret.Sprite {
         this.addChild(this.loadAmin);
         this.loadAmin.y = -60;
         this.loadAmin.x = 180;
-
-
     }
 
     public setProgress(current:number, total:number):void {

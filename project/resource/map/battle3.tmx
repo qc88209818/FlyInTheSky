@@ -1390,6 +1390,7 @@
   </object>
   <object id="1240" name="weightmonster" type="weightmonster" x="-0.0583046" y="964.487" width="200" height="200">
    <properties>
+    <property name="dir" value="-1"/>
     <property name="min" value="250"/>
     <property name="path" value="bucket_png"/>
    </properties>

@@ -77,7 +77,7 @@ module fly {
 			}
 			else
 			{
-				text.text = "你当前剩余生命: " + this.mgr.health
+				text.text = "当前剩余生命: " + this.mgr.health
 			}
 			text.size = 48
 			text.textColor = 0x000000

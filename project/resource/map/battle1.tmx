@@ -142,6 +142,7 @@
   </object>
   <object id="1484" name="plane" type="plane" x="1420.62" y="1615.47" width="200" height="200">
    <properties>
+    <property name="dir" value="-1"/>
     <property name="path" value="plane_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
@@ -710,7 +711,7 @@
   <object id="1701" name="dog" type="aitraps" x="1451.9" y="1171.73" width="150" height="150">
    <properties>
     <property name="path" value="dog_png"/>
-    <property name="radius" value="500"/>
+    <property name="radius" value="300"/>
     <property name="velocity" value="300"/>
    </properties>
    <ellipse/>
@@ -1090,6 +1091,7 @@
   </object>
   <object id="1766" name="weightmonster" type="weightmonster" x="65.2571" y="1592.42" width="200" height="200">
    <properties>
+    <property name="dir" value="-1"/>
     <property name="min" value="250"/>
     <property name="path" value="bucket_png"/>
    </properties>

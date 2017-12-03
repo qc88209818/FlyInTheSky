@@ -1089,7 +1089,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1766" name="weightmonster" type="weightmonster" x="65.2571" y="1592.42" width="200" height="200">
+  <object id="1766" name="weightmonster" type="weightmonster" x="11.4408" y="1593.1" width="200" height="200">
    <properties>
     <property name="dir" value="-1"/>
     <property name="min" value="250"/>

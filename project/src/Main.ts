@@ -109,7 +109,14 @@ class Main extends egret.DisplayObjectContainer {
       //  mgr.init(this, this.stage.stageWidth, this.stage.stageHeight)
         //mgr.load(1)
 
+		fly.FlyConfig.stageWidth = document.documentElement.clientWidth
+		fly.FlyConfig.stageHeight = document.documentElement.clientHeight
+
+        console.log(document.documentElement.clientHeight)
+        console.log(this.stage.stageHeight)
+
         let enterGameScene = new fly.EnterGameScene();
+        enterGameScene.y = this.stage.stageHeight - fly.FlyConfig.stageHeight
         this.addChild(enterGameScene);
     }
 }

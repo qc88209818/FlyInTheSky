@@ -162,8 +162,6 @@ module fly {
 			// 初始化一些有用参数
 			fly.FlyConfig.width = data["$width"]*data["$tilewidth"]
 			fly.FlyConfig.height = data["$height"]*data["$tileheight"]
-			fly.FlyConfig.stageWidth = this._width
-			fly.FlyConfig.stageHeight = this._height
 
 			// 初始化TiledMap Object
 			let tiledMapObjs = []

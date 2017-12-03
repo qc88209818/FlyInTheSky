@@ -29,9 +29,9 @@
 
 class UILoading extends egret.Sprite {
 
-    public constructor(width:number, height:number) {
+    public constructor() {
         super();
-        this.createView(width, height);
+        this.createView();
     }
 
     private textField:egret.TextField;
@@ -40,14 +40,7 @@ class UILoading extends egret.Sprite {
     private bar_mask:egret.Bitmap;
     private loadAmin:egret.MovieClip;
     private bar_width:number;
-    private createView(width:number, height:number):void {
-		let bg = fly.FlyTools.createBitmapByName("background_jpg")
-        bg.x = (bg.x + 200)*2
-        bg.y = bg.y*2
-		bg.scaleX = width/bg.width
-		bg.scaleY = height/bg.height
-		this.addChild(bg)
-
+    private createView():void {
         this.bar_bg = new  egret.Bitmap();
         this.bar_bg.texture = RES.getRes("bar_bg_png");
         this.addChild(this.bar_bg);

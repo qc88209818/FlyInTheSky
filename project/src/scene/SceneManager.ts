@@ -27,11 +27,9 @@ module fly {
 			return this.scenemgr
 		}
 
-		public init(parent:egret.DisplayObjectContainer, width:number, height:number)
+		public init(parent:egret.DisplayObjectContainer)
 		{
 			this._parent = parent
-			this._width = width
-			this._height = height
 			this.health = 2
 
 			this.createMusicAndSound()
@@ -70,6 +68,7 @@ module fly {
 		private loadNow()
 		{
 			let battlescene = new BattleScene()
+        	battlescene.y = fly.FlyConfig.deltaHeight
 			battlescene.initScene(this._tiledMapObjs)
 			this._parent.addChild(battlescene)
 
@@ -97,6 +96,7 @@ module fly {
 				this.reset()
 
 				let enterGameScene = new fly.EnterGameScene();
+        		enterGameScene.y = fly.FlyConfig.deltaHeight
 				this._parent.addChild(enterGameScene);
 			}
 		}
@@ -266,6 +266,7 @@ module fly {
 		{
 			let scene = new PassScene()
 			scene.initScene(reason, this)
+        	scene.y = fly.FlyConfig.deltaHeight
 			this._parent.addChild(scene)
 			this._passScene = scene
 		}

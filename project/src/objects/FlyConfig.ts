@@ -29,6 +29,7 @@ module fly {
 		static height:number 			// 画布高度
 		static stageWidth:number		// 画布宽度
 		static stageHeight:number		// 画布高度
+		static deltaHeight:number       // 画布差异
 
 		private static PlayerMinId:number 		= 0
 		private static BlockMinId:number 		= 1000

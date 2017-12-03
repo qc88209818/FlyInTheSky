@@ -18,8 +18,8 @@ module fly {
 			this.graphics.drawRect(0, 0, this.stage.stageWidth, this.stage.stageHeight);
 			this.graphics.endFill()
 
-            let width = this.stage.stageWidth
-            let height = this.stage.stageHeight
+            let width = FlyConfig.stageWidth
+            let height = FlyConfig.stageHeight
 
             let title_bg = new  egret.Bitmap();
             title_bg.texture = RES.getRes("title_png");
@@ -64,25 +64,22 @@ module fly {
         }
 
         public onTouchBegin(evt:egret.TouchEvent) {
-               
             if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
                      this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 1.8;
-                }
-               
+                }     
         }
 
         private  onTouchClick(evt:egret.TouchEvent) {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
-            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
+            if(this.enterGameBtn.hitTestPoint(evt.localX, evt.localY)){
                     this.music.stop()
 
                     let parent = this.parent
                     parent.removeChild(this);
                     let mgr = fly.SceneManager.inst();
-                    mgr.init(parent, parent.stage.stageWidth, parent.stage.stageHeight);
+                    mgr.init(parent);
                     mgr.load(1)
                 }
-            
         }
 
         private  onTouchCancel(evt:egret.TouchEvent) {

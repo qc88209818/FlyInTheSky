@@ -601,7 +601,7 @@
   <object id="1070" name="dog" type="aitraps" x="1054.51" y="1417.25" width="150" height="150">
    <properties>
     <property name="path" value="dog_png"/>
-    <property name="radius" value="500"/>
+    <property name="radius" value="350"/>
     <property name="velocity" value="300"/>
    </properties>
    <ellipse/>

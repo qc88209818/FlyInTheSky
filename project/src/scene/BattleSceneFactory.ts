@@ -79,7 +79,7 @@ module fly {
 			}
 			else if (obj.type == "weighttraps")
 			{
-				let traps = new WeightTraps(obj.x, obj.y, obj.width, obj.height, 
+				let traps = new WeightTraps(obj.x, obj.y, obj.width/2, 
 				{
 					path:obj.params["path"]
 					, type:Number(obj.params["type"])
@@ -147,6 +147,7 @@ module fly {
 					, rotation:Number(obj.params["rotation"])
 					, tx:Number(obj.params["tx"])
 					, ty:Number(obj.params["ty"])
+					, dir:Number(obj.params["dir"])
 					, pVelocity:Number(obj.params["velocity"])
 				})
 				scene.addToWorld(traps)

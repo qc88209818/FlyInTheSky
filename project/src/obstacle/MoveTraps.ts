@@ -6,14 +6,17 @@ module fly {
 		height:number
 		tx:number
 		ty:number
+		dir:number
 
 		pVelocity:number
 
 		source:number[] = []
 		target:number[] = []
 
-		baseScale:number = FlyParam.TrapsBaseScale
-
+		baseScale:number = FlyParam.MoveBaseScale		
+		
+		private _movieClip:egret.MovieClip
+		
 		public constructor(x:number, y:number, width:number, height:number, op?) {
 			super()
 			this.layerIndex = 3
@@ -23,6 +26,7 @@ module fly {
 			this.height = height
 			this.tx = op.tx + width/2
 			this.ty = op.ty + height/2
+			this.dir = op.dir || 1
 			this.pVelocity = op.pVelocity || 200
 
 			this.source = [this.x, this.y]
@@ -47,12 +51,14 @@ module fly {
 
 		private initBitmap(path:string)
 		{
-			let png = FlyTools.createBitmapByName(path)
+			var png = new egret.MovieClip(this.objmgr.moveFactory.generateMovieClipData("chainsaw"));
+			png.gotoAndPlay(this.dir==1?"front":"side", -1)
 			png.anchorOffsetX = png.width/2
-			png.anchorOffsetY = png.height/2
-			png.scaleX = this.baseScale * this.width/png.width
-			png.scaleY = this.baseScale * this.height/png.height
+			png.anchorOffsetY = png.height*0.7
+			png.scaleX = this.baseScale
+			png.scaleY = this.baseScale
 			this.addChild(png)
+			this._movieClip = png
 		}
 
 		public onTrigger(pid:number)

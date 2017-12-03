@@ -26,6 +26,9 @@ module fly {
 		monFactory:egret.MovieClipDataFactory
 		windFactory:egret.MovieClipDataFactory
 		dogFactory:egret.MovieClipDataFactory
+		iceFactory:egret.MovieClipDataFactory
+		moveFactory:egret.MovieClipDataFactory
+		stabFactory:egret.MovieClipDataFactory
 
 		public init()
 		{
@@ -124,6 +127,21 @@ module fly {
 			var txtr = RES.getRes("player_win_png");
 			let winFactory = new egret.MovieClipDataFactory(data, txtr);
 			this.winFactory = winFactory
+
+			var data = RES.getRes("ice_json");
+			var txtr = RES.getRes("ice_png");
+			let iceFactory = new egret.MovieClipDataFactory(data, txtr);
+			this.iceFactory = iceFactory
+
+			var data = RES.getRes("chainsaw_json");
+			var txtr = RES.getRes("chainsaw_png");
+			let moveFactory = new egret.MovieClipDataFactory(data, txtr);
+			this.moveFactory = moveFactory
+
+			var data = RES.getRes("stab_json");
+			var txtr = RES.getRes("stab_png");
+			let stabFactory = new egret.MovieClipDataFactory(data, txtr);
+			this.stabFactory = stabFactory
 
 			let world = new p2.World()
 			world.gravity = [0, 0]

@@ -15,6 +15,8 @@ module fly {
 		private mgr:SceneManager
 		private objmgr:ObjectManager
 
+		private dieReason:string[] = ["die1", "die1", "die2", "die2", "die2", "die2"]
+
         public initScene(reason:number, mgr:SceneManager):void{
 			this.reason = reason
 			this.mgr = mgr
@@ -144,10 +146,20 @@ module fly {
 		private createLoseScene(reason:number)
 		{
 			// 过场动画
-			let png = new egret.MovieClip(this.objmgr.dieFactory.generateMovieClipData("playerDie"));
-			png.gotoAndPlay("die"+reason, -1)
+			let png = null
+			if (reason == 4)
+			{
+				png = new egret.MovieClip(this.objmgr.iceFactory.generateMovieClipData("ice"));
+				png.gotoAndPlay("drop", -1)
+				png.anchorOffsetY = png.height*0.3
+			}
+			else
+			{
+				png = new egret.MovieClip(this.objmgr.dieFactory.generateMovieClipData("playerDie"));
+				png.gotoAndPlay(this.dieReason[reason], -1)
+				png.anchorOffsetY = png.height*0.5
+			}
 			png.anchorOffsetX = png.width/2
-			png.anchorOffsetY = png.height/2
 			png.x = FlyConfig.stageWidth/2 - 10
 			png.y = FlyConfig.stageHeight/2 - 270
 			png.scaleX = png.scaleY = 2

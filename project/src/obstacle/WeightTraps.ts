@@ -1,22 +1,22 @@
 module fly {
-	export class WeightTraps  extends FlyRect {
+	export class WeightTraps  extends FlyCircle {
 		x:number
 		y:number
-		width:number
-		height:number
+		radius:number
 
 		baseScale:number = FlyParam.WeightTrapsBaseScale
 
 		max:number
 		min:number
+
+		private _movieClip:egret.MovieClip
 		
-		public constructor(x:number, y:number, width:number, height:number, op?) {
+		public constructor(x:number, y:number, radius:number, op?) {
 			super()
 			this.layerIndex = 3
-			this.x = x + width/2
-			this.y = y + height/2
-			this.width = width
-			this.height = height
+			this.x = x + radius
+			this.y = y + radius
+			this.radius = radius
 			this.min = op.min || 0
 			this.max = op.max || 999
 
@@ -28,7 +28,7 @@ module fly {
 				, position:[this.x, this.y]
 				, damping:op.damping || 0.7
 			})
-			this.initShape(this.width, this.height)
+			this.initShape(this.radius)
 			this.setGroupAndMask(ObjectGroup.Property, ObjectMask.Property)
 
 			this.initBitmap(op.path)
@@ -39,12 +39,14 @@ module fly {
 
 		private initBitmap(path:string)
 		{
-			let png = FlyTools.createBitmapByName(path)
-			png.anchorOffsetX = png.width/2
-			png.anchorOffsetY = png.height/2
-			png.scaleX = this.baseScale * this.width/png.width
-			png.scaleY = this.baseScale * this.height/png.height
+			var png = new egret.MovieClip(this.objmgr.iceFactory.generateMovieClipData("ice"));
+			png.gotoAndPlay("normal", -1)
+			png.anchorOffsetX = png.width*0.5
+			png.anchorOffsetY = png.height*0.5		
+			png.scaleX = this.baseScale * this.radius/png.width
+			png.scaleY = this.baseScale * this.radius/png.height
 			this.addChild(png)
+			this._movieClip = png
 		}
 
 		public onTrigger(pid:number)
@@ -54,7 +56,10 @@ module fly {
 				{
 					if (this.min < player.body.mass && player.body.mass < this.max)
 					{
+						this._movieClip.gotoAndPlay("drop", 1)
 						player.died(4)
+						player.movieClip.visible = false
+						player.dieMovieClip.visible = false
 					}
 					return true
 				}

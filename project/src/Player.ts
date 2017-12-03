@@ -20,6 +20,8 @@ module fly {
 		isListener:boolean  = false		// 是否被监听
 		addPowerTime:number  = 0		// 是否飘字
 
+		private dieReason:string[] = ["die1", "die1", "die2", "die2", "die2", "die2"]
+
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
 			this.layerIndex = 5
@@ -265,10 +267,10 @@ module fly {
 			if (this.isDestroy) return
 			this.isDestroy = true
 
-			this.reason = reason>2?2:reason
+			this.reason = reason
 			this.dieMovieClip.visible = true
 			this.movieClip.visible = false
-			this.dieMovieClip.gotoAndPlay("die"+this.reason, 1)
+			this.dieMovieClip.gotoAndPlay(this.dieReason[this.reason], 1)
 
 			if (this.isListener)
 			{

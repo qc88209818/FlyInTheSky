@@ -154,11 +154,14 @@ module fly {
 		static candy_power:number 		= 10		// 糖果能量
 		static move_power:number 		= -3		// 移动消耗能量
 		static hit_power:number			= -20		// 恐吓消耗能量
+		static traps_show_time:number   = 4			// 地刺显示时间
+		static traps_hide_time:number   = 4			// 地刺隐藏时间
 
 		static PlayerBaseScale:number   		= 1		// 基本缩放
 		static CandyBaseScale:number			= 2		
 		static TrapsBaseScale:number			= 1		
-		static WeightTrapsBaseScale:number		= 1.5		
+		static MoveBaseScale:number				= 1			
+		static WeightTrapsBaseScale:number		= 8
 		static PlaneBaseScale:number			= 1.5
 		static AiBaseScale:number				= 1.2
 		static WeightBlockBaseScale:number		= 1

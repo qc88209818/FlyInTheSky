@@ -212,7 +212,7 @@ module fly {
 
 			// 显示生命值
 			var text2:egret.TextField = new egret.TextField()
-			text2.text = "死亡次数: " + SceneManager.inst().health
+			text2.text = "当前生命: " + SceneManager.inst().health
 			text2.size = 36;
 			text2.textColor = 0x000000;
 			text2.anchorOffsetX = 0;

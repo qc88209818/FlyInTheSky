@@ -52,49 +52,45 @@ module fly {
 				array = this.createPassScene()
 			}
 
-			var height = this.movieclip.y + this.movieclip.height*2 + 30
-
 			// 原因
-			var text:egret.TextField = new egret.TextField()
+			var text = new egret.TextField()
 			text.text = array[0]
 			text.size = 48
 			text.textColor = 0x000000
 			text.anchorOffsetX = text.width/2
 			text.anchorOffsetY = text.height/2
 			text.x = FlyConfig.stageWidth/2
-			text.y = height
+			text.y = this.movieclip.y + this.movieclip.height*2 - 20
 			this.addChild(text);
 
-			height = height + text.height + 30
-
-			// 本次用时
-			var text:egret.TextField = new egret.TextField()
+			// 本次用时 
+			var text2= new egret.TextField()
 			if (reason < 0)
 			{	
-				text.text = "最佳用时: " + parseInt(""+this.mgr.getPassTimeAll()*10, 10)/10 + "秒"
+				text2.text = "最佳用时: " + parseInt(""+this.mgr.getPassTimeAll()*10, 10)/10 + "秒"
 			}
 			else if (reason == 0)
 			{	
-				text.text = "本次用时: " + parseInt(""+this.mgr.getLastTime()*10, 10)/10 + "秒" + "(最短用时: " + parseInt(""+this.mgr.getPassTime()*10, 10)/10 + "秒)"
+				text2.text = "本次用时: " + parseInt(""+this.mgr.getLastTime()*10, 10)/10 + "秒" + "(最短用时: " + parseInt(""+this.mgr.getPassTime()*10, 10)/10 + "秒)"
 			}
 			else
 			{
-				text.text = "当前剩余生命: " + this.mgr.health
+				text2.text = "当前剩余生命: " + this.mgr.health
 			}
-			text.size = 48
-			text.textColor = 0x000000
-			text.anchorOffsetX = text.width/2
-			text.anchorOffsetY = text.height/2
-			text.x = FlyConfig.stageWidth/2
-			text.y = height
-			this.addChild(text);
+			text2.size = 48
+			text2.textColor = 0x000000
+			text2.anchorOffsetX = text.width/2
+			text2.anchorOffsetY = text.height/2
+			text2.x = FlyConfig.stageWidth/2
+			text2.y = this.movieclip.y + this.movieclip.height*2 + text.height
+			this.addChild(text2);
 
 			// 二维码
 			let erweima = FlyTools.createBitmapByName("erweima_png")
             erweima.anchorOffsetX = erweima.width/2
             erweima.anchorOffsetY = erweima.height/2
             erweima.x = FlyConfig.stageWidth/2
-            erweima.y = text.y + text.height*2 + 220;
+            erweima.y = text2.y + text2.height*2 + 200;
             erweima.scaleX = erweima.scaleY = 1.5;
 			erweima.visible = false
 			this.addChild(erweima)
@@ -105,7 +101,7 @@ module fly {
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = FlyConfig.stageWidth/2
-            enterGameBtn.y = text.y + text.height*2 + 100; 
+            enterGameBtn.y = text2.y + text2.height*2 + 60; 
             enterGameBtn.scaleX = enterGameBtn.scaleY = 2
             this.addChild(enterGameBtn)
 			this.enterGameBtn = enterGameBtn
@@ -115,7 +111,7 @@ module fly {
             shareGameBtn.anchorOffsetX = shareGameBtn.width/2
             shareGameBtn.anchorOffsetY = shareGameBtn.height/2
             shareGameBtn.x = FlyConfig.stageWidth/2
-            shareGameBtn.y = this.enterGameBtn.y + this.enterGameBtn.height + 150
+            shareGameBtn.y = this.enterGameBtn.y + this.enterGameBtn.height + 120
             shareGameBtn.scaleX = shareGameBtn.scaleY = 2
             this.addChild(shareGameBtn)
 			this.shareGameBtn = shareGameBtn
@@ -135,7 +131,7 @@ module fly {
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 270
+			png.y = FlyConfig.stageHeight/2 - 360
 			png.scaleX = png.scaleY = 2
 			this.addChild(png)
 			this.movieclip = png
@@ -161,7 +157,7 @@ module fly {
 			}
 			png.anchorOffsetX = png.width/2
 			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 270
+			png.y = FlyConfig.stageHeight/2 - 360
 			png.scaleX = png.scaleY = 2
 			this.addChild(png)
 			this.movieclip = png
@@ -177,7 +173,7 @@ module fly {
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 270
+			png.y = FlyConfig.stageHeight/2 - 360
 			png.scaleX = png.scaleY = 2
 			this.addChild(png)
 			this.movieclip = png
@@ -192,10 +188,10 @@ module fly {
 		}
 
 		private onTouchBegin(evt:egret.TouchEvent) {
-            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
+            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
                 this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 1.8;
             }
-			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY)){
+			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
                 this.shareGameBtn.scaleX = this.shareGameBtn.scaleY = 1.8;
             }
         }
@@ -203,10 +199,10 @@ module fly {
         private  onTouchClick(evt:egret.TouchEvent) {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             this.shareGameBtn.scaleX = this.shareGameBtn.scaleY = 2;
-            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
+            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
 				this.mgr.onClickBtn(this.reason)
             }
-			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY)){
+			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
 				this.mgr.onClickShare()
             }
         }

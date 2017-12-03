@@ -38,7 +38,7 @@ module fly {
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			png.x = width/2 - 10
-			png.y = height/2 - 270
+			png.y = height/2 - 240
 			png.scaleX = png.scaleY = 2
 			this.addChild(png)
 
@@ -47,7 +47,7 @@ module fly {
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = width/2
-            enterGameBtn.y = png.y + png.height*2 + 150;
+            enterGameBtn.y = png.y + png.height*2 + 180;
             enterGameBtn.scaleX = enterGameBtn.scaleY = 2;
             this.addChild(enterGameBtn);
             this.enterGameBtn = enterGameBtn
@@ -65,14 +65,14 @@ module fly {
         }
 
         public onTouchBegin(evt:egret.TouchEvent) {
-            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY)){
+            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
                      this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 1.8;
                 }     
         }
 
         private  onTouchClick(evt:egret.TouchEvent) {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
-            if(this.enterGameBtn.hitTestPoint(evt.localX, evt.localY)){
+            if(this.enterGameBtn.hitTestPoint(evt.localX, evt.localY + FlyConfig.deltaHeight)){
                     this.music.stop()
 
                     let parent = this.parent

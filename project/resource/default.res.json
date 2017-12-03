@@ -5,7 +5,7 @@
 			"name": "preload"
 		},
 		{
-			"keys": "yellow_button_jpg,playBtn_png,load_bar_png,loading_amin_json,loading_amin_png,load_mask_png,bar_bg_png",
+			"keys": "yellow_button_jpg,playBtn_png,load_bar_png,loading_amin_json,loading_amin_png,load_mask_png,bar_bg_png,background_jpg",
 			"name": "loadUI"
 		}
 	],

@@ -716,21 +716,12 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1703" name="movetraps" type="movetraps" x="1271.27" y="266.977" width="100" height="60">
+  <object id="1703" name="movetraps" type="movetraps" x="1421.13" y="268.74" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
     <property name="tx" value="1450"/>
     <property name="ty" value="267"/>
     <property name="type" type="int" value="0"/>
-    <property name="velocity" value="200"/>
-   </properties>
-  </object>
-  <object id="1704" name="movetraps" type="movetraps" x="1566.38" y="147.272" width="60" height="100">
-   <properties>
-    <property name="dir" type="int" value="-1"/>
-    <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1566"/>
-    <property name="ty" value="384"/>
     <property name="velocity" value="200"/>
    </properties>
   </object>

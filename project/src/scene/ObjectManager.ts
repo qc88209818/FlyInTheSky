@@ -23,6 +23,7 @@ module fly {
 		mcFactory:egret.MovieClipDataFactory
 		dieFactory:egret.MovieClipDataFactory
 		winFactory:egret.MovieClipDataFactory
+		monFactory:egret.MovieClipDataFactory
 		windFactory:egret.MovieClipDataFactory
 		dogFactory:egret.MovieClipDataFactory
 
@@ -113,6 +114,11 @@ module fly {
 			var txtr = RES.getRes("dog_png");
 			let dogFactory = new egret.MovieClipDataFactory(data, txtr);
 			this.dogFactory = dogFactory
+
+			var data = RES.getRes("monsterWall_json");
+			var txtr = RES.getRes("monsterWall_png");
+			let monFactory = new egret.MovieClipDataFactory(data, txtr);
+			this.monFactory = monFactory
 			
 			var data = RES.getRes("player_win_json");
 			var txtr = RES.getRes("player_win_png");

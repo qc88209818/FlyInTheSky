@@ -277,6 +277,16 @@ module fly {
 			}
 		}
 
+		public hit(dir:number[], power:number, time:number)
+		{
+			if (power != 0)
+			{
+				this.addPower(power)
+			}
+			this.setVelocity(dir[0], dir[1])
+			this.inoperable = time
+		}
+
 		public win()
 		{
 			if (this.isDestroy) return

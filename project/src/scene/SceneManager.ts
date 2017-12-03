@@ -244,6 +244,12 @@ module fly {
 			}
 		}
 
+		public stopAllSound()
+		{
+			this.sound.stop()
+			this.soundObj = null
+		}
+
 		public playMusic(name:string)
 		{
 			this.music.playObject(name)
@@ -254,6 +260,7 @@ module fly {
 			this._parent.removeChildren()
 			this.music.stop()
 			this.sound.stop()
+			this.soundObj = null
 		}
 
 		public createPassScene(reason:number)

@@ -233,6 +233,8 @@ module fly {
 			
 			this.reset()
 			this.objmgr.reset()
+
+			SceneManager.inst().stopAllSound()
 			if (this.isRunning == 0)
 				SceneManager.inst().loadNext()
 			else
@@ -324,13 +326,23 @@ module fly {
 
 		private onContactEnd(bodyA:p2.Body, bodyB:p2.Body)
 		{
-			if (FlyConfig.isObstacle(bodyA.id))
+			// 玩家触碰陷阱
+			if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isObstacle(bodyB.id))
+			{
+				this.contactObstacleEnd(bodyB.id, bodyA.id)
+			}
+			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isObstacle(bodyA.id))
 			{
 				this.contactObstacleEnd(bodyA.id, bodyB.id)
 			}
-			else if (FlyConfig.isObstacle(bodyB.id))
+			// 玩家触碰障碍物
+			else if (FlyConfig.isPlayer(bodyA.id) && FlyConfig.isBlock(bodyB.id))
 			{
 				this.contactObstacleEnd(bodyB.id, bodyA.id)
+			}
+			else if (FlyConfig.isPlayer(bodyB.id) && FlyConfig.isBlock(bodyA.id))
+			{
+				this.contactObstacleEnd(bodyA.id, bodyB.id)
 			}
 		}
 
@@ -401,18 +413,10 @@ module fly {
 
 			if (pl1 && pl2)
 			{
-				let pos1 = pl1.body.position
-				let pos2 = pl2.body.position
-
-				let normal = []
-				p2.vec2.normalize(normal, [pos1[0] - pos2[0], pos1[1] - pos2[1]])
-
+				let normal = FlyTools.getDirect(pl1.body.position, pl2.body.position)
 				let forceScale = FlyParam.forceScale
-				pl1.setVelocity( normal[0]*forceScale,  normal[1]*forceScale)
-				pl2.setVelocity(-normal[0]*forceScale, -normal[1]*forceScale)
-
-				pl1.inoperable = 1
-				pl2.inoperable = 1
+				pl1.hit([ normal[0]*forceScale,  normal[1]*forceScale], 0, 1)
+				pl1.hit([-normal[0]*forceScale, -normal[1]*forceScale], 0, 1)
 			}
 		}
 

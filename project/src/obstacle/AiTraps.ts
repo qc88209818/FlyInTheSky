@@ -61,6 +61,9 @@ module fly {
 
 		public onTrigger(pid:number)
 		{
+			this._movieClip.gotoAndPlay("attack", 1)
+			this.body.velocity = [0, 0]
+			
 			this.objmgr.players.forEach(player => {
 				if (player.body.id == pid)
 				{

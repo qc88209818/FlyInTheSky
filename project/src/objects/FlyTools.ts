@@ -28,5 +28,12 @@ module fly {
 			text.anchorOffsetY = text.height/2
 			return text;
 		}
+
+		public static getDirect(pos1:number[], pos2:number[])
+		{
+			let normal = []
+			p2.vec2.normalize(normal, [pos1[0] - pos2[0], pos1[1] - pos2[1]])
+			return normal
+		}
 	}
 }

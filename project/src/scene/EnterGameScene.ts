@@ -14,12 +14,13 @@ module fly {
         private  onAddToStage():void{
             this.music.playObject("start.mp3")
           
-			this.graphics.beginFill(0x000000, 0);
-			this.graphics.drawRect(0, 0, this.stage.stageWidth, this.stage.stageHeight);
-			this.graphics.endFill()
-
             let width = this.stage.stageWidth
             let height = this.stage.stageHeight
+
+            let bg = fly.FlyTools.createBitmapByName("background_jpg")
+            bg.scaleX = width/bg.width
+            bg.scaleY = height/bg.height
+            this.addChild(bg)
 
             let title_bg = new  egret.Bitmap();
             title_bg.texture = RES.getRes("title_png");

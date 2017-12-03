@@ -1,0 +1,274 @@
+{
+	"groups": [
+		{
+			"keys": "yellow_button_jpg,well_png,wall_png,virtual_button_png,virtual_background_png,traps_png,title_png,switch_png,red_button_jpg,playBtn_png,plane_png,load_mask_png,load_bar_png,hamburg_png,grassLight_png,grassDark_png,cake_png,bucket_png,bar_bg_png,background_jpg,playerNormalMode_png,playerNormalMode_json,playerDie_png,playerDie_json,moveTraps_png,grassLight_half_png,grassDark_half_png,wall_half_png,progress_bar_frame_png,progress_bar_png,progress_bar_background_png,nextBtn_png,againBtn_png,backBtn_png,wind_png,wind_json,shareBtn_png,monsterWall_png,dog_json,monsterWall_json,dog_png,erweima_png,player_win_png,player_win_json,drug_png,close_btn_png,newLeft_png,skilledRight_png,fat_png,thin_png",
+			"name": "preload"
+		},
+		{
+			"keys": "yellow_button_jpg,playBtn_png,load_bar_png,loading_amin_json,loading_amin_png,load_mask_png,bar_bg_png",
+			"name": "loadUI"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/background.jpg",
+			"type": "image",
+			"name": "background_jpg"
+		},
+		{
+			"url": "assets/bar_bg.png",
+			"type": "image",
+			"name": "bar_bg_png"
+		},
+		{
+			"url": "assets/bucket.png",
+			"type": "image",
+			"name": "bucket_png"
+		},
+		{
+			"url": "assets/cake.png",
+			"type": "image",
+			"name": "cake_png"
+		},
+		{
+			"url": "assets/grassDark.png",
+			"type": "image",
+			"name": "grassDark_png"
+		},
+		{
+			"url": "assets/grassLight.png",
+			"type": "image",
+			"name": "grassLight_png"
+		},
+		{
+			"url": "assets/hamburg.png",
+			"type": "image",
+			"name": "hamburg_png"
+		},
+		{
+			"url": "assets/load_bar.png",
+			"type": "image",
+			"name": "load_bar_png"
+		},
+		{
+			"url": "assets/load_mask.png",
+			"type": "image",
+			"name": "load_mask_png"
+		},
+		{
+			"url": "assets/loading_amin.png",
+			"type": "image",
+			"name": "loading_amin_png"
+		},
+		{
+			"url": "assets/plane.png",
+			"type": "image",
+			"name": "plane_png"
+		},
+		{
+			"url": "assets/playBtn.png",
+			"type": "image",
+			"name": "playBtn_png"
+		},
+		{
+			"url": "assets/red_button.jpg",
+			"type": "image",
+			"name": "red_button_jpg"
+		},
+		{
+			"url": "assets/switch.png",
+			"type": "image",
+			"name": "switch_png"
+		},
+		{
+			"url": "assets/title.png",
+			"type": "image",
+			"name": "title_png"
+		},
+		{
+			"url": "assets/traps.png",
+			"type": "image",
+			"name": "traps_png"
+		},
+		{
+			"url": "assets/virtual_background.png",
+			"type": "image",
+			"name": "virtual_background_png"
+		},
+		{
+			"url": "assets/wall.png",
+			"type": "image",
+			"name": "wall_png"
+		},
+		{
+			"url": "assets/virtual_button.png",
+			"type": "image",
+			"name": "virtual_button_png"
+		},
+		{
+			"url": "assets/well.png",
+			"type": "image",
+			"name": "well_png"
+		},
+		{
+			"url": "assets/yellow_button.jpg",
+			"type": "image",
+			"name": "yellow_button_jpg"
+		},
+		{
+			"url": "assets/loading_amin.json",
+			"type": "json",
+			"name": "loading_amin_json"
+		},
+		{
+			"url": "assets/movieclip/playerDie.png",
+			"type": "image",
+			"name": "playerDie_png"
+		},
+		{
+			"url": "assets/movieclip/playerNormalMode.png",
+			"type": "image",
+			"name": "playerNormalMode_png"
+		},
+		{
+			"url": "assets/movieclip/playerDie.json",
+			"type": "json",
+			"name": "playerDie_json"
+		},
+		{
+			"url": "assets/movieclip/playerNormalMode.json",
+			"type": "json",
+			"name": "playerNormalMode_json"
+		},
+		{
+			"url": "assets/moveTraps.png",
+			"type": "image",
+			"name": "moveTraps_png"
+		},
+		{
+			"url": "assets/grassLight_half.png",
+			"type": "image",
+			"name": "grassLight_half_png"
+		},
+		{
+			"url": "assets/grassDark_half.png",
+			"type": "image",
+			"name": "grassDark_half_png"
+		},
+		{
+			"url": "assets/wall_half.png",
+			"type": "image",
+			"name": "wall_half_png"
+		},
+		{
+			"url": "assets/progress_bar_frame.png",
+			"type": "image",
+			"name": "progress_bar_frame_png"
+		},
+		{
+			"url": "assets/progress_bar.png",
+			"type": "image",
+			"name": "progress_bar_png"
+		},
+		{
+			"url": "assets/progress_bar_background.png",
+			"type": "image",
+			"name": "progress_bar_background_png"
+		},
+		{
+			"url": "assets/nextBtn.png",
+			"type": "image",
+			"name": "nextBtn_png"
+		},
+		{
+			"url": "assets/againBtn.png",
+			"type": "image",
+			"name": "againBtn_png"
+		},
+		{
+			"url": "assets/backBtn.png",
+			"type": "image",
+			"name": "backBtn_png"
+		},
+		{
+			"url": "assets/movieclip/wind.png",
+			"type": "image",
+			"name": "wind_png"
+		},
+		{
+			"url": "assets/movieclip/wind.json",
+			"type": "json",
+			"name": "wind_json"
+		},
+		{
+			"url": "assets/shareBtn.png",
+			"type": "image",
+			"name": "shareBtn_png"
+		},
+		{
+			"url": "assets/movieclip/monsterWall.png",
+			"type": "image",
+			"name": "monsterWall_png"
+		},
+		{
+			"url": "assets/movieclip/dog.json",
+			"type": "json",
+			"name": "dog_json"
+		},
+		{
+			"url": "assets/movieclip/monsterWall.json",
+			"type": "json",
+			"name": "monsterWall_json"
+		},
+		{
+			"url": "assets/movieclip/dog.png",
+			"type": "image",
+			"name": "dog_png"
+		},
+		{
+			"url": "assets/erweima.png",
+			"type": "image",
+			"name": "erweima_png"
+		},
+		{
+			"url": "assets/movieclip/player_win.png",
+			"type": "image",
+			"name": "player_win_png"
+		},
+		{
+			"url": "assets/movieclip/player_win.json",
+			"type": "json",
+			"name": "player_win_json"
+		},
+		{
+			"url": "assets/drug.png",
+			"type": "image",
+			"name": "drug_png"
+		},
+		{
+			"url": "assets/close_btn.png",
+			"type": "image",
+			"name": "close_btn_png"
+		},
+		{
+			"url": "assets/newLeft.png",
+			"type": "image",
+			"name": "newLeft_png"
+		},
+		{
+			"url": "assets/skilledRight.png",
+			"type": "image",
+			"name": "skilledRight_png"
+		},
+		{
+			"name": "fat_png",
+			"type": "image",
+			"url": "assets/fat.png"
+		},
+		{
+			"name": "thin_png",
+			"type": "image",
+			"url": "assets/thin.png"
+		}
+	]
+}

@@ -177,7 +177,7 @@ module fly {
 			this.progress = progress
 
 			// 瘦图标
-			let thin = FlyTools.createBitmapByName("thin_jpg")
+			let thin = FlyTools.createBitmapByName("thin_png")
 			thin.anchorOffsetX = thin.width/2
 			thin.anchorOffsetY = thin.height/2
 			thin.scaleX = 0.35
@@ -187,7 +187,7 @@ module fly {
 			this.addChild(thin)
 
 			// 胖图标
-			let fat = FlyTools.createBitmapByName("fat_jpg")
+			let fat = FlyTools.createBitmapByName("fat_png")
 			fat.anchorOffsetX = fat.width/2
 			fat.anchorOffsetY = fat.height/2
 			fat.scaleX = 0.35

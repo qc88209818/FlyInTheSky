@@ -106,11 +106,6 @@ module fly {
 			this.baseLayer.scaleX = FlyParam.LayerScale
 			this.baseLayer.scaleY = FlyParam.LayerScale
 
-			let png = FlyTools.createBitmapByName("background_jpg")
-			png.scaleX = FlyConfig.width/png.width
-			png.scaleY = FlyConfig.height/png.height
-			this.baseLayer.addChild(png)
-
 			// object layers
 			// 1 blocks
 			// 2 candy || traps

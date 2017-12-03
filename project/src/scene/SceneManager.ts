@@ -32,7 +32,7 @@ module fly {
 			this._parent = parent
 			this._width = width
 			this._height = height
-			this.health = 1
+			this.health = 2
 
 			this.createMusicAndSound()
 		}
@@ -246,6 +246,7 @@ module fly {
 
 		public stopAllSound()
 		{
+			this.music.stop()
 			this.sound.stop()
 			this.soundObj = null
 		}

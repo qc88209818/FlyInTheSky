@@ -9,10 +9,10 @@ module fly {
 
 		max:number
 		min:number
+		dir:number
 
 		private _soundName:string = ""
 
-		private _dir:number = 1
 		private _nowState:string = "stand"
 		private _movieClip:egret.MovieClip
 		
@@ -25,6 +25,7 @@ module fly {
 			this.height = height
 			this.min = op.min || 0
 			this.max = op.max || 999
+			this.dir = op.dir || 1
 			this._soundName = op.sound || "monster.mp3"
 
 			this.initBody({
@@ -50,7 +51,7 @@ module fly {
 			png.gotoAndPlay("stand", -1)
 			png.anchorOffsetX = png.width*0.6
 			png.anchorOffsetY = png.height*0.7		
-			png.scaleX = this.baseScale * this._dir
+			png.scaleX = this.baseScale * this.dir
 			png.scaleY = this.baseScale
 			this.addChild(png)
 			this._movieClip = png
@@ -71,18 +72,23 @@ module fly {
 				{
 					let mass = 9999
 					if (this.min < player.force && player.force < this.max)
+					{
 						mass = 1
+					}
 
 					if (this.body.mass != mass)
 					{
 						this.body.mass = mass
 						this.body.updateMassProperties()
 					}
-					else if (mass == 9999 && this._nowState == "stand")
+
+					if (mass == 9999 && this._nowState == "stand")
 					{
 						this._movieClip.gotoAndPlay("attack", 1)
 						this._nowState = "attack"
-
+					}
+					else if (mass == 9999 && this._nowState == "attack")
+					{
 						// 瘦的直接吓死
 						if (player.power < FlyParam.PlayerStep[0])
 						{
@@ -119,6 +125,8 @@ module fly {
 			if (dist < radius * 2)
 			{
 				SceneManager.inst().playSound(this._soundName, this)
+				this.dir = player.body.position[0]>=this.body.position[0]?-1:1
+				this._movieClip.scaleX = this.baseScale * this.dir
 			}
 			else
 			{

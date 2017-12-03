@@ -3,6 +3,7 @@ module fly {
 		x:number
 		y:number
 		radius:number
+		dir:number
 		op:any
 
 		max:number
@@ -22,6 +23,7 @@ module fly {
 			this.op  = op
 			this.min = op.min || 0
 			this.max = op.max || 999
+			this.dir = op.dir || 1
 			this._soundName = op.sound || "wind.mp3"
 
 			this.initBody({
@@ -44,7 +46,7 @@ module fly {
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.scaleX = this.baseScale
+			png.scaleX = this.baseScale * this.dir
 			png.scaleY = this.baseScale
 			this.addChild(png)
 			this._movieClip = png

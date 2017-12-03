@@ -3,6 +3,7 @@ module fly {
 		x:number
 		y:number
 		radius:number
+		dir:number
 		op:any
 
 		baseScale:number = FlyParam.PlaneBaseScale
@@ -14,6 +15,7 @@ module fly {
 			this.y = y + radius
 			this.radius = radius
 			this.op  = op
+			this.dir = op.dir || 1
 
 			this.initBody({
 				id:FlyConfig.getPropertyId()
@@ -36,7 +38,7 @@ module fly {
 			if (path == null) return;
 			
 			let png = FlyTools.createBitmapByName(path)
-			png.scaleX = this.baseScale
+			png.scaleX = this.baseScale * this.dir
 			png.scaleY = this.baseScale
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2

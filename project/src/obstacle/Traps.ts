@@ -4,6 +4,8 @@ module fly {
 		y:number
 		width:number
 		height:number
+		dir:number
+		op:any
 
 		baseScale:number = FlyParam.TrapsBaseScale
 		
@@ -14,6 +16,8 @@ module fly {
 			this.y = y + height/2
 			this.width = width
 			this.height = height
+			this.op  = op
+			this.dir = op.dir || 1
 
 			this.initBody({
 				id:FlyConfig.getObstacleId()
@@ -37,7 +41,7 @@ module fly {
 			let png = FlyTools.createBitmapByName(path)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.scaleX = this.baseScale * this.width/png.width
+			png.scaleX = this.baseScale * this.width/png.width * this.dir
 			png.scaleY = this.baseScale * this.height/png.height
 			this.addChild(png)
 		}

@@ -77,7 +77,7 @@ module fly {
 			}
 			else
 			{
-				text.text = "本次用时: " + parseInt(""+this.mgr.getLastTime()*10, 10)/10 + "秒"
+				text.text = "你已经死了: " + this.mgr.health + "次"
 			}
 			text.size = 48
 			text.textColor = 0x000000

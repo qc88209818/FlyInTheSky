@@ -250,9 +250,9 @@ module fly {
 			this.soundObj = null
 		}
 
-		public playMusic(name:string)
+		public playMusic(name:string, time:number = 0)
 		{
-			this.music.playObject(name)
+			this.music.playObject(name, time)
 		}
 
 		public reset()

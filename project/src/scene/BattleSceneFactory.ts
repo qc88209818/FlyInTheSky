@@ -62,6 +62,7 @@ module fly {
 				{
 					path:obj.params["path"]
 					, rotation:Number(obj.params["rotation"])
+					, dir:Number(obj.params["dir"])
 				})
 				scene.addToWorld(plane)
 			}
@@ -72,6 +73,7 @@ module fly {
 					path:obj.params["path"]
 					, type:Number(obj.params["type"])
 					, rotation:Number(obj.params["rotation"])
+					, dir:Number(obj.params["dir"])
 				})
 				scene.addToWorld(traps)
 			}
@@ -95,6 +97,7 @@ module fly {
 					, min:Number(obj.params["min"])
 					, max:Number(obj.params["max"])
 					, sound:Number(obj.params["sound"])
+					, dir:Number(obj.params["dir"])
 				})
 				scene.addToWorld(traps)
 			}
@@ -131,6 +134,7 @@ module fly {
 					, min:Number(obj.params["min"])
 					, max:Number(obj.params["max"])
 					, sound:Number(obj.params["sound"])
+					, dir:Number(obj.params["dir"])
 				})
 				scene.addToWorld(block)
 			}

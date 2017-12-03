@@ -15,7 +15,6 @@ module fly {
 		private _nowState:string = "front"
 		private _movieClip:egret.MovieClip
 
-		
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
 			this.layerIndex = 4

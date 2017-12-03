@@ -10,10 +10,6 @@ module fly {
 		max:number
 		min:number
 
-		private _dir:number = 1
-		private _nowState:string = "stand"
-		private _movieClip:egret.MovieClip
-		
 		public constructor(x:number, y:number, width:number, height:number, op?) {
 			super()
 			this.layerIndex = 3
@@ -43,22 +39,12 @@ module fly {
 
 		private initBitmap(path:string)
 		{
-			var png = new egret.MovieClip(this.objmgr.monFactory.generateMovieClipData("monsterWall"));
-			png.gotoAndPlay("stand", -1)
-			png.anchorOffsetX = png.width*0.6
-			png.anchorOffsetY = png.height*0.7		
-			png.scaleX = this.baseScale * this._dir
-			png.scaleY = this.baseScale
+			let png = FlyTools.createBitmapByName(path)
+			png.anchorOffsetX = png.width/2
+			png.anchorOffsetY = png.height/2
+			png.scaleX = this.baseScale * this.width/png.width
+			png.scaleY = this.baseScale * this.height/png.height
 			this.addChild(png)
-			this._movieClip = png
-
-			this._movieClip.addEventListener(egret.Event.COMPLETE, this.afterMovieClip, this);
-		}
-
-		private afterMovieClip()
-		{
-			this._movieClip.gotoAndPlay("stand", -1)
-			this._nowState = "stand"
 		}
 
 		public onContactBegin(pid:number)
@@ -75,25 +61,7 @@ module fly {
 						this.body.mass = mass
 						this.body.updateMassProperties()
 					}
-					else if (mass == 9999 && this._nowState == "stand")
-					{
-						this._movieClip.gotoAndPlay("attack", 1)
-						this._nowState = "attack"
-
-						// 瘦的直接吓死
-						if (player.power < FlyParam.PlayerStep[0])
-						{
-							player.hit([0, 0], -FlyParam.PlayerStep[0], 1)
-						}
-						// 其他减体重
-						else
-						{
-							let normal = FlyTools.getDirect(player.body.position, this.body.position)
-							let forceScale = FlyParam.forceScale
-							player.hit([normal[0]*forceScale,  normal[1]*forceScale], FlyParam.hit_power, 1)
-						}
-					}
-
+					
 					return
 				}
 			})

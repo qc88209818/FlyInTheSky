@@ -116,10 +116,21 @@ module fly {
 				let block = new WeightBlock(obj.x, obj.y, obj.width, obj.height, 
 				{
 					path:obj.params["path"]
-					, type:Number(obj.params["type"])
 					, rotation:Number(obj.params["rotation"])
 					, min:Number(obj.params["min"])
 					, max:Number(obj.params["max"])
+				})
+				scene.addToWorld(block)
+			}
+			else if (obj.type == "weightmonster")
+			{
+				let block = new WeightMonster(obj.x, obj.y, obj.width, obj.height, 
+				{
+					path:obj.params["path"]
+					, rotation:Number(obj.params["rotation"])
+					, min:Number(obj.params["min"])
+					, max:Number(obj.params["max"])
+					, sound:Number(obj.params["sound"])
 				})
 				scene.addToWorld(block)
 			}

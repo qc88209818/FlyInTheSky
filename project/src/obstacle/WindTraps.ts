@@ -10,8 +10,8 @@ module fly {
 
 		baseScale:number = FlyParam.WindBaseScale
 
-		soundName:string = ""
-		movieClip:egret.MovieClip
+		private _soundName:string = ""
+		private _movieClip:egret.MovieClip
 
 		public constructor(x:number, y:number, radius:number, op?) {
 			super()
@@ -22,7 +22,7 @@ module fly {
 			this.op  = op
 			this.min = op.min || 0
 			this.max = op.max || 999
-			this.soundName = op.sound || "wind.mp3"
+			this._soundName = op.sound || "wind.mp3"
 
 			this.initBody({
 				id:FlyConfig.getPropertyId()
@@ -47,7 +47,7 @@ module fly {
 			png.scaleX = this.baseScale
 			png.scaleY = this.baseScale
 			this.addChild(png)
-			this.movieClip = png
+			this._movieClip = png
 		}
 
 		public onTrigger(pid:number)
@@ -80,11 +80,11 @@ module fly {
 
 			if (dist < this.radius * 2)
 			{
-				SceneManager.inst().playSound(this.soundName, this)
+				SceneManager.inst().playSound(this._soundName, this)
 			}
 			else
 			{
-				SceneManager.inst().stopSound(this.soundName, this)
+				SceneManager.inst().stopSound(this._soundName, this)
 			}
 		}
 	}

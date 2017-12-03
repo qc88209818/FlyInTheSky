@@ -44,7 +44,7 @@ class UILoading extends egret.Sprite {
         let bg = fly.FlyTools.createBitmapByName("background_jpg")
         bg.scaleX = width/bg.width
 		bg.scaleY = height/bg.height
-        bg.x = -width/2 - 200
+        bg.x = -width/2
         bg.y = -height/2
         this.addChild(bg)
 

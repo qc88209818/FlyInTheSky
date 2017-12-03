@@ -109,7 +109,7 @@ module fly {
 			let png = fly.FlyTools.createBitmapByName("background_jpg")
             png.scaleX = FlyConfig.width/png.width
 			png.scaleY = FlyConfig.height/png.height
-            this.addChild(png)
+            this.baseLayer.addChild(png)
 
 			// object layers
 			// 1 blocks

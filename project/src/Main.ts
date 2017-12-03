@@ -32,15 +32,20 @@ class Main extends egret.DisplayObjectContainer {
 
     private onResourceLoadComplete(event: RES.ResourceEvent)
     {
-        if (event.groupName == "preload") {
-            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this)
-            RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this)
-            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this)
-            RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this)
+        if(event.groupName == "loadUI"){
+             //设置加载进度界面
+            this.loadingView = new UILoading(this.stage.stageWidth, this.stage.stageHeight);
+            this.loadingView.x = this.stage.stageWidth/2-200;
+            this.loadingView.y = this.stage.stageHeight/2;
+            this.loadingView.scaleX = 2;
+            this.loadingView.scaleY = 2;
+            this.stage.addChild(this.loadingView);
+            RES.loadGroup("premusic")
+        }
+        else if(event.groupName == "premusic"){
+            this.stage.removeChild(this.loadingView)
+            this.loadingView = null
 
-            this.isLoadRes = true
-            this.init()
-        }else if(event.groupName == "loadUI"){
              //设置加载进度界面
             this.loadingView = new UILoading(this.stage.stageWidth, this.stage.stageHeight);
             this.loadingView.x = this.stage.stageWidth/2-200;
@@ -49,6 +54,19 @@ class Main extends egret.DisplayObjectContainer {
             this.loadingView.scaleY = 2;
             this.stage.addChild(this.loadingView);
             RES.loadGroup("preload")
+        }
+        else if (event.groupName == "preload") 
+        {
+            this.stage.removeChild(this.loadingView)
+            this.loadingView = null
+
+            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this)
+            RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this)
+            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this)
+            RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this)
+
+            this.isLoadRes = true
+            this.init()
         }
     }
 
@@ -66,6 +84,10 @@ class Main extends egret.DisplayObjectContainer {
         {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal)
         }
+        else if (event.groupName == "premusic")
+        {
+            this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal)
+        }
     }
 
     private onThemeLoadComplete()
@@ -78,7 +100,6 @@ class Main extends egret.DisplayObjectContainer {
     {
         if (this.isLoadRes && this.isLoadThm)
         {            
-            this.stage.removeChild(this.loadingView)
             this.initGame()
         }
     }
@@ -103,11 +124,6 @@ class Main extends egret.DisplayObjectContainer {
             egret.ticker.resume()
             console.log('Game2 onResume!')
         }
-
-        // 选择界面
-        //let mgr = fly.SceneManager.inst()
-      //  mgr.init(this, this.stage.stageWidth, this.stage.stageHeight)
-        //mgr.load(1)
 
         let dHeight = this.stage.stageWidth/document.documentElement.clientWidth*document.documentElement.clientHeight
 		fly.FlyConfig.stageWidth  = this.stage.stageWidth

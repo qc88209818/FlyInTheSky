@@ -188,10 +188,10 @@ module fly {
 		}
 
 		private onTouchBegin(evt:egret.TouchEvent) {
-            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
+            if(this.enterGameBtn.visible && this.enterGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
                 this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 1.8;
             }
-			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
+			else if(this.shareGameBtn.visible && this.shareGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
                 this.shareGameBtn.scaleX = this.shareGameBtn.scaleY = 1.8;
             }
         }
@@ -199,10 +199,10 @@ module fly {
         private  onTouchClick(evt:egret.TouchEvent) {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             this.shareGameBtn.scaleX = this.shareGameBtn.scaleY = 2;
-            if(this.enterGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
+            if(this.enterGameBtn.visible && this.enterGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
 				this.mgr.onClickBtn(this.reason)
             }
-			else if(this.shareGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
+			else if(this.shareGameBtn.visible && this.shareGameBtn.hitTestPoint(evt.localX,evt.localY + FlyConfig.deltaHeight)){
 				this.mgr.onClickShare()
             }
         }

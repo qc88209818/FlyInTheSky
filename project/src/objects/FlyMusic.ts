@@ -58,7 +58,7 @@ module fly {
 
 		private onLoadOnly()
 		{
-			this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this)
+			this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoadOnly, this)
 			this._initFinish = true
 		}
 

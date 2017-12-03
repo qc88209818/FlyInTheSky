@@ -64,11 +64,11 @@ module fly {
 
 		private onTouchBegin(evt:egret.TouchEvent) {
 			this.virtualBg.x = 450
-			this.virtualBg.y = 1300
+			this.virtualBg.y = 1300 - FlyConfig.deltaHeight
 			this.virtualBg.alpha = 0.5
 
 			this.virtualBtn.x = 450
-			this.virtualBtn.y = 1300
+			this.virtualBtn.y = 1300 - FlyConfig.deltaHeight
 			this.virtualBtn.alpha = 0.5
 		}
 

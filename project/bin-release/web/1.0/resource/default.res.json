@@ -7,6 +7,10 @@
 		{
 			"keys": "yellow_button_jpg,playBtn_png,load_bar_png,loading_amin_json,loading_amin_png,load_mask_png,bar_bg_png,background_jpg",
 			"name": "loadUI"
+		},
+		{
+			"keys": "bgm1_mp3,bgm2_mp3,bgm4_mp3,bgm3_mp3,bgm5_mp3,defeated_mp3,dog_mp3,end_mp3,monster_mp3,start_mp3,victory_mp3,wind_mp3",
+			"name": "premusic"
 		}
 	],
 	"resources": [
@@ -299,6 +303,66 @@
 			"url": "assets/movieclip/stab.json",
 			"type": "json",
 			"name": "stab_json"
+		},
+		{
+			"url": "music/bgm1.mp3",
+			"type": "sound",
+			"name": "bgm1_mp3"
+		},
+		{
+			"url": "music/bgm2.mp3",
+			"type": "sound",
+			"name": "bgm2_mp3"
+		},
+		{
+			"url": "music/bgm4.mp3",
+			"type": "sound",
+			"name": "bgm4_mp3"
+		},
+		{
+			"url": "music/bgm3.mp3",
+			"type": "sound",
+			"name": "bgm3_mp3"
+		},
+		{
+			"url": "music/bgm5.mp3",
+			"type": "sound",
+			"name": "bgm5_mp3"
+		},
+		{
+			"url": "music/defeated.mp3",
+			"type": "sound",
+			"name": "defeated_mp3"
+		},
+		{
+			"url": "music/dog.mp3",
+			"type": "sound",
+			"name": "dog_mp3"
+		},
+		{
+			"url": "music/end.mp3",
+			"type": "sound",
+			"name": "end_mp3"
+		},
+		{
+			"url": "music/monster.mp3",
+			"type": "sound",
+			"name": "monster_mp3"
+		},
+		{
+			"url": "music/start.mp3",
+			"type": "sound",
+			"name": "start_mp3"
+		},
+		{
+			"url": "music/victory.mp3",
+			"type": "sound",
+			"name": "victory_mp3"
+		},
+		{
+			"url": "music/wind.mp3",
+			"type": "sound",
+			"name": "wind_mp3"
 		}
 	]
 }

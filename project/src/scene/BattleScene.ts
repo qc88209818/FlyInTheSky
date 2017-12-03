@@ -179,21 +179,21 @@ module fly {
 			// 瘦图标
 			let thin = FlyTools.createBitmapByName("thin_png")
 			thin.anchorOffsetX = thin.width/2
-			thin.anchorOffsetY = thin.height/2
+			thin.anchorOffsetY = 0
 			thin.scaleX = 0.35
 			thin.scaleY = 0.35
 			thin.x = (FlyConfig.stageWidth + 30)*0.3
-			thin.y = thin.height*0.5
+			thin.y = 40
 			this.addChild(thin)
 
 			// 胖图标
 			let fat = FlyTools.createBitmapByName("fat_png")
 			fat.anchorOffsetX = fat.width/2
-			fat.anchorOffsetY = fat.height/2
-			fat.scaleX = 0.35
-			fat.scaleY = 0.35
+			fat.anchorOffsetY = 0
+			fat.scaleX = 0.2
+			fat.scaleY = 0.2
 			fat.x = (FlyConfig.stageWidth - 10)*0.7
-			fat.y = fat.height*0.5
+			fat.y = 40
 			this.addChild(fat)
 
 			// 监听能量变化事件

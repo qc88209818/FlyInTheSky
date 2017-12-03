@@ -9,7 +9,7 @@ module fly {
 		private _width:number
 		private _height:number
 		private _mapId:number = 0
-		private _maxId:number = 4
+		private _maxId:number = 5
 		private _tiledMapObjs:TiledMapGroup[] = []
 
 		music:FlyMusic		// 音乐

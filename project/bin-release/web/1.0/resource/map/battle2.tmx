@@ -269,7 +269,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="209" name="weighttraps" type="weighttraps" x="591.785" y="2455.86" width="100" height="100">
+  <object id="209" name="weighttraps" type="weighttraps" x="610.785" y="2483.86" width="60" height="60">
    <properties>
     <property name="min" value="30"/>
     <property name="path" value="well_png"/>
@@ -376,7 +376,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="288" name="movetraps" type="movetraps" x="743.282" y="1208.2" width="100" height="100">
+  <object id="288" name="movetraps" type="movetraps" x="743.282" y="1208.2" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
     <property name="tx" value="1300"/>

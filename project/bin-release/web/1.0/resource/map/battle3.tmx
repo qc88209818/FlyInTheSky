@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="1248">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="1255">
  <objectgroup name="object">
   <object id="462" name="wall" type="blockrect" x="400.843" y="1899.19" width="100" height="100">
    <properties>
@@ -576,7 +576,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1064" name="hamburg" type="candy" x="812.928" y="720.418" width="100" height="100">
+  <object id="1064" name="hamburg" type="candy" x="871.034" y="716.544" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -601,7 +601,7 @@
   <object id="1070" name="dog" type="aitraps" x="1054.51" y="1417.25" width="150" height="150">
    <properties>
     <property name="path" value="dog_png"/>
-    <property name="radius" value="500"/>
+    <property name="radius" value="350"/>
     <property name="velocity" value="300"/>
    </properties>
    <ellipse/>
@@ -624,7 +624,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1078" name="movetraps" type="movetraps" x="1151.79" y="953.723" width="100" height="100">
+  <object id="1078" name="movetraps" type="movetraps" x="1150" y="953" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
     <property name="tx" value="1800"/>
@@ -633,7 +633,7 @@
     <property name="velocity" value="200"/>
    </properties>
   </object>
-  <object id="1079" name="hamburg" type="candy" x="1001.06" y="133.847" width="100" height="100">
+  <object id="1079" name="hamburg" type="candy" x="999.123" y="124.163" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -689,7 +689,7 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1096" name="movetraps" type="movetraps" x="504.672" y="1647.86" width="100" height="100">
+  <object id="1096" name="movetraps" type="movetraps" x="504.672" y="1647.86" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
     <property name="tx" value="800"/>
@@ -698,7 +698,7 @@
     <property name="velocity" value="150"/>
    </properties>
   </object>
-  <object id="1100" name="movetraps" type="movetraps" x="1426.16" y="268.957" width="100" height="100">
+  <object id="1100" name="movetraps" type="movetraps" x="1426.16" y="268.957" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
     <property name="tx" value="1800"/>
@@ -707,7 +707,7 @@
     <property name="velocity" value="200"/>
    </properties>
   </object>
-  <object id="1102" name="movetraps" type="movetraps" x="201.39" y="524.088" width="100" height="100">
+  <object id="1102" name="movetraps" type="movetraps" x="200" y="524" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
     <property name="tx" value="500"/>
@@ -724,17 +724,16 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1104" name="movetraps" type="movetraps" x="798.565" y="1132.47" width="100" height="100">
+  <object id="1104" name="movetraps" type="movetraps" x="800" y="1141.8" width="60" height="100">
    <properties>
+    <property name="dir" type="int" value="-1"/>
     <property name="path" value="moveTraps_png"/>
-    <property name="rotation" value="90"/>
-    <property name="tx" value="798.5"/>
+    <property name="tx" value="800"/>
     <property name="ty" value="1500"/>
-    <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
    </properties>
   </object>
-  <object id="1105" name="hamburg" type="candy" x="1169.66" y="1741.61" width="100" height="100">
+  <object id="1105" name="hamburg" type="candy" x="1141.71" y="1734.62" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>
@@ -756,23 +755,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="1110" name="cake" type="candy" x="851.625" y="1772.07" width="100" height="100">
-   <properties>
-    <property name="delta" value="0"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1111" name="cake" type="candy" x="685.672" y="1768.65" width="100" height="100">
-   <properties>
-    <property name="delta" value="0"/>
-    <property name="path" value="cake_png"/>
-    <property name="power" value="10"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1112" name="cake" type="candy" x="482.079" y="1763.52" width="100" height="100">
+  <object id="1111" name="cake" type="candy" x="479.065" y="1773.64" width="100" height="100">
    <properties>
     <property name="delta" value="0"/>
     <property name="path" value="cake_png"/>
@@ -1382,7 +1365,7 @@
     <property name="path" value="bucket_png"/>
    </properties>
   </object>
-  <object id="1239" name="weightmonster" type="weightmonster" x="1803.91" y="861.339" width="200" height="200">
+  <object id="1239" name="weightmonster" type="weightmonster" x="1881.91" y="862.339" width="200" height="200">
    <properties>
     <property name="min" value="250"/>
     <property name="path" value="bucket_png"/>
@@ -1390,6 +1373,7 @@
   </object>
   <object id="1240" name="weightmonster" type="weightmonster" x="-0.0583046" y="964.487" width="200" height="200">
    <properties>
+    <property name="dir" value="-1"/>
     <property name="min" value="250"/>
     <property name="path" value="bucket_png"/>
    </properties>
@@ -1435,6 +1419,44 @@
     <property name="path" value="grassLight_png"/>
     <property name="type" type="int" value="0"/>
    </properties>
+  </object>
+  <object id="1248" name="hamburg" type="candy" x="1158.6" y="127.193" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1250" name="grassLight" type="blockrect" x="1203.73" y="1582.88" width="100" height="100">
+   <properties>
+    <property name="path" value="grassLight_png"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="1251" name="hamburg" type="candy" x="1279.47" y="1739.6" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1252" name="cake" type="candy" x="739.5" y="720.536" width="100" height="100">
+   <properties>
+    <property name="delta" value="0"/>
+    <property name="path" value="cake_png"/>
+    <property name="power" value="10"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="1253" name="hamburg" type="candy" x="1755.57" y="120.676" width="100" height="100">
+   <properties>
+    <property name="delta" value="10"/>
+    <property name="path" value="hamburg_png"/>
+    <property name="power" value="20"/>
+   </properties>
+   <ellipse/>
   </object>
  </objectgroup>
 </map>

@@ -176,6 +176,26 @@ module fly {
 			this.addChild(progress);
 			this.progress = progress
 
+			// 瘦图标
+			let thin = FlyTools.createBitmapByName("thin_jpg")
+			thin.anchorOffsetX = thin.width/2
+			thin.anchorOffsetY = thin.height/2
+			thin.scaleX = 0.35
+			thin.scaleY = 0.35
+			thin.x = (FlyConfig.stageWidth + 30)*0.3
+			thin.y = thin.height*0.5
+			this.addChild(thin)
+
+			// 胖图标
+			let fat = FlyTools.createBitmapByName("fat_jpg")
+			fat.anchorOffsetX = fat.width/2
+			fat.anchorOffsetY = fat.height/2
+			fat.scaleX = 0.35
+			fat.scaleY = 0.35
+			fat.x = (FlyConfig.stageWidth - 10)*0.7
+			fat.y = fat.height*0.5
+			this.addChild(fat)
+
 			// 监听能量变化事件
 			this.addEventListener("ChangePower", this.onChangePower, this)
 

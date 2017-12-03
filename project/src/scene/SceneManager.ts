@@ -32,7 +32,7 @@ module fly {
 			this._parent = parent
 			this._width = width
 			this._height = height
-			this.health = 0
+			this.health = 1
 
 			this.createMusicAndSound()
 		}
@@ -62,7 +62,7 @@ module fly {
 
 		public loadAgain(reason:number)
 		{
-			this.health += 1
+			this.health -= 1
 			this.reset()
 			this.createPassScene(reason)
 		}

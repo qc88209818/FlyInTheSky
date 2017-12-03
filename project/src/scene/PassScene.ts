@@ -77,7 +77,7 @@ module fly {
 			}
 			else
 			{
-				text.text = "你已经死了: " + this.mgr.health + "次"
+				text.text = "你当前剩余生命: " + this.mgr.health
 			}
 			text.size = 48
 			text.textColor = 0x000000
@@ -98,25 +98,25 @@ module fly {
 			this.addChild(erweima)
 			this.erweima = erweima
 
-			// 分享
-			var shareGameBtn = FlyTools.createBitmapByName("shareBtn_png")
-            shareGameBtn.anchorOffsetX = shareGameBtn.width/2
-            shareGameBtn.anchorOffsetY = shareGameBtn.height/2
-            shareGameBtn.x = FlyConfig.stageWidth/2
-            shareGameBtn.y = text.y + text.height*2 + 100; 
-            shareGameBtn.scaleX = shareGameBtn.scaleY = 2
-            this.addChild(shareGameBtn)
-			this.shareGameBtn = shareGameBtn
-
 			// 下一步
 			var enterGameBtn = FlyTools.createBitmapByName(array[1])
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = FlyConfig.stageWidth/2
-            enterGameBtn.y = this.shareGameBtn.y + this.shareGameBtn.height + 150
+            enterGameBtn.y = text.y + text.height*2 + 100; 
             enterGameBtn.scaleX = enterGameBtn.scaleY = 2
             this.addChild(enterGameBtn)
 			this.enterGameBtn = enterGameBtn
+
+			// 分享
+			var shareGameBtn = FlyTools.createBitmapByName("shareBtn_png")
+            shareGameBtn.anchorOffsetX = shareGameBtn.width/2
+            shareGameBtn.anchorOffsetY = shareGameBtn.height/2
+            shareGameBtn.x = FlyConfig.stageWidth/2
+            shareGameBtn.y = this.enterGameBtn.y + this.enterGameBtn.height + 150
+            shareGameBtn.scaleX = shareGameBtn.scaleY = 2
+            this.addChild(shareGameBtn)
+			this.shareGameBtn = shareGameBtn
 
 			this.touchEnabled = true
 			this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin,    this)

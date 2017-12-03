@@ -42,7 +42,7 @@ class Main extends egret.DisplayObjectContainer {
             this.init()
         }else if(event.groupName == "loadUI"){
              //设置加载进度界面
-            this.loadingView = new UILoading();
+            this.loadingView = new UILoading(this.stage.stageWidth, this.stage.stageHeight);
             this.loadingView.x = this.stage.stageWidth/2-200;
             this.loadingView.y = this.stage.stageHeight/2;
             this.loadingView.scaleX = 2;
@@ -111,8 +111,8 @@ class Main extends egret.DisplayObjectContainer {
 
         let dHeight = this.stage.stageWidth/document.documentElement.clientWidth*document.documentElement.clientHeight
 		fly.FlyConfig.stageWidth  = this.stage.stageWidth
-		fly.FlyConfig.stageHeight = dHeight
-        fly.FlyConfig.deltaHeight = this.stage.stageHeight - dHeight
+		fly.FlyConfig.stageHeight = this.stage.stageHeight
+        fly.FlyConfig.deltaHeight = (this.stage.stageHeight - dHeight)/2
 
         let enterGameScene = new fly.EnterGameScene();
         enterGameScene.y = fly.FlyConfig.deltaHeight

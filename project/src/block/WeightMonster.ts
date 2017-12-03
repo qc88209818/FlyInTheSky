@@ -5,7 +5,7 @@ module fly {
 		width:number
 		height:number
 
-		baseScale:number = FlyParam.WeightBlockBaseScale
+		baseScale:number = FlyParam.MonsterBaseScale
 
 		max:number
 		min:number

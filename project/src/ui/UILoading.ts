@@ -41,6 +41,9 @@ class UILoading extends egret.Sprite {
     private loadAmin:egret.MovieClip;
     private bar_width:number;
     private createView():void {
+     
+
+
         this.bar_bg = new  egret.Bitmap();
         this.bar_bg.texture = RES.getRes("bar_bg_png");
         this.addChild(this.bar_bg);
@@ -74,6 +77,8 @@ class UILoading extends egret.Sprite {
         this.addChild(this.loadAmin);
         this.loadAmin.y = -60;
         this.loadAmin.x = 180;
+
+
     }
 
     public setProgress(current:number, total:number):void {

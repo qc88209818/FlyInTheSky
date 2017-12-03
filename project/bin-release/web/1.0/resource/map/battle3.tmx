@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="1264">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="200" height="200" tilewidth="10" tileheight="10" nextobjectid="1255">
  <objectgroup name="object">
   <object id="462" name="wall" type="blockrect" x="400.843" y="1899.19" width="100" height="100">
    <properties>
@@ -624,10 +624,10 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1078" name="movetraps" type="movetraps" x="1150" y="953" width="140" height="60">
+  <object id="1078" name="movetraps" type="movetraps" x="1150" y="953" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1750"/>
+    <property name="tx" value="1800"/>
     <property name="ty" value="953"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
@@ -689,28 +689,28 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1096" name="movetraps" type="movetraps" x="514.592" y="1328.66" width="140" height="60">
+  <object id="1096" name="movetraps" type="movetraps" x="504.672" y="1647.86" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="857"/>
-    <property name="ty" value="1328.66"/>
+    <property name="tx" value="800"/>
+    <property name="ty" value="1648"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="150"/>
    </properties>
   </object>
-  <object id="1100" name="movetraps" type="movetraps" x="1426.16" y="268.957" width="140" height="60">
+  <object id="1100" name="movetraps" type="movetraps" x="1426.16" y="268.957" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1750"/>
+    <property name="tx" value="1800"/>
     <property name="ty" value="269"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
    </properties>
   </object>
-  <object id="1102" name="movetraps" type="movetraps" x="200" y="524" width="140" height="60">
+  <object id="1102" name="movetraps" type="movetraps" x="200" y="524" width="100" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="450"/>
+    <property name="tx" value="500"/>
     <property name="ty" value="524"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
@@ -723,6 +723,15 @@
     <property name="power" value="-30"/>
    </properties>
    <ellipse/>
+  </object>
+  <object id="1104" name="movetraps" type="movetraps" x="800" y="1141.8" width="60" height="100">
+   <properties>
+    <property name="dir" type="int" value="-1"/>
+    <property name="path" value="moveTraps_png"/>
+    <property name="tx" value="800"/>
+    <property name="ty" value="1500"/>
+    <property name="velocity" value="200"/>
+   </properties>
   </object>
   <object id="1105" name="hamburg" type="candy" x="1141.71" y="1734.62" width="100" height="100">
    <properties>
@@ -1442,51 +1451,6 @@
    <ellipse/>
   </object>
   <object id="1253" name="hamburg" type="candy" x="1755.57" y="120.676" width="100" height="100">
-   <properties>
-    <property name="delta" value="10"/>
-    <property name="path" value="hamburg_png"/>
-    <property name="power" value="20"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1257" name="traps" type="traps" x="725.121" y="1633.16" width="100" height="100">
-   <properties>
-    <property name="path" value="traps_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1258" name="traps" type="traps" x="578.879" y="1632.87" width="100" height="100">
-   <properties>
-    <property name="path" value="traps_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1259" name="traps" type="traps" x="1860.06" y="1094.16" width="100" height="100">
-   <properties>
-    <property name="path" value="traps_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1260" name="traps" type="traps" x="1001.65" y="376.279" width="100" height="100">
-   <properties>
-    <property name="path" value="traps_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1261" name="traps" type="traps" x="452.401" y="328.264" width="100" height="100">
-   <properties>
-    <property name="path" value="traps_png"/>
-    <property name="type" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="1262" name="weighttraps" type="weighttraps" x="1765.61" y="660.092" width="50" height="50">
-   <properties>
-    <property name="min" value="30"/>
-    <property name="path" value="well_png"/>
-   </properties>
-   <ellipse/>
-  </object>
-  <object id="1263" name="hamburg" type="candy" x="1155.42" y="1223.18" width="100" height="100">
    <properties>
     <property name="delta" value="10"/>
     <property name="path" value="hamburg_png"/>

@@ -42,7 +42,7 @@ class Main extends egret.DisplayObjectContainer {
             this.init()
         }else if(event.groupName == "loadUI"){
              //设置加载进度界面
-            this.loadingView = new UILoading();
+            this.loadingView = new UILoading(this.stage.stageWidth, this.stage.stageHeight);
             this.loadingView.x = this.stage.stageWidth/2-200;
             this.loadingView.y = this.stage.stageHeight/2;
             this.loadingView.scaleX = 2;

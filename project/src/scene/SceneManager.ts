@@ -138,7 +138,7 @@ module fly {
 			this._request.send();
 
 			if(this._loadingView == null){
-				this._loadingView = new UILoading();
+				this._loadingView = new UILoading(this._parent.stage.stageWidth, this._parent.stage.stageHeight);
 			}
 			this._loadingView.x = this._parent.stage.stageWidth/2-200;
         	this._loadingView.y = this._parent.stage.stageHeight/2;

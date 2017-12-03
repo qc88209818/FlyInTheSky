@@ -14,9 +14,10 @@ module fly {
         private  onAddToStage():void{
             this.music.playObject("start.mp3")
           
-			this.graphics.beginFill(0x000000, 0);
-			this.graphics.drawRect(0, 0, this.stage.stageWidth, this.stage.stageHeight);
-			this.graphics.endFill()
+			let bg = FlyTools.createBitmapByName("background_jpg")
+			bg.scaleX = FlyConfig.width/bg.width
+			bg.scaleY = FlyConfig.height/bg.height
+			this.addChild(bg)
 
             let width = this.stage.stageWidth
             let height = this.stage.stageHeight

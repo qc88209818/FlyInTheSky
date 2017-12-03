@@ -42,7 +42,10 @@ class UILoading extends egret.Sprite {
     private bar_width:number;
     private createView():void {
      
-
+		let bg = fly.FlyTools.createBitmapByName("background_jpg")
+		bg.scaleX = fly.FlyConfig.width/bg.width
+		bg.scaleY = fly.FlyConfig.height/bg.height
+		this.addChild(bg)
 
         this.bar_bg = new  egret.Bitmap();
         this.bar_bg.texture = RES.getRes("bar_bg_png");

@@ -103,23 +103,24 @@ module fly {
 
 		public onClickShare()
 		{
+			this._passScene.erweima.visible = true
+			this._passScene.enterGameBtn.visible = false
+			this._passScene.shareGameBtn.visible = false
+
 			let rt:egret.RenderTexture = new egret.RenderTexture;
 			let rect = new egret.Rectangle(0, 0, FlyConfig.stageWidth, FlyConfig.stageHeight)
 			rt.drawToTexture(this._passScene, rect);
 
-			let divImage = document.getElementById("divImage");//获取DIV
-			let shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
-			if (divImage)
+			var divImage = document.getElementById("divImage");//获取DIV
+			var shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
+			alert((!divImage?"divImage == null":"divImage, ") + (!shareImage?"shareImage == null":"shareImage"))
+
+			if (!divImage && !shareImage)
 			{
-				this._passScene.erweima.visible = true
+				divImage = document.getElementsByName("divImage")[0];//获取DIV
+				shareImage = document.getElementsByName("shareImage")[0]  as HTMLImageElement//获取Image标签
 			}
 
-			if (shareImage)
-			{
-				this._passScene.enterGameBtn.visible = false
-				this._passScene.shareGameBtn.visible = false
-			}
-			
 			shareImage.src = rt.toDataURL('image/png');//把数据赋值给Image
 			divImage.style.display = "block";//显示DIV
 

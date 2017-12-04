@@ -68,11 +68,11 @@ module fly {
 			if (evt.stageY > FlyConfig.stageHeight/2)
 			{
 				this.virtualBg.x = evt.stageX
-				this.virtualBg.y = evt.stageY
+				this.virtualBg.y = evt.stageY - FlyConfig.deltaHeight
 				this.virtualBg.alpha = 0.5
 
 				this.virtualBtn.x = evt.stageX
-				this.virtualBtn.y = evt.stageY
+				this.virtualBtn.y = evt.stageY - FlyConfig.deltaHeight
 				this.virtualBtn.alpha = 0.5
 
 				this.isTouchShow = true

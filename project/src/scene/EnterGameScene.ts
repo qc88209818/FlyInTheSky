@@ -148,7 +148,7 @@ module fly {
             if(this.enterGameBtn.visible && this.enterGameBtn.hitTestPoint(hx, hy)){
                 this.Start()
             }
-            else if(this.monster1.visible && this.monster1.hitTestPoint(hx, hy))
+            else if(this.enterGameBtn.visible && this.monster1.visible && this.monster1.hitTestPoint(hx, hy))
             {
                 this.monster1.gotoAndPlay("attack", 1)
                 this.caidan1Num += 1
@@ -165,7 +165,7 @@ module fly {
 			        this.caidanText.anchorOffsetX = this.caidanText.width/2
                 }
             }
-            else if(this.monster2.visible && this.monster2.hitTestPoint(hx, hy))
+            else if(this.enterGameBtn.visible && this.monster2.visible && this.monster2.hitTestPoint(hx, hy))
             {
                 this.monster2.gotoAndPlay("attack", 1)
                 this.caidan2Num += 1

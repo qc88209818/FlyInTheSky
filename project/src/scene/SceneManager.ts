@@ -113,8 +113,15 @@ module fly {
 
 			var divImage = document.getElementById("divImage");//获取DIV
 			var shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
-			shareImage.src = rt.toDataURL('image/png');//把数据赋值给Image
-			divImage.style.display = "block";//显示DIV
+			if (divImage && shareImage)
+			{	
+				shareImage.src = rt.toDataURL('image/png');//把数据赋值给Image
+				divImage.style.display = "block";//显示DIV
+			}
+			else
+			{
+				alert("当前浏览器不支持分享！")
+			}
 
 			this._passScene.erweima.visible = false
 			this._passScene.enterGameBtn.visible = true

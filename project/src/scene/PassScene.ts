@@ -186,13 +186,13 @@ module fly {
             this.addChild(title_bg);
 
 			// 过场动画
-			let png = new egret.MovieClip(this.objmgr.winFactory.generateMovieClipData("Win"));
-			png.gotoAndPlay("play", -1)
+			let png = new egret.MovieClip(this.objmgr.mcFactory.generateMovieClipData("playerState"));
+			png.gotoAndPlay("front_move_fat", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.x = FlyConfig.stageWidth/2 - 100
-			png.y = FlyConfig.stageHeight/2 - 280
-			png.scaleX = png.scaleY = 2.5
+			png.x = FlyConfig.stageWidth/2
+			png.y = FlyConfig.stageHeight/2 - 240
+			png.scaleX = png.scaleY = 2
 			this.addChild(png)
 			this.movieclip = png
 

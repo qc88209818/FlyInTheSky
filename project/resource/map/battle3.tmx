@@ -624,11 +624,11 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1078" name="movetraps" type="movetraps" x="2150" y="1933" width="140" height="60">
+  <object id="1078" name="movetraps" type="movetraps" x="2133.48" y="1916.48" width="140" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1750"/>
-    <property name="ty" value="953"/>
+    <property name="tx" value="2559"/>
+    <property name="ty" value="1916.48"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
    </properties>
@@ -689,29 +689,29 @@
     <property name="type" type="int" value="0"/>
    </properties>
   </object>
-  <object id="1096" name="movetraps" type="movetraps" x="1514.59" y="2308.66" width="140" height="60">
+  <object id="1096" name="movetraps" type="movetraps" x="1538.45" y="2317.84" width="140" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="857"/>
-    <property name="ty" value="1328.66"/>
+    <property name="tx" value="1850"/>
+    <property name="ty" value="2317.84"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="150"/>
    </properties>
   </object>
-  <object id="1100" name="movetraps" type="movetraps" x="2426.16" y="1248.96" width="140" height="60">
+  <object id="1100" name="movetraps" type="movetraps" x="2424.32" y="1243.45" width="140" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="1750"/>
-    <property name="ty" value="269"/>
+    <property name="tx" value="2750"/>
+    <property name="ty" value="1243.45"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
    </properties>
   </object>
-  <object id="1102" name="movetraps" type="movetraps" x="1200" y="1504" width="140" height="60">
+  <object id="1102" name="movetraps" type="movetraps" x="1205.51" y="1511.72" width="140" height="60">
    <properties>
     <property name="path" value="moveTraps_png"/>
-    <property name="tx" value="450"/>
-    <property name="ty" value="524"/>
+    <property name="tx" value="1450"/>
+    <property name="ty" value="1511.72"/>
     <property name="type" type="int" value="0"/>
     <property name="velocity" value="200"/>
    </properties>

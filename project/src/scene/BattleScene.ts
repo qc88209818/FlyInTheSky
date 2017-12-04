@@ -170,31 +170,9 @@ module fly {
 			// 显示体重条
 			let progress = new UIProgress()
 			progress.create(FlyParam.PlayerMaxPower, FlyParam.PlayerMinPower, FlyParam.PlayerInitPower)
-			progress.anchorOffsetX = progress.width/2
-			progress.anchorOffsetY = progress.height/2
-			progress.setPosition(progress.width/2, progress.height)
+			progress.setPosition(progress.width*0.5, FlyConfig.stageHeight*0.5)
 			this.addChild(progress);
 			this.progress = progress
-
-			// 瘦图标
-			let thin = FlyTools.createBitmapByName("thin_png")
-			thin.anchorOffsetX = thin.width/2
-			thin.anchorOffsetY = 0
-			thin.scaleX = 0.35
-			thin.scaleY = 0.35
-			thin.x = (FlyConfig.stageWidth + 30)*0.3
-			thin.y = 40
-			this.addChild(thin)
-
-			// 胖图标
-			let fat = FlyTools.createBitmapByName("fat_png")
-			fat.anchorOffsetX = fat.width/2
-			fat.anchorOffsetY = 0
-			fat.scaleX = 0.2
-			fat.scaleY = 0.2
-			fat.x = (FlyConfig.stageWidth - 10)*0.7
-			fat.y = 40
-			this.addChild(fat)
 
 			// 监听能量变化事件
 			this.addEventListener("ChangePower", this.onChangePower, this)
@@ -203,22 +181,26 @@ module fly {
 			var text:egret.TextField = new egret.TextField()
 			text.text = "当前关卡: " + SceneManager.inst().getMapId()
 			text.size = 36;
-			text.textColor = 0x000000;
+			text.stroke = 2;
+        	text.strokeColor = 0x000000;
+			text.textColor = 0xFFFFFF;
 			text.anchorOffsetX = 0;
 			text.anchorOffsetY = 0.5
 			text.x = 5
-			text.y = progress.height + 25
+			text.y = FlyConfig.deltaHeight
 			this.addChild(text);
 
 			// 显示生命值
 			var text2:egret.TextField = new egret.TextField()
 			text2.text = "当前生命: " + SceneManager.inst().health
 			text2.size = 36;
-			text2.textColor = 0x000000;
+			text2.stroke = 2;
+        	text2.strokeColor = 0x000000;
+			text2.textColor = 0xFFFFFF;
 			text2.anchorOffsetX = 0;
 			text2.anchorOffsetY = 0.5
 			text2.x = 5
-			text2.y = progress.height + text.height + 40
+			text2.y = FlyConfig.deltaHeight + text.height + 10
 			this.addChild(text2);
 			this.text = text2
 
@@ -226,11 +208,13 @@ module fly {
 			var text3:egret.TextField = new egret.TextField()
 			text3.text = "当前用时: " + this.clickTime + " 秒"
 			text3.size = 36;
-			text3.textColor = 0x000000;
+			text3.stroke = 2;
+        	text3.strokeColor = 0x000000;
+			text3.textColor = 0xFFFFFF;
 			text3.anchorOffsetX = 0;
 			text3.anchorOffsetY = 0.5
 			text3.x = 5
-			text3.y = progress.height + text.height + text2.height + 55
+			text3.y = FlyConfig.deltaHeight + text.height + text2.height + 20
 			this.addChild(text3);
 			this.time = text3
 		}

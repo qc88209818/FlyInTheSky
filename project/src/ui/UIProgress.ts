@@ -2,7 +2,9 @@ module fly {
 	export class UIProgress extends egret.DisplayObjectContainer{
 		bg:egret.Bitmap
 		fr:egret.Bitmap
-		mk:egret.Bitmap
+		fat:egret.Bitmap
+		thin:egret.Bitmap
+
 		max:number
 		min:number
 		now:number
@@ -16,28 +18,43 @@ module fly {
         	let wid = FlyConfig.stageWidth - 10
 
 			let bg = FlyTools.createBitmapByName("progress_bar_background_png")
-			bg.anchorOffsetX = 0
+			bg.height = FlyConfig.stageHeight*0.5
+			bg.anchorOffsetX = bg.width/2
 			bg.anchorOffsetY = bg.height/2
-			bg.width = wid
-			bg.height = bg.height*2
+			bg.scale9Grid = new egret.Rectangle(30, 100, 5, 100)
 			this.addChild(bg)
 			this.bg = bg
 
 			let fr = FlyTools.createBitmapByName("progress_bar_png")
-			fr.anchorOffsetX = 0
+			fr.height = FlyConfig.stageHeight*0.5
+			fr.anchorOffsetX = fr.width/2
 			fr.anchorOffsetY = fr.height/2
-			fr.width = wid
-			fr.height = fr.height*2 + 10
+			fr.scale9Grid = new egret.Rectangle(30, 100, 5, 100)
 			this.addChild(fr)
 			this.fr = fr
 
-			let mk = FlyTools.createBitmapByName("progress_bar_frame_png")
-			mk.anchorOffsetX = 0
-			mk.anchorOffsetY = mk.height/2
-			mk.width = wid
-			mk.height = mk.height*2
-			this.addChild(mk)
-			this.mk = mk
+			let mk = new egret.Rectangle(0, 0, fr.width, fr.height)
+			mk.x = fr.x
+			mk.y = fr.y
+			fr.mask = mk
+
+			// 瘦图标
+			let thin = FlyTools.createBitmapByName("thinPoint_png")
+			thin.anchorOffsetX = thin.width/2
+			thin.anchorOffsetY = thin.height/2
+			thin.scaleX = 1.2
+			thin.scaleY = 1.2
+			this.addChild(thin)
+			this.thin = thin
+
+			// 胖图标
+			let fat = FlyTools.createBitmapByName("fatPoint_png")
+			fat.anchorOffsetX = fat.width/2
+			fat.anchorOffsetY = fat.height/2
+			fat.scaleX = 1.2
+			fat.scaleY = 1.2
+			this.addChild(fat)
+			this.fat = fat
 
 			this.max = max
 			this.min = min
@@ -48,14 +65,17 @@ module fly {
 
 		public setPosition(x:number, y:number)
 		{
-			this.bg.x = x + 5
+			this.bg.x = x
 			this.bg.y = y
 
-			this.fr.x = x + 10
-			this.fr.y = y + 2
+			this.fr.x = x
+			this.fr.y = y
 
-			this.mk.x = x + 5
-			this.mk.y = y
+			this.fat.x = x
+			this.fat.y = y - this.fr.height*0.2
+
+			this.thin.x = x
+			this.thin.y = y + this.fr.height*0.2
 		}
 
 		public changeValue(value:number)
@@ -66,7 +86,10 @@ module fly {
 			this.now = v
 
 			let scale = (v - this.min)/(this.max - this.min)
-			this.fr.scaleX = scale
+			this.fr.mask.y = this.fr.height * (1 - scale)
+
+			this.thin.visible = scale>=0.3
+			this.fat.visible = scale>=0.7
 		}
 	}
 }

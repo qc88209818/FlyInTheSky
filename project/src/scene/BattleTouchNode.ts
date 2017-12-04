@@ -64,8 +64,7 @@ module fly {
 		}
 
 		private onTouchBegin(evt:egret.TouchEvent) {
-			console.log(evt.stageY, FlyConfig.stageHeight/2)
-			if (evt.stageY > FlyConfig.stageHeight/2)
+			if (evt.stageY > FlyConfig.stageHeight*0.4)
 			{
 				this.virtualBg.x = evt.stageX
 				this.virtualBg.y = evt.stageY - FlyConfig.deltaHeight

@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "yellow_button_jpg,well_png,wall_png,virtual_button_png,virtual_background_png,traps_png,title_png,switch_png,red_button_jpg,playBtn_png,plane_png,load_mask_png,load_bar_png,hamburg_png,grassLight_png,grassDark_png,cake_png,bucket_png,bar_bg_png,background_jpg,playerNormalMode_png,playerNormalMode_json,playerDie_png,playerDie_json,moveTraps_png,grassLight_half_png,grassDark_half_png,wall_half_png,progress_bar_frame_png,progress_bar_png,progress_bar_background_png,nextBtn_png,againBtn_png,backBtn_png,wind_png,wind_json,shareBtn_png,monsterWall_png,dog_json,monsterWall_json,dog_png,erweima_png,player_win_png,player_win_json,drug_png,close_btn_png,newLeft_png,skilledRight_png,fat_png,thin_png,chainsaw_png,ice_png,stab_png,chainsaw_json,ice_json,stab_json,Defeat_png,Victory_png",
+			"keys": "yellow_button_jpg,well_png,wall_png,virtual_button_png,virtual_background_png,traps_png,title_png,switch_png,red_button_jpg,playBtn_png,plane_png,load_mask_png,load_bar_png,hamburg_png,grassLight_png,grassDark_png,cake_png,bucket_png,bar_bg_png,background_jpg,playerNormalMode_png,playerNormalMode_json,playerDie_png,playerDie_json,moveTraps_png,grassLight_half_png,grassDark_half_png,wall_half_png,nextBtn_png,againBtn_png,backBtn_png,wind_png,wind_json,shareBtn_png,monsterWall_png,dog_json,monsterWall_json,dog_png,erweima_png,player_win_png,player_win_json,drug_png,close_btn_png,newLeft_png,skilledRight_png,chainsaw_png,ice_png,stab_png,chainsaw_json,ice_json,stab_json,Defeat_png,Victory_png,fatPoint_png,progress_bar_background_png,progress_bar_png,thinPoint_png",
 			"name": "preload"
 		},
 		{
@@ -161,21 +161,6 @@
 			"name": "wall_half_png"
 		},
 		{
-			"url": "assets/progress_bar_frame.png",
-			"type": "image",
-			"name": "progress_bar_frame_png"
-		},
-		{
-			"url": "assets/progress_bar.png",
-			"type": "image",
-			"name": "progress_bar_png"
-		},
-		{
-			"url": "assets/progress_bar_background.png",
-			"type": "image",
-			"name": "progress_bar_background_png"
-		},
-		{
 			"url": "assets/nextBtn.png",
 			"type": "image",
 			"name": "nextBtn_png"
@@ -261,16 +246,6 @@
 			"name": "skilledRight_png"
 		},
 		{
-			"url": "assets/fat.png",
-			"type": "image",
-			"name": "fat_png"
-		},
-		{
-			"url": "assets/thin.png",
-			"type": "image",
-			"name": "thin_png"
-		},
-		{
 			"url": "assets/movieclip/chainsaw.png",
 			"type": "image",
 			"name": "chainsaw_png"
@@ -309,6 +284,26 @@
 			"url": "assets/Victory.png",
 			"type": "image",
 			"name": "Victory_png"
+		},
+		{
+			"url": "assets/fatPoint.png",
+			"type": "image",
+			"name": "fatPoint_png"
+		},
+		{
+			"url": "assets/progress_bar_background.png",
+			"type": "image",
+			"name": "progress_bar_background_png"
+		},
+		{
+			"url": "assets/progress_bar.png",
+			"type": "image",
+			"name": "progress_bar_png"
+		},
+		{
+			"url": "assets/thinPoint.png",
+			"type": "image",
+			"name": "thinPoint_png"
 		}
 	]
 }

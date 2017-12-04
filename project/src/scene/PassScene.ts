@@ -199,7 +199,7 @@ module fly {
 			var txt = "我死了" + (2 - SceneManager.inst().health) + "次完成所有关卡！不服来战！"
 			if (SceneManager.inst().health == 0)
 			{
-				txt = "不是一家胖人，不进一家胖门！"
+				txt = "减肥真的这样简单该有多好！"
 			}
 
 			return [txt, "backBtn_png"]

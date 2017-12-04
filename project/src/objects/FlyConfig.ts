@@ -161,7 +161,7 @@ module fly {
 		static PlayerBaseScale:number   		= 1		// 基本缩放
 		static CandyBaseScale:number			= 2		
 		static TrapsBaseScale:number			= 1		
-		static MoveBaseScale:number				= 1			
+		static MoveBaseScale:number				= 1.5			
 		static WeightTrapsBaseScale:number		= 8
 		static PlaneBaseScale:number			= 1.5
 		static AiBaseScale:number				= 1.2

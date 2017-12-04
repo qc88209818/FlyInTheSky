@@ -178,7 +178,7 @@ module fly {
 			this.addChild(png)
 			this.movieclip = png
 
-			var txt = "我死了" + SceneManager.inst().health + "次完成所有关卡！不服来战！"
+			var txt = "我死了" + (2 - SceneManager.inst().health) + "次完成所有关卡！不服来战！"
 			if (SceneManager.inst().health == 0)
 			{
 				txt = "不是一家胖人，不进一家胖门！"

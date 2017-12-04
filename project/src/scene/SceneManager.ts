@@ -16,7 +16,7 @@ module fly {
 		sound:FlyMusic 		// 音效
 		soundObj:any
 
-		health:number
+		health:number = 0
 
 		times:number[] = []	// 最短时间	
 		lastTime:number 	// 本次时间
@@ -30,8 +30,6 @@ module fly {
 		public init(parent:egret.DisplayObjectContainer)
 		{
 			this._parent = parent
-			this.health = 2
-
 			this.createMusicAndSound()
 		}
 
@@ -39,6 +37,7 @@ module fly {
 		public loadEnterScene()
 		{
 			this.reset()
+			this.health = 2
 
 			let enterGameScene = new fly.EnterGameScene();
 			enterGameScene.y = fly.FlyConfig.deltaHeight

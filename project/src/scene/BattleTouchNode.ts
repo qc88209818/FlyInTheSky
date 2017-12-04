@@ -6,6 +6,7 @@ module fly {
 		direct:number[] = []
 		normal:number[] = []
 		isTouchMove:boolean = false
+		isTouchShow:boolean = false
 		background:egret.Shape
 
 		parentNode:egret.DisplayObjectContainer
@@ -74,7 +75,7 @@ module fly {
 				this.virtualBtn.y = evt.stageY
 				this.virtualBtn.alpha = 0.5
 
-				this.isTouchMove = true
+				this.isTouchShow = true
 			}
 		}
 
@@ -83,10 +84,11 @@ module fly {
 			this.virtualBtn.alpha = 0
 
 			this.isTouchMove = false
+			this.isTouchShow = false
 		}
 
 		private onTouchMove(evt:egret.TouchEvent) {
-			if (this.isTouchMove)
+			if (this.isTouchShow)
 			{
 				let from = [this.virtualBg.x, this.virtualBg.y]
 				let to = [evt.stageX, evt.stageY]
@@ -101,6 +103,8 @@ module fly {
 
 				this.virtualBtn.x = from[0] + this.direct[0]
 				this.virtualBtn.y = from[1] + this.direct[1]
+
+				this.isTouchMove = true
 			}
 		}
 

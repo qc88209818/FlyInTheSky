@@ -28,16 +28,6 @@ module fly {
 			bg.scaleY = FlyConfig.height/bg.height
 			this.addChild(bg)
 
-			// 标题
-			let title_bg = new  egret.Bitmap();
-            title_bg.texture = RES.getRes("title_png");
-            title_bg.anchorOffsetX = title_bg.width/2
-            title_bg.anchorOffsetY = title_bg.height/2
-            title_bg.x = FlyConfig.stageWidth/2;
-            title_bg.y = 200;
-            title_bg.scaleX = title_bg.scaleY = 2;
-            this.addChild(title_bg);
-			
 			let array = []
 			if (reason == 0)
 			{
@@ -125,13 +115,22 @@ module fly {
 
 		private createWinScene()
 		{
+			// 标题
+			let title_bg = FlyTools.createBitmapByName("Victory_png")
+            title_bg.anchorOffsetX = title_bg.width/2
+            title_bg.anchorOffsetY = title_bg.height/2
+            title_bg.x = FlyConfig.stageWidth/2;
+            title_bg.y = 200;
+            title_bg.scaleX = title_bg.scaleY = 2;
+            this.addChild(title_bg);
+			
 			// 过场动画
 			let png = new egret.MovieClip(this.objmgr.winFactory.generateMovieClipData("Win"));
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			png.x = FlyConfig.stageWidth/2 - 100
-			png.y = FlyConfig.stageHeight/2 - 320
+			png.y = FlyConfig.stageHeight/2 - 280
 			png.scaleX = png.scaleY = 2.5
 			this.addChild(png)
 			this.movieclip = png
@@ -141,23 +140,33 @@ module fly {
 
 		private createLoseScene(reason:number)
 		{
+			// 标题
+			let title_bg = FlyTools.createBitmapByName("Defeat_png")
+            title_bg.anchorOffsetX = title_bg.width/2
+            title_bg.anchorOffsetY = title_bg.height/2
+            title_bg.x = FlyConfig.stageWidth/2;
+            title_bg.y = 200;
+            title_bg.scaleX = title_bg.scaleY = 2;
+            this.addChild(title_bg);
+
 			// 过场动画
 			let png = null
 			if (reason == 4)
 			{
 				png = new egret.MovieClip(this.objmgr.iceFactory.generateMovieClipData("ice"));
 				png.gotoAndPlay("drop", -1)
-				png.anchorOffsetY = png.height*0.3
+				png.anchorOffsetY = png.height*0.15
+				png.y = FlyConfig.stageHeight/2 - 360
 			}
 			else
 			{
 				png = new egret.MovieClip(this.objmgr.dieFactory.generateMovieClipData("playerDie"));
 				png.gotoAndPlay(this.dieReason[reason], -1)
 				png.anchorOffsetY = png.height*0.5
+				png.y = FlyConfig.stageHeight/2 - 280
 			}
 			png.anchorOffsetX = png.width/2
 			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 320
 			png.scaleX = png.scaleY = 2
 			this.addChild(png)
 			this.movieclip = png
@@ -167,13 +176,22 @@ module fly {
 
 		private createPassScene()
 		{
+			// 标题
+			let title_bg = FlyTools.createBitmapByName("title_png")
+            title_bg.anchorOffsetX = title_bg.width/2
+            title_bg.anchorOffsetY = title_bg.height/2
+            title_bg.x = FlyConfig.stageWidth/2;
+            title_bg.y = 200;
+            title_bg.scaleX = title_bg.scaleY = 2;
+            this.addChild(title_bg);
+
 			// 过场动画
 			let png = new egret.MovieClip(this.objmgr.winFactory.generateMovieClipData("Win"));
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			png.x = FlyConfig.stageWidth/2 - 100
-			png.y = FlyConfig.stageHeight/2 - 320
+			png.y = FlyConfig.stageHeight/2 - 280
 			png.scaleX = png.scaleY = 2.5
 			this.addChild(png)
 			this.movieclip = png

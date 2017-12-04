@@ -4,8 +4,7 @@ module fly {
 		private _sound: egret.Sound = new egret.Sound()
 		private _channel: egret.SoundChannel
 		private _time:number = 0
-
-		private _initFinish:boolean = false
+		private _path:string
 
 		public constructor() {
 		}
@@ -14,8 +13,8 @@ module fly {
 		public loadMusic(path:string, time:number = 0)
 		{
 			this.stop();
-			this._initFinish = false
 
+			this._path = path
 			this._sound.load(path)
         	this._sound.addEventListener(egret.Event.COMPLETE, this.onLoad, this)
 			this._time = time
@@ -24,7 +23,6 @@ module fly {
 		public loadMusicOnly(path:string)
 		{
 			this.stop();
-			this._initFinish = false
 
 			this._sound.load(path)
         	this._sound.addEventListener(egret.Event.COMPLETE, this.onLoadOnly, this)
@@ -33,8 +31,6 @@ module fly {
 		//播放
 		public play(time:number = 0)
 		{
-			if (!this._initFinish) return
-			
 			//sound 播放会返回一个 SoundChannel 对象，暂停、音量等操作请控制此对象
 			this._channel = this._sound.play(0, time);
 			this._channel.addEventListener(egret.Event.SOUND_COMPLETE, this.onComplete, this);
@@ -49,17 +45,18 @@ module fly {
 			}
 		}
 
-		private onLoad()
+		private onLoad(evt:egret.Event)
 		{
 			this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoad, this)
-			this._initFinish = true
-			this.play(this._time)
+			if (this._path == evt.target.url)
+			{
+				this.play(this._time)
+			}
 		}
 
-		private onLoadOnly()
+		private onLoadOnly(evt:Event)
 		{
 			this._sound.removeEventListener(egret.Event.COMPLETE, this.onLoadOnly, this)
-			this._initFinish = true
 		}
 
 		//播放完成

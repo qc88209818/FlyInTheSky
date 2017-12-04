@@ -23,7 +23,7 @@ module fly {
 			this.width = width
 			this.height = height
 			this.op  = op
-			this.delay = op.delay || 4
+			this.delay = op.delay || 3
 			this.dir = op.dir || 1
 
 			this.initBody({

@@ -71,16 +71,16 @@ module fly {
 			}
 			else if (reason == 0)
 			{	
-				text2.text = "本次用时: " + parseInt(""+this.mgr.getLastTime()*10, 10)/10 + "秒" + "(最短用时: " + parseInt(""+this.mgr.getPassTime()*10, 10)/10 + "秒)"
+				text2.text = "本次用时: " + parseInt(""+this.mgr.getLastTime()*10, 10)/10 + "秒" + " (最短用时: " + parseInt(""+this.mgr.getPassTime()*10, 10)/10 + "秒)"
 			}
 			else
 			{
 				text2.text = "当前剩余生命: " + this.mgr.health
 			}
-			text2.size = 48
+			text2.size = 36
 			text2.textColor = 0x000000
-			text2.anchorOffsetX = text.width/2
-			text2.anchorOffsetY = text.height/2
+			text2.anchorOffsetX = text2.width/2
+			text2.anchorOffsetY = text2.height/2
 			text2.x = FlyConfig.stageWidth/2
 			text2.y = this.movieclip.y + this.movieclip.height*2 + text.height
 			this.addChild(text2);
@@ -101,7 +101,7 @@ module fly {
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = FlyConfig.stageWidth/2
-            enterGameBtn.y = text2.y + text2.height*2 + 60; 
+            enterGameBtn.y = text2.y + text2.height*2 + 80; 
             enterGameBtn.scaleX = enterGameBtn.scaleY = 2
             this.addChild(enterGameBtn)
 			this.enterGameBtn = enterGameBtn

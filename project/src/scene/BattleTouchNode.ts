@@ -91,7 +91,7 @@ module fly {
 			if (this.isTouchShow)
 			{
 				let from = [this.virtualBg.x, this.virtualBg.y]
-				let to = [evt.stageX, evt.stageY]
+				let to = [evt.stageX, evt.stageY- FlyConfig.deltaHeight]
 
 				let direct = [(to[0]-from[0]), (to[1]-from[1])]
 				p2.vec2.normalize(this.normal, direct)

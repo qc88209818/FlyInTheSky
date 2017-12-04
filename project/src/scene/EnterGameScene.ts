@@ -77,7 +77,9 @@ module fly {
 			var caidan = new egret.TextField()
 			caidan.text = ""
 			caidan.size = 48
-			caidan.textColor = 0x000000
+            caidan.stroke = 2;
+        	caidan.strokeColor = 0x000000;
+			caidan.textColor = 0xFFFFFF;
 			caidan.anchorOffsetX = caidan.width/2
 			caidan.anchorOffsetY = caidan.height/2
 			caidan.x = width/2

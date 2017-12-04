@@ -4,6 +4,7 @@ module fly {
 		fr:egret.Bitmap
 		fat:egret.Bitmap
 		thin:egret.Bitmap
+		text:egret.TextField
 
 		max:number
 		min:number
@@ -56,6 +57,18 @@ module fly {
 			this.addChild(fat)
 			this.fat = fat
 
+			// 显示关卡
+			var text:egret.TextField = new egret.TextField()
+			text.text = "" + now
+			text.size = 32
+			text.stroke = 2
+        	text.strokeColor = 0x000000
+			text.textColor = 0xFFFFFF
+			text.anchorOffsetX = text.width/2
+			text.anchorOffsetY = text.height/2
+			this.addChild(text);
+			this.text = text
+
 			this.max = max
 			this.min = min
 			this.now = now
@@ -71,11 +84,9 @@ module fly {
 			this.fr.x = x
 			this.fr.y = y
 
-			this.fat.x = x
-			this.fat.y = y - this.fr.height*0.2
-
+			this.fat.x  = x
 			this.thin.x = x
-			this.thin.y = y + this.fr.height*0.2
+			this.text.x = x
 		}
 
 		public changeValue(value:number)
@@ -88,8 +99,15 @@ module fly {
 			let scale = (v - this.min)/(this.max - this.min)
 			this.fr.mask.y = this.fr.height * (1 - scale)
 
-			this.thin.visible = scale>=0.3
-			this.fat.visible = scale>=0.7
+			this.fat.y  = this.fr.mask.y + this.fr.height/2
+			this.thin.y = this.fr.mask.y + this.fr.height/2
+
+			this.text.text = "" + this.now
+			this.text.y = this.fr.mask.y + this.fr.height/2
+			this.text.anchorOffsetX = this.text.width/2
+
+			this.thin.visible = 30<v&&v<70
+			this.fat.visible = !this.thin.visible
 		}
 	}
 }

@@ -46,7 +46,9 @@ module fly {
 			var text = new egret.TextField()
 			text.text = array[0]
 			text.size = 48
-			text.textColor = 0x000000
+			text.stroke = 2;
+        	text.strokeColor = 0x000000;
+			text.textColor = 0xFFFFFF;
 			text.anchorOffsetX = text.width/2
 			text.anchorOffsetY = text.height/2
 			text.x = FlyConfig.stageWidth/2
@@ -68,7 +70,9 @@ module fly {
 				text2.text = "当前剩余生命: " + this.mgr.health
 			}
 			text2.size = 36
-			text2.textColor = 0x000000
+			text2.stroke = 2;
+        	text2.strokeColor = 0x000000;
+			text2.textColor = 0xFFFFFF;
 			text2.anchorOffsetX = text2.width/2
 			text2.anchorOffsetY = text2.height/2
 			text2.x = FlyConfig.stageWidth/2

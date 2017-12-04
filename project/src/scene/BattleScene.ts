@@ -54,20 +54,21 @@ module fly {
 			}
 			return va*0.9
 		}
-		
+
+		perPower = Math.abs(1/FlyParam.move_power)
 		lastPowerTime:number = 0
 		private updatePower(dt:number)
 		{
 			this.lastPowerTime += dt
-			if (this.lastPowerTime > 0.5)
+			if (this.lastPowerTime >= this.perPower)
 			{
 				if (this.player.body.velocity[0] != 0 || this.player.body.velocity[1] != 0)
 				{
 					this.objmgr.players.forEach(player => {
-						player.changePower(player.power + FlyParam.move_power*0.5)
+						player.changePower(player.power - 1)
 					})
 				}
-				this.lastPowerTime -= 0.5
+				this.lastPowerTime -= this.perPower
 			}
 		}
 

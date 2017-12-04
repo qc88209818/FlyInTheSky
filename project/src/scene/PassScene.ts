@@ -181,7 +181,7 @@ module fly {
             title_bg.anchorOffsetX = title_bg.width/2
             title_bg.anchorOffsetY = title_bg.height/2
             title_bg.x = FlyConfig.stageWidth/2;
-            title_bg.y = 200;
+            title_bg.y = 240;
             title_bg.scaleX = title_bg.scaleY = 2;
             this.addChild(title_bg);
 

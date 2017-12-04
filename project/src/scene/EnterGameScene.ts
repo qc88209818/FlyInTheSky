@@ -25,7 +25,7 @@ module fly {
             title_bg.anchorOffsetX = title_bg.width/2
             title_bg.anchorOffsetY = title_bg.height/2
             title_bg.x = width/2;
-            title_bg.y = 170;
+            title_bg.y = 200;
             title_bg.scaleX = title_bg.scaleY = 2;
             this.addChild(title_bg);
             this.title_bg = title_bg
@@ -36,7 +36,7 @@ module fly {
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
 			png.x = width/2 - 100
-			png.y = height/2 - 240
+			png.y = height/2 - 200
 			png.scaleX = png.scaleY = 2.5
 			this.addChild(png)
 
@@ -45,7 +45,7 @@ module fly {
             enterGameBtn.anchorOffsetX = enterGameBtn.width/2
             enterGameBtn.anchorOffsetY = enterGameBtn.height/2
             enterGameBtn.x = width/2
-            enterGameBtn.y = png.y + png.height*2 + 180;
+            enterGameBtn.y = png.y + png.height*2 + 150;
             enterGameBtn.scaleX = enterGameBtn.scaleY = 2;
             this.addChild(enterGameBtn);
             this.enterGameBtn = enterGameBtn

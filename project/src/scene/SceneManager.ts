@@ -113,13 +113,7 @@ module fly {
 
 			var divImage = document.getElementById("divImage");//获取DIV
 			var shareImage: HTMLImageElement = document.getElementById("shareImage") as HTMLImageElement;//获取Image标签
-			alert((!divImage?"divImage == null":"divImage, ") + (!shareImage?"shareImage == null":"shareImage"))
-
-			if (!divImage && !shareImage)
-			{
-				divImage = document.getElementsByName("divImage")[0];//获取DIV
-				shareImage = document.getElementsByName("shareImage")[0]  as HTMLImageElement//获取Image标签
-			}
+			alert((!divImage?"divImage == null, ":"divImage, ") + (!shareImage?"shareImage == null":"shareImage"))
 
 			shareImage.src = rt.toDataURL('image/png');//把数据赋值给Image
 			divImage.style.display = "block";//显示DIV

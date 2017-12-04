@@ -40,19 +40,6 @@ class Main extends egret.DisplayObjectContainer {
             this.loadingView.scaleX = 2;
             this.loadingView.scaleY = 2;
             this.stage.addChild(this.loadingView);
-            RES.loadGroup("premusic")
-        }
-        else if(event.groupName == "premusic"){
-            this.stage.removeChild(this.loadingView)
-            this.loadingView = null
-
-             //设置加载进度界面
-            this.loadingView = new UILoading(this.stage.stageWidth, this.stage.stageHeight);
-            this.loadingView.x = this.stage.stageWidth/2-200;
-            this.loadingView.y = this.stage.stageHeight/2;
-            this.loadingView.scaleX = 2;
-            this.loadingView.scaleY = 2;
-            this.stage.addChild(this.loadingView);
             RES.loadGroup("preload")
         }
         else if (event.groupName == "preload") 
@@ -81,10 +68,6 @@ class Main extends egret.DisplayObjectContainer {
 
     private onResourceProgress(event: RES.ResourceEvent): void {
         if (event.groupName == "preload")
-        {
-            this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal)
-        }
-        else if (event.groupName == "premusic")
         {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal)
         }

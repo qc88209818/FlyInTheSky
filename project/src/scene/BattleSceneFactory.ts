@@ -74,6 +74,7 @@ module fly {
 					, type:Number(obj.params["type"])
 					, rotation:Number(obj.params["rotation"])
 					, dir:Number(obj.params["dir"])
+					, delay:Number(obj.params["delay"])
 				})
 				scene.addToWorld(traps)
 			}

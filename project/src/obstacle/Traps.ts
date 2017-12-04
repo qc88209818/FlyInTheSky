@@ -5,6 +5,7 @@ module fly {
 		width:number
 		height:number
 		dir:number
+		delay:number
 		op:any
 
 		baseScale:number = FlyParam.TrapsBaseScale
@@ -22,6 +23,7 @@ module fly {
 			this.width = width
 			this.height = height
 			this.op  = op
+			this.delay = op.delay || 4
 			this.dir = op.dir || 1
 
 			this.initBody({
@@ -52,7 +54,7 @@ module fly {
 			this.addChild(png)
 			this._movieClip = png
 			this._nowstate = "hide"
-			this._lasttime = 4
+			this._lasttime = this.delay
 
 			this._movieClip.addEventListener(egret.Event.COMPLETE, this.afterMovieClip, this);
 		}

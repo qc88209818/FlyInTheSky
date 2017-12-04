@@ -63,13 +63,19 @@ module fly {
 		}
 
 		private onTouchBegin(evt:egret.TouchEvent) {
-			this.virtualBg.x = 450
-			this.virtualBg.y = 1300 - FlyConfig.deltaHeight*2
-			this.virtualBg.alpha = 0.5
+			console.log(evt.stageY, FlyConfig.stageHeight/2)
+			if (evt.stageY > FlyConfig.stageHeight/2)
+			{
+				this.virtualBg.x = evt.stageX
+				this.virtualBg.y = evt.stageY
+				this.virtualBg.alpha = 0.5
 
-			this.virtualBtn.x = 450
-			this.virtualBtn.y = 1300 - FlyConfig.deltaHeight*2
-			this.virtualBtn.alpha = 0.5
+				this.virtualBtn.x = evt.stageX
+				this.virtualBtn.y = evt.stageY
+				this.virtualBtn.alpha = 0.5
+
+				this.isTouchMove = true
+			}
 		}
 
 		private onTouchEnd(evt:egret.TouchEvent) {
@@ -80,20 +86,22 @@ module fly {
 		}
 
 		private onTouchMove(evt:egret.TouchEvent) {
-			let from = [this.virtualBg.x, this.virtualBg.y]
-			let to = [evt.stageX, evt.stageY]
+			if (this.isTouchMove)
+			{
+				let from = [this.virtualBg.x, this.virtualBg.y]
+				let to = [evt.stageX, evt.stageY]
 
-			let direct = [(to[0]-from[0]), (to[1]-from[1])]
-			p2.vec2.normalize(this.normal, direct)
+				let direct = [(to[0]-from[0]), (to[1]-from[1])]
+				p2.vec2.normalize(this.normal, direct)
 
-			this.normal = this.normal8dir(this.normal)
+				this.normal = this.normal8dir(this.normal)
 
-			this.direct[0] = this.normal[0]*this.maxDist
-			this.direct[1] = this.normal[1]*this.maxDist
+				this.direct[0] = this.normal[0]*this.maxDist
+				this.direct[1] = this.normal[1]*this.maxDist
 
-			this.virtualBtn.x = from[0] + this.direct[0]
-			this.virtualBtn.y = from[1] + this.direct[1]
-			this.isTouchMove = true
+				this.virtualBtn.x = from[0] + this.direct[0]
+				this.virtualBtn.y = from[1] + this.direct[1]
+			}
 		}
 
 		private normal8dir(dir:number[]):number[]

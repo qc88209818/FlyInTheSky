@@ -35,11 +35,17 @@ module fly {
 			this.createMusicAndSound()
 		}
 
-		public getMapId()
+		// 主界面
+		public loadEnterScene()
 		{
-			return this._mapId
+			this.reset()
+
+			let enterGameScene = new fly.EnterGameScene();
+			enterGameScene.y = fly.FlyConfig.deltaHeight
+			this._parent.addChild(enterGameScene);
 		}
 
+		// 战斗界面
 		public load(mapId:number)
 		{
 			this.loadTiledMap(mapId)
@@ -63,6 +69,11 @@ module fly {
 			this.health -= 1
 			this.reset()
 			this.createPassScene(reason)
+		}
+
+		public getMapId()
+		{
+			return this._mapId
 		}
 
 		private loadNow()
@@ -93,11 +104,7 @@ module fly {
 			}
 			else
 			{
-				this.reset()
-
-				let enterGameScene = new fly.EnterGameScene();
-        		enterGameScene.y = fly.FlyConfig.deltaHeight
-				this._parent.addChild(enterGameScene);
+				this.loadEnterScene()
 			}
 		}
 

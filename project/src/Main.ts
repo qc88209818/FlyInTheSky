@@ -89,9 +89,6 @@ class Main extends egret.DisplayObjectContainer {
 
     private initGame()
     {
-        // var wid = document.documentElement.clientWidth;
-        // var hei = document.documentElement.clientHeight;
- 
         egret.lifecycle.addLifecycleListener((conttext) => {
             conttext.onUpdate = () => {
 
@@ -113,8 +110,8 @@ class Main extends egret.DisplayObjectContainer {
 		fly.FlyConfig.stageHeight = this.stage.stageHeight
         fly.FlyConfig.deltaHeight = (this.stage.stageHeight - dHeight)/2
 
-        let enterGameScene = new fly.EnterGameScene();
-        enterGameScene.y = fly.FlyConfig.deltaHeight
-        this.addChild(enterGameScene);
+        let mgr = fly.SceneManager.inst();
+        mgr.init(this);
+        mgr.loadEnterScene()
     }
 }

@@ -1,8 +1,6 @@
 module fly {
 	export class EnterGameScene extends egret.Sprite {
 
-        private music:FlyMusic = new FlyMusic()
-	
         public constructor() {
             super()
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
@@ -12,7 +10,7 @@ module fly {
         private title_bg:egret.Bitmap ;
         private enterGameBtn:egret.Bitmap;
         private  onAddToStage():void{
-            this.music.playObject("start.mp3")
+            SceneManager.inst().playMusic("start.mp3")
  
             let width = FlyConfig.stageWidth
             let height = FlyConfig.stageHeight
@@ -37,9 +35,9 @@ module fly {
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.x = width/2 - 10
+			png.x = width/2 - 100
 			png.y = height/2 - 240
-			png.scaleX = png.scaleY = 2
+			png.scaleX = png.scaleY = 2.5
 			this.addChild(png)
 
             // 开始按钮
@@ -73,13 +71,8 @@ module fly {
         private  onTouchClick(evt:egret.TouchEvent) {
             this.enterGameBtn.scaleX = this.enterGameBtn.scaleY = 2;
             if(this.enterGameBtn.hitTestPoint(evt.localX, evt.localY + FlyConfig.deltaHeight)){
-                    this.music.stop()
-
-                    let parent = this.parent
-                    parent.removeChild(this);
-                    let mgr = fly.SceneManager.inst();
-                    mgr.init(parent);
-                    mgr.load(1)
+                    this.parent.removeChild(this)
+                    SceneManager.inst().load(1)
                 }
         }
 

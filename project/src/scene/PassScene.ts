@@ -60,7 +60,7 @@ module fly {
 			text.anchorOffsetX = text.width/2
 			text.anchorOffsetY = text.height/2
 			text.x = FlyConfig.stageWidth/2
-			text.y = this.movieclip.y + this.movieclip.height*2 - 20
+			text.y = this.movieclip.y + this.movieclip.height*2
 			this.addChild(text);
 
 			// 本次用时 
@@ -82,7 +82,7 @@ module fly {
 			text2.anchorOffsetX = text2.width/2
 			text2.anchorOffsetY = text2.height/2
 			text2.x = FlyConfig.stageWidth/2
-			text2.y = this.movieclip.y + this.movieclip.height*2 + text.height
+			text2.y = this.movieclip.y + this.movieclip.height*2 + text.height + 10
 			this.addChild(text2);
 
 			// 二维码
@@ -130,9 +130,9 @@ module fly {
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 360
-			png.scaleX = png.scaleY = 2
+			png.x = FlyConfig.stageWidth/2 - 100
+			png.y = FlyConfig.stageHeight/2 - 320
+			png.scaleX = png.scaleY = 2.5
 			this.addChild(png)
 			this.movieclip = png
 
@@ -157,7 +157,7 @@ module fly {
 			}
 			png.anchorOffsetX = png.width/2
 			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 360
+			png.y = FlyConfig.stageHeight/2 - 320
 			png.scaleX = png.scaleY = 2
 			this.addChild(png)
 			this.movieclip = png
@@ -172,9 +172,9 @@ module fly {
 			png.gotoAndPlay("play", -1)
 			png.anchorOffsetX = png.width/2
 			png.anchorOffsetY = png.height/2
-			png.x = FlyConfig.stageWidth/2 - 10
-			png.y = FlyConfig.stageHeight/2 - 360
-			png.scaleX = png.scaleY = 2
+			png.x = FlyConfig.stageWidth/2 - 100
+			png.y = FlyConfig.stageHeight/2 - 320
+			png.scaleX = png.scaleY = 2.5
 			this.addChild(png)
 			this.movieclip = png
 

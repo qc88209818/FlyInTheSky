@@ -48,7 +48,7 @@ module fly {
             title_bg.anchorOffsetX = title_bg.width/2
             title_bg.anchorOffsetY = title_bg.height/2
             title_bg.x = width/2
-            title_bg.y = FlyConfig.deltaHeight*2 + 160
+            title_bg.y = FlyConfig.deltaHeight + 160
             title_bg.scaleX = title_bg.scaleY = 2
             this.addChild(title_bg)
 

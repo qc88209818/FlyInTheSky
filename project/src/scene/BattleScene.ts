@@ -186,7 +186,7 @@ module fly {
         	text.strokeColor = 0x000000;
 			text.textColor = 0xFFFFFF;
 			text.x = 5
-			text.y = FlyConfig.deltaHeight*2
+			text.y = FlyConfig.deltaHeight
 			this.addChild(text);
 
 			// 显示生命值
@@ -197,7 +197,7 @@ module fly {
         	text2.strokeColor = 0x000000;
 			text2.textColor = 0xFFFFFF;
 			text2.x = 5
-			text2.y = FlyConfig.deltaHeight*2 + text.height + 10
+			text2.y = FlyConfig.deltaHeight + text.height + 10
 			this.addChild(text2);
 			this.text = text2
 
@@ -209,7 +209,7 @@ module fly {
         	text3.strokeColor = 0x000000;
 			text3.textColor = 0xFFFFFF;
 			text3.x = 5
-			text3.y = FlyConfig.deltaHeight*2 + text.height + text2.height + 20
+			text3.y = FlyConfig.deltaHeight + text.height + text2.height + 20
 			this.addChild(text3);
 			this.time = text3
 		}

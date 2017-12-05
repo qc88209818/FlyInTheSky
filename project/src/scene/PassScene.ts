@@ -123,9 +123,9 @@ module fly {
 			let title_bg = FlyTools.createBitmapByName("Victory_png")
             title_bg.anchorOffsetX = title_bg.width/2
             title_bg.anchorOffsetY = title_bg.height/2
-            title_bg.x = FlyConfig.stageWidth/2;
-            title_bg.y = 200;
-            title_bg.scaleX = title_bg.scaleY = 2;
+            title_bg.x = FlyConfig.stageWidth/2
+            title_bg.y = FlyConfig.deltaHeight*2 + 120
+            title_bg.scaleX = title_bg.scaleY = 2
             this.addChild(title_bg);
 			
 			// 过场动画
@@ -148,10 +148,10 @@ module fly {
 			let title_bg = FlyTools.createBitmapByName("Defeat_png")
             title_bg.anchorOffsetX = title_bg.width/2
             title_bg.anchorOffsetY = title_bg.height/2
-            title_bg.x = FlyConfig.stageWidth/2;
-            title_bg.y = 200;
-            title_bg.scaleX = title_bg.scaleY = 2;
-            this.addChild(title_bg);
+            title_bg.x = FlyConfig.stageWidth/2
+            title_bg.y = FlyConfig.deltaHeight*2 + 120
+            title_bg.scaleX = title_bg.scaleY = 2
+            this.addChild(title_bg)
 
 			// 过场动画
 			let png = null
@@ -184,9 +184,9 @@ module fly {
 			let title_bg = FlyTools.createBitmapByName("title_png")
             title_bg.anchorOffsetX = title_bg.width/2
             title_bg.anchorOffsetY = title_bg.height/2
-            title_bg.x = FlyConfig.stageWidth/2;
-            title_bg.y = 240;
-            title_bg.scaleX = title_bg.scaleY = 2;
+            title_bg.x = FlyConfig.stageWidth/2
+            title_bg.y = FlyConfig.deltaHeight*2 + 160
+            title_bg.scaleX = title_bg.scaleY = 2
             this.addChild(title_bg);
 
 			// 过场动画

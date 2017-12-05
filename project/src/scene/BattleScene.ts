@@ -59,16 +59,16 @@ module fly {
 		lastPowerTime:number = 0
 		private updatePower(dt:number)
 		{
-			this.lastPowerTime += dt
-			if (this.lastPowerTime >= this.perPower)
+			if (this.player.body.velocity[0] != 0 || this.player.body.velocity[1] != 0)
 			{
-				if (this.player.body.velocity[0] != 0 || this.player.body.velocity[1] != 0)
+				this.lastPowerTime += dt
+				if (this.lastPowerTime >= this.perPower)
 				{
 					this.objmgr.players.forEach(player => {
 						player.changePower(player.power - 1)
 					})
+					this.lastPowerTime -= this.perPower
 				}
-				this.lastPowerTime -= this.perPower
 			}
 		}
 
@@ -185,10 +185,8 @@ module fly {
 			text.stroke = 2;
         	text.strokeColor = 0x000000;
 			text.textColor = 0xFFFFFF;
-			text.anchorOffsetX = 0;
-			text.anchorOffsetY = 0.5
 			text.x = 5
-			text.y = FlyConfig.deltaHeight
+			text.y = FlyConfig.deltaHeight*2
 			this.addChild(text);
 
 			// 显示生命值
@@ -198,10 +196,8 @@ module fly {
 			text2.stroke = 2;
         	text2.strokeColor = 0x000000;
 			text2.textColor = 0xFFFFFF;
-			text2.anchorOffsetX = 0;
-			text2.anchorOffsetY = 0.5
 			text2.x = 5
-			text2.y = FlyConfig.deltaHeight + text.height + 10
+			text2.y = FlyConfig.deltaHeight*2 + text.height + 10
 			this.addChild(text2);
 			this.text = text2
 
@@ -212,10 +208,8 @@ module fly {
 			text3.stroke = 2;
         	text3.strokeColor = 0x000000;
 			text3.textColor = 0xFFFFFF;
-			text3.anchorOffsetX = 0;
-			text3.anchorOffsetY = 0.5
 			text3.x = 5
-			text3.y = FlyConfig.deltaHeight + text.height + text2.height + 20
+			text3.y = FlyConfig.deltaHeight*2 + text.height + text2.height + 20
 			this.addChild(text3);
 			this.time = text3
 		}

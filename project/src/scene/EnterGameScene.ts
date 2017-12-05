@@ -47,10 +47,10 @@ module fly {
 			let title_bg = FlyTools.createBitmapByName("title_png")
             title_bg.anchorOffsetX = title_bg.width/2
             title_bg.anchorOffsetY = title_bg.height/2
-            title_bg.x = width/2;
-            title_bg.y = 240;
-            title_bg.scaleX = title_bg.scaleY = 2;
-            this.addChild(title_bg);
+            title_bg.x = width/2
+            title_bg.y = FlyConfig.deltaHeight*2 + 160
+            title_bg.scaleX = title_bg.scaleY = 2
+            this.addChild(title_bg)
 
             // 过场动画
             let png = new egret.MovieClip(ObjectManager.inst().winFactory.generateMovieClipData("Win"));
